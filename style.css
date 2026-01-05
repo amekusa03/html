@@ -164,3 +164,23 @@ img {
 .text-fuchsia {
   color: var(--color-fuchsia);
 }
+
+h2 {
+  font-weight: bold;
+  font-size: 1.2em; /* Adjust size as needed */
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+
+.star-icon {
+  width: 52px;
+}
+
+/* Spacing adjustments to replace <br> tags */
+main > p.text-center:nth-of-type(2) {
+    margin-bottom: 2em;
+}
+
+main > p.text-center:nth-of-type(3) {
+    margin-bottom: 2em;
+}
