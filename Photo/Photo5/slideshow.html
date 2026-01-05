@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>写真スライドショー</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <h1>写真スライドショー</h1>
+
+    <div class="slideshow-container">
+        <!-- Slides will be inserted here by JavaScript -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        <div class="caption"></div>
+    </div>
+
+    <div class="back-link">
+        <a href="../../index.html">ギャラリートップに戻る</a>
+    </div>
+
+    <script>
+        const images = [
+            { url: '01.jpg' , txt: 'Snow city' },
+            { url: '02.jpg' , txt: 'Misty Light' },
+            { url: '03.jpg' , txt: 'Sky Ring' }
+        ];
+
+        let slideIndex = 0;
+        let slideInterval;
+
+        const container = document.querySelector('.slideshow-container');
+        const caption = document.querySelector('.caption');
+
+        images.forEach(src => {
+            const slideDiv = document.createElement('div');
+            slideDiv.classList.add('slide', 'fade');
+            const img = document.createElement('img');
+
+            img.src = src.url;
+            img.alt = src.txt;
+            slideDiv.appendChild(img);
+            container.insertBefore(slideDiv, container.querySelector('.prev'));
+        });
+
+        const slides = document.getElementsByClassName("slide");
+
+        function showSlides(n) {
+            slideIndex = (n + slides.length) % slides.length; // Loop around
+
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+
+            slides[slideIndex].style.display = "block";
+            caption.textContent = images[slideIndex].txt;
+        }
+
+        function plusSlides(n) {
+            stopAutoplay();
+            showSlides(slideIndex += n);
+        }
+
+        function startAutoplay() {
+            stopAutoplay(); // Prevent multiple intervals
+            slideInterval = setInterval(() => {
+                plusSlides(1);
+            }, 3000); // Change image every 3 seconds
+        }
+
+        function stopAutoplay() {
+            clearInterval(slideInterval);
+        }
+
+        // Initial setup
+        showSlides(slideIndex);
+        startAutoplay();
+
+    </script>
+
+</body>
+</html>
