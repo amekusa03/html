@@ -26,7 +26,34 @@
 body {
   background-color: var(--color-silver);
   color: var(--color-teal);
-  font-family: 'HG創英角ポップ体', 'HGSoeiKakuPop-tai', 'Noto Sans JP', sans-serif;
+}
+
+.serif {
+  font-family: "Times", "Times New Roman", "Georgia", serif;
+}
+
+.sansserif {
+  font-family: "Verdana", "Helvetica", "Arial", sans-serif;
+}
+
+.monospace {
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
+.cursive {
+  font-family: cursive;
+}
+
+.fantasy {
+  font-family: fantasy;
+}
+
+.math {
+  font-family: math;
+}
+
+.fangsong {
+  font-family: fangsong;
 }
 
 a:link {
