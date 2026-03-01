@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ImageForNet</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body class="home doc-page">
+    <div class="container">
+        <h1 style="text-align: center;">ImageForNet</h1>
+        <p>
+            Web投稿用画像加工ツールです。クロスプラットフォーム対応（Windows, macOS, Linux）で、Webへのアップロード前などに、画像のEXIF情報の削除や、透かし（ウォーターマーク）の追加を簡単に行うことができます。
+        </p>
+
+        <h2>✨ 主な機能</h2>
+        <ul>
+            <li><b>EXIF情報の削除:</b> プライバシー保護のために撮影情報を除去します。</li>
+            <li><b>透かし（ウォーターマーク）の追加:</b>
+                <ul>
+                    <li>テキストの設定</li>
+                    <li>位置の調整（四隅）</li>
+                    <li>色、フォントサイズ、不透明度の設定</li>
+                    <li>システムフォント（日本語対応）の自動選択</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>📥 インストール</h2>
+        <h3>Windows</h3>
+        <ol>
+            <li><a href="https://dotnet.microsoft.com/download/dotnet/8.0" target="_blank" rel="noopener noreferrer">.NET Desktop Runtime 8.0</a> をダウンロードしてインストールします。</li>
+            <li><a href="https://github.com/amekusa03/ImageForNet/releases" target="_blank" rel="noopener noreferrer">アプリをダウンロード</a>して解凍します。</li>
+            <li>ImageForNet.exeを実行します。</li>
+        </ol>
+
+        <h3>macOS</h3>
+        <ol>
+            <li>.NETをインストールします: <pre><code>brew install dotnet</code></pre></li>
+            <li><a href="https://github.com/amekusa03/ImageForNet/releases" target="_blank" rel="noopener noreferrer">アプリをダウンロード</a>して解凍します。</li>
+            <li>ImageForNetを実行します。</li>
+        </ol>
+
+        <h3>Linux (Ubuntu/Debian)</h3>
+        <ol>
+            <li>.NETをインストールします: <pre><code>sudo apt-get update && sudo apt-get install dotnet-runtime-8.0</code></pre></li>
+            <li><a href="https://github.com/amekusa03/ImageForNet/releases" target="_blank" rel="noopener noreferrer">アプリをダウンロード</a>して解凍します。</li>
+            <li>ImageForNetを実行します。</li>
+        </ol>
+
+        <h2>🛠️ 開発者向け情報</h2>
+        <h3>使用技術</h3>
+        <ul>
+            <li><b>Framework:</b> Avalonia UI (.NET 8)</li>
+            <li><b>Image Processing:</b> SixLabors.ImageSharp</li>
+            <li><b>MVVM:</b> CommunityToolkit.Mvvm</li>
+        </ul>
+
+        <h3>セットアップと実行</h3>
+        <p>リポジトリをクローンし、依存関係を復元して実行します。</p>
+        <pre><code>git clone https://github.com/amekusa03/ImageForNet.git
+cd ImageForNet
+dotnet restore
+dotnet run --project ImageForNet</code></pre>
+    </div>
+<footer>
+    <div class="footer-nav"><a href="../index.html" class="font-gothic text-silver">ホームページへ</a></div>
+    <p class="text-center text-small text-silver">Copyright &copy; amekusa All Rights Reserved.</p>
+</footer>
+</body>
+</html>
