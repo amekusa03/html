@@ -14,15 +14,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>雨宿の庭 | Engineering & Nature Portfolio</title>
     
+    <title>Links | 雨宿の庭</title>
     <script>
       window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body class="home-page">
     <canvas id="snow-canvas"></canvas>
+<body class="app-page">
+    <div class="container">
+        <nav>
+            <a href="../index.html">← Back to Garden</a>
+        </nav>
 
     <div class="container">
         <header>
@@ -30,6 +37,8 @@
             <h1>雨宿の庭</h1>
             <p class="subtitle">Engineering</p>
             <p style="margin-top: 1.5rem; font-size: 0.9rem; letter-spacing: 0.1em;">雨宿りでもしていってください。</p>
+            <h1>Favorite Links</h1>
+            <p style="opacity: 0.8;">ウェブの片隅で見つけた、お気に入りの場所。</p>
         </header>
 
         <section id="engineering">
@@ -38,59 +47,45 @@
                 <article class="project-card">
                     <h3>Software Engineering and me </h3>
                     <p>GitHubに公開しているソースとドキュメント、YouTubeの動画です。</p>
-                    <div class="video-container">
-                        <img src="app/unnamed.png" alt="Restless engineer" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
+                    <img src="app/unnamed.png" alt="Restless engineer" style="width: 100%; height: 100%; object-fit: cover;">
                     <p><a href="app/index.html">詳細はこちら →</a></p>
                 </article>
 
                 <article class="project-card">
                     <h3>Ubuntu導入ガイド</h3>
                     <p>古いPCをアップサイクルし、Linux環境で再活用するための技術ドキュメントです。</p>
-                    <div class="video-container">
                         <img src="app/Ubuntu_PC_Upcycling.png" alt="Ubuntu Guide" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
                     <p><a href="app/dev1.html">詳細を見る →</a></p>
                 </article>
 
                 <article class="project-card">
                     <h3>Avalonia UI & MVVM</h3>
                     <p>C#とAvalonia UIを使用した、デスクトップアプリ開発の学習プロジェクトです。</p>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/v86BQykeWFY" frameborder="0" allowfullscreen title="YouTube video player"></iframe>
-                    </div>
+                    <img src="https://img.youtube.com/vi/v86BQykeWFY/hqdefault.jpg" alt="HTML to Blogger" style="width: 100%; height: 100%; object-fit: cover;">
                     <p><a href="app/dev2.html">詳細を見る →</a></p>
                 </article>
 
                 <article class="project-card">
                     <h3>HTML to Blogger</h3>
                     <p>Pythonを使用してローカルHTMLと画像を解析し、Bloggerへ自動投稿するツールです。</p>
-                    <div class="video-container">
                         <img src="https://img.youtube.com/vi/gFgYCVHIfW0/hqdefault.jpg" alt="HTML to Blogger" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
                     <p><a href="app/dev3.html">詳細を見る →</a></p>
                 </article>
 
                 <article class="project-card">
                     <h3>ESP32 Racing Game</h3>
                     <p>ESP32とWokwiシミュレータを使用した、レトロなレーシングゲームの開発プロジェクトです。</p>
-                    <div class="video-container">
                         <img src="https://img.youtube.com/vi/FJdXAT3jsQo/hqdefault.jpg" alt="ESP32 Racing Game" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
                     <p><a href="app/dev4.html">詳細を見る →</a></p>
                 </article>
 
                 <article class="project-card">
                     <h3>Starting with Qt Creator</h3>
                     <p>C++フレームワーク「Qt」の導入から、基本的なプロジェクト作成までの流れをまとめたガイドです。</p>
-                    <div class="video-container">
                         <img src="https://img.youtube.com/vi/v86BQykeWFY/hqdefault.jpg" alt="Qt Creator Intro" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
                     <p><a href="app/dev5.html">詳細を見る →</a></p>
                 </article>
             </div>
-        </section>
-
         <section id="photography">
             <h2>Photography</h2>
             <div class="photo-grid">
@@ -106,7 +101,6 @@
             </div>
             <p style="margin-top: 2rem;"><a href="Photo/index.html">全ての写真を見る →</a></p>
         </section>
-
         <section id="profile">
             <h2>Profile</h2>
             <div class="profile-content">
@@ -120,10 +114,8 @@
             <h2>Links</h2>
             <ul class="links-list">
                 <li><strong>Favorite Web Links</strong> - <a href="link/index.html">Ｌｉｎｋ集へ</a></li>
-                <li><strong>GitHub</strong> - <a href="https://github.com" target="_blank">Repository</a></li>
             </ul>
         </section>
-
         <footer>
             <p style="margin-top: 0.5rem;">Copyright &copy; amekusa All Rights Reserved.</p>
         </footer>
