@@ -1,89 +1,177 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-SRGF2MMYGD');
+    </script>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雨宿の庭 | Engineering & Nature Portfolio</title>
+    
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
 
-  gtag('config', 'G-SRGF2MMYGD');
-</script>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>雨のページへようこそ</title>
-<link rel="stylesheet" href="style.css">
-<script>
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/insights/script.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
+<body class="home-page">
+    <canvas id="snow-canvas"></canvas>
 
-<body class="home">
+    <div class="container">
+        <header>
+            <img src="susan-lu4esm-rain-16599.gif" alt="Character animation" class="hero-gif">
+            <h1>雨宿の庭</h1>
+            <p class="subtitle">Engineering</p>
+            <p style="margin-top: 1.5rem; font-size: 0.9rem; letter-spacing: 0.1em;">雨宿りでもしていってください。</p>
+        </header>
 
-<div class="container">
-    <main>
-        <p class="text-center"><img src="Ber6.gif" loading="lazy" alt="点滅するキャラクターのアニメーション"><br>
-        </p>
+        <section id="engineering">
+            <h2>Engineering</h2>
+            <div class="project-grid">
+                <article class="project-card">
+                    <h3>Software Engineering and me </h3>
+                    <p>GitHubに公開しているソースとドキュメント、YouTubeの動画です。</p>
+                    <div class="video-container">
+                        <img src="app/unnamed.png" alt="Restless engineer" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <p><a href="app/index.html">詳細はこちら →</a></p>
+                </article>
 
-        <p class="text-center"><span class="text-cyan text-small"><strong>雨宿でもしていってください。</strong></span></p>
+                <article class="project-card">
+                    <h3>Ubuntu導入ガイド</h3>
+                    <p>古いPCをアップサイクルし、Linux環境で再活用するための技術ドキュメントです。</p>
+                    <div class="video-container">
+                        <img src="app/Ubuntu_PC_Upcycling.png" alt="Ubuntu Guide" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <p><a href="app/dev1.html">詳細を見る →</a></p>
+                </article>
 
-        <p class="text-center"><span class="text-yellow"><img src="hoshi.gif" class="star-icon" loading="lazy" alt="星のアイコン"></span>
-        </p>
+                <article class="project-card">
+                    <h3>Avalonia UI & MVVM</h3>
+                    <p>C#とAvalonia UIを使用した、デスクトップアプリ開発の学習プロジェクトです。</p>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/v86BQykeWFY" frameborder="0" allowfullscreen title="YouTube video player"></iframe>
+                    </div>
+                    <p><a href="app/dev2.html">詳細を見る →</a></p>
+                </article>
 
-        <nav class="text-large">
-            <p class="text-center"><a href="prof/index.htm">プロフィール</a></p>
-            <div class="nav-section">
-                <div class="nav-links">
-                    <a href="app/application.html">アプリケーション</a>
+                <article class="project-card">
+                    <h3>HTML to Blogger</h3>
+                    <p>Pythonを使用してローカルHTMLと画像を解析し、Bloggerへ自動投稿するツールです。</p>
+                    <div class="video-container">
+                        <img src="https://img.youtube.com/vi/gFgYCVHIfW0/hqdefault.jpg" alt="HTML to Blogger" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <p><a href="app/dev3.html">詳細を見る →</a></p>
+                </article>
+
+                <article class="project-card">
+                    <h3>ESP32 Racing Game</h3>
+                    <p>ESP32とWokwiシミュレータを使用した、レトロなレーシングゲームの開発プロジェクトです。</p>
+                    <div class="video-container">
+                        <img src="https://img.youtube.com/vi/FJdXAT3jsQo/hqdefault.jpg" alt="ESP32 Racing Game" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <p><a href="app/dev4.html">詳細を見る →</a></p>
+                </article>
+
+                <article class="project-card">
+                    <h3>Starting with Qt Creator</h3>
+                    <p>C++フレームワーク「Qt」の導入から、基本的なプロジェクト作成までの流れをまとめたガイドです。</p>
+                    <div class="video-container">
+                        <img src="https://img.youtube.com/vi/v86BQykeWFY/hqdefault.jpg" alt="Qt Creator Intro" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <p><a href="app/dev5.html">詳細を見る →</a></p>
+                </article>
+            </div>
+        </section>
+
+        <section id="photography">
+            <h2>Photography</h2>
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="Photo/photo01.jpg" alt="Nature photo 1" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="Photo/photo02.jpg" alt="Nature photo 2" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="Photo/photo03.jpg" alt="Nature photo 3" loading="lazy">
                 </div>
             </div>
+            <p style="margin-top: 2rem;"><a href="Photo/index.html">全ての写真を見る →</a></p>
+        </section>
 
-            <div class="nav-section">
-                <div class="nav-links">
-                    <a href="Photo/index.htm">写真</a>
+        <section id="profile">
+            <h2>Profile</h2>
+            <div class="profile-content">
+                <div>
+                    <a href="https://www.linkedin.com/in/amekusa-k-a925233b7/" target="_blank" class="linkedin-link">LinkedIn Profile</a>
                 </div>
             </div>
+        </section>
 
-            <div class="nav-section">
-                <div class="nav-links">
-                    <a href="link/index.html">Ｌｉｎｋ集</a>
-                </div>
-            </div>
-        </nav>
-    </main>
+        <section id="links">
+            <h2>Links</h2>
+            <ul class="links-list">
+                <li><strong>Favorite Web Links</strong> - <a href="link/index.html">Ｌｉｎｋ集へ</a></li>
+                <li><strong>GitHub</strong> - <a href="https://github.com" target="_blank">Repository</a></li>
+            </ul>
+        </section>
 
-    <hr>
+        <footer>
+            <p style="margin-top: 0.5rem;">Copyright &copy; amekusa All Rights Reserved.</p>
+        </footer>
+    </div>
 
-    <footer>
-        <div class="flex-container">
-            <div>
-                <p class="text-center text-silver"><strong>基本的にリンクフリーですが、リンクするときにはメール下さい。</strong></p>
-                <p class="text-center text-silver text-large"><strong>良かったら、右のバナーを使って下さい。</strong></p>
-            </div>
-            <div>
-                <span class="text-blue text-large"><img src="ame.jpg" loading="lazy" alt="サイトバナー"></span>
-            </div>
-        </div>
+    <script>
+        const canvas = document.getElementById('snow-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height, snowflakes = [];
 
-        <hr>
+        function init() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            snowflakes = [];
+            const count = Math.floor(width / 10); // 画面幅に応じて雪の量を調整
+            for (let i = 0; i < count; i++) {
+                snowflakes.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    radius: Math.random() * 2 + 1,
+                    speed: Math.random() * 0.8 + 0.2,
+                    wind: Math.random() * 0.5 - 0.25,
+                    opacity: Math.random() * 0.5 + 0.2
+                });
+            }
+        }
 
-        <!-- <p class="text-center"><span class="text-silver text-large"><strong><span class="blink">感想などメールをください</span></strong></span><span class="text-blue text-large"><strong><br>
-        </strong></span></p>
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            snowflakes.forEach(f => {
+                ctx.beginPath();
+                ctx.arc(f.x, f.y, f.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${f.opacity})`;
+                ctx.fill();
+                f.y += f.speed;
+                f.x += f.wind;
+                if (f.y > height) f.y = -5;
+                if (f.x > width) f.x = 0;
+                if (f.x < 0) f.x = width;
+            });
+            requestAnimationFrame(animate);
+        }
 
-        <p class="text-center"><a href="mailto:amekusa@anet.ne.jp"><span class="text-blue text-large"><strong><em>amekusa@anet.ne.jp</em></strong></span></a><span class="text-blue text-large"><em> </em></span></p> -->
-
-        <p class="text-center"><span class="text-cyan text-small"><strong>転記（使用）については使用方法をご連絡下さい、無断転記は禁止します。</strong></span></p>
-
-        <p class="text-center"><span class="text-cyan text-small"><strong>また、公共の目に触れない場合は無断で使用してもらって構いません。</strong></span></p>
-
-        <p class="text-center text-small text-silver">Copyright &copy; amekusa All Rights Reserved.</p>
-    </footer>
-</div>
-
+        window.addEventListener('resize', init);
+        init();
+        animate();
+    </script>
 </body>
 </html>
