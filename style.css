@@ -73,6 +73,20 @@ footer { text-align: center; opacity: 0.6; }
 
 .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
 .project-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 2rem; backdrop-filter: blur(10px); display: flex; flex-direction: column; }
+
+.archive-project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+.archive-project-card { 
+    background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.5rem; 
+    display: flex; flex-direction: column; opacity: 0.6; font-size: 0.9rem; transition: opacity 0.3s;
+}
+.archive-project-card:hover { opacity: 1; }
+.archive-project-card h3 { font-size: 1.1rem; font-weight: 400; }
+.archive-project-card img { 
+    width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 6px; 
+    margin: 1rem 0; filter: grayscale(60%); transition: filter 0.3s; 
+}
+.archive-project-card:hover img { filter: grayscale(0%); }
+
 .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin: 1.5rem 0; background: #000; }
 .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
