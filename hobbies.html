@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="amekusaの趣味（自動車、山登り、音楽、書物）">
+    <title>My Hobbies - Profile</title>
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-main: #333;
+            --text-sub: #666;
+            --accent-color: #4a90e2;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+
+        .hobby-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .hobby-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .hobby-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .hobby-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .hobby-card h2 {
+            margin-top: 0;
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--bg-color);
+            padding-bottom: 10px;
+        }
+
+        .hobby-card p {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+        }
+        
+        .hobby-card strong {
+            color: var(--accent-color);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            font-size: 0.8rem;
+            color: #999;
+        }
+
+        nav {
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--accent-color);
+            font-size: 1rem;
+        }
+
+        /* アニメーション用 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hobby-card {
+            animation: fadeIn 0.6s ease forwards;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <nav>
+        <a href="index.html">← Back to Garden</a>
+    </nav>
+
+    <header>
+        <h1>My Hobbies</h1>
+        <p>趣味</p>
+    </header>
+
+    <main class="hobby-grid">
+        <!-- 自動車 -->
+        <article class="hobby-card">
+            <span class="hobby-icon">🚗</span>
+            <h2>自動車</h2>
+            <p>スポーツ走行は一旦おやすみ。燃費、快適、もいい。</p>
+            <p><a href="https://minkara.carview.co.jp/userid/1718060/car/" target="_blank" rel="noopener noreferrer">みんカラ →</a></p>
+        </article>
+
+        <!-- 山登り -->
+        <article class="hobby-card">
+            <span class="hobby-icon">⛰️</span>
+            <h2>山登り</h2>
+            <p>元々健脚ではないけど、最近足を痛めてしまい、こちらも休止か。
+            </p>
+            <p><a href="https://www.yamareco.com/modules/yamareco/userinfo-452785-prof.html" target="_blank" rel="noopener noreferrer">ヤマレコ プロフィール →</a></p>
+            <p><a href="https://shiftvet.blogspot.com/" target="_blank" rel="noopener noreferrer">Blog: SHIFT VET →</a></p>
+        </article>
+
+        <!-- 音楽 -->
+        <article class="hobby-card">
+            <span class="hobby-icon">🎧</span>
+            <h2>音楽</h2>
+            <p><strong>Van Halen</strong> は神。<a href="https://www.vanhalen.com/" target="_blank" rel="noopener noreferrer">公式サイト →</a> </p>
+            <p>
+                <span class="tag">LOVE PSYCHEDELICO</span>
+                <span class="tag">あいみょん</span>
+            </p>
+            <p>最近はJAZZなどジャンルを問わず、心地よい音を探求しています。音源が増えすぎて収集が大変なのが悩み。</p>
+        </article>
+
+        <!-- 書物 -->
+        <article class="hobby-card">
+            <span class="hobby-icon">📚</span>
+            <h2>書物</h2>
+            <p>Stephen Kingの作品を愛読。</p>
+            <p>芥川龍之介、星新一</p>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 My Hobby Portfolio</p>
+    </footer>
+</div>
+
+</body>
+</html>

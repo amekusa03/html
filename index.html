@@ -13,6 +13,7 @@
     <link rel="icon" href="Favicon.png" type="image/png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="amekusaのポートフォリオ。エンジニアリング、写真、趣味などを紹介しています。">
     <title>雨宿の庭 | Engineering & Nature Portfolio</title>
     <script>
       window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -21,13 +22,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="home-page">
-    <canvas id="snow-canvas"></canvas>
+    <canvas id="rain-canvas"></canvas>
     <div class="container">
         <header>
             <img src="susan-lu4esm-rain-16599.gif" alt="Character animation" class="hero-gif">
             <h1>雨宿の庭</h1>
             <p class="subtitle">Engineering</p>
-            <p style="margin-top: 1.5rem; font-size: 0.9rem; letter-spacing: 0.1em;">雨宿りでもしていってください。</p>
+            <p class="subtitle-note">雨宿りでもしていってください。</p>
         </header>
 
         <section id="engineering">
@@ -36,84 +37,83 @@
                 <article class="project-card">
                     <h3>Software Engineering and me </h3>
                     <p>GitHubに公開しているソースとドキュメント、YouTubeの動画です。</p>
-                    <img src="app/unnamed.png" alt="Restless engineer" style="width: 100%; height: 100%; object-fit: cover;">
-                    <p><a href="app/index.html">詳細はこちら →</a></p>
+                    <img src="app/unnamed.png" alt="Restless engineer" loading="lazy">
+                    <p><a href="app/index.html">詳細 →</a></p>
                 </article>
 
                 <article class="project-card">
                     <h3>Ubuntu導入ガイド</h3>
                     <p>古いPCをアップサイクルし、Linux環境で再活用するための技術ドキュメントです。</p>
-                        <img src="app/Ubuntu_PC_Upcycling.png" alt="Ubuntu Guide" style="width: 100%; height: 100%; object-fit: cover;">
-                    <p><a href="app/dev1.html">詳細を見る →</a></p>
+                        <img src="app/Ubuntu_PC_Upcycling.png" alt="Ubuntu Guide" loading="lazy">
+                    <p><a href="app/dev1.html">詳細 →</a></p>
                 </article>
 
                 <article class="project-card">
                     <h3>Avalonia UI & MVVM</h3>
                     <p>C#とAvalonia UIを使用した、デスクトップアプリ開発の学習プロジェクトです。</p>
-                    <img src="https://img.youtube.com/vi/v86BQykeWFY/hqdefault.jpg" alt="Avalonia UI Learning" style="width: 100%; height: 100%; object-fit: cover;">
-                    <p><a href="app/dev2.html">詳細を見る →</a></p>
+                    <img src="https://img.youtube.com/vi/dhkjU1KkbTw/hqdefault.jpg" alt="Avalonia UI Learning" loading="lazy">
+                    <p><a href="app/dev2.html">詳細 →</a></p>
                 </article>
 
                 <article class="project-card">
                     <h3>HTML to Blogger</h3>
                     <p>Pythonを使用してローカルHTMLと画像を解析し、Bloggerへ自動投稿するツールです。</p>
-                        <img src="https://img.youtube.com/vi/gFgYCVHIfW0/hqdefault.jpg" alt="HTML to Blogger" style="width: 100%; height: 100%; object-fit: cover;">
-                    <p><a href="app/dev3.html">詳細を見る →</a></p>
+                        <img src="https://img.youtube.com/vi/gFgYCVHIfW0/hqdefault.jpg" alt="HTML to Blogger" loading="lazy">
+                    <p><a href="app/dev3.html">詳細 →</a></p>
                 </article>
 
                 <article class="project-card">
                     <h3>ESP32 Racing Game</h3>
                     <p>ESP32とWokwiシミュレータを使用した、レトロなレーシングゲームの開発プロジェクトです。</p>
-                        <img src="https://img.youtube.com/vi/FJdXAT3jsQo/hqdefault.jpg" alt="ESP32 Racing Game" style="width: 100%; height: 100%; object-fit: cover;">
-                    <p><a href="app/dev4.html">詳細を見る →</a></p>
+                    <img src="https://img.youtube.com/vi/FJdXAT3jsQo/hqdefault.jpg" alt="ESP32 Racing Game" loading="lazy">
+                    <p><a href="app/dev4.html">詳細 →</a></p>
                 </article>
 
                 <article class="project-card">
-                    <h3>Starting with Qt Creator</h3>
-                    <p>C++フレームワーク「Qt」の導入から、基本的なプロジェクト作成までの流れをまとめたガイドです。</p>
-                        <img src="https://img.youtube.com/vi/v86BQykeWFY/hqdefault.jpg" alt="Qt Creator Intro" style="width: 100%; height: 100%; object-fit: cover;"> <!-- TODO: Verify if the video ID is correct -->
-                    <p><a href="app/dev5.html">詳細を見る →</a></p>
+                    <h3>Qt Project Launcher</h3>
+                    <p>Qtプロジェクトを簡単に起動するためのツールです。プロジェクトのビルドや実行をワンクリックで行えるようにします。</p>   
+                    <img src="https://img.youtube.com/vi/mteT0aFFLCU/hqdefault.jpg" alt="Qt Project Launcher">
+                    <p><a href="app/dev5.html">詳細 →</a></p>
                 </article>
             </div>
 
-            <h3 style="font-size: 1rem; opacity: 0.5; font-weight: 400; margin: 3rem 0 1rem;">Archived Projects</h3>
+            <h3 class="section-subtitle">Archived Projects</h3>
+            <p class="section-description">過去プロジェクトやミニタスク</p>
             <div class="archive-project-grid">
                 <article class="archive-project-card">
-                    <h3>Qt Project Launcher</h3>
-                    <p></p>
-                    <img src="https://img.youtube.com/vi/mteT0aFFLCU/hqdefault.jpg" alt="Qt Project Launcher">
-                    <p><a href="app/archive_dev1.html">詳細を見る →</a></p>
+                    <h3>Hello World Qt Creator</h3>
+                    <img src="https://img.youtube.com/vi/v86BQykeWFY/hqdefault.jpg" alt="Qt Creator Intro" loading="lazy">
+                    <p><a href="app/archive_dev1.html">詳細 →</a></p>
                 </article>
                 <article class="archive-project-card">
-                    <h3>ESP32 world Clock for Wokwi</h3>
-                    <p></p>
+                    <h3>ESP32 World Clock for Wokwi</h3>
                     <img src="https://img.youtube.com/vi/GSfD1kVzAFw/hqdefault.jpg" alt="ESP32 world Clock for Wokwi">
-                    <p><a href="app/archive_dev2.html">詳細を見る →</a></p>
+                    <p><a href="app/archive_dev2.html">詳細 →</a></p>
                 </article>
                 <article class="archive-project-card">
                     <h3>ImageForNet</h3>
-                    <p></p>
                     <img src="app/imageEdit.png" alt="Image For .NET">
-                    <p><a href="app/archive_dev3.html">詳細を見る →</a></p>
+                    <p><a href="app/archive_dev3.html">詳細 →</a></p>
                 </article>
                 
                 <article class="archive-project-card">
                     <h3>My PC Audio</h3>
-                    <p></p>
                     <img src="app/pcMusic.png" alt="My PC Audio">
-                    <p><a href="app/archive_dev4.html">詳細を見る →</a></p>
+                    <p><a href="app/archive_dev4.html">詳細 →</a></p>
                 </article>
             </div>
             
-            <h3 style="font-size: 1rem; font-weight: 400; margin: 3rem 0 1rem;">Current Projects</h3>
+            <h3 class="section-subtitle">Current Projects</h3>
+            <p class="section-description">現在進行中のプロジェクト</p>
             <div class="current-project-grid">
                 <article class="current-project-card">
-                    <h3>EncBrowse</h3>
-                    <p></p>
-                    <img src="app/EncBrowse.png" alt="EncBrowse">
-                    <p><a href="app/current_dev1.html">詳細を見る →</a></p>
+                    <h3>暗号化ブラウズラッパー</h3>
+                    <img src="app/EncBrowse.png" alt="EncBrowse" class="project-icon">
+                    <p><a href="app/current_dev1.html">詳細 →</a></p>
                 </article>
+
             </div>
+            
         </section>
 
         <section id="photography">
@@ -129,14 +129,21 @@
                     <img src="Photo/photo03.jpg" alt="Nature photo 3" loading="lazy">
                 </div>
             </div>
-            <p style="margin-top: 2rem;"><a href="Photo/index.html">全ての写真を見る →</a></p>
+            <p class="section-description"><a href="Photo/index.html">全ての写真を見る →</a></p>
         </section>
         <section id="profile">
             <h2>Profile</h2>
             <div class="profile-content">
                 <div>
-                    <a href="https://www.linkedin.com/in/amekusa-k-a925233b7/" target="_blank" class="linkedin-link">LinkedIn Profile</a>
+                    <p><strong>Favorite Hobbies</strong> - <a href="hobbies.html">My Hobbies</a></p>
                 </div>
+                <br>
+            </div>
+            <div class="profile-content">
+                <div>
+                    <a href="https://www.linkedin.com/in/amekusa-k-a925233b7/" target="_blank" rel="noopener noreferrer" class="linkedin-link">LinkedIn Profile</a>
+                </div>
+                <br>
             </div>
         </section>
 
@@ -147,22 +154,34 @@
             </ul>
         </section>
         <footer>
-            <p style="margin-top: 0.5rem;">Copyright &copy; amekusa All Rights Reserved.</p>
+            <p class="section-description footer-note">Copyright &copy; amekusa All Rights Reserved.</p>
         </footer>
     </div>
 
     <script>
-        const canvas = document.getElementById('snow-canvas');
-        const ctx = canvas.getContext('2d');
+        const canvas = document.getElementById('rain-canvas');
+        let ctx = null;
         let width, height, raindrops = [];
+        const dpr = window.devicePixelRatio || 1;
 
         function init() {
+            ctx = canvas.getContext('2d');
+            if (!ctx) {
+                console.warn('2D context not supported');
+                return;
+            }
+
             width = window.innerWidth;
             height = window.innerHeight;
-            canvas.width = width;
-            canvas.height = height;
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+            canvas.setAttribute('aria-label', '雨のアニメーション');
+            canvas.setAttribute('aria-hidden', 'true');
+            canvas.setAttribute('role', 'img');
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
             raindrops = [];
-            const count = Math.floor(width / 5); // 雨の密度
+            const count = Math.floor(width / 4); // 雨の密度
             for (let i = 0; i < count; i++) {
                 raindrops.push({
                     x: Math.random() * width,
@@ -175,6 +194,7 @@
         }
 
         function animate() {
+            if (!ctx) return;
             ctx.clearRect(0, 0, width, height);
             ctx.strokeStyle = 'rgba(174, 194, 224, 0.5)';
             ctx.lineWidth = 1;
