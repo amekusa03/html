@@ -1,10 +1,23 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-SRGF2MMYGD');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="YAMAHA、Olasonic、Pioneerなどの機器を使用した、PCオーディオ環境の構築と変遷についての記録です。">
     <title>My PC Audio | 雨宿の庭</title>
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
     <link rel="stylesheet" href="../style.css">
 </head>
 <body class="app-page">
@@ -22,76 +35,31 @@
             <p style="opacity: 0.8;">PC音声の変遷</p>
         </header>
 
-        <section>
-            <h2>初期</h2>
-            <p>PC付属のスピーカーを使用。音質は悪いが、手軽に音を出せる。</p>
-        </section>
+        <div class="hero-visual" style="aspect-ratio: auto; height: auto;">
+            <img src="pcaudio.png" alt="PC Audio Setup" style="object-fit: contain; height: auto;">
+        </div>
 
         <section>
             <h2>System Components</h2>
             <ul class="tech-stack">
-                <li>YAMAHA TSS-1 / NS-C210</li>
-                <li>Olasonic Digital Amp</li>
-                <li>Pioneer TS-1019</li>
+                <li>
+                    YAMAHA TSS-1 / NS-C210
+                    <a href="https://jp.yamaha.com/products/audio_visual/home_theater_systems/tss-1_black__j/index.html" target="_blank" rel="noopener noreferrer" style="margin-left: 8px; font-size: 0.9em;">[製品情報]</a>
+                </li>
+                <li>
+                    DigiFi No.7付録 USB-DAC + digital amplifier
+                </li>
+                <li>
+                    Pioneer TS-1019
+                    <a href="https://jpn.pioneer/ja/support/s-product.php?main_cd=004&sub_cd=011&model=&product_no=00010781&bmp_type=TS-1019" target="_blank" rel="noopener noreferrer" style="margin-left: 8px; font-size: 0.9em;">[製品情報]</a>
+                </li>
+                <li>
+                    GIGABYTE GA-H87-HD3
+                    <a href="https://www.gigabyte.com/jp/Motherboard/GA-H87-HD3-rev-1x/sp" target="_blank" rel="noopener noreferrer" style="margin-left: 8px; font-size: 0.9em;">[製品情報]</a>
+                </li>
             </ul>
         </section>
 
-        <section>
-            <h2>ステップ１</h2>
-            <p>
-                簡易ホームシアターサウンドシステムを購入。音質が向上し、PCでの音楽鑑賞が快適に。<br>
-                <strong>YAMAHA TSS-1</strong> (総合定格出力48W) - 
-                <a href="https://jp.yamaha.com/products/audio_visual/home_theater_systems/tss-1_black__j/index.html" target="_blank">製品情報</a>
-            </p>
-            <p>ドルビープロロジックにて、2chの音声を5.1chに変換して出力する機能を搭載。</p>
-        </section>
-
-        <section>
-            <h2>ステップ２</h2>
-            <p>センタースピーカーを変更。</p>
-            <p>
-                <strong>YAMAHA NS-C210</strong> (定格出力20W) - 
-                <a href="https://jp.yamaha.com/products/audio_visual/speaker_systems/ns-c210/index.html" target="_blank">製品情報</a>
-                音がクリアになり、ボーカルが際立つように。センタースピーカーの重要性を実感。
-            </p>
-        </section>
-
-        <section>
-            <h2>ステップ３</h2>
-            <p>
-                デジタル化。<br>
-                <strong>DigiFi No.7付録 Olasonic デジタルアンプ</strong>を採用。<br>
-                アンプ変更に伴い、TSS-1のLRスピーカーのみ使用。
-                解像度上昇。ボリーム操作が過敏。
-            </p>
-        </section>
-        <section>
-            <h2>ステップ４</h2>
-            <p>
-                スピーカー交換。<br>
-                <strong>Pioneer TS-1019</strong> (定格出力20W) - 
-                <a href="https://jpn.pioneer/ja/support/s-product.php?main_cd=004&sub_cd=011&model=&product_no=00010781&bmp_type=TS-1019" target="_blank">製品情報</a><br>
-                エンクロージャーはダンボールで自作であり低音スカスカ。
-            </p>
-        </section>
-        <section>
-            <h2>ステップ５</h2>
-            <p>
-                ステップ２の状態に戻す。<br>
-                最初のステップ１から10年以上経過。
-                グラウンドループノイズらしきものが発生。
-            </p>
-        </section>
-        <section>
-            <h2>ステップ６</h2>
-            <p>
-                マザーボードから直接デジタル信号を出力。<br>
-                <strong>GIGABYTE GA-H87-HD3</strong> - 
-                <a href="https://www.gigabyte.com/jp/Motherboard/GA-H87-HD3-rev-1x/sp" target="_blank">製品情報</a><br>
-                Realtek ALC892のS/PDIF出力をTSS-1の同軸デジタル入力に接続。
-                デジタルケーブルは手作り、ノイズが減少。解像度上昇。低音までしっかり再現。
-            </p>
-        </section>
         <footer>
             <p>Copyright &copy; amekusa All Rights Reserved.</p>
         </footer>
