@@ -102,6 +102,11 @@
                     <img src="app/pcMusic.png" alt="My PC Audio">
                     <p><a href="app/archive_dev4.html">詳細 →</a></p>
                 </article>
+                <article class="archive-project-card">
+                    <h3>SEO strategies</h3>
+                    <img src="app/SEO.jpg" alt="SEO strategies">
+                    <p><a href="app/archive_dev5.html">詳細 →</a></p>
+                </article>
             </div>
             
             <h3 class="section-subtitle">Current Projects</h3>
@@ -196,15 +201,12 @@
 
         function animate() {
             if (!ctx) return;
-            ctx.clearRect(0, 0, width, height);
+            ctx.clearRect(0, 0, width, height); // dprスケール済みのためwidth/heightでOK
             ctx.strokeStyle = 'rgba(174, 194, 224, 0.5)';
             ctx.lineWidth = 1;
             raindrops.forEach(r => {
-                ctx.beginPath();
-                ctx.moveTo(r.x, r.y);
-                ctx.lineTo(r.x, r.y + r.length);
-                ctx.stroke();
-
+                drawRaindrop(ctx, r);
+                
                 r.y += r.speed;
                 if (r.y > height) {
                     r.y = -r.length;
@@ -212,6 +214,13 @@
                 }
             });
             requestAnimationFrame(animate);
+        }
+
+        function drawRaindrop(ctx, r) {
+            ctx.beginPath();
+            ctx.moveTo(r.x, r.y);
+            ctx.lineTo(r.x, r.y + r.length);
+            ctx.stroke();
         }
 
         window.addEventListener('resize', init);

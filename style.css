@@ -162,6 +162,16 @@ nav a { color: var(--accent-green); font-size: 0.9rem; letter-spacing: 0.1em; }
 
 .tag { display: inline-block; padding: 0.2rem 0.8rem; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; font-size: 0.8rem; margin-right: 0.5rem; color: var(--accent-green); }
 
+/* --- Utility Classes --- */
+.u-margin-b-1 { margin-bottom: 1rem; }
+.u-opacity-8 { opacity: 0.8; }
+.img-responsive-50 { width: 50%; height: auto; border-radius: 8px; }
+.img-responsive-75 { width: 75%; height: auto; border-radius: 8px; }
+
+@media (max-width: 600px) {
+    .img-responsive-50, .img-responsive-75 { width: 100%; }
+}
+
 .hero-visual { 
     width: 100%; aspect-ratio: 16/9; background: var(--card-bg); 
     border: 1px solid var(--border-color); border-radius: 12px; margin-bottom: 3rem; 

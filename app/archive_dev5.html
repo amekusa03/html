@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-SRGF2MMYGD');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="vercel,Google Blogger,YouTubeのSEO対策です。">
+    <title>SEO | 雨宿の庭</title>
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body class="app-page">
+    <div class="container">
+        <nav>
+            <a href="../index.html">← Back to Garden</a>
+        </nav>
+
+        <header>
+            <div class="header-tags u-margin-b-1">
+                <span class="tag">SEO strategies</span>
+                <span class="tag">Google Blogger</span>
+                <span class="tag">vercel</span>
+                <span class="tag">YouTube</span>
+            </div>
+            <h1>SEO strategies</h1>
+            <p class="header-subtitle u-opacity-8">SEO対策</p>
+        </header>
+
+        <section>
+            <h2>About this Journey</h2>
+            <p>
+                Google検索の最適化をしたかったわけでありませんが、エンジニアリングの一環として、SEO対策を行いました。<br>
+                1.vercelのサイトマップ作成、サイトマップ設定<br>
+                2.Google Bloggerのサイトマップ設定<br>
+                3.YouTubeのタグ設定<br>
+            </p>
+        </section>
+
+        <section>
+            <h2>1.vercelサイト</h2>
+            <h3>サイトマップ作成</h3>
+            <p><strong>sitemap.xml</strong>を作成し、ルートフォルダに配置します。</p>
+            <p><strong>sitemap.xml</strong>は検索対象のページを示すXMLファイルで、検索エンジンがサイトのページを認識しやすくなります。</p>
+            <p>様々なサイトマップジェネレーターがオンラインで提供されており、URLを入力するだけで簡単に生成できますが、</p>
+            <p>Geminiに依頼すれば、サイト構造を分析して最適なサイトマップを自動生成してくれます。</p>
+            <h3>サイトマップ登録</h3>
+            <p>Google Search Consoleにて
+                プロパティに<strong>https://html-sigma-amber.vercel.app/</strong> を設定</p>
+            <ul>
+                <li>インデックス作成 → サイトマップ</li>
+                <li>新しいサイトマップの追加：<strong>sitemap.xml</strong> を入力して送信</li>
+            </ul>
+            <p>
+                当初、Search Console上で「取得できませんでした」というエラーが発生しました。
+                ブラウザからは確認できるものの、GeminiやCopilotなどのクローラー系ツールからも「ファイルが存在しない」と判定されました。
+            </p>
+            <p>
+                原因はVercelのセキュリティ設定によるボットブロックでした。
+                Vercelの管理画面にて、以下の設定を <strong>Enabled for Standard Protection</strong> から <strong>Disabled</strong> に変更（Save）することで解決しました。
+            </p>
+            <ul>
+                <li><a href="Vercel.png" target="_blank"><img src="Vercel.png" alt="Vercel Settings" loading="lazy" class="img-responsive-75"></a></li>
+            </ul>
+            <p>これにより、Google Search Consoleで正常にsitemap.xmlが読み込まれるようになりました。</p>
+
+            <p>Googleがサイトのページをクロールしやすくなり、検索結果に表示される可能性が高まります。</p>
+
+        </section>
+        <section>
+            <h2>2.Google Bloggerのサイトマップ設定</h2>
+            <p>Google Bloggerは、sitemap.xmlを自動的に生成します。</p>
+            <p>Google Search ConsoleにブログのURL＋/sitemap.xmlを追加することで、サイトマップにアクセスできます。</p>
+            <p>例: https://amekusa03.blogspot.com/sitemap.xml</p>
+        </section>
+
+        <section>
+            <h2>3.YouTubeのタグ設定</h2>
+                <p>YouTubeの動画に適切なタグを設定することで、動画が関連する検索クエリに対して表示されやすくなります。</p>
+                <p>動画の内容を正確に表すタグを選び、タイトル、説明、すべて表示の中にあるタグにキーワードを含めることで、SEO効果が高まります。</p>    
+            <ul>
+                <li>
+                    <a href="youtubeDescription.png" target="_blank"><img src="youtubeDescription.png" alt="Youtube Description" loading="lazy" class="img-responsive-75"></a>
+                </li>
+                <li>
+                    <a href="youtubeTag.png" target="_blank"><img src="youtubeTag.png" alt="Youtube Tag" loading="lazy" class="img-responsive-75"></a>
+                </li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>Copyright &copy; amekusa All Rights Reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
