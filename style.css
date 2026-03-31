@@ -100,6 +100,13 @@ footer { text-align: center; opacity: 0.6; }
 .home-page h2 { font-size: 1.8rem; margin-bottom: 3rem; position: relative; display: inline-block; font-weight: 400; }
 .home-page h2::after { content: ''; position: absolute; bottom: -10px; left: 0; width: 40px; height: 1px; background: var(--accent-green); }
 
+/* --- About Section --- */
+.about-content { max-width: 700px; margin: 0 auto; text-align: center; }
+.about-text { 
+    font-size: 0.8rem; line-height: 2; color: var(--text-color); opacity: 0.9; 
+    word-break: keep-all; overflow-wrap: break-word;
+}
+
 .section-subtitle { font-size: 1rem; opacity: 0.6; font-weight: 400; margin: 3rem 0 1rem; }
 .section-description { font-size: 1rem; opacity: 0.6; margin-bottom: 1rem; }
 

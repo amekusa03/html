@@ -14,7 +14,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="amekusa's portfolio. Showcasing software engineering, photography, and creative projects.">
-    <title>Ameyado no Niwa - Engineering Portfolio</title>
+    <title>Where the Rain Pauses - Engineering Portfolio</title>
     <script>
       window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
@@ -27,10 +27,18 @@
         <a href="index.html" class="language-link">日本語</a>
         <header>
             <img src="susan-lu4esm-rain-16599.gif" alt="Character animation" class="hero-gif">
-            <h1>Ameyado no Niwa</h1>
+            <h1>Where the Rain Pauses</h1>
             <p class="subtitle">Engineering Portfolio</p>
             <p class="subtitle-note">Please, feel free to take shelter from the rain.</p>
         </header>
+
+        <section id="about">
+            <div class="about-content">
+                <p class="about-text">
+                     I post whatever comes to mind from my personal software development notes and photos to my hobbies and other things that interest me.
+                </p>
+            </div>
+        </section>
 
         <section id="engineering">
             <h2>Engineering</h2>
@@ -79,7 +87,7 @@
             </div>
 
             <h3 class="section-subtitle">Archived Projects</h3>
-            <p class="section-description">Previous works and minor technical tasks.</p>
+            <p class="section-description">Previous projects and minor technical tasks.</p>
             <div class="archive-project-grid">
                 <article class="archive-project-card">
                     <h3>Hello World Qt Creator</h3>
@@ -174,7 +182,6 @@
             height = window.innerHeight;
             canvas.width = width * dpr;
             canvas.height = height * dpr;
-            canvas.setAttribute('aria-label', 'Rain animation');
             canvas.setAttribute('aria-hidden', 'true');
             canvas.setAttribute('role', 'img');
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0);

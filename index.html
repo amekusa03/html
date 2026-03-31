@@ -32,6 +32,15 @@
             <p class="subtitle-note">雨宿りでもしていってください。</p>
         </header>
 
+        <section id="about">
+            <div class="about-content">
+                <p class="about-text">
+                    個人的なソフトウェア開発記録や写真、趣味など興味のあることを気ままに記載しています。
+                </p>
+            </div>
+        </section>
+
+
         <section id="engineering">
             <h2>Engineering</h2>
             <div class="project-grid">
@@ -187,7 +196,6 @@
             height = window.innerHeight;
             canvas.width = width * dpr;
             canvas.height = height * dpr;
-            canvas.setAttribute('aria-label', '雨のアニメーション');
             canvas.setAttribute('aria-hidden', 'true');
             canvas.setAttribute('role', 'img');
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
