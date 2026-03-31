@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-SRGF2MMYGD');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Google Nest Hubのスクリプト設定プロジェクトの紹介です。Google Nest HubのGUIでは設定できない高度なカスタマイズを実現するためのスクリプトを紹介します。">
+    <title>Google Nest Script | 雨宿の庭</title>
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="app-page">
+    <div class="container">
+        <nav>
+            <a href="../index.html">← Back to Garden</a>
+        </nav>
+
+        <header>
+            <div style="margin-bottom: 1rem;">
+                <span class="tag">Google Nest Hub</span>
+                <span class="tag">Home Automation</span>
+                <span class="tag">Scripting</span>
+            </div>
+            <h1>Google Nest Script</h1>
+            <p style="opacity: 0.8;">Google Nest Hubの高度なカスタマイズを実現するためのスクリプト</p>
+        </header>
+        <section>
+            <h2>Resources</h2>  
+            Google Nest Hubのスクリプトエディタに関する公式の使い方は、以下のドキュメントをご参照ください。
+            <a href="https://support.google.com/googlenest/answer/14125559?hl=ja" class="link-button" target="_blank">Google Nest Hubのスクリプト設定方法</a>
+
+        </section>
+
+        <section>
+            <h2>About this Project</h2>
+            <p>
+                Google Nest HubのGUIでは設定できない高度なカスタマイズを実現するためのスクリプトを紹介します。
+                GUIでは実現できない細かい設定や、特定の条件下での動作を実現するためのスクリプトを作成し、
+                Google Nest Hubの機能を最大限に引き出すことを目指しています。
+            </p>
+        </section>
+        <section>
+            <h2>Implementation</h2>    
+        今回はGUIでは実現できない「第2木曜日」とのトリガを実装するスクリプトを紹介します。
+        Google Nest Hubのスクリプト設定では、特定の条件に基づいて動作をトリガーすることができますが、
+        GUIでは「第2木曜日」といった複雑な条件を設定することはできません。
+        そこで以下のようなスクリプトを作成し、Google Nest Hubのスクリプト設定に組み込むことで、
+        「第2木曜日」に特定のアクションを実行することが可能になります。
+        <pre><code class="language-yaml">
+metadata:
+  name: びん・缶の日リマインダー
+  description: 第2木曜日の朝にNest Hubでお知らせする
+
+automations:
+  - starters:
+      - type: time.schedule
+        at: 07:00
+        weekdays:
+          - THURSDAY
+
+    condition:
+      type: time.between
+      after: 7
+      before: 15
+
+    actions:
+      - type: assistant.command.Broadcast
+        # 修正箇所: home.command ではなく assistant.command を使用
+        message: "今日は、びん・缶のごみ出しの日です。"
+        </code></pre>
+        <strong>解説</strong>
+        <ul>
+            <li><strong>metadata:</strong> スクリプトの基本情報を定義します。nameはスクリプトの名前、descriptionはスクリプトの説明です。</li>
+            <li><strong>automations:</strong> 自動化のルールを定義するセクションです。</li>
+            <li><strong>starters:</strong> 自動化を開始する条件を定義します。ここでは、毎週木曜日の7:00にトリガーされるように設定しています。</li>
+            <li><strong>condition:</strong> アクションが実行される前に満たすべき条件を定義します。ここでは、日にちが7日から15日であることを条件としています。これにより第２木曜日を特定できます。  </li>
+            <li><strong>actions:</strong> 条件が満たされたときに実行されるアクションを定義します。ここでは、Google Nest Hubで特定のメッセージを放送するアクションを設定しています。</li>
+        </ul>
+        <br>
+        <strong>ポイント</strong>
+        <p>
+        メッセージはhome.commandではなく、assistant.commandを使用してbroadcastする必要がありました。
+        home.commandはGoogle Homeデバイス全体に対してコマンドを送信するためのものであり、
+        assistant.commandはGoogle Nest Hubなどの特定のデバイスに対してコマンドを送信するためのものです。
+        今回のようにGoogle Nest Hubでメッセージをお知らせする場合は、assistant.commandを使用する必要があります。
+        </p>
+        </section>
+
+        <section>
+            <h2>Video</h2>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/G6w1ZnHN2uM" frameborder="0" allowfullscreen title="Google Nest Script Demo"></iframe>
+            </div>
+        </section>
+
+        <section>
+            <h2>OS / Environment</h2>
+            <ul class="tech-stack">
+                <li>Google Home Script Editor</li>
+                <li>Google Nest Hub (第2世代)</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Key Features</h2>
+            <ul>
+                <li><strong>柔軟なスケジュール設定:</strong> GUIの制限を超えた、特定の日付や複雑な条件での自動化が可能。</li>
+                <li><strong>デバイスブロードキャスト連携:</strong> Nest Hubの機能を直接制御し、音声によるリマインドを実現。</li>
+            </ul>
+        </section>
+
+
+        <footer>
+            <p>Copyright &copy; amekusa All Rights Reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
