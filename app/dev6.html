@@ -34,18 +34,30 @@
                 <span class="tag">Scripting</span>
             </div>
             <h1>Google Nest Script</h1>
-            <p style="opacity: 0.8;">Google Nest Hubの高度なカスタマイズを実現するためのスクリプト</p>
+            <p class="u-opacity-8">Google Nest Hubの高度なカスタマイズを実現するためのスクリプト</p>
         </header>
         <section>
-            <h2>Resources</h2>  
+            <h2>不具合報告</h2>
+            本件について日付が正しく取得できず
+            まだ、確定できないため、取り消しとさせていただきます。
+            <h2>不具合内容</h2>
+            このスクリプトでは8〜14日との条件にしましたが、
+            8〜14時の判定になるようで、毎週木曜日にトリガーされてしまっています。
+            そのため、現在は取り消しとさせていただきます。
+        </section>
+        <del>
+        <section>
+            <h2>Resources</h2>
+            <p>  
             Google Nest Hubのスクリプトエディタに関する公式の使い方は、以下のドキュメントをご参照ください。
-            <a href="https://support.google.com/googlenest/answer/14125559?hl=ja" class="link-button" target="_blank">Google Nest Hubのスクリプト設定方法</a>
+            </p>
+            <a href="https://support.google.com/googlenest/answer/14125559?hl=ja" class="link-button" target="_blank" rel="noopener">Google Nest Hubのスクリプト設定方法</a>
 
         </section>
 
         <section>
             <h2>About this Project</h2>
-            <img src="nesthubscript.png" alt="Google Nest Script" class="hero-image" style="width: 50%; height: auto;">
+            <img src="nesthubscript.png" alt="Google Nest Script" class="hero-image img-responsive-50">
             <p>
                 Google Nest HubのGUIでは設定できない高度なカスタマイズを実現するためのスクリプトを紹介します。
                 GUIでは実現できない細かい設定や、特定の条件下での動作を実現するためのスクリプトを作成し、
@@ -66,27 +78,31 @@ metadata:
 
 automations:
   - starters:
+      # 起動は木曜日の 7:00です
       - type: time.schedule
         at: 07:00
         weekdays:
           - THURSDAY
 
-    condition:
-      type: time.between
-      after: 7
-      before: 15
+  condition:
+    type: and
+    conditions:
+      # 8日〜14日、起動の条件も合わせて、第2木曜日に当たります
+      - type: time.between
+        after: 8
+        before: 14
 
-    actions:
-      - type: assistant.command.Broadcast
-        # 修正箇所: home.command ではなく assistant.command を使用
-        message: "今日は、びん・缶のごみ出しの日です。"
+  actions:
+    - type: assistant.command.Broadcast
+      # 修正箇所: home.command ではなく assistant.command を使用
+      message: "今日は、びん・缶のごみ出しの日です。"
         </code></pre>
         <strong>解説</strong>
         <ul>
             <li><strong>metadata:</strong> スクリプトの基本情報を定義します。nameはスクリプトの名前、descriptionはスクリプトの説明です。</li>
             <li><strong>automations:</strong> 自動化のルールを定義するセクションです。</li>
             <li><strong>starters:</strong> 自動化を開始する条件を定義します。ここでは、毎週木曜日の7:00にトリガーされるように設定しています。</li>
-            <li><strong>condition:</strong> アクションが実行される前に満たすべき条件を定義します。ここでは、日にちが7日から15日であることを条件としています。これにより第２木曜日を特定できます。  </li>
+            <li><strong>condition:</strong> アクションが実行される前に満たすべき条件を定義します。ここでは、日にちが8日から14日であることを条件としています。これにより第２木曜日を特定できます。  </li>
             <li><strong>actions:</strong> 条件が満たされたときに実行されるアクションを定義します。ここでは、Google Nest Hubで特定のメッセージを放送するアクションを設定しています。</li>
         </ul>
         <br>
@@ -121,7 +137,7 @@ automations:
                 <li><strong>デバイスブロードキャスト連携:</strong> Nest Hubの機能を直接制御し、音声によるリマインドを実現。</li>
             </ul>
         </section>
-
+</del>
         <nav>
             <a href="../index.html">← Back to Garden</a>
         </nav>
