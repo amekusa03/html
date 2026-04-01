@@ -46,7 +46,12 @@
                 3.YouTubeのタグ設定<br>
             </p>
         </section>
-
+        <section>
+            <h2>Video</h2>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/p-TPNOYUZvU" frameborder="0" allowfullscreen title="SEO strategies"></iframe>
+            </div>
+        </section>
         <section>
             <h2>1.vercelサイト</h2>
             <h3>サイトマップ作成</h3>
@@ -99,6 +104,27 @@
             </ul>
         </section>
 
+        <section>
+            <h2>Note</h2>
+            <h3>sitemap.xmlの例</h3>
+            <pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://html-sigma-amber.vercel.app/&lt;/loc&gt;
+    &lt;lastmod&gt;2024-06-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;weekly&lt;/changefreq&gt;
+    &lt;priority&gt;1.0&lt;/priority&gt;
+  &lt;/url&gt;
+&lt;/urlset&gt;</code></pre>
+
+           <h3>説明</h3>
+            <ul>
+                <li><strong>XML宣言:</strong> XMLのバージョンとエンコーディングを指定します。</li>
+                <li><strong>xmlns属性:</strong> サイトマッププロトコルのスキーマを指定します。</li>
+                <li><strong>loc:</strong> ページの絶対URLを指定します。</li>
+                <li><strong>lastmod:</strong> 最終更新日。検索エンジンが再クロールを判断する材料になります。</li>
+            </ul>
+        </section>
         <nav>
             <a href="../index.html">← Back to Garden</a>
         </nav>
