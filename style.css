@@ -17,6 +17,21 @@
     }
 }
 
+/* モーション削減対応 */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* フォーカスインジケーター */
+a:focus {
+    outline: 2px solid var(--accent-blue);
+    outline-offset: 2px;
+}
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -226,4 +241,9 @@ th { background: rgba(74, 103, 65, 0.1); color: var(--accent-green); font-size: 
     .app-page header h1 { font-size: 1.8rem; }
     .profile-content { flex-direction: column; }
     .project-grid { grid-template-columns: 1fr; }
+}
+
+/* アニメーション最適化 */
+.hobby-card {
+    will-change: transform;
 }

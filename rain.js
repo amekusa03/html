@@ -1,9 +1,15 @@
+// rain.js - 雨のアニメーションエフェクト
+
 const canvas = document.getElementById('rain-canvas');
 let ctx = null;
 let width, height, raindrops = [];
 const dpr = window.devicePixelRatio || 1;
 
+// 雨粒の最大数（パフォーマンス調整）
+const MAX_DROPS = 500;
+
 function init() {
+    if (!canvas) return; // キャンバス要素が存在しない場合のチェック
     ctx = canvas.getContext('2d');
     if (!ctx) return;
 
@@ -15,8 +21,9 @@ function init() {
     canvas.setAttribute('role', 'img');
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
+    // 雨粒の初期化（最大数を制限）
     raindrops = [];
-    const count = Math.floor(width / 4);
+    const count = Math.min(Math.floor(width / 4), MAX_DROPS);
     for (let i = 0; i < count; i++) {
         raindrops.push({
             x: Math.random() * width,
