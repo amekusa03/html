@@ -26,7 +26,7 @@
 <body class="home-page">
     <canvas id="rain-canvas"></canvas>
     <div class="container">
-        <a href="index.html" class="language-link" hreflang="ja">日本語</a>
+        <a href="index.html" class="language-link" hreflang="ja" aria-label="Switch to Japanese version">日本語</a>
         <header>
             <img src="susan-lu4esm-rain-16599.gif" alt="Character animation" class="hero-gif">
             <h1>Where the Rain Pauses</h1>
@@ -34,147 +34,169 @@
             <p class="subtitle-note">Please, feel free to take shelter from the rain.</p>
         </header>
 
-        <section id="about">
-            <div class="about-content">
-                <p class="about-text">
-                     I post whatever comes to mind from my personal software development notes and photos to my hobbies and other things that interest me.
-                </p>
-            </div>
-        </section>
-
-        <section id="engineering">
-            <h2>Engineering</h2>
-            <div class="project-grid">
-                <article class="project-card">
-                    <h3>Software Engineering and Me</h3>
-                    <p>A collection of source code, technical documentation, and YouTube videos shared on GitHub.</p>
-                    <img src="app/unnamed.png" alt="Restless engineer visual" loading="lazy">
-                    <p><a href="app/index.html">View Details →</a></p>
-                </article>
-
-                <article class="project-card">
-                    <h3>Ubuntu Installation Guide</h3>
-                    <p>Technical documentation on upcycling old PCs by implementing lightweight Linux environments.</p>
-                        <img src="app/Ubuntu_PC_Upcycling.png" alt="Ubuntu Guide thumbnail" loading="lazy">
-                    <p><a href="app/dev1.html">View Details (JP) →</a></p>
-                </article>
-
-                <article class="project-card">
-                    <h3>Avalonia UI & MVVM</h3>
-                    <p>A learning project for cross-platform desktop application development using C# and Avalonia UI.</p>
-                    <img src="https://img.youtube.com/vi/dhkjU1KkbTw/hqdefault.jpg" alt="Avalonia UI Learning thumbnail" loading="lazy">
-                    <p><a href="app/dev2.html">View Details →</a></p>
-                </article>
-
-                <article class="project-card">
-                    <h3>HTML to Blogger</h3>
-                    <p>A Python-based automation tool for parsing local HTML/images and publishing directly to Blogger.</p>
-                        <img src="https://img.youtube.com/vi/gFgYCVHIfW0/hqdefault.jpg" alt="HTML to Blogger thumbnail" loading="lazy">
-                    <p><a href="app/dev3_en.html">View Details →</a></p>
-                </article>
-
-                <article class="project-card">
-                    <h3>ESP32 Racing Game</h3>
-                    <p>Developing a retro racing game for ESP32, featuring simulation support via the Wokwi platform.</p>
-                    <img src="https://img.youtube.com/vi/FJdXAT3jsQo/hqdefault.jpg" alt="ESP32 Racing Game thumbnail" loading="lazy">
-                    <p><a href="app/dev4.html">View Details →</a></p>
-                </article>
-
-                <article class="project-card">
-                    <h3>Qt Project Launcher</h3>
-                    <p>A utility tool designed to streamline Qt development by enabling one-click builds and execution.</p>   
-                    <img src="https://img.youtube.com/vi/mteT0aFFLCU/hqdefault.jpg" alt="Qt Project Launcher thumbnail">
-                    <p><a href="app/dev5.html">View Details →</a></p>
-                </article>
-
-                <article class="project-card">
-                    <h3>Google Nest Script</h3>
-                    <p>Scripts designed to achieve customization for Google Nest Hub.</p>
-                    <img src="https://img.youtube.com/vi/fbe6DP628qQ/hqdefault.jpg" alt="Google Nest Script thumbnail">
-                    <p><a href="app/dev6.html">View Details →</a></p>
-                </article>
-            </div>
-
-            <h3 class="section-subtitle">Archived Projects</h3>
-            <p class="section-description">Previous projects and minor technical tasks.</p>
-            <div class="archive-project-grid">
-                <article class="archive-project-card">
-                    <h3>Hello World Qt Creator</h3>
-                    <img src="https://img.youtube.com/vi/v86BQykeWFY/hqdefault.jpg" alt="Qt Creator Intro thumbnail" loading="lazy">
-                    <p><a href="app/archive_dev1.html">View Details →</a></p>
-                </article>
-                <article class="archive-project-card">
-                    <h3>ESP32 World Clock for Wokwi</h3>
-                    <img src="https://img.youtube.com/vi/GSfD1kVzAFw/hqdefault.jpg" alt="ESP32 World Clock thumbnail">
-                    <p><a href="app/archive_dev2.html">View Details →</a></p>
-                </article>
-                <article class="archive-project-card">
-                    <h3>ImageForNet</h3>
-                    <img src="app/imageEdit.png" alt="ImageForNet tool thumbnail">
-                    <p><a href="app/archive_dev3.html">View Details →</a></p>
-                </article>
-                
-                <article class="archive-project-card">
-                    <h3>My PC Audio</h3>
-                    <img src="app/pcMusic.png" alt="My PC Audio journey thumbnail">
-                    <p><a href="app/archive_dev4.html">View Details →</a></p>
-                </article>
-                <article class="archive-project-card">
-                    <h3>SEO strategies</h3>
-                    <img src="app/SEO.png" alt="SEO strategies thumbnail">
-                    <p><a href="app/archive_dev5.html">View Details →</a></p>
-                </article>
-            </div>
-            
-            <h3 class="section-subtitle">Current Projects</h3>
-            <p class="section-description">Ongoing development and research.</p>
-            <div class="current-project-grid">
-                <article class="current-project-card">
-                    <h3>EncBrowse (Encrypted Browser Wrapper)</h3>
-                    <img src="app/EncBrowse.png" alt="EncBrowse project icon" class="project-icon">
-                    <p><a href="app/current_dev1.html">View Details →</a></p>
-                </article>
-            </div>
-        </section>
-
-        <section id="photography">
-            <h2>Photography</h2>
-            <div class="photo-grid">
-                <div class="photo-item">
-                    <img src="Photo/photo01.jpg" alt="Nature photography sample 1" loading="lazy">
-                </div>
-                <div class="photo-item">
-                    <img src="Photo/photo02.jpg" alt="Nature photography sample 2" loading="lazy">
-                </div>
-                <div class="photo-item">
-                    <img src="Photo/photo03.jpg" alt="Nature photography sample 3" loading="lazy">
-                </div>
-            </div>
-            <p class="section-description"><a href="Photo/index.html">View all photos →</a></p>
-        </section>
-
-        <section id="profile">
-            <h2>Profile</h2>
-            <div class="profile-content">
-                <div>
-                    <p><strong>Personal Interests</strong> - <a href="hobbies_en.html">My Hobbies</a></p>
-                </div>
-                <br>
-            </div>
-            <div class="profile-content">
-                <div>
-                    <a href="https://www.linkedin.com/in/amekusa-k-a925233b7/" target="_blank" rel="noopener noreferrer" class="linkedin-link">LinkedIn Profile</a>
-                </div>
-                <br>
-            </div>
-        </section>
-
-        <section id="links">
-            <h2>Links</h2>
-            <ul class="links-list">
-                <li><strong>Favorite Web Resources</strong> - <a href="link/index.html">Go to Links</a></li>
+        <nav class="sticky-nav">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#engineering">Engineering</a></li>
+                <li><a href="#photography">Photography</a></li>
+                <li><a href="#profile">Profile</a></li>
+                <li><a href="#links">Links</a></li>
             </ul>
-        </section>
+        </nav>
+
+        <main>
+            <section id="about">
+                <div class="about-content">
+                    <p class="about-text">
+                         I post whatever comes to mind from my personal software development notes and photos to my hobbies and other things that interest me.
+                    </p>
+                </div>
+            </section>
+
+            <section id="engineering">
+                <h2>Engineering</h2>
+                <div class="project-grid">
+                    <article class="project-card">
+                        <h3>Software Engineering and Me</h3>
+                        <p>A collection of source code, technical documentation, and YouTube videos shared on GitHub.</p>
+                        <img src="app/unnamed.png" alt="Restless engineer visual" loading="lazy">
+                        <p><a href="app/index.html">View Details →</a></p>
+                    </article>
+
+                    <article class="project-card">
+                        <h3>Ubuntu Installation Guide</h3>
+                        <p>Technical documentation on upcycling old PCs by implementing lightweight Linux environments.</p>
+                            <img src="app/Ubuntu_PC_Upcycling.png" alt="Ubuntu Guide thumbnail" loading="lazy">
+                        <p><a href="app/dev1.html">View Details (JP) →</a></p>
+                    </article>
+
+                    <article class="project-card">
+                        <h3>Avalonia UI & MVVM</h3>
+                        <p>A learning project for cross-platform desktop application development using C# and Avalonia UI.</p>
+                        <img src="https://img.youtube.com/vi/dhkjU1KkbTw/hqdefault.jpg" alt="Avalonia UI Learning thumbnail" loading="lazy">
+                        <p><a href="app/dev2.html">View Details →</a></p>
+                    </article>
+
+                    <article class="project-card">
+                        <h3>HTML to Blogger</h3>
+                        <p>A Python-based automation tool for parsing local HTML/images and publishing directly to Blogger.</p>
+                            <img src="https://img.youtube.com/vi/gFgYCVHIfW0/hqdefault.jpg" alt="HTML to Blogger thumbnail" loading="lazy">
+                        <p><a href="app/dev3_en.html">View Details →</a></p>
+                    </article>
+
+                    <article class="project-card">
+                        <h3>ESP32 Racing Game</h3>
+                        <p>Developing a retro racing game for ESP32, featuring simulation support via the Wokwi platform.</p>
+                        <img src="https://img.youtube.com/vi/FJdXAT3jsQo/hqdefault.jpg" alt="ESP32 Racing Game thumbnail" loading="lazy">
+                        <p><a href="app/dev4.html">View Details →</a></p>
+                    </article>
+
+                    <article class="project-card">
+                        <h3>Qt Project Launcher</h3>
+                        <p>A utility tool designed to streamline Qt development by enabling one-click builds and execution.</p>   
+                        <img src="https://img.youtube.com/vi/mteT0aFFLCU/hqdefault.jpg" alt="Qt Project Launcher thumbnail">
+                        <p><a href="app/dev5.html">View Details →</a></p>
+                    </article>
+
+                    <article class="project-card">
+                        <h3>Google Nest Script</h3>
+                        <p>Scripts designed to achieve customization for Google Nest Hub.</p>
+                        <img src="https://img.youtube.com/vi/fbe6DP628qQ/hqdefault.jpg" alt="Google Nest Script thumbnail">
+                        <p><a href="app/dev6.html">View Details →</a></p>
+                    </article>
+                </div>
+
+                <h3 class="section-subtitle">Archived Projects</h3>
+                <p class="section-description">Previous projects and minor technical tasks.</p>
+                <div class="archive-project-grid">
+                    <article class="archive-project-card">
+                        <h3>Hello World Qt Creator</h3>
+                        <img src="https://img.youtube.com/vi/v86BQykeWFY/hqdefault.jpg" alt="Qt Creator Intro thumbnail" loading="lazy">
+                        <p><a href="app/archive_dev1.html">View Details →</a></p>
+                    </article>
+                    <article class="archive-project-card">
+                        <h3>ESP32 World Clock for Wokwi</h3>
+                        <img src="https://img.youtube.com/vi/GSfD1kVzAFw/hqdefault.jpg" alt="ESP32 World Clock thumbnail">
+                        <p><a href="app/archive_dev2.html">View Details →</a></p>
+                    </article>
+                    <article class="archive-project-card">
+                        <h3>ImageForNet</h3>
+                        <img src="app/imageEdit.png" alt="ImageForNet tool thumbnail">
+                        <p><a href="app/archive_dev3.html">View Details →</a></p>
+                    </article>
+                    
+                    <article class="archive-project-card">
+                        <h3>My PC Audio</h3>
+                        <img src="app/pcMusic.png" alt="My PC Audio journey thumbnail">
+                        <p><a href="app/archive_dev4.html">View Details →</a></p>
+                    </article>
+                    <article class="archive-project-card">
+                        <h3>SEO strategies</h3>
+                        <img src="app/SEO.png" alt="SEO strategies thumbnail">
+                        <p><a href="app/archive_dev5.html">View Details →</a></p>
+                    </article>
+                </div>
+                
+                <h3 class="section-subtitle">Current Projects</h3>
+                <p class="section-description">Ongoing development and research.</p>
+                <div class="current-project-grid">
+                    <article class="current-project-card">
+                        <h3>EncBrowse (Encrypted Browser Wrapper)</h3>
+                        <img src="app/EncBrowse.png" alt="EncBrowse project icon" class="project-icon">
+                        <p><a href="app/current_dev1.html">View Details →</a></p>
+                    </article>
+                    <article class="current-project-card">
+                        <h3>Android Web Launcher</h3>
+                        <img src="app/weblauncher.png" alt="weblauncher" class="project-icon">
+                        <p>To be continued...</p>
+                    </article>
+                    <article class="current-project-card">
+                        <h3>PC Audio: Remote Control</h3>
+                        <p>MPD - Android M.A.L.P.</p>
+                        <img src="app/mpd.png" alt="MPD" class="project-icon">
+                        <p>To be continued...</p>
+                    </article>
+                </div>
+            </section>
+
+            <section id="photography">
+                <h2>Photography</h2>
+                <div class="photo-grid">
+                    <div class="photo-item">
+                        <img src="Photo/photo01.jpg" alt="Nature photography sample 1" loading="lazy">
+                    </div>
+                    <div class="photo-item">
+                        <img src="Photo/photo02.jpg" alt="Nature photography sample 2" loading="lazy">
+                    </div>
+                    <div class="photo-item">
+                        <img src="Photo/photo03.jpg" alt="Nature photography sample 3" loading="lazy">
+                    </div>
+                </div>
+                <p class="section-description"><a href="Photo/index.html">View all photos →</a></p>
+            </section>
+
+            <section id="profile">
+                <h2>Profile</h2>
+                <div class="profile-content">
+                    <div>
+                        <p><strong>Personal Interests</strong> - <a href="hobbies_en.html">My Hobbies</a></p>
+                    </div>
+                </div>
+                <br>
+                <div class="profile-content">
+                    <div>
+                        <a href="https://www.linkedin.com/in/amekusa-k-a925233b7/" target="_blank" rel="noopener noreferrer" class="linkedin-link">LinkedIn Profile</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="links">
+                <h2>Links</h2>
+                <ul class="links-list">
+                    <li><strong>Favorite Web Resources</strong> - <a href="link/index.html">Go to Links</a></li>
+                </ul>
+            </section>
+        </main>
         <footer>
             <p class="section-description footer-note">Copyright &copy; amekusa All Rights Reserved.</p>
         </footer>

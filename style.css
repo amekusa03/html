@@ -39,6 +39,7 @@ body {
     color: var(--text-color);
     font-family: var(--font-family);
     line-height: 1.6;
+    scroll-behavior: smooth;
 }
 
 a { color: var(--accent-blue); text-decoration: none; transition: opacity 0.3s; }
@@ -59,6 +60,39 @@ a:hover { opacity: 0.7; }
 .language-link:hover { border-bottom-color: var(--accent-blue); }
 
 footer { text-align: center; opacity: 0.6; }
+
+/* --- Sticky Navigation --- */
+.sticky-nav {
+    position: sticky;
+    top: 0;
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 100;
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sticky-nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.sticky-nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.sticky-nav a:hover {
+    color: var(--accent-green);
+}
 
 /* --- Index Page (Home) --- */
 .home-page {
@@ -90,6 +124,7 @@ footer { text-align: center; opacity: 0.6; }
     height: 100%;
     object-fit: cover;
     border-radius: 6px;
+    aspect-ratio: 16 / 9;
 }
 
 .home-page header {
@@ -98,6 +133,12 @@ footer { text-align: center; opacity: 0.6; }
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
     text-align: center;
 }
 
@@ -125,24 +166,42 @@ footer { text-align: center; opacity: 0.6; }
 .section-subtitle { font-size: 1rem; opacity: 0.6; font-weight: 400; margin: 3rem 0 1rem; }
 .section-description { font-size: 1rem; opacity: 0.6; margin-bottom: 1rem; }
 
-.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
-.project-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 2rem; backdrop-filter: blur(10px); display: flex; flex-direction: column; }
+.project-grid, .current-project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
+.project-card, .current-project-card { 
+    background: var(--card-bg); 
+    border: 1px solid var(--border-color); 
+    border-radius: 12px; 
+    padding: 2rem; 
+    backdrop-filter: blur(10px); 
+    display: flex; 
+    flex-direction: column; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+.project-card:hover, .current-project-card:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); 
+}
 
 .archive-project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
 
-.current-project-card img.project-icon {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-    margin: 1rem 0;
-    display: block;
-}
-
 .archive-project-card { 
-    background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.5rem; 
-    display: flex; flex-direction: column; opacity: 0.6; font-size: 0.9rem; transition: opacity 0.3s;
+    background: var(--card-bg); 
+    border: 1px solid var(--border-color); 
+    border-radius: 8px; 
+    padding: 1.5rem; 
+    display: flex; 
+    flex-direction: column; 
+    opacity: 0.6; 
+    font-size: 0.9rem; 
+    transition: opacity 0.3s, transform 0.3s ease, box-shadow 0.3s ease; 
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); 
 }
-.archive-project-card:hover { opacity: 1; }
+.archive-project-card:hover { 
+    opacity: 1; 
+    transform: translateY(-3px); 
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15); 
+}
 .archive-project-card h3 { font-size: 1.1rem; font-weight: 400; }
 .archive-project-card img { 
     width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 6px; 
@@ -241,6 +300,7 @@ th { background: rgba(74, 103, 65, 0.1); color: var(--accent-green); font-size: 
     .app-page header h1 { font-size: 1.8rem; }
     .profile-content { flex-direction: column; }
     .project-grid { grid-template-columns: 1fr; }
+    .sticky-nav ul { flex-direction: column; gap: 1rem; }
 }
 
 /* アニメーション最適化 */

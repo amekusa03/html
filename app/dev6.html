@@ -36,37 +36,30 @@
             <h1>Google Nest Script</h1>
             <p class="header-subtitle u-opacity-8">Google Nest Hubのスクリプト</p>
         </header>
-        <section>
-            <h2>不具合報告😯</h2>
-            <p>
-                以前のスクリプトについて日付が正しく取得できませんでした。<br>
-                今回は簡単なスクリプトの紹介とさせていただきます。
-            </p>
-        </section>
-        <section>
-            <h2>Resources</h2>
-            <p>  
-            Google Nest Hubのスクリプトエディタに関する公式の使い方は、以下のドキュメントをご参照ください。
-            </p>
-            <a href="https://support.google.com/googlenest/answer/14125559?hl=ja" class="link-button" target="_blank" rel="noopener">Google Nest Hubのスクリプト設定方法</a>
+        <main>
+            <section>
+                <h2>About this Project</h2>
+                <img src="nesthubscript.png" alt="Google Nest Script" class="hero-image img-responsive-50">
+                <p>
+                    Google Nest HubのGUI<del>では設定できない高度なカスタマイズを実現するための</del>スクリプトを紹介します。
+                    スクリプトで条件や動作を作成し、Google Nest Hubの機能させます。
+                </p>
+            </section>
 
-        </section>
+            <section>
+                <h2>Video</h2>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/fbe6DP628qQ" frameborder="0" allowfullscreen title="Google Nest Script Demo"></iframe>
+                </div>
+            </section>
 
-        <section>
-            <h2>About this Project</h2>
-            <img src="nesthubscript.png" alt="Google Nest Script" class="hero-image img-responsive-50">
+            <section>
+                <h2>Implementation</h2>    
             <p>
-                Google Nest HubのGUI<del>では設定できない高度なカスタマイズを実現するための</del>スクリプトを紹介します。
-                スクリプトで条件や動作を作成し、Google Nest Hubの機能させます。
+                今回は「ネストハブ スクリプトを紹介して」としたときに、Google Nest Hubで特定の動画を再生するスクリプトを作成しました。
+                Google Nest HubのGUIでも同様の設定はできますが、エンジニアにはわかりやすいと思います。
             </p>
-        </section>
-        <section>
-            <h2>Implementation</h2>    
-        <p>
-            今回は「ネストハブ スクリプトを紹介して」としたときに、Google Nest Hubで特定の動画を再生するスクリプトを作成しました。
-            Google Nest HubのGUIでも同様の設定はできますが、エンジニアにはわかりやすいと思います。
-        </p>
-        <pre><code class="language-yaml">
+            <pre><code class="language-yaml">
 metadata:
   name: ネストハブ スクリプト紹介
   description: 自己紹介
@@ -85,45 +78,61 @@ automations:
         devices:
           - ネストハブ - リビングルーム
         okGoogle: 動画を再生 "ネストハブ スクリプト紹介"
-
-        </code></pre>
-        <h3>解説</h3>
-        <ul>
-            <li><strong>metadata:</strong> スクリプトの基本情報を定義します。nameはスクリプトの名前、descriptionはスクリプトの説明です。</li>
-            <li><strong>automations:</strong> 自動化のルールを定義するセクションです。</li>
-            <li><strong>starters:</strong> 自動化を開始する条件を定義します。ここでは、ユーザーが「ネストハブ スクリプトを紹介して」と言ったときにトリガーされます。</li>
-            <li><strong>condition:</strong> アクションが実行される前に満たすべき条件を定義します。ここでは、Nest Hubがオンラインであるかとしています。  </li>
-            <li><strong>actions:</strong> 条件が満たされたときに実行されるアクションを定義します。ここでは、Google Nest Hubで特定の動画を再生するアクションを設定しています。</li>
-        </ul>
-        <br>
-        <strong>補足</strong>
-        <p>
-            スクリプトでしかできないロジックの作成を考えましたが、思いつきませんでした。
-        </p>
-        </section>
-
-        <section>
-            <h2>Video</h2>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/fbe6DP628qQ" frameborder="0" allowfullscreen title="Google Nest Script Demo"></iframe>
-            </div>
-        </section>
-
-        <section>
-            <h2>OS / Environment</h2>
-            <ul class="tech-stack">
-                <li>Google Home Script Editor</li>
-                <li>Google Nest Hub (第2世代)</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Key Features</h2>
+            </code></pre>
+            <h3>解説</h3>
             <ul>
-                <li><strong>柔軟なスケジュール設定:</strong> GUIでは難解な条件設定が可能。</li>
-                <li><strong>デバイスブロードキャスト連携:</strong> Nest Hubの機能を直接制御し、動画再生を実現。</li>
+                <li><strong>metadata:</strong> スクリプトの基本情報を定義します。nameはスクリプトの名前、descriptionはスクリプトの説明です。</li>
+                <li><strong>automations:</strong> 自動化のルールを定義するセクションです。</li>
+                <li><strong>starters:</strong> 自動化を開始する条件を定義します。ここでは、ユーザーが「ネストハブ スクリプトを紹介して」と言ったときにトリガーされます。</li>
+                <li><strong>condition:</strong> アクションが実行される前に満たすべき条件を定義します。ここでは、Nest Hubがオンラインであるかとしています。  </li>
+                <li><strong>actions:</strong> 条件が満たされたときに実行されるアクションを定義します。ここでは、Google Nest Hubで特定の動画を再生するアクションを設定しています。</li>
             </ul>
-        </section>
+            <br>
+            <strong>補足</strong>
+            <p>
+                スクリプトでしかできないロジックの作成を考えましたが、思いつきませんでした。
+            </p>
+            </section>
+
+            <section>
+                <h2>OS / Environment</h2>
+                <ul class="tech-stack">
+                    <li>Google Home Script Editor</li>
+                    <li>Google Nest Hub (第2世代)</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Key Features</h2>
+                <ul>
+                    <li><strong>柔軟なスケジュール設定:</strong> GUIでは難解な条件設定が可能。</li>
+                    <li><strong>デバイスブロードキャスト連携:</strong> Nest Hubの機能を直接制御し、動画再生を実現。</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>不具合報告😯</h2>
+                <p>
+                    以前のスクリプトについて日付が正しく取得できませんでした。<br>
+                    今回は簡単なスクリプトの紹介とさせていただきます。
+                </p>
+            </section>
+            <section>
+                <h2>Resources</h2>
+                <p>  
+                Google Nest Hubのスクリプトエディタに関する公式の使い方は、以下のドキュメントをご参照ください。
+                </p>
+                <a href="https://support.google.com/googlenest/answer/14125559?hl=ja" class="link-button" target="_blank" rel="noopener">Google Nest Hubのスクリプト設定方法</a>
+            </section>
+            <section>
+                <h2>Bonus</h2>
+                <p>
+                    Scriptではありませんが、今回Google Home for web を使用して、
+                    ブラウザーから家電を操作できることを知りました。。  
+                </p>
+                <img src="homedevice.png" alt="Google Home for web" class="img-responsive-50">
+            </section>
+        </main>
         <nav>
             <a href="../index.html">← Back to Garden</a>
         </nav>
