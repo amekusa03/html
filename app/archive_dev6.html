@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-SRGF2MMYGD');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Google Nest Hubのスクリプト設定プロジェクトの紹介です。Google Nest Hubのスクリプトを紹介します。">
+    <title>Google Nest Script | 雨宿の庭</title>
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="app-page">
+    <div class="container">
+        <nav>
+            <a href="../index.html">← Back to Garden</a>
+        </nav>
+
+        <header>
+            <div class="header-tags u-margin-b-1">
+                <span class="tag">Google Nest Hub</span>
+                <span class="tag">Home Automation</span>
+                <span class="tag">Scripting</span>
+            </div>
+            <h1>Google Nest Script</h1>
+            <p class="header-subtitle u-opacity-8">Google Nest Hubのスクリプト</p>
+        </header>
+        <main>
+            <section>
+                <h2>About this Project</h2>
+                <img src="nesthubscript.png" alt="Google Nest Script" class="hero-image img-responsive-50">
+                <p>
+                    Google Nest HubのGUI<del>では設定できない高度なカスタマイズを実現するための</del>スクリプトを紹介します。
+                    スクリプトで条件や動作を作成し、Google Nest Hubの機能させます。
+                </p>
+            </section>
+
+            <section>
+                <h2>Video</h2>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/fbe6DP628qQ" frameborder="0" allowfullscreen title="Google Nest Script Demo"></iframe>
+                </div>
+            </section>
+
+            <section>
+                <h2>Implementation</h2>    
+            <p>
+                今回は「ネストハブ スクリプトを紹介して」としたときに、Google Nest Hubで特定の動画を再生するスクリプトを作成しました。
+                Google Nest HubのGUIでも同様の設定はできますが、エンジニアにはわかりやすいと思います。
+            </p>
+            <pre><code class="language-yaml">
+metadata:
+  name: ネストハブ スクリプト紹介
+  description: 自己紹介
+automations:
+  - starters:
+      - type: assistant.event.OkGoogle
+        eventData: query
+        is: "ネストハブ スクリプトを紹介して"
+    condition:
+      type: device.state.Online
+      device: ネストハブ - リビングルーム
+      state: online
+      is: true
+    actions:
+      - type: assistant.command.OkGoogle
+        devices:
+          - ネストハブ - リビングルーム
+        okGoogle: 動画を再生 "ネストハブ スクリプト紹介"
+            </code></pre>
+            <h3>解説</h3>
+            <ul>
+                <li><strong>metadata:</strong> スクリプトの基本情報を定義します。nameはスクリプトの名前、descriptionはスクリプトの説明です。</li>
+                <li><strong>automations:</strong> 自動化のルールを定義するセクションです。</li>
+                <li><strong>starters:</strong> 自動化を開始する条件を定義します。ここでは、ユーザーが「ネストハブ スクリプトを紹介して」と言ったときにトリガーされます。</li>
+                <li><strong>condition:</strong> アクションが実行される前に満たすべき条件を定義します。ここでは、Nest Hubがオンラインであるかとしています。  </li>
+                <li><strong>actions:</strong> 条件が満たされたときに実行されるアクションを定義します。ここでは、Google Nest Hubで特定の動画を再生するアクションを設定しています。</li>
+            </ul>
+            <br>
+            <strong>補足</strong>
+            <p>
+                スクリプトでしかできないロジックの作成を考えましたが、思いつきませんでした。
+            </p>
+            </section>
+
+            <section>
+                <h2>OS / Environment</h2>
+                <ul class="tech-stack">
+                    <li>Google Home Script Editor</li>
+                    <li>Google Nest Hub (第2世代)</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Key Features</h2>
+                <ul>
+                    <li><strong>柔軟なスケジュール設定:</strong> GUIでは難解な条件設定が可能。</li>
+                    <li><strong>デバイスブロードキャスト連携:</strong> Nest Hubの機能を直接制御し、動画再生を実現。</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>不具合報告😯</h2>
+                <p>
+                    以前のスクリプトについて日付が正しく取得できませんでした。<br>
+                    今回は簡単なスクリプトの紹介とさせていただきます。
+                </p>
+            </section>
+            <section>
+                <h2>Resources</h2>
+                <p>  
+                Google Nest Hubのスクリプトエディタに関する公式の使い方は、以下のドキュメントをご参照ください。
+                </p>
+                <a href="https://support.google.com/googlenest/answer/14125559?hl=ja" class="link-button" target="_blank" rel="noopener">Google Nest Hubのスクリプト設定方法</a>
+            </section>
+            <section>
+                <h2>Bonus</h2>
+                <p>
+                    Scriptではありませんが、今回Google Home for web を使用して、
+                    ブラウザーから家電を操作できることを知りました。。  
+                </p>
+                <img src="homedevice.png" alt="Google Home for web" class="img-responsive-50">
+            </section>
+        </main>
+        <nav>
+            <a href="../index.html">← Back to Garden</a>
+        </nav>
+        <footer>
+            <p>Copyright &copy; amekusa All Rights Reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

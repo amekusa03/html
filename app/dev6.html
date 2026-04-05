@@ -12,128 +12,210 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Google Nest Hubのスクリプト設定プロジェクトの紹介です。Google Nest Hubのスクリプトを紹介します。">
-    <title>Google Nest Script | 雨宿の庭</title>
+    <meta name="description" content="Music Player Daemon (MPD) と M.A.L.P.を使用した、スマホから操作可能な高音質PCオーディオ環境の構築記録です。">
+    <title>My PC Audio - Software | 雨宿の庭</title>
     <script>
       window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
     <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="app-page">
     <div class="container">
-        <nav>
+        <nav aria-label="ページナビゲーション">
             <a href="../index.html">← Back to Garden</a>
         </nav>
 
         <header>
             <div class="header-tags u-margin-b-1">
-                <span class="tag">Google Nest Hub</span>
-                <span class="tag">Home Automation</span>
-                <span class="tag">Scripting</span>
+                <span class="tag">Audio</span>
+                <span class="tag">Software</span>
             </div>
-            <h1>Google Nest Script</h1>
-            <p class="header-subtitle u-opacity-8">Google Nest Hubのスクリプト</p>
+            <h1>My PC Audio - Software Setup</h1>
+            <p class="header-subtitle u-opacity-8">PCオーディオの操作環境改善</p>
         </header>
+
         <main>
-            <section>
-                <h2>About this Project</h2>
-                <img src="nesthubscript.png" alt="Google Nest Script" class="hero-image img-responsive-50">
-                <p>
-                    Google Nest HubのGUI<del>では設定できない高度なカスタマイズを実現するための</del>スクリプトを紹介します。
-                    スクリプトで条件や動作を作成し、Google Nest Hubの機能させます。
-                </p>
-            </section>
-
-            <section>
-                <h2>Video</h2>
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/fbe6DP628qQ" frameborder="0" allowfullscreen title="Google Nest Script Demo"></iframe>
-                </div>
-            </section>
-
-            <section>
-                <h2>Implementation</h2>    
+         <section>
+            <h2>About this Project</h2>
             <p>
-                今回は「ネストハブ スクリプトを紹介して」としたときに、Google Nest Hubで特定の動画を再生するスクリプトを作成しました。
-                Google Nest HubのGUIでも同様の設定はできますが、エンジニアにはわかりやすいと思います。
+                <a href="archive_dev4.html">前回のアナログ・デジタル環境の整備</a>により、
+                PCオーディオとして満足できる音質に到達しました。
             </p>
-            <pre><code class="language-yaml">
-metadata:
-  name: ネストハブ スクリプト紹介
-  description: 自己紹介
-automations:
-  - starters:
-      - type: assistant.event.OkGoogle
-        eventData: query
-        is: "ネストハブ スクリプトを紹介して"
-    condition:
-      type: device.state.Online
-      device: ネストハブ - リビングルーム
-      state: online
-      is: true
-    actions:
-      - type: assistant.command.OkGoogle
-        devices:
-          - ネストハブ - リビングルーム
-        okGoogle: 動画を再生 "ネストハブ スクリプト紹介"
-            </code></pre>
-            <h3>解説</h3>
+            <p>
+                今回は操作性の向上させます。
+            </p>
+        </section>
+      
+        <section>
+            <h2>Video</h2>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/aTo6UIRp5Tw" frameborder="0" allowfullscreen title="Qt Project Launcher"></iframe>
+            </div>
+        </section>            
+        <section>
+            <h2>Current situation</h2>
+            <p>
+                現在の物理的な接続構成は以下の通りです。
+            </p>
             <ul>
-                <li><strong>metadata:</strong> スクリプトの基本情報を定義します。nameはスクリプトの名前、descriptionはスクリプトの説明です。</li>
-                <li><strong>automations:</strong> 自動化のルールを定義するセクションです。</li>
-                <li><strong>starters:</strong> 自動化を開始する条件を定義します。ここでは、ユーザーが「ネストハブ スクリプトを紹介して」と言ったときにトリガーされます。</li>
-                <li><strong>condition:</strong> アクションが実行される前に満たすべき条件を定義します。ここでは、Nest Hubがオンラインであるかとしています。  </li>
-                <li><strong>actions:</strong> 条件が満たされたときに実行されるアクションを定義します。ここでは、Google Nest Hubで特定の動画を再生するアクションを設定しています。</li>
+                <li><a href="pcaudios6.png" target="_blank" rel="noopener noreferrer"><img src="pcaudios6.png" alt="Current PC audio setup" loading="lazy" class="img-responsive-50"></a></li>
             </ul>
-            <br>
-            <strong>補足</strong>
+        </section>
+
+        <section>
+            <h2>Issues</h2>
             <p>
-                スクリプトでしかできないロジックの作成を考えましたが、思いつきませんでした。
+                現状のシステムではPCの前にいるときしか操作ができないことが課題です。
             </p>
-            </section>
+        </section>
 
-            <section>
-                <h2>OS / Environment</h2>
-                <ul class="tech-stack">
-                    <li>Google Home Script Editor</li>
-                    <li>Google Nest Hub (第2世代)</li>
-                </ul>
-            </section>
+        <section>
+            <h2>Action</h2>
+            <p>手元で操作する方法を模索しました。</p>
+            <ul>
+                <li>PCのキーボードショートカットを活用する → 仰々しいので見送り</li>
+                <li>スマホから操作する方法を模索する → 採用</li>
+            </ul>
+            <p>PCをMusic Player Daemon (MPD)サーバーとして動かし、スマホ(Android)のアプリM.A.L.P.からWi-Fiを通じて選曲・操作する環境を構築します。</p>
 
-            <section>
-                <h2>Key Features</h2>
-                <ul>
-                    <li><strong>柔軟なスケジュール設定:</strong> GUIでは難解な条件設定が可能。</li>
-                    <li><strong>デバイスブロードキャスト連携:</strong> Nest Hubの機能を直接制御し、動画再生を実現。</li>
-                </ul>
-            </section>
+<pre><code>
+Android - M.A.L.P.で選曲・操作
+        | WiFi  Contata（PCのGUI）
+        ↓         ↓
+MPD（高音質再生エンジン） ポート: 6600
+        ↓ PipeWire
+ALC892 S/PDIF出力（カード1、デバイス1）
+        ↓
+TSS-1アンプ → スピーカー</code></pre>
 
-            <section>
-                <h2>不具合報告😯</h2>
-                <p>
-                    以前のスクリプトについて日付が正しく取得できませんでした。<br>
-                    今回は簡単なスクリプトの紹介とさせていただきます。
-                </p>
-            </section>
-            <section>
-                <h2>Resources</h2>
-                <p>  
-                Google Nest Hubのスクリプトエディタに関する公式の使い方は、以下のドキュメントをご参照ください。
-                </p>
-                <a href="https://support.google.com/googlenest/answer/14125559?hl=ja" class="link-button" target="_blank" rel="noopener">Google Nest Hubのスクリプト設定方法</a>
-            </section>
-            <section>
-                <h2>Bonus</h2>
-                <p>
-                    Scriptではありませんが、今回Google Home for web を使用して、
-                    ブラウザーから家電を操作できることを知りました。。  
-                </p>
-                <img src="homedevice.png" alt="Google Home for web" class="img-responsive-50">
-            </section>
+        </section>
+
+        <section>
+            <h2>Comparison of Components</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Software</th>
+                        <th>Role</th>
+                        <th>Note</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>MPD</strong></td>
+                        <td>高音質再生エンジン</td>
+                        <td>今回のメイン。バックグラウンドで動作。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>M.A.L.P.</strong></td>
+                        <td>スマホ用リモコン</td>
+                        <td>AndroidからWi-Fi経由で操作。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cantata</strong></td>
+                        <td>PC用クライアント</td>
+                        <td>PC上で操作したい場合に使用。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>Setup</h2>
+            <p>PC (Ubuntu) に Music Player Daemon (MPD)  をインストールします。</p>
+
+            <h3>1. 依存パッケージと権限の設定</h3>
+            <pre><code class="language-bash">sudo apt update && sudo apt install ffmpeg -y</code></pre>
+
+            <p>MPDがユーザーディレクトリ内の音楽ファイルにアクセスできるよう、パーミッションを調整します。</p>
+            <pre><code class="language-bash">chmod o+x /home/[username]
+chmod o+rx "/home/[username]/ミュージック"
+chmod o+rx "/home/[username]/ミュージック/公開"</code></pre>
+
+            <h3>2. MPD のインストールと設定</h3>
+            <pre><code class="language-bash">sudo apt install mpd mpc -y</code></pre>
+
+            <h4>設定のポイント</h4>
+            <p><code>~/.config/mpd/mpd.conf</code> を編集し、オーディオ出力を PipeWire に設定します。</p>
+            <pre><code class="language-toml">audio_output {
+    type        "pipewire"
+    name        "PipeWire Output"
+}</code></pre>
+
+            <h4>自動起動の設定</h4>
+            <pre><code class="language-bash"># ユーザーサービスとして有効化
+systemctl --user enable mpd
+systemctl --user start mpd
+# ログイン前からの自動起動を許可
+sudo loginctl enable-linger [username]</code></pre>
+
+            <h3>3. PC用クライアント (Cantata) のインストール</h3>
+            <p>PCのデスクトップから操作するためにインストールします。</p>
+            <pre><code class="language-bash">sudo apt install cantata -y</code></pre>
+
+            <h3>3. Android アプリ（M.A.L.P.）の設定</h3>
+            <ul>
+                <li><strong>ホスト名:</strong> Ubuntu の IP アドレス (例: 192.168.11.13)</li>
+                <li><strong>ポート:</strong> 6600</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Summary</h2>
+            <p>
+                これらのソフトウェアを組み合わせることで、PCオーディオ環境をスマホから操作できるようになりました。
+            </p>
+            <h3>Bonus</h3>
+            <p>
+                M.A.L.P.の操作は追加設定することなく、スマートウォッチからも可能でした。
+            </p>
+        </section>
+
+        <section>
+            <h2>Figure</h2>
+            <ul>
+                <li><a href="audiostep71.png" target="_blank" rel="noopener noreferrer"><img src="audiostep71.png" alt="Current PC audio setup" loading="lazy" class="img-responsive-50"></a></li>
+            </ul>
+        </section>
+
+        <section>
+             <h2>Key Features</h2>
+            <ul>
+                <li><strong>スマホからの操作:</strong> M.A.L.P.を使用して、PCオーディオ環境をスマホから操作可能に。</li>
+                <li><strong>高音質再生:</strong> MPDを使用して高音質なオーディオ再生を実現。</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Option</h2>
+            <p>Navidromeをインストールしましたが、不要でした。</p>
+            <p>インストール方法だけ、メモさせてください。</p>
+
+            <h3>Navidrome のインストール</h3>
+            <h4>ffmpeg のインストール</h4>
+            <pre><code class="language-bash">sudo apt update
+sudo apt install ffmpeg -y</code></pre>
+
+            <h4>Navidrome 本体のインストール</h4>
+            <pre><code class="language-bash">wget https://github.com/navidrome/navidrome/releases/download/v0.61.0/navidrome_0.61.0_linux_amd64.deb
+sudo apt install ./navidrome_0.61.0_linux_amd64.deb</code></pre>
+
+            <h4>設定ファイルの編集</h4>
+            <pre><code class="language-toml"># /etc/navidrome/navidrome.toml
+MusicFolder = "/home/[username]/ミュージック/公開"</code></pre>
+
+            <h4>音楽フォルダのアクセス権設定</h4>
+            <pre><code class="language-bash">chmod o+x /home/[username]
+chmod o+rx "/home/[username]/ミュージック"
+chmod o+rx "/home/[username]/ミュージック/公開"</code></pre>
+
+            <h4>サービスの起動</h4>
+            <pre><code class="language-bash">sudo systemctl enable navidrome
+sudo systemctl start navidrome</code></pre>
+
+        </section>
         </main>
-        <nav>
+        <nav aria-label="ページナビゲーション">
             <a href="../index.html">← Back to Garden</a>
         </nav>
         <footer>
