@@ -32,7 +32,7 @@
                 <span class="tag">Software</span>
             </div>
             <h1>My PC Audio - Software Setup</h1>
-            <p class="header-subtitle u-opacity-8">PCオーディオの操作環境改善</p>
+            <p class="header-subtitle u-opacity-8">PCオーディオの操作を快適に</p>
         </header>
 
         <main>
@@ -50,7 +50,7 @@
         <section>
             <h2>Video</h2>
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/aTo6UIRp5Tw" frameborder="0" allowfullscreen title="Qt Project Launcher"></iframe>
+                <iframe src="https://www.youtube.com/embed/mHtCYgG4A4Y" frameborder="0" allowfullscreen title="MPD and M.A.L.P. Setup Demo"></iframe>
             </div>
         </section>            
         <section>
@@ -81,7 +81,7 @@
 
 <pre><code>
 Android - M.A.L.P.で選曲・操作
-        | WiFi  Contata（PCのGUI）
+        | WiFi  Cantata（PCのGUI）
         ↓         ↓
 MPD（高音質再生エンジン） ポート: 6600
         ↓ PipeWire
@@ -150,15 +150,14 @@ systemctl --user start mpd
 # ログイン前からの自動起動を許可
 sudo loginctl enable-linger [username]</code></pre>
 
-            <h3>3. PC用クライアント (Cantata) のインストール</h3>
-            <p>PCのデスクトップから操作するためにインストールします。</p>
-            <pre><code class="language-bash">sudo apt install cantata -y</code></pre>
-
             <h3>3. Android アプリ（M.A.L.P.）の設定</h3>
             <ul>
                 <li><strong>ホスト名:</strong> Ubuntu の IP アドレス (例: 192.168.11.13)</li>
                 <li><strong>ポート:</strong> 6600</li>
             </ul>
+            <h3>4. PC用クライアント (Cantata) のインストール</h3>
+            <p>PCのデスクトップから操作するためにインストールします。</p>
+            <pre><code class="language-bash">sudo apt install cantata -y</code></pre>
         </section>
 
         <section>
