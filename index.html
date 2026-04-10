@@ -139,7 +139,7 @@
 
                     <article class="project-card">
                         <h3>Avalonia UI & MVVM</h3>
-                        <span class="tag" style="display:none">Avalonia UI</span>
+                        <span class="tag" style="display:none">Avalonia UI</span><span class="tag" style="display:none">Ubuntu</span>
                         <!-- <p>C#とAvalonia UIを使用した、デスクトップアプリ開発の学習プロジェクトです。</p> -->
                         <img src="https://img.youtube.com/vi/dhkjU1KkbTw/hqdefault.jpg" alt="Avalonia UI Learning" loading="lazy">
                         <p><a href="app/dev2.html">詳細 →</a></p>
@@ -155,7 +155,7 @@
 
                     <article class="project-card">
                         <h3>ESP32 Racing Game</h3>
-                        <span class="tag" style="display:none">ESP32</span><span class="tag" style="display:none">C/C++</span>
+                        <span class="tag" style="display:none">ESP32</span><span class="tag" style="display:none">Wokwi</span>
                         <!-- <p>ESP32とWokwiシミュレータを使用した、レトロなレーシングゲームの開発プロジェクトです。</p> -->
                         <img src="https://img.youtube.com/vi/FJdXAT3jsQo/hqdefault.jpg" alt="ESP32 Racing Game" loading="lazy">
                         <p><a href="app/dev4.html">詳細 →</a></p>
@@ -171,7 +171,7 @@
 
                     <article class="project-card">
                         <h3>PCオーディオの操作を快適に</h3>
-                        <span class="tag" style="display:none">Audio</span><span class="tag" style="display:none">Ubuntu</span>
+                        <span class="tag" style="display:none">PCAudio</span><span class="tag" style="display:none">Ubuntu</span>
                          <img src="https://img.youtube.com/vi/mHtCYgG4A4Y/hqdefault.jpg" alt="Google Nest Script" loading="lazy">
                         <p><a href="app/dev6.html">詳細 →</a></p>
                     </article>
@@ -189,26 +189,26 @@
                 <div class="archive-project-grid">
                     <article class="archive-project-card">
                         <h3>Hello World Qt Creator</h3>
-                        <span class="tag" style="display:none">Qt/QML</span><span class="tag" style="display:none">C/C++</span>
+                        <span class="tag" style="display:none">Qt/QML</span><span class="tag" style="display:none">Ubuntu</span>
                         <img src="https://img.youtube.com/vi/v86BQykeWFY/hqdefault.jpg" alt="Qt Creator Intro" loading="lazy">
                         <p><a href="app/archive_dev1.html">詳細 →</a></p>
                     </article>
                     <article class="archive-project-card">
                         <h3>ESP32 World Clock for Wokwi</h3>
-                        <span class="tag" style="display:none">ESP32</span><span class="tag" style="display:none">C/C++</span>
+                        <span class="tag" style="display:none">ESP32</span><span class="tag" style="display:none">Wokwi</span>
                         <img src="https://img.youtube.com/vi/GSfD1kVzAFw/hqdefault.jpg" alt="ESP32 world Clock for Wokwi" loading="lazy">
                         <p><a href="app/archive_dev2.html">詳細 →</a></p>
                     </article>
                     <article class="archive-project-card">
                         <h3>ImageForNet</h3>
-                        <span class="tag" style="display:none">Avalonia UI</span>
-                        <img src="app/imageEdit.png" alt="Image For .NET" loading="lazy">
+                        <span class="tag" style="display:none">Avalonia UI</span><span class="tag" style="display:none">Ubuntu</span>
+                        <img src="https://img.youtube.com/vi/dmGGBLUwR_o/hqdefault.jpg" alt="Image for Net" loading="lazy">
                         <p><a href="app/archive_dev3.html">詳細 →</a></p>
                     </article>
                     
                     <article class="archive-project-card">
                         <h3>My PC Audio</h3>
-                        <span class="tag" style="display:none">Audio</span>
+                        <span class="tag" style="display:none">PCAudio</span>
                         <img src="app/pcMusic.png" alt="My PC Audio">
                         <p><a href="app/archive_dev4.html">詳細 →</a></p>
                     </article>
@@ -226,6 +226,7 @@
                     </article>
                     <article class="archive-project-card">
                         <h3>暗号化ブラウズラッパー</h3>
+                        <span class="tag" style="display:none">Avalonia UI</span><span class="tag" style="display:none">Ubuntu</span>
                         <img src="https://img.youtube.com/vi/zNFxTU8CWW4/hqdefault.jpg" alt="EncBrowse" loading="lazy">
                         <p><a href="app/dev8.html">詳細 →</a></p>
                     </article>
@@ -303,17 +304,17 @@
        */
       function sendPrompt(keyword) {
         const mapping = {
-          'CODESYS': 'CODESYS',
-          'ESP32': 'ESP32 Racing Game',
+          'ESP32': 'ESP32',
           'C/C++': 'C/C++',
           'Qt/QML': 'Qt',
           'Avalonia UI': 'Avalonia UI',
           'Python': 'Python',
-          'Audio': 'PCオーディオ',
+          'PCAudio': 'PCオーディオ',
           'Ubuntu': 'Ubuntu',
           'Kotlin': 'Kotlin',
           'Vercel': 'Vercel',
-          'Google Nest Hub': 'Google Nest'
+          'Google Nest Hub': 'Google Nest',
+          'Google Apps Script': 'Google Apps Script'
         };
 
         const searchWord = (mapping[keyword] || keyword).toLowerCase();

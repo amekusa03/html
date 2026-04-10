@@ -20,6 +20,53 @@
     <script>
       window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
+    <style>
+        /* Modal styles */
+        .project-modal-overlay {
+            display: flex;
+            visibility: hidden;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.6s ease, visibility 0.6s;
+        }
+        .project-modal-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        .project-modal-card {
+            background: var(--bg-color, #fff);
+            padding: 2.5rem;
+            border-radius: 16px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            position: relative;
+            transform: translateY(30px) scale(0.9);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .project-modal-overlay.active .project-modal-card {
+            transform: translateY(0) scale(1);
+        }
+        .modal-close-btn {
+            position: absolute;
+            top: 1rem; right: 1rem;
+            background: none; border: none;
+            font-size: 1.5rem; cursor: pointer;
+            color: var(--color-text-secondary, #666);
+        }
+        .modal-item-separator {
+            border-top: 1px solid var(--border-color);
+            margin: 2rem 0;
+        }
+    </style>
     <script defer src="/_vercel/insights/script.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -210,11 +257,63 @@
                 </ul>
             </section>
         </main>
+        <!-- Modal Overlay -->
+        <div id="project-modal" class="project-modal-overlay" onclick="closeModal()">
+            <div class="project-modal-card" onclick="event.stopPropagation()">
+                <button class="modal-close-btn" onclick="closeModal()">&times;</button>
+                <div id="modal-content-body"></div>
+            </div>
+        </div>
         <footer>
             <p class="section-description footer-note">Copyright &copy; amekusa All Rights Reserved.</p>
         </footer>
     </div>
 
     <script src="rain.js"></script>
+    <script>
+      function sendPrompt(keyword) {
+        const mapping = {
+          'ESP32': 'ESP32',
+          'C/C++': 'C/C++',
+          'Qt/QML': 'Qt',
+          'Avalonia UI': 'Avalonia',
+          'Python': 'Python',
+          'Audio': 'Audio',
+          'Ubuntu': 'Ubuntu',
+          'Kotlin': 'Kotlin',
+          'Vercel': 'Vercel',
+          'Google Nest Hub': 'Google Nest',
+          'Google Apps Script': 'Google Apps Script'
+        };
+
+        const searchWord = (mapping[keyword] || keyword).toLowerCase();
+        const allArticles = Array.from(document.querySelectorAll('article'));
+
+        const matchedCards = allArticles.filter(card => {
+          const title = card.querySelector('h3')?.textContent.toLowerCase() || "";
+          const tags = Array.from(card.querySelectorAll('.tag')).map(t => t.textContent.toLowerCase());
+          return title.includes(searchWord) || tags.some(tag => tag.includes(searchWord));
+        });
+
+        if (matchedCards.length > 0) {
+          const modal = document.getElementById('project-modal');
+          const modalBody = document.getElementById('modal-content-body');
+          modalBody.innerHTML = '';
+          matchedCards.forEach(card => {
+            const wrapper = document.createElement('div');
+            wrapper.innerHTML = `<div class="modal-item-separator"></div>${card.innerHTML}`;
+            modalBody.appendChild(wrapper);
+          });
+          modal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+
+      function closeModal() {
+        const modal = document.getElementById('project-modal');
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    </script>
 </body>
 </html>
