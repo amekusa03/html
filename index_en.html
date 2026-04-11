@@ -20,53 +20,6 @@
     <script>
       window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
-    <style>
-        /* Modal styles */
-        .project-modal-overlay {
-            display: flex;
-            visibility: hidden;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(8px);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.6s ease, visibility 0.6s;
-        }
-        .project-modal-overlay.active {
-            visibility: visible;
-            opacity: 1;
-        }
-        .project-modal-card {
-            background: var(--bg-color, #fff);
-            padding: 2.5rem;
-            border-radius: 16px;
-            max-width: 600px;
-            width: 90%;
-            max-height: 85vh;
-            overflow-y: auto;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-            position: relative;
-            transform: translateY(30px) scale(0.9);
-            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        .project-modal-overlay.active .project-modal-card {
-            transform: translateY(0) scale(1);
-        }
-        .modal-close-btn {
-            position: absolute;
-            top: 1rem; right: 1rem;
-            background: none; border: none;
-            font-size: 1.5rem; cursor: pointer;
-            color: var(--color-text-secondary, #666);
-        }
-        .modal-item-separator {
-            border-top: 1px solid var(--border-color);
-            margin: 2rem 0;
-        }
-    </style>
     <script defer src="/_vercel/insights/script.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -107,7 +60,7 @@
                         <h3>Software Engineering and Me</h3>
                         <p>A collection of source code, technical documentation, and YouTube videos shared on GitHub.</p>
                         <img src="app/app_detail/unnamed.png" alt="Restless engineer visual" loading="lazy">
-                        <p><a href="app/app_detail.html">View Details →</a></p>
+                        <p><a href="app/app_detail/app_detail.html">View Details →</a></p>
                     </article>
 
                     <article class="project-card">
@@ -289,6 +242,7 @@
         const searchWord = (mapping[keyword] || keyword).toLowerCase();
         const allArticles = Array.from(document.querySelectorAll('article'));
 
+        // Extract all articles containing the keyword in the title (h3) or tags (.tag)
         const matchedCards = allArticles.filter(card => {
           const title = card.querySelector('h3')?.textContent.toLowerCase() || "";
           const tags = Array.from(card.querySelectorAll('.tag')).map(t => t.textContent.toLowerCase());
@@ -301,7 +255,11 @@
           modalBody.innerHTML = '';
           matchedCards.forEach(card => {
             const wrapper = document.createElement('div');
-            wrapper.innerHTML = `<div class="modal-item-separator"></div>${card.innerHTML}`;
+            wrapper.className = 'modal-item-wrapper';
+            const separator = document.createElement('div');
+            separator.className = 'modal-item-separator';
+            wrapper.appendChild(separator);
+            wrapper.appendChild(card.cloneNode(true));
             modalBody.appendChild(wrapper);
           });
           modal.classList.add('active');
@@ -314,6 +272,11 @@
         modal.classList.remove('active');
         document.body.style.overflow = '';
       }
+
+      // Close modal on ESC key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+      });
     </script>
 </body>
 </html>

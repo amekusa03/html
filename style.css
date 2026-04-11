@@ -308,3 +308,49 @@ th { background: rgba(74, 103, 65, 0.1); color: var(--accent-green); font-size: 
 .hobby-card {
     will-change: transform;
 }
+
+/* --- Project Modal Styles --- */
+.project-modal-overlay {
+    display: flex;
+    visibility: hidden;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.6s ease, visibility 0.6s;
+}
+.project-modal-overlay.active {
+    visibility: visible;
+    opacity: 1;
+}
+.project-modal-card {
+    background: var(--bg-color, #fff);
+    padding: 2.5rem;
+    border-radius: 16px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    position: relative;
+    transform: translateY(30px) scale(0.9);
+    transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.project-modal-overlay.active .project-modal-card {
+    transform: translateY(0) scale(1);
+}
+.modal-close-btn {
+    position: absolute;
+    top: 1rem; right: 1rem;
+    background: none; border: none;
+    font-size: 1.5rem; cursor: pointer;
+    color: var(--color-text-secondary, #666);
+}
+.project-modal-card h3 { margin-top: 0; color: var(--accent-green); }
+.project-modal-card img { width: 100%; height: auto; border-radius: 8px; margin: 1rem 0; }
+.modal-item-separator { border-top: 1px solid var(--border-color); margin: 2rem 0; }
+.modal-item-wrapper:first-child .modal-item-separator { display: none; }
