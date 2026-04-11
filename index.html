@@ -344,10 +344,10 @@
           matchedCards.forEach(card => {
             const wrapper = document.createElement('div');
             wrapper.className = 'modal-item-wrapper';
-            wrapper.innerHTML = `
-              <div class="modal-item-separator"></div>
-              ${card.innerHTML}
-            `;
+            const separator = document.createElement('div');
+            separator.className = 'modal-item-separator';
+            wrapper.appendChild(separator);
+            wrapper.appendChild(card.cloneNode(true));
             modalBody.appendChild(wrapper);
           });
           
