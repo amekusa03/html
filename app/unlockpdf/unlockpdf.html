@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-SRGF2MMYGD');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Google Compute Engine (GCE) 上で Python を 24時間365日安定稼働させ、Gmailの添付PDFを自動処理するプロジェクトの解説。">
+    <title>Google Compute Engine python | 雨宿の庭</title>
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="app-page">
+    <div class="container">
+        <nav>
+            <a href="../../index.html">← Back to Garden</a>
+        </nav>
+
+        <header>
+            <div class="header-tags u-margin-b-1">
+                <span class="tag">Google Cloud</span>
+                <span class="tag">Python</span>
+            </div>
+            <h1>Gmail PDF Unlocker</h1>
+            <p class="u-opacity-8">[検証中] 仮想マシンによる、メールの自動処理</p>
+        </header>
+        <main>
+        <section>
+            <h2>About this Project</h2>
+            <p>
+                メールし、設定した条件のメールであれば、添付ファイルのPDFをパスワードを解除してGoogleドライブに保存する、というプロジェクトです。
+            </p>
+        </section>
+
+        <section>
+            <h2>System Configuration & Workflow</h2>
+            <div class="u-margin-t-1">
+            <p>
+                Google Apps Script (GAS) ではなく Python を採用することで、仕様変更にも柔軟な対応を可能としています。
+            </p>
+                <ul class="u-margin-t-1" style="list-style: none; padding-left: 0;">
+                    <li><strong><i class="fas fa-server"></i> iaas:</strong> Google Compute Engine (GCE) の無料枠（e2-micro）</li>
+                    <li><strong><i class="fas fa-code"></i> 言語:</strong> Python</li>
+                    <li><strong><i class="fas fa-envelope"></i> 対象メール:</strong> 特定の送信元からの未読メール</li>
+                    <li><strong><i class="fas fa-unlock-alt"></i> 処理内容:</strong> 添付PDFのパスワード保護を自動解除</li>
+                    <li><strong><i class="fas fa-hdd"></i> 保存先:</strong> Googleドライブの指定フォルダ</li>
+                    <li><strong><i class="fas fa-check-double"></i> 後処理:</strong> 処理済みラベル付与と既読化</li>
+                </ul>
+            </div>
+            <p>GCE の <code>e2-micro</code> インスタンスを利用することで、実質無料で常時運用が可能です。</p>
+            <ul>
+                <li><strong>Gmail API:</strong> 特定の送信元から届く未読メールを検索・取得。</li>
+                <li><strong>Python (pypdf):</strong> メモリ上で安全にPDFのパスワードを解除。</li>
+                <li><strong>Google Drive API:</strong> 指定したフォルダへ自動的に保存。</li>
+            </ul>
+            <div class="note">
+                <p><small>※ 以前の無料枠対象だった f1-micro と間違えないようご注意ください。e2-micro が現在の無料枠対象です。</small></p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Setup</h2>
+            <h3>1. GCP プロジェクトの設定</h3>
+            <ol>
+                <li>Gmail API と Google Drive API を有効化。</li>
+                <li>OAuth 同意画面を設定し、デスクトップアプリとして「OAuth クライアント ID」を作成。</li>
+                <li><code>credentials.json</code> を取得。</li>
+            </ol>
+
+            <h3>2. インストールと配置</h3>
+<pre><code>git clone &lt;your-repo-url&gt;
+cd unlockpdf
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt</code></pre>
+        </section>
+
+        <section>
+            <h2>Usage</h2>
+            <h3>初回実行（認証）</h3>
+            <p>初回実行時はブラウザが立ち上がり、Googleアカウントへのログインが求められます。認証が完了すると、作業ディレクトリに <code>token.json</code> が生成されます。</p>
+<pre><code>python unlock_and_save.py</code></pre>
+
+            <h3>サービス化 (systemd)</h3>
+            <p>24時間365日、常時稼働させるために Linux の <code>systemd</code> を使用してバックグラウンドプロセスとして登録します。これにより、プログラムの異常終了時やサーバー再起動時にも自動で復帰します。</p>
+<pre><code># /etc/systemd/system/unlockpdf.service
+[Service]
+ExecStart=/path/to/venv/bin/python /path/to/unlock_and_save.py
+Restart=always
+User=your-user-name</code></pre>
+        </section>
+
+        <section>
+            <h2>Deployment (Google Compute Engine)</h2>
+            <p>コストを最適化(最小化)するため、GCE の無料枠（e2-micro）での運用します。</p>
+            <ol>
+                <li><strong>インスタンス作成:</strong> 無料枠対象リージョン（us-west1, us-central1 など）で <code>e2-micro</code> を作成。</li>
+                <li><strong>ファイルの転送:</strong> <code>unlock_and_save.py</code>, <code>credentials.json</code>, <code>token.json</code> をアップロード。
+                    <div class="note">
+                        <p><small>※ サーバーはGUIがないため、ローカル環境で生成した <code>token.json</code> を転送する必要があります。</small></p>
+                    </div>
+                </li>
+                <li><strong>常時稼働の設定:</strong> <code>systemd</code> ユニットファイルを作成し、サービスを有効化（enable/start）します。</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>Security Considerations</h2>
+            <div class="warning-box" style="background-color: #fff3f3; border-left: 5px solid #d9534f; padding: 15px; margin: 20px 0;">
+                <p><strong><i class="fas fa-exclamation-triangle"></i> 重要：認証情報の保護</strong></p>
+                <p>以下の秘匿情報は、絶対に GitHub 等の公開リポジトリに含めないでください。環境変数の利用を強く推奨します。</p>
+                <ul>
+                    <li><code>credentials.json</code>（アプリの鍵）</li>
+                    <li><code>token.json</code>（アカウントのアクセス権）</li>
+                    <li><code>PDF_PASSWORD</code>（生パスワード）</li>
+                </ul>
+                <p>誤って公開してしまった場合は、速やかに該当のクレデンシャルを無効化し、新しいものを発行してください。</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Video Demo</h2>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/F5ah5UK3LFw" frameborder="0" allowfullscreen title="Unlock PDF Demo" loading="lazy"></iframe>
+            </div>
+        </section>
+
+        <section>
+            <h2>Development Environment</h2>
+            <ul class="tech-stack">
+                <li>Google Compute Engine</li>
+                <li>Python 3.x</li>
+                <li>Gmail & Drive API</li>
+                <li>pypdf</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Precautions & Resources ⚠️</h2>
+            <p>検証中ですので動作にはご注意ください。</p>
+            <p><strong>Google Cloud Platformの料金</strong>にご注意ください。無料枠（e2-micro）の範囲外で運用すると課金が発生します。</p>
+            <p>資料はGitHubで公開しています。個人の学習や小規模なプロジェクトでの再利用を歓迎します。</p>
+            <a href="https://github.com/amekusa03/AskGeminibyemail" class="link-button" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </section>
+        <section>
+            <h2>Best Practices for 24/7 Operation</h2>
+            <div class="tech-stack">
+                <div class="u-margin-b-1">
+                    <h3>1. プロセス管理 (systemd)</h3>
+                    <p>OS起動時やクラッシュ時に自動再起動させるため、<code>systemd</code> でサービス化するのが最も堅牢です。</p>
+<pre><code>[Service]
+Restart=always
+RestartSec=5
+ExecStart=/path/to/venv/bin/python main.py</code></pre>
+                </div>
+
+                <div class="u-margin-b-1">
+                    <h3>2. Pythonコードの堅牢化</h3>
+                    <ul>
+                        <li><strong>例外処理:</strong> メインループを <code>try-except</code> で囲み、一時的なエラーで停止しないようにします。</li>
+                        <li><strong>ロギング:</strong> <code>logging</code> ライブラリを使用し、Google Cloud Logging で遠隔から状態を確認可能にします。</li>
+                    </ul>
+                </div>
+
+                <div class="u-margin-b-1">
+                    <h3>3. インフラの安定化</h3>
+                    <ul>
+                        <li><strong>メモリ監視:</strong> e2-micro はメモリが少なめ（1GB）なため、OOM Killerによる停止に注意が必要です。</li>
+                        <li><strong>静的IP:</strong> 通信を安定させるため、静的外部IPアドレスの予約を推奨します。</li>
+                        <li><strong>自動更新:</strong> GCEのOS構成管理機能でセキュリティパッチ適用を自動化します。</li>
+                    </ul>
+                </div>
+
+                <div class="u-margin-b-1">
+                    <h3>4. コンテナ化の検討</h3>
+                    <p>将来的な環境移行やスケーリングを見据え、Dockerコンテナ化してデプロイすることで、依存関係のトラブルを最小限に抑えられます。</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+        <nav>
+            <a href="../../index.html">← Back to Garden</a>
+        </nav>
+        <footer>
+            <p>Copyright &copy; amekusa All Rights Reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
