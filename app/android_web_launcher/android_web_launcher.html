@@ -12,6 +12,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://amekusa.vercel.app/app/android_web_launcher/android_web_launcher.html">
     <meta name="description" content="Androidの独立したアプリのように振る舞わせる「らん茶」アプリの開発状況です。">
     <title>Android Web Launcher | 雨草の庭</title>
     <script>
@@ -21,6 +22,7 @@
     <link rel="stylesheet" href="../../style.css">
 </head>
 <body class="app-page">
+    <canvas id="rain-canvas"></canvas>
     <div class="container">
         <nav aria-label="ページナビゲーション">
             <a href="../../index.html">← Back to Garden</a>
@@ -42,13 +44,13 @@
                 特定のWebページをAndroidの独立したアプリのように振る舞わせる「らん茶」アプリです。
                 ユーザーは最大5つのプリセット（ドロワー表示）と、無制限のホーム画面ショートカットを管理できます。
                 これにより、特定のWebページを簡単にアクセスできるようになります。<br>
-                また、静岡生まれの「らん茶」という名前は、このランチャーはお茶と同じ静岡生まれです。
+                「らん茶」という名前は、このランチャーがお茶の名産地である静岡で生まれたことに由来しています。
             </p>
         </section>
         <section>
             <h2>Video</h2>
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/1ZIV0SYgC7o" frameborder="0" allowfullscreen title="Android Web Launcher Demo"></iframe>
+                <iframe src="https://www.youtube.com/embed/1ZIV0SYgC7o" style="border:0;" allowfullscreen title="Android Web Launcher Demo"></iframe>
             </div>
         </section>
         <section>
@@ -69,14 +71,16 @@
         <section>
             <h2>Out of Scope</h2>
             <ul>
-                <li>設定された名前をドロワーに表示されることはできませんでした。</li>
-                <li>Nova Launcherでは変更できる事、AQUOS HOMEでは変更できない事は確認しました。</li>
+                <li>ドロワーに任意の名前を表示させる機能は、現状未実装です。</li>
+                <li>ランチャーアプリ依存の挙動があり、Nova Launcherでは変更可能、AQUOS HOMEでは変更不可であることを確認しています。</li>
             </ul>
         </section>
         <section>
             <h2>Resource</h2>
             <p>資料はGitHubで公開しています。個人の学習や小規模なプロジェクトでの再利用を歓迎します。</p>
             <a href="https://github.com/amekusa03/android-web-launcher" class="link-button" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+            <p>APKファイルの試験版です。</p>
+            <a href="rantea.apk" class="link-button" target="_blank" rel="noopener noreferrer">Download APK</a>
         </section>
         </main>
 
@@ -87,5 +91,6 @@
             <p>Copyright &copy; amekusa All Rights Reserved.</p>
         </footer>
     </div>
+    <script src="../../rain.js"></script>
 </body>
 </html>
