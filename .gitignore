@@ -1,3 +1,6 @@
 concept.md
 work/
 doc/
+.code-workspace
+.github/copilot-instructions.md
+*.code-workspace
