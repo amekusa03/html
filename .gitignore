@@ -4,3 +4,5 @@ doc/
 .code-workspace
 .github/copilot-instructions.md
 *.code-workspace
+app/plc/*
+qiita_article_gemini_email.md

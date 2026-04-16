@@ -6,7 +6,7 @@ let width, height, raindrops = [];
 const dpr = window.devicePixelRatio || 1;
 
 // 雨粒の最大数（パフォーマンス調整）
-const MAX_DROPS = 500;
+const MAX_DROPS = 200;
 
 function init() {
     if (!canvas) return; // キャンバス要素が存在しない場合のチェック
