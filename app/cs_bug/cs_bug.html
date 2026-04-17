@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="C#におけるプロパティの実装ミスによる不具合事例と、オブジェクト参照の理解に関する技術レポートです。">
+    <title>C# Bug Report | 雨草の庭</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="app-page">
+    <div class="container">
+        <nav>
+            <a href="../../index.html">← Back to Garden</a>
+        </nav>
+
+        <header>
+            <div class="header-tags u-margin-b-1">
+                <span class="tag">Windows</span>
+                <span class="tag">C#</span>
+            </div>
+            <h1>Bug Report</h1>
+            <p class="u-opacity-8">C# Bug Report</p>
+        </header>
+        <main>
+        <section>
+            <h2>About this Project</h2>
+            <p>
+                C++の経験が豊富なエンジニアがC#のプロパティを実装する際、オブジェクトの参照制御を誤解したことで、イベントが通知されない（通信の受信ができない）不具合が発生した。
+            </p>
+        </section>
+        <section>
+            <h2>Patterns that occurred</h2>
+            <h3>登場クラス</h3>
+            <ul>
+                <li><strong>FromMain:</strong>GUIメイン画面。通信管理インスタンスを保持する。</li>
+                <li><strong>FromEnv:</strong>GUI設定および通信テスト画面。</li>
+                <li><strong>FromCommText:</strong>GUIテキスト通信画面。</li>
+                <li><strong>CommWifi:</strong>Wifi通信管理。送信は非同期スレッド、受信・異常発生はイベントで通知する。</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Workflow</h2>
+            <ul>
+                <li>1. ユーザーはFromMainが起動</li>
+                <li>2. FromMainがCommWifiを生成</li>
+                <li>3. FromMainがFromEnvを生成</li>
+                <li>4. FromMainはFromEnvのコンストラクタとしてCommWifiを渡す</li>
+                <li>5. FromEnvはCommWifiの受信・異常イベントを購読</li>
+                <li>6. ユーザーはFromEnvを用いて通信テストを行い、正常終了を確認</li>
+                <li>7. ユーザーはFromEnvを閉じる</li>
+                <li>8. ユーザーはFromCommTextを開く</li>
+                <li>9. FromMainがFromCommTextを生成</li>
+                <li>10. FromMainはFromCommTextのコンストラクタとしてCommWifiを渡す</li>
+                <li>11. FromCommTextはCommWifiの受信・異常イベントを購読</li>
+                <li>12. ユーザーはFromCommTextで通信開始</li>
+                <li>13. <strong>不具合発生</strong>: 送信は成功するが、イベント（受信通知）が一切来ない。</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Root Cause: Incorrect Property Implementation</h2>
+            <p>
+                原因箇所となったコード（簡略化）は以下の通り。
+            </p>
+            <pre><code class="language-csharp">public CommWifi CommWifi
+{
+    get => new CommWifi(); // アクセスのたびに新しいインスタンスを生成
+}
+</code></pre>
+        </section>
+        <section>
+            <h2>Technical Background</h2>
+            <p>
+                実装者はC++の「実体返し（コピー）」に近いイメージで記述した可能性があるが、
+                C#においてこれは<strong>「アクセスのたびに独立した新しいインスタンスを生成して返す」</strong>動作となる。
+            </p>
+            <ul>
+                <li>`FromEnv` が受け取った `CommWifi` インスタンスと、`FromCommText` が受け取ったインスタンスは別物（参照が異なる）。</li>
+                <li>`FromMain` が実際に通信処理を行っている大元のインスタンスとも異なる。</li>
+                <li>その結果、イベントを購読しても、実際に動いているインスタンスとは別の場所を監視している状態になり、通知が届かない。</li>
+            </ul>
+
+        </section>
+
+        <section>
+            <h2>Conclusion</h2>
+            <p>
+                C#はポインタを明記しないが、`class` は常に参照（ポインタのようなもの）を扱っている。
+                C++エンジニアに対しては、**「classキーワードは常にスマートポインタを扱っているのと同義である」**と認識を合わせることが重要である。
+            </p>
+        </section>
+
+        <section>
+            <h2>Prevention and Review Guidelines</h2>
+            <h3>1. 正しいプロパティの実装（バッキングフィールドの利用）</h3>
+            <p>
+                意図せず新しいインスタンスを生成しないよう、初期化済みの同一インスタンスを返す。
+            </p>
+            <pre><code class="language-csharp">private readonly CommWifi _commWifi = new CommWifi();
+/// &lt;summary&gt;
+/// 常に同一のインスタンス（参照）を返す
+/// &lt;/summary&gt;
+public CommWifi CommWifi => _commWifi;
+</code></pre>
+
+            <h3>2. イベントの解除（メモリリーク防止）</h3>
+            <p>
+                画面を閉じた後も古い画面の購読が残っていると、予期せぬ挙動やメモリリークの原因となる。
+            </p>
+            <pre><code class="language-csharp">
+// FromEnv 内での解除例
+protected override void OnFormClosing(FormClosingEventArgs e)
+{
+    _commWifi.OnDataReceived -= HandleDataReceived; // 購読解除
+    base.OnFormClosing(e);
+}
+</code></pre>
+
+            <h3>3. レビューチェックリストへの追加</h3>
+            <ul>
+                <li><strong>プロパティの副作用確認</strong>:get アクセサの中で new を行っていないか？（計算済みプロパティ以外での生成は避ける）</li>
+                <li><strong>同一性の確認</strong>:複数のクラスで共有するオブジェクトが、意図した通りに同じ参照（`object.ReferenceEquals`）を指しているか。</li>
+                <li><strong>ライフサイクル管理</strong>: `+=` で登録したイベントは、オブジェクト破棄時（DisposeやClosing）に `-=` で解除されているか。</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Notes</h2>
+            <p>
+                アプリの動作が「なんとなく重い」と感じたり、
+                特定画面を開くたびに挙動が不安定になる場合、
+                <strong>不用意なインスタンス生成（コピー）</strong>が行われていないか、
+                あるいは<strong>イベントの多重登録</strong>が発生していないかを疑うことが、
+                不具合の早期発見につながることもある。
+            </p>
+        </section>
+
+        <section>
+            <h2>Analysis</h2>
+            <ul>
+                <li>
+                    <h3>C#の自動実装プロパティ `public CommWifi CommWifi { get; } = new();` を使った場合の挙動について</h3>
+                    <h4>プロパティの実装が「常に new」している場合</h4>
+                    <p>報告書のコード例では `get => new CommWifi();` となっていますが、もし以下のような実装になっていた場合、アクセスするたびに新しいインスタンスが生成される。</p>
+                    <p>アクセスするたびに新しいインスタンスが作られる（バグの原因になりやすい例）</p>
+                    <pre><code class="language-csharp">
+public CommWifi CommWifi => new CommWifi();
+                    </code></pre>
+                    <p>これでは、FromEnv と FromCommText でそれぞれ別のインスタンスを操作していることになります。</p>
+                    <h4>コード改善案</h4>
+                    <p>不具合の再発を防ぎ、C#らしい安全な設計にする。</p>
+                    <pre><code class="language-csharp">
+private readonly CommWifi _commWifi = new CommWifi();
+
+// 常に同じインスタンス（参照）を返す
+public CommWifi CommWifi => _commWifi;
+                    </code></pre>
+                </li>
+                <li>
+                    <h3>イベントハンドラの解除を漏らさないための、IDisposableパターンやWeak Eventパターンについて</h3>
+                    <h4>イベントの解除（メモリリークと予期せぬ動作の防止）</h4>
+                    <p>フローにおいて、FromEnv を閉じた後に FromCommText を開いています。C#のイベントは、解除を忘れるとインスタンスがGC（ガベージコレクション）されず、メモリリークや予期せぬ挙動の原因になります。</p>
+                    <pre><code class="language-csharp">
+// FromEnv 内での適切な解除
+protected override void OnFormClosing(FormClosingEventArgs e)
+{
+    // イベント購読を解除しないと、FormEnvがメモリに残り続ける可能性がある
+    _commWifi.OnDataReceived -= HandleDataReceived;
+    base.OnFormClosing(e);
+}
+                    </code></pre>
+                </li>
+                <li>
+                    <h4>コードレビューのチェックポイント（追加案）</h4>
+                    <p>「コピーの理解」に加え、以下の観点をチェックリストに加えることを推奨。</p>
+                    <h5>プロパティでの副作用:</h5>
+                    <p>get アクセサの中で new を行っていないか？（計算済みプロパティ以外でのインスタンス生成は避ける）</p>
+                    <h5>イベントのライフサイクル:</h5>
+                    <p>+= で登録したイベントは、オブジェクト破棄時（Dispose や Closing）に -= で解除されているか？</p>
+                    <h5>同一性の確認:</h5>
+                    <p>デバッグ時に object.ReferenceEquals(obj1, obj2) を使用して、意図した通りに同じインスタンスを指しているか確認する習慣があるか？</p>
+                </li>
+            </ul>
+            <h4>結論</h4>
+            <p>C#はポインタを隠蔽していますが、内部的には「参照（ポインタのようなもの）」を扱っています。C++エンジニアに対しては、
+                <strong>「classキーワードは常にポインタ（スマートポインタ）を扱っているのと同義である」</strong>と説明すると、理解がスムーズに進むことが多い。</p>
+            <p>今回のケースは、言語仕様の差異が設計意図を歪めてしまった好例であり、ナレッジ共有は非常に価値が高い。</p>
+        </section>
+        </main>
+
+        <nav>
+            <a href="../../index.html">← Back to Garden</a>
+        </nav>
+        <footer>
+            <p>Copyright &copy; amekusa All Rights Reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

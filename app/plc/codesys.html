@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+     "http://www.w3.org/TR/html4/transitional.dtd">
+<html>
+<head>
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <title>CODESYSを使用してみて</title>
+  <meta name="generator" content="LibreOffice 25.8.6.2 (Linux)"/>
+  <meta name="author" content="t_kusawake"/>
+  <meta name="created" content="2022-05-07T00:15:16"/>
+  <meta name="changedby" content="t_kusawake"/>
+  <meta name="changed" content="2022-05-19T04:49:07"/>
+  <meta name="AppVersion" content="16.0000"/>
+  <meta name="Notes" content="1"/>
+  <meta name="PresentationFormat" content="ワイド画面"/>
+  <meta name="Slides" content="14"/>
+</head>
+<body>
+<h1>CODESYS</h1>
+  <h1 style="page-break-before:always; ">概要</h1>
+<ul>
+<li>簡易プログラムをシミュレーションした。</li>
+<li>現状では、不明な点、正確ではない点が多々。</li>
+<li>PLCエンジニアは、スキルアップの要素がありそう。</li>
+</ul>
+<h1 style="page-break-before:always; ">ソフトPLCの定義（前提）</h1>
+<ul>
+<li>ソフトPLCまたはソフトウェアPLCとは、
+制御ロジックソフトウェアの一部または全部がPLCハードウェアから切り離されており、
+ソフトウェアが制御ロジックワークロードの実行を異なるハードウェア上で行うことを可能にする
+制御システムのことです。
+また、仮想化PLCとは、仮想化されたハイパーバイザーの上のコンピューティング環境に配置されたソフトPLCのことです。</li>
+</ul>
+<p><b>対して
+ハードウェアPLC</b></p>
+<p>三菱電機のQシリーズ、横河電機のFA-M3やオムロンのNJは、
+ハードウェア的にもソフトウェア的にも独自仕様となっている。
+これらをソフトウェアPLCに対し、ハードウェアPLCという。</p>
+<h1 style="page-break-before:always; ">CODESYSとは</h1>
+<ul>
+<li>CODESYSは国際標準規格 IEC 61131-3に準拠した、
+Software PLC / -Motion / -HMIです。</li>
+<li>PLC, Motion, HMIの全てをシームレスに開発可能なCODESYS統合開発環境、
+いかなるプラットフォームにもアダプテーション可能なCODESYSランタイムにより、
+全世界に400社以上のOEM顧客、数千社のエンドユーザーでの稼働実績を有します。</li>
+</ul>
+<h1 style="page-break-before:always; ">IEC 61131-3とは</h1>
+<ul>
+<li>IEC 61131-3とは、国際電気標準会議（IEC）が発行した
+PLC用標準規格 IEC 61131シリーズの第3部（全10部）である。
+1993年12月に初版が発行され、
+現行版は2013年2月に改訂された第3版である。
+また、それを元にJISでもJIS B 3501が制定されている。</li>
+<li>第3部はプログラミング言語仕様を定義したものであり、
+PLCの基本的なソフトウェア・アーキテクチャとそこで利用できる以下の5種類のプログラム言語を定義したものである。</li>
+</ul>
+<h1 style="page-break-before:always; ">定義されたプログラム言語</h1>
+<ul>
+  <li>
+    ラダー・ダイアグラム（LD言語）<br>
+    <a href="ladder.png" target="_blank" rel="noopener noreferrer"><img src="ladder.png" alt="ラダー・ダイアグラム（LD言語）のサンプル画像" loading="lazy" class="img-responsive-50"></a>
+  </li>
+  <li>
+    ファンクション・ブロック・ダイアグラム（FBD言語）<br>
+    <a href="function.png" target="_blank" rel="noopener noreferrer"><img src="function.png" alt="ファンクション・ブロック・ダイアグラム（FBD言語）のサンプル画像" loading="lazy" class="img-responsive-50"></a>
+  </li>
+  <li>
+    ストラクチャード・テキスト（ST言語）<br>
+    <a href="stract.png" target="_blank" rel="noopener noreferrer"><img src="stract.png" alt="ストラクチャード・テキスト（ST言語）のサンプル画像" loading="lazy" class="img-responsive-50"></a>
+  </li>
+  <li>
+    インストラクション・リスト（IL言語）<br>
+    <a href="insto.png" target="_blank" rel="noopener noreferrer"><img src="insto.png" alt="インストラクション・リスト（IL言語）のサンプル画像" loading="lazy" class="img-responsive-50"></a>
+  </li>
+</ul>
+<h1 style="page-break-before:always; ">CODESYS統合開発環境</h1>
+<p>オープン化を実現するオールインワン開発環境</p>
+<p>PLCプログラム、Motion制御、HMI作成、フィールドバス設定といった様々な
+プログラミングや設定をオールインワンで行うことが可能です。
+従来のようにPLC、Motionコントローラー、HMIといった各デバイスに
+それぞれ提供されるツールを習熟する必要がありません。</p>
+<p>オールインワンでシームレスに開発できることで開発効率が向上します。</p>
+<p>CODESYSを利用することで国際標準規格に
+準拠したプログラミングが可能となり、
+オープン化も同時に実現することが可能となり、
+ソフトウェア資産の再利用性も高まります。</p>
+<p>このCODESYS開発環境は全世界のCODESYSユーザーが無償で利用可能です。</p>
+<h1 style="page-break-before:always; ">開発環境の起動から
+新規プロジェクトを作成</h1>
+<ul>
+<li>新規プロジェクトを選択</li>
+</ul>
+<ul>
+<li>プロジェクト形態選択、プロジェクト名設定
+ここでは標準プロジェクトを選択</li>
+</ul>
+<h1 style="page-break-before:always; ">デバイスと言語設定</h1>
+<ul>
+<li>デバイスを選択
+ここではControlWinV3を選択</li>
+</ul>
+<ul>
+<li>言語を選択
+シーケンシャルファンクションチャート(SFC)を選択</li>
+</ul>
+<h1 style="page-break-before:always; ">プログラミング</h1>
+<ul>
+<li>SFCを作成</li>
+<li>GUI画面も作成</li>
+</ul>
+<p>SFC</p>
+<p>処理と開始
+条件を設定</p>
+<p>条件</p>
+<p>条件</p>
+<p>処理
+ブロック</p>
+<p>処理
+ブロック</p>
+<p>処理
+ブロック</p>
+<p>タッチパネルのような画面を作成</p>
+<ul>
+<li>処理ブロックをIL(ラダー)で作成</li>
+</ul>
+<p>初期化処理
+（なし）</p>
+<p>処理１
+（ランプを消す）</p>
+<p>処理２
+（ランプを点灯する）</p>
+<h1 style="page-break-before:always; ">シミュレーションデバッグ実行</h1>
+<ul>
+<li>シミュレーションを開始するには、
+開発環境でログイン実行し、
+シミュレーション開始</li>
+</ul>
+<p>処理１のランプ消灯が実行</p>
+<p>処理2のランプ点灯が実行</p>
+<ul>
+<li>スタートボタンを押すと処理２が実行</li>
+<li>ランプが点灯</li>
+</ul>
+<p>ランプ点灯</p>
+<p>Start押下</p>
+<h1 style="page-break-before:always; ">全プログラムをラダーから作成</h1>
+<ul>
+<li>新たなプロジェクトを作成</li>
+<li>今度はラダーロジックダイヤグラム(LD)を選択</li>
+</ul>
+<h1 style="page-break-before:always; ">ラダーのサンプル実行結果</h1>
+<ul>
+<li>SFCは使用せず、すべてラダーで作成し、
+シミュレーション</li>
+</ul>
+<ul>
+<li>前回と同様に
+ボタンを押下するとランプが点灯</li>
+</ul>
+<p>ランプ点灯が実行</p>
+<p>Start押下</p>
+<p>ランプ点灯</p>
+<p>補足：上記はファンクションブロックを多用していますが、
+多くのハードウェアPLC制御ではa/b接点、コイルなどを利用します。</p>
+<h1 style="page-break-before:always; ">まとめ、注意点など</h1>
+<ul>
+<li>V3.5 SP15からV3.5 SP18へUpdateすると、ラダーにビルドエラーが発生。
+SPが異なるとプロジェクトに互換性がない事が発生した。</li>
+<li>使用にはユーザー登録(メールアドレス登録)が必要。</li>
+<li>Code Meterが標準インストールされる
+ライセンス認証ソフトウェア、
+アンインストールし、プログラミングとシミュレーションが動作する事が確認した。</li>
+<li>無料でラダー等、プログラミングからシミュレーション可能
+すぐに業務の開発環境が変わる事はないと思うが、
+ラダー学習用にも。</li>
+</ul>
+</body>
+</html>
