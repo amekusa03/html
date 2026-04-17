@@ -141,7 +141,7 @@ protected override void OnFormClosing(FormClosingEventArgs e)
                 <li>
                     <h3>C#の自動実装プロパティ `public CommWifi CommWifi { get; } = new();` を使った場合の挙動について</h3>
                     <h4>プロパティの実装が「常に new」している場合</h4>
-                    <p>報告書のコード例では `get => new CommWifi();` となっていますが、もし以下のような実装になっていた場合、アクセスするたびに新しいインスタンスが生成される。</p>
+                    <p>不具合のコード例では `get => new CommWifi();` となっていますが、もし以下のような実装になっていた場合、アクセスするたびに新しいインスタンスが生成される。</p>
                     <p>アクセスするたびに新しいインスタンスが作られる（バグの原因になりやすい例）</p>
                     <pre><code class="language-csharp">
 public CommWifi CommWifi => new CommWifi();

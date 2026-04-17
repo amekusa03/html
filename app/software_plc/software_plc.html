@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CODESYSを使用したソフトPLCの開発・シミュレーションに関する技術レポートです。">
+    <title>Software PLC (CODESYS) | 雨草の庭</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="app-page">
+    <div class="container">
+        <nav>
+            <a href="../../index.html">← Back to Garden</a>
+        </nav>
+
+        <header>
+            <div class="header-tags u-margin-b-1">
+                <span class="tag">PLC</span>
+                <span class="tag">CODESYS</span>
+                <span class="tag">IEC 61131-3</span>
+            </div>
+            <h1>Software PLC (CODESYS)</h1>
+            <p class="u-opacity-8">CODESYSを使用した制御シミュレーションと学習記録</p>
+            <span class="tag" style="background: #e2e8f0; color: #475569;">WIP / 作成中</span>
+        </header>
+
+        <main>
+            <section>
+                <h2>About this Project</h2>
+                <p>
+                    国際標準規格 IEC 61131-3 に準拠したソフトPLC開発環境「CODESYS」を用いて、簡易的なプログラムの作成とシミュレーションを行いました。
+                    (※作成中のため、内容に一部不正確な点が含まれる可能性があります)
+                </p>
+                <ul>
+                    <li>簡易プログラムのシミュレーション実行</li>
+                    <li>PLCエンジニアのスキルアップ要素の探索</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Definition: Soft PLC</h2>
+                <p>
+                    <strong>ソフトPLC (Software PLC):</strong> 制御ロジックが専用ハードウェアから切り離され、汎用的なハードウェアや仮想化環境（ハイパーバイザー等）上で実行可能な制御システムです。
+                </p>
+                <p>
+                    対して、三菱電機 Qシリーズやオムロン NJなどは、ハード・ソフト共に独自仕様となっており、これらは<strong>ハードウェアPLC</strong>と呼ばれます。
+                </p>
+            </section>
+
+            <section>
+                <h2>What is CODESYS?</h2>
+                <p>
+                    IEC 61131-3 に準拠した、PLC / Motion / HMI を統合して開発できるソフトウェアです。
+                    全世界で400社以上のOEM顧客、数千社のエンドユーザーでの稼働実績があります。
+                </p>
+                <ul>
+                    <li><strong>統合開発環境:</strong> PLC、Motion、HMIの設定をオールインワンで実施可能。</li>
+                    <li><strong>資産の再利用:</strong> 国際標準規格に準拠しているため、ソフトウェア資産のポータビリティが高い。</li>
+                    <li><strong>無償利用:</strong> 開発環境は全世界のユーザーが無償で利用可能。</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Programming Languages</h2>
+                <p>IEC 61131-3 で定義されている主要な言語を用いてプログラミングが可能です。</p>
+                <div class="project-grid">
+                    <article class="project-card">
+                        <h3>LD (Ladder Diagram)</h3>
+                        <img src="ladder.png" alt="ラダー・ダイアグラム" loading="lazy">
+                    </article>
+                    <article class="project-card">
+                        <h3>FBD (Function Block Diagram)</h3>
+                        <img src="function.png" alt="ファンクション・ブロック・ダイアグラム" loading="lazy">
+                    </article>
+                    <article class="project-card">
+                        <h3>ST (Structured Text)</h3>
+                        <img src="stract.png" alt="ストラクチャード・テキスト" loading="lazy">
+                    </article>
+                    <article class="project-card">
+                        <h3>IL (Instruction List)</h3>
+                        <img src="insto.png" alt="インストラクション・リスト" loading="lazy">
+                    </article>
+                </div>
+            </section>
+
+            <section>
+                <h2>Workflow & Simulation</h2>
+                <h3>1. プロジェクト作成と設定</h3>
+                <p>デバイス（ここでは <code>ControlWinV3</code>）と使用言語（<code>SFC</code> 等）を選択し、プロジェクトを開始します。</p>
+                
+                <h3>2. SFC (Sequential Function Chart) の作成</h3>
+                <p>処理の流れと遷移条件を視覚的に配置し、各処理ブロックの中身を記述します。</p>
+                
+                <h3>3. HMI (GUI) の作成</h3>
+                <p>タッチパネルのような操作画面を開発環境内で作成し、変数と紐付けます。</p>
+
+                <h3>4. シミュレーション実行</h3>
+                <p>ログイン実行することで、実機がなくてもPC上でロジックと画面の連動を確認できます。ボタン押下でランプが点灯する等の基本的な動作デバッグが可能です。</p>
+            </section>
+
+            <section>
+                <h2>Summary & Notes</h2>
+                <div class="info-box">
+                    <ul>
+                        <li><strong>互換性の注意:</strong> 開発環境のバージョン（Service Pack）が変わると、プロジェクトに互換性がなくなる場合があります。</li>
+                        <li><strong>ライセンス:</strong> 実行にはユーザー登録が必要です。シミュレーション自体は Code Meter のアンインストール後も動作することを確認済みです。</li>
+                        <li><strong>学習用途:</strong> 実機を用意せずとも、ラダーや最新のST言語などの学習を始められるため、非常に有用な環境です。</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <nav>
+            <a href="../../index.html">← Back to Garden</a>
+        </nav>
+        <footer>
+            <p>Copyright &copy; amekusa All Rights Reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
