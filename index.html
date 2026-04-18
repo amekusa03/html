@@ -67,7 +67,7 @@
                         <h3>Software Engineering and Me</h3>
                         <span class="tag" style="display:none">GitHub</span>
                         <img src="app/app_detail/unnamed.png" alt="Restless engineer" loading="lazy">
-                        <p><a href="app/app_detail/app_detail.html">詳細 →</a></p>
+                        <p><a href="app/app_detail/app_detail.html" aria-label="Software Engineering and Me の詳細を見る">詳細 →</a></p>
                     </article>
 
                     <article class="project-card">
@@ -75,7 +75,7 @@
                         <span class="tag" style="display:none">Ubuntu</span>
                         <!-- <p>古いPCをアップサイクルし、Linux環境で再活用するための技術ドキュメントです。</p> -->
                             <img src="app/ubuntu/Ubuntu_PC_Upcycling.png" alt="Ubuntu Guide" loading="lazy">
-                        <p><a href="app/ubuntu/ubuntu.html">詳細 →</a></p>
+                        <p><a href="app/ubuntu/ubuntu.html" aria-label="Ubuntu 導入ガイドの詳細を見る">詳細 →</a></p>
                     </article>
 
                     <article class="project-card">
@@ -83,7 +83,7 @@
                         <span class="tag" style="display:none">Avalonia UI</span><span class="tag" style="display:none">Ubuntu</span>
                         <!-- <p>C#とAvalonia UIを使用した、デスクトップアプリ開発の学習プロジェクトです。</p> -->
                         <img src="https://img.youtube.com/vi/dhkjU1KkbTw/hqdefault.jpg" alt="Avalonia UI Learning" loading="lazy">
-                        <p><a href="app/avalonia_ui/avalonia_ui.html">詳細 →</a></p>
+                        <p><a href="app/avalonia_ui/avalonia_ui.html" aria-label="Avalonia UI & MVVM の詳細を見る">詳細 →</a></p>
                     </article>
 
                     <article class="project-card">
@@ -91,7 +91,7 @@
                         <span class="tag" style="display:none">Python</span>
                         <!-- <p>Pythonを使用してローカルHTMLと画像を解析し、Bloggerへ自動投稿するツールです。</p> -->
                             <img src="https://img.youtube.com/vi/gFgYCVHIfW0/hqdefault.jpg" alt="HTML to Blogger" loading="lazy">
-                        <p><a href="app/html_to_blogger/html_to_blogger.html">詳細 →</a></p>
+                        <p><a href="app/html_to_blogger/html_to_blogger.html" aria-label="HTML to Blogger Python の詳細を見る">詳細 →</a></p>
                     </article>
 
                     <article class="project-card">
@@ -99,7 +99,7 @@
                         <span class="tag" style="display:none">ESP32</span><span class="tag" style="display:none">Wokwi</span>
                         <!-- <p>ESP32とWokwiシミュレータを使用した、レトロなレーシングゲームの開発プロジェクトです。</p> -->
                         <img src="https://img.youtube.com/vi/FJdXAT3jsQo/hqdefault.jpg" alt="ESP32 Racing Game" loading="lazy">
-                        <p><a href="app/esp32_racing_game/esp32_racing_game.html">詳細 →</a></p>
+                        <p><a href="app/esp32_racing_game/esp32_racing_game.html" aria-label="ESP32 Racing Game の詳細を見る">詳細 →</a></p>
                     </article>
 
                     <article class="project-card">
@@ -107,7 +107,7 @@
                         <span class="tag" style="display:none">Qt/QML</span><span class="tag" style="display:none">C/C++</span>
                         <!-- <p>Qtプロジェクトを簡単に起動するためのツールです。プロジェクトのビルドや実行をワンクリックで行えるようにします。</p>    -->
                         <img src="https://img.youtube.com/vi/mteT0aFFLCU/hqdefault.jpg" alt="Qt Project Launcher" loading="lazy">
-                        <p><a href="app/qt_project_launcher/qt_project_launcher.html">詳細 →</a></p>
+                        <p><a href="app/qt_project_launcher/qt_project_launcher.html" aria-label="Qt Project Launcher の詳細を見る">詳細 →</a></p>
                     </article>
 
                     <article class="project-card">
@@ -213,7 +213,7 @@
                             <span class="tag" style="display:none">PLC</span>
                             <span class="tag" style="display:none">CODESYS</span>
                         </div>
-                        <img src="app/software_plc/ladder.png" alt="Software PLC" loading="lazy">
+                        <img src="https://img.youtube.com/vi/dAOZI4mYODI/hqdefault.jpg" alt="Software PLC" loading="lazy">
                         <p><a href="app/software_plc/software_plc.html">(作成中)詳細 →</a></p>
                     </article>
                     <article class="current-project-card">
@@ -301,9 +301,9 @@
         const searchWord = (mapping[keyword] || keyword).toLowerCase();
         const allArticles = Array.from(document.querySelectorAll('article'));
 
-        // タイトル(h3)またはタグ(.tag)にキーワードが含まれるものをすべて抽出
+        // タイトル(h3)またはタグ(.tag)にキーワードが「部分一致」または「完全一致」するものを抽出
         const matchedCards = allArticles.filter(card => {
-          const title = card.querySelector('h3')?.textContent.toLowerCase() || "";
+          const title = (card.querySelector('h3')?.textContent || "").toLowerCase();
           // タグ要素が存在する場合のみ取得
           const tags = Array.from(card.querySelectorAll('.tag')).map(t => t.textContent.toLowerCase());
           return title.includes(searchWord) || tags.some(tag => tag.includes(searchWord));
