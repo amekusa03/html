@@ -211,6 +211,74 @@ footer { text-align: center; opacity: 0.6; }
 .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin: 1.5rem 0; background: #000; }
 .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
+/* --- Mobile Video Frame --- */
+.mini-video-container {
+    width: 130px; /* 端末の横幅 */
+    max-width: calc(100% - 40px);
+    margin: 3rem auto;
+    background: #1a1a1a; /* 端末のボディカラー */
+    border: 12px solid #1a1a1a;
+    border-top-width: 35px; /* 上部ベゼル（ノッチ用） */
+    border-bottom-width: 35px; /* 下部ベゼル */
+    border-radius: 45px; /* スマホらしい大きな角丸 */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mini-video-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* ダークモードでの視認性向上 */
+@media (prefers-color-scheme: dark) {
+    .mini-video-container {
+        border-color: #2a2a2a; /* 背景より少し明るい色に変更 */
+        background: #2a2a2a;
+        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6);
+    }
+    .mini-video-container::before,
+    .mini-video-container::after {
+        background: #444; /* パーツの視認性も調整 */
+    }
+}
+
+/* 上部のノッチ/スピーカー */
+.mini-video-container::before {
+    content: '';
+    position: absolute;
+    top: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 45px;
+    height: 5px;
+    background: #333;
+    border-radius: 10px;
+}
+
+/* 下部のジェスチャーバー */
+.mini-video-container::after {
+    content: '';
+    position: absolute;
+    bottom: -22px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: #333;
+    border-radius: 10px;
+}
+
+.mini-video-container iframe {
+    display: block;
+    width: 100%;
+    aspect-ratio: 9 / 16; /* 画面の比率 */
+    border-radius: 6px; /* 液晶画面の少しの角丸 */
+    background: #000;
+    border: none;
+}
+
 .photo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
 .photo-item { aspect-ratio: 1/1; background: #eee; border-radius: 8px; overflow: hidden; position: relative; }
 .photo-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
@@ -353,3 +421,55 @@ th { background: rgba(74, 103, 65, 0.1); color: var(--accent-green); font-size: 
 .project-modal-card img { width: 100%; height: auto; border-radius: 8px; margin: 1rem 0; }
 .modal-item-separator { border-top: 1px solid var(--border-color); margin: 2rem 0; }
 .modal-item-wrapper:first-child .modal-item-separator { display: none; }
+.image-container {
+    position: relative;
+    max-width: 1080px;
+    margin: 2rem auto;
+    padding-bottom: 2rem; /* 下側の重なり部分のための余白 */
+}
+
+.image-back {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.image-front {
+    width: 40%; /* 前面画像のサイズを少し調整 */
+    height: auto;
+    position: absolute;
+    bottom: -10px; /* 少しはみ出させて立体感を出す */
+    right: -10px;
+    z-index: 1;
+    border: 3px solid #fff; /* 白枠で強調 */
+    border-radius: 8px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: zoom-in;
+}
+
+.image-front:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+    z-index: 10;
+}
+
+.image-front img {
+    width: 100%;
+    display: block;
+}
+
+.text-content {
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    pointer-events: none;
+}

@@ -29,11 +29,11 @@
                 <h2>About this Project</h2>
                 <p>
                     国際標準規格 IEC 61131-3 に準拠したソフトPLC開発環境「CODESYS」を用いて、簡易的なプログラムの作成とシミュレーションを行いました。
-                    (※作成中のため、内容に一部不正確な点が含まれる可能性があります)
+                    (※旧Versionで作成中のため、内容に一部不正確な点が含まれる可能性があります)
                 </p>
                 <ul>
                     <li>簡易プログラムのシミュレーション実行</li>
-                    <li>PLCエンジニアのスキルアップ要素の探索</li>
+                    <li>ソフトウェアPLCの動作確認</li>
                 </ul>
             </section>
         <section>
@@ -91,16 +91,62 @@
 
             <section>
                 <h2>Workflow & Simulation</h2>
+                <div class="image-container">
+                    <!-- 全体画面を表示 -->
+                    <img src="0start.png" alt="CODESYS 全体画面" class="image-back" />
+                    <div class="text-content">
+                        標準プロジェクトを選択
+                    </div>
+                </div>
                 <h3>1. プロジェクト作成と設定</h3>
-                <p>デバイス（ここでは <code>ControlWinV3</code>）と使用言語（<code>SFC</code> 等）を選択し、プロジェクトを開始します。</p>
-                
-                <h3>2. SFC (Sequential Function Chart) の作成</h3>
+                <div class="image-container">
+                    <!-- 全体画面を表示 -->
+                    <img src="1new_proj.png" alt="CODESYS 全体画面" class="image-back" />
+                    <div class="image-front">
+                        <!-- 重要な箇所をクローズアップ表示 -->
+                        <img src="1-1new_proj.png" alt="プロジェクト設定の重要箇所" />
+                        <div class="text-content">
+                            「新規プロジェクト」を選択
+                        </div>
+                    </div>
+                </div>
+                <h3>2. テンプレート設定</h3>
+                標準プロジェクトを選択
+                <div class="image-container">
+                    <!-- 全体画面を表示 -->
+                    <img src="2select_Temp.png" alt="CODESYS 全体画面" class="image-back" />
+                    <div class="text-content">
+                        標準プロジェクトを選択
+                    </div>
+                </div>
+                <h3>3. デバイス設定</h3>
+                この動作確認ではControlWinV3を選択
+                <div class="image-container">
+                    <!-- 全体画面を表示 -->
+                    <img src="3select_dev.png" alt="CODESYS 全体画面" class="image-back" />
+                    <div class="text-content">
+                        ControlWinV3を選択
+                    </div>
+                </div>
+                <h3>4. 言語を選択</h3>
+                この動作確認ではシーケンシャルファンクションチャート(SFC)を選択
+                <div class="image-container">
+                    <!-- 全体画面を表示 -->
+                    <img src="4select_lang.png" alt="CODESYS 全体画面" class="image-back" />
+                    <div class="text-content">
+                        シーケンシャルファンクションチャート(SFC)を選択
+                    </div>
+                </div>
+
+                <h3>5. SFC (Sequential Function Chart) の作成</h3>
                 <p>処理の流れと遷移条件を視覚的に配置し、各処理ブロックの中身を記述します。</p>
+                <div class="image-container">
+                </div>
                 
-                <h3>3. HMI (GUI) の作成</h3>
+                <h3>6. HMI (GUI) の作成</h3>
                 <p>タッチパネルのような操作画面を開発環境内で作成し、変数と紐付けます。</p>
 
-                <h3>4. シミュレーション実行</h3>
+                <h3>7. シミュレーション実行</h3>
                 <p>ログイン実行することで、実機がなくてもPC上でロジックと画面の連動を確認できます。ボタン押下でランプが点灯する等の基本的な動作デバッグが可能です。</p>
             </section>
 
