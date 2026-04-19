@@ -23,6 +23,14 @@
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
     <link rel="stylesheet" href="style.css">
+    <style>
+      /* YouTubeサムネイルの上下の黒帯を隠すための設定 */
+      article img[src*="youtube.com"] {
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        width: 100%;
+      }
+    </style>
 </head>
 <body class="home-page">
     <canvas id="rain-canvas"></canvas>
@@ -71,23 +79,22 @@
 
                     <article class="project-card" data-tags="ubuntu">
                         <h3>Ubuntu 導入ガイド</h3>
-                        <!-- <p>古いPCをアップサイクルし、Linux環境で再活用するための技術ドキュメントです。</p> -->
+                        <span class="tag" style="display:none">Ubuntu</span><span class="tag" style="display:none">Linux</span><span class="tag" style="display:none">Bug</span>
                             <img src="app/ubuntu/Ubuntu_PC_Upcycling.png" alt="Ubuntu Guide" loading="lazy">
                         <p><a href="app/ubuntu/ubuntu.html" aria-label="Ubuntu 導入ガイドの詳細を見る">詳細 →</a></p>
                     </article>
 
                     <article class="project-card">
                         <h3>Avalonia UI & MVVM</h3>
-                        <span class="tag" style="display:none">Avalonia UI</span><span class="tag" style="display:none">Ubuntu</span>
+                        <span class="tag" style="display:none">Avalonia</span><span class="tag" style="display:none">C#</span><span class="tag" style="display:none">Desktop</span>
                         <!-- <p>C#とAvalonia UIを使用した、デスクトップアプリ開発の学習プロジェクトです。</p> -->
                         <img src="https://img.youtube.com/vi/dhkjU1KkbTw/hqdefault.jpg" alt="Avalonia UI Learning" loading="lazy">
                         <p><a href="app/avalonia_ui/avalonia_ui.html" aria-label="Avalonia UI & MVVM の詳細を見る">詳細 →</a></p>
                     </article>
 
-
                     <article class="project-card">
                         <h3>ESP32 Racing Game</h3>
-                        <span class="tag" style="display:none">ESP32</span><span class="tag" style="display:none">Wokwi</span>
+                        <span class="tag" style="display:none">ESP32</span><span class="tag" style="display:none">Arduino</span><span class="tag" style="display:none">C++</span><span class="tag" style="display:none">Embedded</span>
                         <!-- <p>ESP32とWokwiシミュレータを使用した、レトロなレーシングゲームの開発プロジェクトです。</p> -->
                         <img src="https://img.youtube.com/vi/FJdXAT3jsQo/hqdefault.jpg" alt="ESP32 Racing Game" loading="lazy">
                         <p><a href="app/esp32_racing_game/esp32_racing_game.html" aria-label="ESP32 Racing Game の詳細を見る">詳細 →</a></p>
@@ -95,7 +102,7 @@
 
                     <article class="project-card">
                         <h3>Qt Project Launcher</h3>
-                        <span class="tag" style="display:none">Qt/QML</span><span class="tag" style="display:none">C/C++</span>
+                        <span class="tag" style="display:none">Qt</span><span class="tag" style="display:none">C++</span><span class="tag" style="display:none">Desktop</span>
                         <!-- <p>Qtプロジェクトを簡単に起動するためのツールです。プロジェクトのビルドや実行をワンクリックで行えるようにします。</p>    -->
                         <img src="https://img.youtube.com/vi/mteT0aFFLCU/hqdefault.jpg" alt="Qt Project Launcher" loading="lazy">
                         <p><a href="app/qt_project_launcher/qt_project_launcher.html" aria-label="Qt Project Launcher の詳細を見る">詳細 →</a></p>
@@ -103,50 +110,55 @@
 
                     <article class="project-card">
                         <h3>PC Audio Application</h3>
-                        <span class="tag" style="display:none">PCAudio</span><span class="tag" style="display:none">Ubuntu</span>
+                        <span class="tag" style="display:none">Audio</span><span class="tag" style="display:none">Desktop</span>
                          <img src="https://img.youtube.com/vi/mHtCYgG4A4Y/hqdefault.jpg" alt="PC Audio Application" loading="lazy">
                         <p><a href="app/my_pc_audio_appli/my_pc_audio_appli.html">詳細 →</a></p>
                     </article>
 
                     <article class="project-card">
                         <h3>Android web launcher</h3>
-                        <span class="tag" style="display:none">Kotlin</span>
+                        <span class="tag" style="display:none">Android</span><span class="tag" style="display:none">Kotlin</span><span class="tag" style="display:none">Mobile</span>
                         <img src="https://img.youtube.com/vi/1ZIV0SYgC7o/hqdefault.jpg" alt="Android Web Launcher" loading="lazy">
                         <p><a href="app/android_web_launcher/android_web_launcher.html">詳細 →</a></p>
                     </article>
 
                     <article class="project-card">
                         <h3>Ask Gemini by email</h3>
-                        <span class="tag" style="display:none">Google Apps Script</span><span class="tag" style="display:none">GmailApp</span><span class="tag" style="display:none">Google Cloud Platform</span><span class="tag" style="display:none">UrlFetchApp</span>
+                        <span class="tag" style="display:none">Google Cloud</span><span class="tag" style="display:none">GAS</span>
                         <img src="https://img.youtube.com/vi/rSXiyFyoC2w/hqdefault.jpg" alt="Ask Gemini by email" loading="lazy">
                         <p><a href="app/ask_gemini_by_email/ask_gemini_by_email.html">詳細 →</a></p>
                     </article>
                     <article class="project-card">
                         <h3>Bug Report</h3>
-                        <span class="tag" style="display:none">Bug Report</span><span class="tag" style="display:none">bug</span><span class="tag" style="display:none">windows</span>
+                        <span class="tag" style="display:none">Bug</span><span class="tag" style="display:none">Windows</span>
                         <img src="https://img.youtube.com/vi/V43PmeQKoSA/hqdefault.jpg" alt="Bug Report" loading="lazy">
                         <p><a href="app/bug_report/bug_report.html">詳細 →</a></p>
                     </article>
                     <article class="project-card">
                         <h3>Unlock PDF</h3>
-                        <span class="tag" style="display:none">Google Cloud</span><span class="tag" style="display:none">Google Compute Engine</span><span class="tag" style="display:none">Python</span>
+                        <span class="tag" style="display:none">Python</span><span class="tag" style="display:none">Google Cloud</span>
                         <img src="https://img.youtube.com/vi/F5ah5UK3LFw/hqdefault.jpg" alt="Unlock PDF" loading="lazy">
                         <p><a href="app/unlockpdf/unlockpdf.html">詳細 →</a></p>
                     </article>
                     <article class="project-card">
                         <h3>Android PDF Unlocker</h3>
-                        <span class="tag" style="display:none">Android</span><span class="tag" style="display:none">Kotlin</span><span class="tag" style="display:none">Google Drive API</span>
+                        <span class="tag" style="display:none">Android</span><span class="tag" style="display:none">Kotlin</span><span class="tag" style="display:none">Mobile</span>
                         <img src="https://img.youtube.com/vi/1ZIV0SYgC7o/hqdefault.jpg"  alt="Android PDF Unlocker" loading="lazy">
                         <p><a href="app/android_pdf_unlocker/android_pdf_unlocker.html">詳細 →</a></p>
                     </article>
                     <article class="project-card">
                         <h3>Software PLC</h3>
                         <div class="header-tags">
-                            <span class="tag" style="display:none">PLC</span>
-                            <span class="tag" style="display:none">CODESYS</span>
+                            <span class="tag" style="display:none">PLC</span><span class="tag" style="display:none">C++</span><span class="tag" style="display:none">Embedded</span>
                         </div>
                         <img src="https://img.youtube.com/vi/dAOZI4mYODI/hqdefault.jpg" alt="Software PLC" loading="lazy">
                         <p><a href="app/software_plc/software_plc.html">詳細 →</a></p>
+                    </article>
+                    <article class="project-card">
+                        <h3>Image for net v2</h3>
+                        <span class="tag" style="display:none">Avalonia</span><span class="tag" style="display:none">Desktop</span>
+                        <img src="https://img.youtube.com/vi/dmGGBLUwR_o/hqdefault.jpg" alt="Image for Net" loading="lazy">
+                        <p><a href="app/image_for_net/image_for_net.html">詳細 →</a></p>
                     </article>
                 </div>
 
@@ -155,7 +167,7 @@
                 <div class="archive-project-grid">
                     <article class="archive-project-card">
                         <h3>メールでGeminiとおしゃべり</h3>
-                        <span class="tag" style="display:none">Google Apps Script</span><span class="tag" style="display:none">GmailApp</span><span class="tag" style="display:none">Google Cloud Platform</span><span class="tag" style="display:none">UrlFetchApp</span>
+                        <span class="tag" style="display:none">Google Cloud</span><span class="tag" style="display:none">GAS</span>
                         <img src="https://img.youtube.com/vi/pId5SnPjoOw/hqdefault.jpg" alt="メールでGeminiとおしゃべり" loading="lazy">
                         <p><a href="app/ask_gemini_by_email/Build_Your_Email_AI.html">詳細 →</a></p>
                     </article>
@@ -166,21 +178,15 @@
                 <div class="archive-project-grid">
                     <article class="archive-project-card">
                         <h3>Hello World Qt Creator</h3>
-                        <span class="tag" style="display:none">Qt/QML</span><span class="tag" style="display:none">Ubuntu</span>
+                        <span class="tag" style="display:none">Qt</span><span class="tag" style="display:none">C++</span>
                         <img src="https://img.youtube.com/vi/v86BQykeWFY/hqdefault.jpg" alt="Qt Creator Intro" loading="lazy">
                         <p><a href="app/hello_world_qt_creator/hello_world_qt_creator.html">詳細 →</a></p>
                     </article>
                     <article class="archive-project-card">
                         <h3>ESP32 World Clock for Wokwi</h3>
-                        <span class="tag" style="display:none">ESP32</span><span class="tag" style="display:none">Wokwi</span>
+                        <span class="tag" style="display:none">ESP32</span><span class="tag" style="display:none">Arduino</span><span class="tag" style="display:none">C++</span>
                         <img src="https://img.youtube.com/vi/GSfD1kVzAFw/hqdefault.jpg" alt="ESP32 world Clock for Wokwi" loading="lazy">
                         <p><a href="app/esp32_world_clock/esp32_world_clock.html">詳細 →</a></p>
-                    </article>
-                    <article class="archive-project-card">
-                        <h3>Image For Net</h3>
-                        <span class="tag" style="display:none">Avalonia UI</span><span class="tag" style="display:none">Ubuntu</span>
-                        <img src="https://img.youtube.com/vi/dmGGBLUwR_o/hqdefault.jpg" alt="Image for Net" loading="lazy">
-                        <p><a href="app/image_for_net/image_for_net.html">詳細 →</a></p>
                     </article>
                     
                     <article class="archive-project-card">
@@ -191,7 +197,7 @@
                     </article>
                     <article class="archive-project-card">
                         <h3>SEO strategies</h3>
-                        <span class="tag" style="display:none">Vercel</span>
+                        <span class="tag" style="display:none">Vercel</span><span class="tag" style="display:none">SEO</span>
                         <img src="app/seo/SEO.png" alt="SEO strategies" loading="lazy">
                         <p><a href="app/seo/seo.html">詳細 →</a></p>
                     </article>
@@ -203,7 +209,7 @@
                     </article>
                     <article class="archive-project-card">
                         <h3>暗号化Browse Wrapper</h3>
-                        <span class="tag" style="display:none">Avalonia UI</span><span class="tag" style="display:none">Ubuntu</span>
+                        <span class="tag" style="display:none">Avalonia</span><span class="tag" style="display:none">Desktop</span>
                         <img src="https://img.youtube.com/vi/zNFxTU8CWW4/hqdefault.jpg" alt="EncBrowse" loading="lazy">
                         <p><a href="app/enc_browse/enc_browse.html">詳細 →</a></p>
                     </article>
@@ -308,27 +314,29 @@
        */
       function sendPrompt(keyword) {
         const mapping = {
-          'ESP32': 'ESP32',
-          'C/C++': 'C/C++',
-          'Qt/QML': 'Qt',
-          'Avalonia UI': 'Avalonia',
-          'Python': 'Python',
-          'PCAudio': 'PCオーディオ',
-          'Ubuntu': 'Ubuntu',
-          'Kotlin': 'Kotlin',
-          'Vercel': 'Vercel',
-          'Google Nest Hub': 'Google Nest',
-          'Google Cloud': 'Google'
+          'ESP32': 'esp32',
+          'C/C++': 'c++',
+          'Qt/QML': 'qt',
+          'Avalonia': 'avalonia',
+          'Python': 'python',
+          'Audio': 'audio',
+          'Ubuntu': 'ubuntu',
+          'Kotlin': 'kotlin',
+          'Vercel': 'vercel',
+          'Google Nest Hub': 'google nest hub',
+          'Google Cloud': 'google cloud',
+          'Bug': 'bug'
         };
 
         const searchWord = (mapping[keyword] || keyword).toLowerCase();
         const allArticles = Array.from(document.querySelectorAll('article'));
 
-        // タイトル(h3)またはdata-tags属性にキーワードが含まれるものを抽出
+        // タイトル(h3)、data-tags属性、または内部の.tag要素のテキストにキーワードが含まれるものを抽出
         const matchedCards = allArticles.filter(card => {
-          const title = (card.querySelector('h3')?.textContent || "").toLowerCase();
-          const tags = card.getAttribute('data-tags')?.toLowerCase() || "";
-          return title.includes(searchWord) || tags.includes(searchWord);
+          const title = card.querySelector('h3')?.textContent.toLowerCase() || "";
+          const tagsAttr = card.getAttribute('data-tags')?.toLowerCase() || "";
+          const tagsText = Array.from(card.querySelectorAll('.tag')).map(t => t.textContent.toLowerCase());
+          return title.includes(searchWord) || tagsAttr.includes(searchWord) || tagsText.some(tag => tag.includes(searchWord));
         });
 
         if (matchedCards.length > 0) {
