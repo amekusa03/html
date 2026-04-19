@@ -21,7 +21,6 @@
             </div>
             <h1>Software PLC : CODESYS</h1>
             <p class="u-opacity-8">CODESYSを使用した制御シミュレーションと学習記録</p>
-            <span class="tag" style="background: #e2e8f0; color: #475569;">WIP / 作成中</span>
         </header>
 
         <main>
@@ -71,20 +70,20 @@
                 <p>IEC 61131-3 で定義されている主要な言語を用いてプログラミングが可能です。</p>
                 <div class="project-grid">
                     <article class="project-card">
-                        <h3>LD (Ladder Diagram)</h3>
-                        <img src="ladder.png" alt="ラダー・ダイアグラム" loading="lazy">
+                        <h3 class="project-card__title">LD (Ladder Diagram)</h3>
+                        <img src="type_ladder.png" alt="ラダー・ダイアグラム" class="project-card__image" loading="lazy">
                     </article>
                     <article class="project-card">
-                        <h3>FBD (Function Block Diagram)</h3>
-                        <img src="function.png" alt="ファンクション・ブロック・ダイアグラム" loading="lazy">
+                        <h3 class="project-card__title">FBD (Function Block Diagram)</h3>
+                        <img src="type_fbd.png" alt="ファンクション・ブロック・ダイアグラム" class="project-card__image" loading="lazy">
                     </article>
                     <article class="project-card">
-                        <h3>ST (Structured Text)</h3>
-                        <img src="stract.png" alt="ストラクチャード・テキスト" loading="lazy">
+                        <h3 class="project-card__title">ST (Structured Text)</h3>
+                        <img src="type_st.png" alt="ストラクチャード・テキスト" class="project-card__image" loading="lazy">
                     </article>
                     <article class="project-card">
-                        <h3>IL (Instruction List)</h3>
-                        <img src="insto.png" alt="インストラクション・リスト" loading="lazy">
+                        <h3 class="project-card__title">IL (Instruction List)</h3>
+                        <img src="type_il.png" alt="インストラクション・リスト" class="project-card__image" loading="lazy">
                     </article>
                 </div>
             </section>
@@ -138,16 +137,50 @@
                     </div>
                 </div>
 
-                <h3>5. SFC (Sequential Function Chart) の作成</h3>
-                <p>処理の流れと遷移条件を視覚的に配置し、各処理ブロックの中身を記述します。</p>
+                <h3>5. SFC (Sequential Function Chart)とHMI (GUI) の作成</h3>
+                <p>SFC：処理の流れと遷移条件を視覚的に配置し、各処理ブロックの中身を記述します。</p>
+                <p>HMI：タッチパネルのような操作画面を開発環境内で作成し、変数と紐付けます。</p>
                 <div class="image-container">
+                    <img src="5sfc_gui.png" alt="CODESYS 全体画面" class="image-back" />
+                    <div class="text-content">
+                        <p>SFC：シーケンシャルファンクションチャート(SFC)を選択</p>
+                        <p>HMI：タッチパネルのような操作画面を開発環境内で作成し、変数と紐付けます。</p>
+                    </div>
+                </div>
+                <h3>6. 処理ブロックをIL(ラダー)で作成</h3>
+                <p>IL：ラダー言語で処理ブロックを記述します。</p>
+                <div class="image-container">
+                    <img src="6process_blk.png" alt="CODESYS 全体画面" class="image-back" />
+                    <div class="text-content">
+                        <p>IL：ランプが光るように、ラダー言語で処理ブロックを記述します。</p>
+                    </div>
                 </div>
                 
-                <h3>6. HMI (GUI) の作成</h3>
-                <p>タッチパネルのような操作画面を開発環境内で作成し、変数と紐付けます。</p>
-
                 <h3>7. シミュレーション実行</h3>
                 <p>ログイン実行することで、実機がなくてもPC上でロジックと画面の連動を確認できます。ボタン押下でランプが点灯する等の基本的な動作デバッグが可能です。</p>
+                <div class="image-container">
+                    <img src="7simulation_on_lamp.png" alt="CODESYS 全体画面" class="image-back" />
+                    <div class="text-content">
+                        <p>実行</p>
+                    </div>
+                </div>
+
+                <h3>8. 動作結果</h3>
+                <p>スタートボタンを押すと処理２が実行され、ランプが点灯</p>
+                <div class="image-container">
+                    <img src="8sim_lamp.png" alt="CODESYS 全体画面" class="image-back" />
+                    <div class="text-content">
+                        <p>ランプが光る</p>
+                    </div>
+                </div>
+                <h3>その他</h3>
+                <p>他にも様々な動作を確認できます。</p>
+                <div class="image-container">
+                    <img src="etc_run_rader.png" alt="CODESYS 全体画面" class="image-back" />
+                    <div class="text-content">
+                    <img src="etc_run_rader_on_lamp.png" alt="CODESYS 全体画面" class="image-back" />
+                    </div>
+                </div>
             </section>
 
             <section>

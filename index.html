@@ -27,7 +27,7 @@
 <body class="home-page">
     <canvas id="rain-canvas"></canvas>
     <div class="container">
-        <a href="index_en.html" class="language-link" hreflang="en" aria-label="Switch to English version">English</a>
+        <!-- 英語は廃止方向へ<a href="index_en.html" class="language-link" hreflang="en" aria-label="Switch to English version">English</a> -->
         <header>
             <img src="susan-lu4esm-rain-16599.gif" alt="Character animation" class="hero-gif">
             <h1>雨草の庭</h1>
@@ -64,10 +64,10 @@
 
                 <div class="project-grid">
                     <article class="project-card">
-                        <h3>Software Engineering and Me</h3>
+                        <h3 class="project-card__title">Software Engineering and Me</h3>
                         <span class="tag" style="display:none">GitHub</span>
-                        <img src="app/app_detail/unnamed.png" alt="Restless engineer" loading="lazy">
-                        <p><a href="app/app_detail/app_detail.html" aria-label="Software Engineering and Me の詳細を見る">詳細 →</a></p>
+                        <img src="app/app_detail/unnamed.png" alt="Restless engineer" class="project-card__image" loading="lazy">
+                        <p><a href="app/app_detail/app_detail.html" class="project-card__link" aria-label="Software Engineering and Me の詳細を見る">詳細 →</a></p>
                     </article>
 
                     <article class="project-card">
@@ -86,13 +86,6 @@
                         <p><a href="app/avalonia_ui/avalonia_ui.html" aria-label="Avalonia UI & MVVM の詳細を見る">詳細 →</a></p>
                     </article>
 
-                    <article class="project-card">
-                        <h3>HTML to Blogger Python</h3>
-                        <span class="tag" style="display:none">Python</span>
-                        <!-- <p>Pythonを使用してローカルHTMLと画像を解析し、Bloggerへ自動投稿するツールです。</p> -->
-                            <img src="https://img.youtube.com/vi/gFgYCVHIfW0/hqdefault.jpg" alt="HTML to Blogger" loading="lazy">
-                        <p><a href="app/html_to_blogger/html_to_blogger.html" aria-label="HTML to Blogger Python の詳細を見る">詳細 →</a></p>
-                    </article>
 
                     <article class="project-card">
                         <h3>ESP32 Racing Game</h3>
@@ -141,6 +134,21 @@
                         <span class="tag" style="display:none">Google Cloud</span><span class="tag" style="display:none">Google Compute Engine</span><span class="tag" style="display:none">Python</span>
                         <img src="https://img.youtube.com/vi/F5ah5UK3LFw/hqdefault.jpg" alt="Unlock PDF" loading="lazy">
                         <p><a href="app/unlockpdf/unlockpdf.html">詳細 →</a></p>
+                    </article>
+                    <article class="project-card">
+                        <h3>Android PDF Unlocker</h3>
+                        <span class="tag" style="display:none">Android</span><span class="tag" style="display:none">Kotlin</span><span class="tag" style="display:none">Google Drive API</span>
+                        <img src="https://img.youtube.com/vi/1ZIV0SYgC7o/hqdefault.jpg"  alt="Android PDF Unlocker" loading="lazy">
+                        <p><a href="app/android_pdf_unlocker/android_pdf_unlocker.html">詳細 →</a></p>
+                    </article>
+                    <article class="project-card">
+                        <h3>Software PLC</h3>
+                        <div class="header-tags">
+                            <span class="tag" style="display:none">PLC</span>
+                            <span class="tag" style="display:none">CODESYS</span>
+                        </div>
+                        <img src="https://img.youtube.com/vi/dAOZI4mYODI/hqdefault.jpg" alt="Software PLC" loading="lazy">
+                        <p><a href="app/software_plc/software_plc.html">詳細 →</a></p>
                     </article>
                 </div>
 
@@ -201,26 +209,43 @@
                         <img src="https://img.youtube.com/vi/zNFxTU8CWW4/hqdefault.jpg" alt="EncBrowse" loading="lazy">
                         <p><a href="app/enc_browse/enc_browse.html">詳細 →</a></p>
                     </article>
+
+                    <article class="archive-project-card">
+                        <h3>HTML to Blogger Python</h3>
+                        <span class="tag" style="display:none">Python</span>
+                        <!-- <p>Pythonを使用してローカルHTMLと画像を解析し、Bloggerへ自動投稿するツールです。</p> -->
+                            <img src="https://img.youtube.com/vi/gFgYCVHIfW0/hqdefault.jpg" alt="HTML to Blogger" loading="lazy">
+                        <p><a href="app/html_to_blogger/html_to_blogger.html" aria-label="HTML to Blogger Python の詳細を見る">詳細 →</a></p>
+                    </article>
+
                 </div>
                 
                 <h3 class="section-subtitle">Current Projects</h3>
                 <p class="section-description">現在進行中のプロジェクト</p>
                 <div class="current-project-grid">
-                    <article class="current-project-card">
+                </div>
+                <h3 class="section-subtitle"> I want to work on...</h3>
+                <p class="section-description">検討のプロジェクト</p>
+                <div class="current-project-grid">
+                    <article class="project-card">
                         <h3>Software PLC</h3>
-                        <div class="header-tags">
-                            <span class="tag">WIP</span>
-                            <span class="tag" style="display:none">PLC</span>
-                            <span class="tag" style="display:none">CODESYS</span>
-                        </div>
-                        <img src="https://img.youtube.com/vi/dAOZI4mYODI/hqdefault.jpg" alt="Software PLC" loading="lazy">
-                        <p><a href="app/software_plc/software_plc.html">(作成中)詳細 →</a></p>
+                        <h4>Open PLC</h4>
+                        <img src="iwana1.png" alt="Open PLC" loading="lazy">
                     </article>
-                    <article class="current-project-card">
-                        <h3>Android PDF Unlocker</h3>
-                        <span class="tag" style="display:none">Android</span><span class="tag" style="display:none">Kotlin</span><span class="tag" style="display:none">Google Drive API</span>
-                        <img src="app/android_pdf_unlocker/android_pdf_unlocker.png" alt="Android PDF Unlocker" loading="lazy">
-                        <p><a href="app/android_pdf_unlocker/android_pdf_unlocker.html">(作成中)詳細 →</a></p>
+                    <article class="project-card">
+                        <h3>Avalonia UI</h3>
+                        <h4>Desktop tool</h4>
+                        <img src="iwana2.png" alt="Open PLC" loading="lazy">
+                    </article>
+                    <article class="project-card">
+                        <h3>Web page</h3>
+                        <h4>BBS</h4>
+                        <img src="iwana3.png" alt="Open PLC" loading="lazy">
+                    </article>
+                    <article class="project-card">
+                        <h3>Anyway</h3>
+                        <h4>Anyway</h4>
+                        <img src="iwana4.png" alt="Anyway" loading="lazy">
                     </article>
                 </div>
             </section>
@@ -288,7 +313,7 @@
           'ESP32': 'ESP32',
           'C/C++': 'C/C++',
           'Qt/QML': 'Qt',
-          'Avalonia UI': 'Avalonia UI',
+          'Avalonia UI': 'Avalonia',
           'Python': 'Python',
           'PCAudio': 'PCオーディオ',
           'Ubuntu': 'Ubuntu',
