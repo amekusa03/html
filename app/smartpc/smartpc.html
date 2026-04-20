@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-SRGF2MMYGD');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MatterとESP32-C6を使用して、Ubuntu PCをスマートホーム対応させるプロジェクトの紹介です。Google Nest Hub等からPCの電源操作や状態監視を実現します。">
+    <title>smart PC | 雨草の庭</title>
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="app-page">
+    <div class="container">
+        <nav>
+            <a href="../../index.html">← Back to Garden</a>
+        </nav>
+
+        <header>
+            <div class="header-tags u-margin-b-1">
+                <span class="tag">Matter</span>
+                <span class="tag">ESP32-C6</span>
+                <span class="tag">Ubuntu</span>
+            </div>
+            <h1>Smart PC Project</h1>
+            <p class="header-subtitle u-opacity-8">Matter over Wi-FiによるPC電源管理システムの統合</p>
+        </header>
+        <main>
+
+            <section>
+                <h2>Video</h2>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/SRRmwL01tHY" frameborder="0" allowfullscreen title="smart PC Demo"></iframe>
+                </div>
+            </section>
+            <section>
+                <h2>About this Project</h2>
+                <p>
+                    本プロジェクトは、Ubuntu PCにESP32-C6を統合し、最新のスマートホーム規格「<strong>Matter</strong>」に対応させる試みです。
+                    PCの電源状態を他の家電と同様にシームレスに管理・操作できるようにすることを目指しています。
+                </p>
+                <img src="sysosi.png" alt="System Architecture" class="u-margin-b-1" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #ddd;">
+                <img src="flow.png" alt="Operation Flow" class="u-margin-b-1" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #ddd;">
+            </section>
+
+            <section>
+                <h2>System Architecture</h2>
+                <p>
+                    ESP32-C6とPCマザーボードの間には、フォトカプラを用いた絶縁回路を介在させ、電気的な安全性を確保しています。
+                </p>
+                <div class="table-container u-margin-b-1">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 0.9em;">
+                        <thead>
+                            <tr style="border-bottom: 2px solid #ddd; text-align: left;">
+                                <th>系</th>
+                                <th>ESP32-C6 GPIO</th>
+                                <th>PCマザーボード</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #eee;">
+                                <td>出力系</td>
+                                <td>GPIO (OUT)</td>
+                                <td>PWR SW ピン (フォトカプラ経由)</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #eee;">
+                                <td>入力系</td>
+                                <td>GPIO (IN)</td>
+                                <td>PWR LED ピン (状態監視)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <ul class="tech-stack">
+                    <li><i class="fa-solid fa-microchip"></i> <strong>Microcontroller:</strong> ESP32-C6 (Matter over Wi-Fi)</li>
+                    <li><i class="fa-brands fa-ubuntu"></i> <strong>Host OS:</strong> Ubuntu (with ACPI integration)</li>
+                    <li><i class="fa-solid fa-network-wired"></i> <strong>Protocol:</strong> Matter (On/Off Light/Switch)</li>
+                    <li><i class="fa-solid fa-mobile-screen"></i> <strong>Controller:</strong> Google Nest Hub / Android Device</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Key Features</h2>
+                <ul class="feature-list">
+                    <li><i class="fa-solid fa-power-off"></i> <strong>リモート操作:</strong> 外出先や音声コマンドによるPCの電源ON/OFF。</li>
+                    <li><i class="fa-solid fa-eye"></i> <strong>状態監視:</strong> PCが稼働中か停止中かをリアルタイムで確認可能。</li>
+                    <li><i class="fa-solid fa-robot"></i> <strong>自動化連携:</strong> Google Home等の自動化設定による、定時起動や一括オフ。</li>
+                    <li><i class="fa-solid fa-shield-halved"></i> <strong>安全設計:</strong> フォトカプラによる回路絶縁と、物理ボタンの併用を維持。</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Development Environment</h2>
+                <ul class="tech-stack">
+                    <li><i class="fa-solid fa-code"></i> ESP-IDF / Matter SDK</li>
+                    <li><i class="fa-solid fa-hubspot"></i> Google Nest Hub (第2世代)</li>
+                </ul>
+            </section>
+
+        </main>
+        <nav>
+            <a href="../../index.html">← Back to Garden</a>
+        </nav>
+        <footer>
+            <p>Copyright &copy; amekusa All Rights Reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
