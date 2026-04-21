@@ -138,6 +138,16 @@ footer { text-align: center; opacity: 0.6; }
     aspect-ratio: 16 / 9;
 }
 
+.plan-project-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+    aspect-ratio: 16 / 9;
+    opacity: 1;
+}
+
+
 .home-page header {
     height: 70vh;
     display: flex;
@@ -177,8 +187,10 @@ footer { text-align: center; opacity: 0.6; }
 .section-subtitle { font-size: 1rem; opacity: 0.6; font-weight: 400; margin: 3rem 0 1rem; }
 .section-description { font-size: 1rem; opacity: 0.6; margin-bottom: 1rem; }
 
-.project-grid, .current-project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
-.project-card, .current-project-card { 
+.project-grid, .current-project-grid, .plan-project-grid { 
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; 
+}
+.project-card, .current-project-card, .plan-project-card { 
     background: var(--card-bg); 
     border: 1px solid var(--border-color); 
     border-radius: 12px; 
@@ -193,7 +205,7 @@ footer { text-align: center; opacity: 0.6; }
     max-width: 480px; /* 1カラムになった時に広がりすぎないよう制限 */
     justify-self: center; /* グリッド内で中央に配置 */
 }
-.project-card:hover, .current-project-card:hover { 
+.project-card:hover, .current-project-card:hover, .plan-project-card:hover { 
     transform: translateY(-5px); 
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); 
 }
@@ -434,7 +446,7 @@ th { background: rgba(74, 103, 65, 0.1); color: var(--accent-green); font-size: 
     .home-page header h1 { font-size: 2rem; }
     .app-page header h1 { font-size: 1.8rem; }
     .profile-content { flex-direction: column; }
-    .project-grid, .current-project-grid { grid-template-columns: 1fr; }
+    .project-grid, .current-project-grid, .plan-project-grid { grid-template-columns: 1fr; }
     .sticky-nav ul { flex-wrap: wrap; gap: 1rem; }
 }
 

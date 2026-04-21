@@ -155,7 +155,7 @@
                         <p><a href="app/software_plc/software_plc.html">詳細 →</a></p>
                     </article>
                     <article class="project-card">
-                        <h3>Image for net v2</h3>
+                        <h3>Image for net v3.0</h3>
                         <span class="tag" style="display:none">Avalonia</span><span class="tag" style="display:none">Desktop</span>
                         <img src="https://img.youtube.com/vi/dmGGBLUwR_o/hqdefault.jpg" alt="Image for Net" loading="lazy">
                         <p><a href="app/image_for_net/image_for_net.html">詳細 →</a></p>
@@ -230,24 +230,26 @@
                 </div>
                 <h3 class="section-subtitle"> I want to work on...</h3>
                 <p class="section-description">検討のプロジェクト</p>
-                <div class="current-project-grid">
-                    <article class="project-card">
+                <div class="plan-project-grid">
+                    <article class="plan-project-card">
                         <h3>Software PLC</h3>
-                        <h4>Open PLC Maybe</h4>
+                        <h4>Open PLC</h4>
                         <img src="iwana1.png" alt="Open PLC. May be" loading="lazy">
+                        mybe. my plan
                     </article>
-                    <article class="project-card">
+                    <article class="plan-project-card">
                         <h3>Avalonia UI</h3>
                         <h4>Desktop tool Maybe</h4>
                         <img src="iwana2.png" alt="Open PLC. May be" loading="lazy">
+                        mybe. my plan
                     </article>
-                    <article class="project-card">
+                    <article class="plan-project-card">
                         <h3>Web page</h3>
                         <h4>BBS Maybe</h4>
                         <img src="iwana3.png" alt="Open PLC. May be" loading="lazy">
+                        mybe. my plan
                     </article>
-
-                    <article class="archive-project-card">
+                    <article class="plan-project-card">
                         <h3>smart PC</h3>
                         <span class="tag" style="display:none">esp32</span>
                         <!-- <p>smart PC の詳細</p> -->
@@ -333,7 +335,7 @@
         };
 
         const searchWord = (mapping[keyword] || keyword).toLowerCase();
-        const allArticles = Array.from(document.querySelectorAll('article'));
+        const allArticles = Array.from(document.querySelectorAll('main article'));
 
         // タイトル(h3)、data-tags属性、または内部の.tag要素のテキストにキーワードが含まれるものを抽出
         const matchedCards = allArticles.filter(card => {

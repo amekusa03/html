@@ -249,7 +249,7 @@
         };
 
         const searchWord = (mapping[keyword] || keyword).toLowerCase();
-        const allArticles = Array.from(document.querySelectorAll('article'));
+        const allArticles = Array.from(document.querySelectorAll('main article'));
 
         // Extract all articles containing the keyword in the title (h3) or tags (.tag)
         const matchedCards = allArticles.filter(card => {
