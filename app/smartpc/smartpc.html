@@ -192,7 +192,6 @@
 	</ul>
 
 	<h3>7. 開発環境</h3>
-	                <img src="unit.png" alt="Development Setup" class="u-margin-b-1" loading="lazy" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #ddd;">
 	<p>安定したMatter over Wi-Fi 6の実装および統合のため、以下のツールセットを推奨する。</p>
 	<ul>
 		<li>SDK: ESP-IDF v5.1以降</li>
@@ -200,7 +199,38 @@
 		<li>セットアップツール: Google Home App（BLE 5.0）</li>
 		<li>コントローラー: Google Nest Hub（第2世代）</li>
 	</ul>
-        </main>
+    <H3>8. アーキテクチャ確認事項</H3>
+	                <img src="unit.png" alt="Development Setup" class="u-margin-b-1" loading="lazy" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #ddd;">
+    <ul>
+        <li><strong>BIOS/UEFI設定:</strong> PCのシャットダウン状態でもESP32-C6が信号を待ち受けるためには、マザーボードの給電設定（BIOS/UEFI）が必要です。特に「ErP Ready」をDisabledにし、シャットダウン中もUSB給電を維持する設定が必要です。
+        </li>
+        <li><strong>USB給電:</strong> PCがオフの時もUSBポートに給電され続けている必要があります。前述のErP設定に加え、「USB Standby Power」等の項目が有効であることを確認してください。
+        </li>
+        <li><strong>物理コネクタの適合性（重要）:</strong> ESP32-C6-GEEKの画像を見ると、側面のGPIO（GP0, GP10等）は一般的なピンヘッダではなく、**小型のJST規格コネクタ（おそらくSH 1.0mmピッチ等）**になっています
+。
+     一般的なデュポンケーブル（ブレッドボード用ワイヤ）は直接刺さりません。GEEKに付属している専用の「コネクタ付きケーブル」があるか、あるいはそのコネクタから通常の配線へ変換する準備が必要です。
+        </li>
+        <li><strong>電源ボタンの「押し時間」の定義 :</strong>
+        ソースには「電源ON/OFFトリガー」とあるが、プログラム側で「何秒間スイッチを短絡させるか」のロジックが必要です
+        </li>
+    </ul>
+    <h3>9. アプリケーション要求仕様定義必須 検討事項</h3>
+    
+    <ul>
+        <li><strong>電源ボタン短押し（約200ms〜500ms）:</strong></li> 
+        通常の電源ONおよびOSへのシャットダウン要求。
+        <li><strong>電源ボタン長押し（5秒以上）:</strong></li>
+        フリーズ時の強制終了（Matterの「長押し」機能として実装するか検討が必要）。</li>
+        <li><strong>絶縁ボード（Hailege）の電圧整合性:</strong>
+        使用予定の絶縁ボードは「3.6-30V」の電圧変換に対応していますが、ESP32-C6の信号は3.3Vです。
+        このボードの入力（IN1/IN2）が3.3Vで確実にフォトカプラを駆動できるか（抵抗値の選定）を確認してください。もし駆動電圧が足りない場合、ESP32側の出力を少し工夫する必要があります。
+        </li>
+        <li><strong>スリープ状態（点滅）への対応ロジック:</strong>
+        Ubuntuが「スリープ（サスペンド）」に入ると、多くのマザーボードでPWR LEDが点滅します。
+        点滅している状態をMatter上で「ON」と見なすか、あるいは「スリープ」という別の状態として表示させるか、ソフトウェアでの判定ロジックが必要です。
+        </li>
+    </ul>
+    </main>
         <nav>
             <a href="../../index.html">← Back to Garden</a>
         </nav>
