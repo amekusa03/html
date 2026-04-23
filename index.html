@@ -10,6 +10,10 @@
       gtag('config', 'G-SRGF2MMYGD');
     </script>
 
+    <!-- 外部リソースへの事前接続 -->
+    <link rel="preconnect" href="https://img.youtube.com">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+
     <link rel="icon" href="Favicon.png" type="image/png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,7 +41,8 @@
     <div class="container">
         <!-- 英語は廃止方向へ<a href="index_en.html" class="language-link" hreflang="en" aria-label="Switch to English version">English</a> -->
         <header>
-            <img src="susan-lu4esm-rain-16599.gif" alt="Character animation" class="hero-gif">
+            <!-- LCP向上のため fetchpriority を追加 -->
+            <img src="susan-lu4esm-rain-16599.gif" alt="Character animation" class="hero-gif" fetchpriority="high" width="200" height="200">
             <h1>雨草の庭</h1>
             <p class="subtitle">Engineering</p>
             <p class="subtitle-note">雨宿りでもしていってください。</p>
@@ -73,14 +78,14 @@
                 <div class="project-grid">
                     <article class="project-card" data-tags="github">
                         <h3 class="project-card__title">Software Engineering and Me</h3>
-                        <img src="https://img.youtube.com/vi/0gV_4Gl4rH8/hqdefault.jpg" alt="Restless engineer" class="project-card__image" loading="lazy">
+                        <img src="https://img.youtube.com/vi/0gV_4Gl4rH8/hqdefault.jpg" alt="Restless engineer" class="project-card__image" loading="lazy" width="480" height="360">
                         <p><a href="app/app_detail/app_detail.html" class="project-card__link" aria-label="Software Engineering and Me の詳細を見る">詳細 →</a></p>
                     </article>
 
                     <article class="project-card" data-tags="ubuntu">
                         <h3>Ubuntu 導入ガイド</h3>
                         <span class="tag" style="display:none">Ubuntu</span><span class="tag" style="display:none">Linux</span><span class="tag" style="display:none">Bug</span>
-                        <img src="https://img.youtube.com/vi/m0lFwpMAM2Q/hqdefault.jpg" alt="Ubuntu Guide" class="project-card__image" loading="lazy">
+                        <img src="https://img.youtube.com/vi/m0lFwpMAM2Q/hqdefault.jpg" alt="Ubuntu Guide" class="project-card__image" loading="lazy" width="480" height="360">
                         <p><a href="app/ubuntu/ubuntu.html" aria-label="Ubuntu 導入ガイドの詳細を見る">詳細 →</a></p>
                     </article>
 
@@ -88,7 +93,7 @@
                         <h3>Avalonia UI & MVVM</h3>
                         <span class="tag" style="display:none">Avalonia</span><span class="tag" style="display:none">C#</span><span class="tag" style="display:none">Desktop</span>
                         <!-- <p>C#とAvalonia UIを使用した、デスクトップアプリ開発の学習プロジェクトです。</p> -->
-                        <img src="https://img.youtube.com/vi/dhkjU1KkbTw/hqdefault.jpg" alt="Avalonia UI Learning" class="project-card__image" loading="lazy">
+                        <img src="https://img.youtube.com/vi/dhkjU1KkbTw/hqdefault.jpg" alt="Avalonia UI Learning" class="project-card__image" loading="lazy" width="480" height="360">
                         <p><a href="app/avalonia_ui/avalonia_ui.html" aria-label="Avalonia UI & MVVM の詳細を見る">詳細 →</a></p>
                     </article>
 
@@ -96,7 +101,7 @@
                         <h3>ESP32 Racing Game</h3>
                         <span class="tag" style="display:none">ESP32</span><span class="tag" style="display:none">Arduino</span><span class="tag" style="display:none">C++</span><span class="tag" style="display:none">Embedded</span>
                         <!-- <p>ESP32とWokwiシミュレータを使用した、レトロなレーシングゲームの開発プロジェクトです。</p> -->
-                        <img src="https://img.youtube.com/vi/FJdXAT3jsQo/hqdefault.jpg" alt="ESP32 Racing Game" class="project-card__image" loading="lazy">
+                        <img src="https://img.youtube.com/vi/FJdXAT3jsQo/hqdefault.jpg" alt="ESP32 Racing Game" class="project-card__image" loading="lazy" width="480" height="360">
                         <p><a href="app/esp32_racing_game/esp32_racing_game.html" aria-label="ESP32 Racing Game の詳細を見る">詳細 →</a></p>
                     </article>
 
@@ -104,21 +109,21 @@
                         <h3>Qt Project Launcher</h3>
                         <span class="tag" style="display:none">Qt</span><span class="tag" style="display:none">C++</span><span class="tag" style="display:none">Desktop</span>
                         <!-- <p>Qtプロジェクトを簡単に起動するためのツールです。プロジェクトのビルドや実行をワンクリックで行えるようにします。</p>    -->
-                        <img src="https://img.youtube.com/vi/mteT0aFFLCU/hqdefault.jpg" alt="Qt Project Launcher" class="project-card__image" loading="lazy">
+                        <img src="https://img.youtube.com/vi/mteT0aFFLCU/hqdefault.jpg" alt="Qt Project Launcher" class="project-card__image" loading="lazy" width="480" height="360">
                         <p><a href="app/qt_project_launcher/qt_project_launcher.html" aria-label="Qt Project Launcher の詳細を見る">詳細 →</a></p>
                     </article>
 
                     <article class="project-card">
                         <h3>PC Audio Application</h3>
                         <span class="tag" style="display:none">Audio</span><span class="tag" style="display:none">Desktop</span>
-                         <img src="https://img.youtube.com/vi/mHtCYgG4A4Y/hqdefault.jpg" alt="PC Audio Application" class="project-card__image"  loading="lazy">
+                         <img src="https://img.youtube.com/vi/mHtCYgG4A4Y/hqdefault.jpg" alt="PC Audio Application" class="project-card__image"  loading="lazy" width="480" height="360">
                         <p><a href="app/my_pc_audio_appli/my_pc_audio_appli.html" aria-label="PC Audio Application の詳細を見る">詳細 →</a></p>
                     </article>
 
                     <article class="project-card">
                         <h3>Android web launcher</h3>
                         <span class="tag" style="display:none">Android</span><span class="tag" style="display:none">Kotlin</span><span class="tag" style="display:none">Mobile</span>
-                        <img src="https://img.youtube.com/vi/1ZIV0SYgC7o/hqdefault.jpg" alt="Android Web Launcher" class="project-card__image" loading="lazy">
+                        <img src="https://img.youtube.com/vi/1ZIV0SYgC7o/hqdefault.jpg" alt="Android Web Launcher" class="project-card__image" loading="lazy" width="480" height="360">
                         <p><a href="app/android_web_launcher/android_web_launcher.html" aria-label="Android Web Launcher の詳細を見る">詳細 →</a></p>
                     </article>
 
