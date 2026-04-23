@@ -34,6 +34,15 @@
         object-fit: cover;
         width: 100%;
       }
+
+      /* 雨のキャンバスを最前面に配置し、画像の上を通り過ぎるようにする */
+      #rain-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 100; /* コンテンツより大きな値を設定 */
+        pointer-events: none; /* 下にあるリンクやボタンのクリックを妨げない */
+      }
     </style>
 </head>
 <body class="home-page">
@@ -42,7 +51,7 @@
         <!-- 英語は廃止方向へ<a href="index_en.html" class="language-link" hreflang="en" aria-label="Switch to English version">English</a> -->
         <header>
             <!-- LCP向上のため fetchpriority を追加 -->
-            <img src="susan-lu4esm-rain-16599.gif" alt="Character animation" class="hero-gif" fetchpriority="high" width="200" height="200">
+            <img src="amenoniwa.png" alt="Character animation" class="hero-gif" fetchpriority="high" width="200" height="200">
             <h1>雨草の庭</h1>
             <p class="subtitle">Engineering</p>
             <p class="subtitle-note">雨宿りでもしていってください。</p>
