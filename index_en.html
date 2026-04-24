@@ -22,15 +22,32 @@
       window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <!-- Inline critical CSS -->
     <style>
-      /* Fix for YouTube thumbnail black bars */
-      article img[src*="youtube.com"] {
-        aspect-ratio: 16 / 9;
-        object-fit: cover;
-        width: 100%;
+      /* Minimum styles for first view */
+      :root {
+        --bg-color: #fdfcf8;
+        --text-color: #2d3436;
+        --accent-green: #4a6741;
+        --card-bg: rgba(255, 255, 255, 0.8);
+        --font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
       }
+      @media (prefers-color-scheme: dark) {
+        :root { --bg-color: #1a1c1a; --text-color: #e0e0e0; --card-bg: rgba(45, 52, 54, 0.7); }
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body { background-color: var(--bg-color); color: var(--text-color); font-family: var(--font-family); line-height: 1.6; }
+      .container { max-width: 900px; margin: 0 auto; padding: 2rem; position: relative; }
+      .home-page header { height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: var(--card-bg); border-radius: 16px; margin-bottom: 2rem; padding: 2rem; backdrop-filter: blur(10px); text-align: center; }
+      .hero-gif { width: 80px; margin-bottom: 2rem; }
+
+      /* Fix for YouTube thumbnail black bars */
+      article img[src*="youtube.com"] { aspect-ratio: 16 / 9; object-fit: cover; width: 100%; }
     </style>
+
+    <!-- Load remaining style.css asynchronously -->
+    <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="style.css"></noscript>
 </head>
 <body class="home-page">
     <canvas id="rain-canvas"></canvas>

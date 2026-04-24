@@ -5,3 +5,7 @@ doc/
 .github/copilot-instructions.md
 *.code-workspace
 qiita_article_gemini_email.md
+link_checker.py
+requirements.txt
+.vscode/
+.venv/
