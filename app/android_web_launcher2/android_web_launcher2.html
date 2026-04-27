@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-SRGF2MMYGD');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://amekusa.vercel.app/app/android_web_launcher2/android_web_launcher2.html">
+    <meta name="description" content="階層構造と「お湯呑み」デザインを採用した、Android向けWebサイトランチャー「あわ茶(WebLauncher2)」の開発状況です。">
+    <title>Android Web Launcher 2 (あわ茶) | 雨草の庭</title>
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="app-page">
+    <canvas id="rain-canvas"></canvas>
+    <div class="container">
+        <nav aria-label="ページナビゲーション">
+            <a href="../../index.html">← Back to Garden</a>
+        </nav>
+
+        <header>
+            <div class="header-tags u-margin-b-1">
+                <span class="tag">Kotlin</span>
+                <span class="tag">Jetpack Compose</span>
+                <span class="tag">Android</span>
+            </div>
+            <h1>Android Web Launcher 2</h1>
+            <p class="u-opacity-8">階層管理と「お湯呑み」デザインのサイトランチャー「あわ茶」</p>
+        </header>
+
+        <main>
+        <section>
+            <h2>About this Project</h2>
+            <p>
+                「あわ茶」は、Androidのホーム画面から特定のWebサイトを素早く開くためのランチャーアプリです。
+                従来の「5つ制限」を大幅に拡張し、最大4階層のフォルダ構造（1画面につき4×4の16スロット）を導入。大量のショートカットを整理して管理できるようになりました。
+                これにより、特定のWebページを簡単にアクセスできるようになります。<br>
+                「あわ茶」という名前は、このランチャーがお茶の名産地である静岡で生まれたことに由来しています。
+            </p>
+        </section>
+        <section>
+            <h2>Video</h2>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/3B1LJLAfen8" style="border:0;" allowfullscreen title="Android Web Launcher Demo"></iframe>
+            </div>
+        </section>
+        <section>
+            <h2>Development Environment</h2>
+            <ul class="tech-stack">
+                <li>Kotlin / Jetpack Compose</li>
+                <li>Room (データ永続化)</li>
+                <li>ShortcutManager API</li>
+                <li>Chrome Custom Tabs</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Key Features</h2>
+            <ul>
+                <li><strong>階層型管理:</strong> 最大4階層までネスト可能なフォルダー形式を採用。</li>
+                <li><strong>お湯呑みデザイン:</strong> 各スロットに色分けされた円柱型アイコンを採用。直感的なカラーパネルからカスタマイズ可能。</li>
+                <li><strong>Favicon自動取得:</strong> URLからサイトのアイコンを自動取得し、お湯呑みの中央に配置。</li>
+                <li><strong>専念モード:</strong> URL起動後、ランチャー自体は自動終了(finish)してバックグラウンドに残りません。</li>
+                <li><strong>パンくずリスト:</strong> 階層が深くなっても、アイコン表示とテキストによるナビゲーションで現在地を把握しやすく、上位階層へのジャンプも容易です。</li>
+                <li><strong>動的ショートカット:</strong> Androidホーム画面に作成したショートカットは、アプリ内での編集が自動同期されます。</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Known Issues / Out of Scope</h2>
+            <ul>
+                <li>ホーム画面ショートカットの更新や表示の挙動は、使用しているランチャーアプリ（ホームアプリ）の仕様に依存します。Nova Launcher等では動的更新が即座に反映されますが、一部のプリインストールランチャーでは制約が生じる場合があります。</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Resource</h2>
+            <p>資料はGitHubで公開しています。個人の学習や小規模なプロジェクトでの再利用を歓迎します。</p>
+            <a href="https://github.com/amekusa03/WebLauncher2" class="link-button" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </section>
+        </main>
+
+        <nav aria-label="ページナビゲーション">
+            <a href="../../index.html">← Back to Garden</a>
+        </nav>
+        <footer>
+            <p>Copyright &copy; amekusa All Rights Reserved.</p>
+        </footer>
+    </div>
+    <script src="../../rain.js"></script>
+</body>
+</html>
