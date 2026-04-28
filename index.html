@@ -343,34 +343,34 @@
     </div>
     <script src="rain.js"></script>
     <script>
+      const KEYWORD_MAPPING = {
+        'ESP32': 'esp32',
+        'C/C++': 'c++',
+        'Qt/QML': 'qt',
+        'Avalonia': 'avalonia',
+        'Python': 'python',
+        'Audio': 'audio',
+        'Ubuntu': 'ubuntu',
+        'Kotlin': 'kotlin',
+        'Vercel': 'vercel',
+        'Google Nest Hub': 'google nest hub',
+        'Google Cloud': 'google cloud',
+        'Bug': 'bug'
+      };
+
       /**
        * SVGからの呼び出しを受け取り、該当するすべてのプロジェクトカードをモーダルで表示する
        * @param {string} keyword - 検索するキーワード
        */
       function sendPrompt(keyword) {
-        const mapping = {
-          'ESP32': 'esp32',
-          'C/C++': 'c++',
-          'Qt/QML': 'qt',
-          'Avalonia': 'avalonia',
-          'Python': 'python',
-          'Audio': 'audio',
-          'Ubuntu': 'ubuntu',
-          'Kotlin': 'kotlin',
-          'Vercel': 'vercel',
-          'Google Nest Hub': 'google nest hub',
-          'Google Cloud': 'google cloud',
-          'Bug': 'bug'
-        };
-
-        const searchWord = (mapping[keyword] || keyword).toLowerCase();
+        const searchWord = (KEYWORD_MAPPING[keyword] || keyword).toLowerCase();
         const allArticles = Array.from(document.querySelectorAll('main article'));
 
         // タイトル(h3)、data-tags属性、または内部の.tag要素のテキストにキーワードが含まれるものを抽出
         const matchedCards = allArticles.filter(card => {
           const title = card.querySelector('h3')?.textContent.toLowerCase() || "";
           const tagsAttr = card.getAttribute('data-tags')?.toLowerCase() || "";
-          const tagsText = Array.from(card.querySelectorAll('.tag')).map(t => t.textContent.toLowerCase());
+          const tagsText = Array.from(card.querySelectorAll('.tag')).map(t => t.textContent.trim().toLowerCase());
           return title.includes(searchWord) || tagsAttr.includes(searchWord) || tagsText.some(tag => tag.includes(searchWord));
         });
 
