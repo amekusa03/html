@@ -12,6 +12,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://amekusa.vercel.app/app/smartpc/smartpc.html">
     <meta name="description" content="MatterとESP32-C6を使用して、Ubuntu PCをスマートホーム対応させるプロジェクトの紹介です。Google Nest Hub等からPCの電源操作や状態監視を実現します。">
     <title>smart PC | 雨草の庭</title>
     <script>
@@ -199,7 +200,7 @@
 		<li>セットアップツール: Google Home App（BLE 5.0）</li>
 		<li>コントローラー: Google Nest Hub（第2世代）</li>
 	</ul>
-    <H3>8. アーキテクチャ確認事項</H3>
+    <h3>8. アーキテクチャ確認事項</h3>
 	                <img src="unit.png" alt="Development Setup" class="u-margin-b-1" loading="lazy" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #ddd;">
     <ul>
         <li><strong>BIOS/UEFI設定:</strong> PCのシャットダウン状態でもESP32-C6が信号を待ち受けるためには、マザーボードの給電設定（BIOS/UEFI）が必要です。特に「ErP Ready」をDisabledにし、シャットダウン中もUSB給電を維持する設定が必要です。
