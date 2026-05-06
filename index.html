@@ -13,6 +13,8 @@
     <!-- 外部リソースへの事前接続 -->
     <link rel="preconnect" href="https://img.youtube.com">
     <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link rel="icon" href="Favicon.png" type="image/png">
     <meta charset="UTF-8">
@@ -27,29 +29,82 @@
     </script>
     <script defer src="/_vercel/speed-insights/script.js"></script>
     <script defer src="/_vercel/insights/script.js"></script>
+
     <!-- クリティカルな CSS だけインラインで書く -->
     <style>
-      /* ファーストビューに必要な最低限のスタイル */
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&display=swap');
+
       :root {
-        --bg-color: #fdfcf8;
-        --text-color: #2d3436;
-        --accent-green: #4a6741;
-        --card-bg: rgba(255, 255, 255, 0.8);
-        --font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+        --bg-color: #f5f0e8;
+        --text-color: #1c1a17;
+        --accent-green: #3a5a2e;
+        --card-bg: rgba(255, 255, 255, 0.6);
+        --font-family: 'Noto Serif JP', "Hiragino Mincho ProN", "Yu Mincho", serif;
+        --washi-line: rgba(58, 90, 46, 0.06);
       }
       @media (prefers-color-scheme: dark) {
-        :root { --bg-color: #1a1c1a; --text-color: #e0e0e0; --card-bg: rgba(45, 52, 54, 0.7); }
+        :root {
+          --bg-color: #18160f;
+          --text-color: #e8e2d8;
+          --card-bg: rgba(38, 34, 26, 0.75);
+          --washi-line: rgba(160, 180, 140, 0.05);
+        }
       }
       * { box-sizing: border-box; margin: 0; padding: 0; }
-      body { background-color: var(--bg-color); color: var(--text-color); font-family: var(--font-family); line-height: 1.6; }
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+        line-height: 1.8;
+        background-image:
+          repeating-linear-gradient(0deg, transparent, transparent 39px, var(--washi-line) 39px, var(--washi-line) 40px),
+          repeating-linear-gradient(90deg, transparent, transparent 39px, var(--washi-line) 39px, var(--washi-line) 40px);
+      }
       .container { max-width: 900px; margin: 0 auto; padding: 2rem; position: relative; }
-      .home-page header { height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: var(--card-bg); border-radius: 16px; margin-bottom: 2rem; padding: 2rem; backdrop-filter: blur(10px); text-align: center; }
-      .hero-gif { width: 80px; margin-bottom: 2rem; }
-      .home-page header h1 { font-size: 3rem; letter-spacing: 0.2em; font-weight: 300; }
+
+      /* ファーストビュー用ヒーロー */
+      .home-page header {
+        min-height: 70vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 2rem;
+        padding: 4rem 2rem;
+        text-align: center;
+        position: relative;
+      }
+      .home-page header::before,
+      .home-page header::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0.5px;
+        height: 60px;
+        background: linear-gradient(to bottom, transparent, var(--accent-green));
+      }
+      .home-page header::before { top: 0; }
+      .home-page header::after {
+        bottom: 0;
+        background: linear-gradient(to bottom, var(--accent-green), transparent);
+      }
+      .hero-gif {
+        width: 80px;
+        margin-bottom: 2.5rem;
+        mask-image: radial-gradient(circle, black 40%, rgba(0,0,0,0) 100%);
+        -webkit-mask-image: radial-gradient(circle, black 40%, rgba(0,0,0,0) 100%);
+      }
+      .home-page header h1 {
+        font-family: var(--font-family);
+        font-size: 3rem;
+        letter-spacing: 0.35em;
+        font-weight: 300;
+      }
 
       /* ページ固有のスタイル */
       article img[src*="youtube.com"] { aspect-ratio: 16 / 9; object-fit: cover; width: 100%; }
-      #rain-canvas { position: fixed; top: 0; left: 0; z-index: 100; pointer-events: none; }
+      #rain-canvas { position: fixed; top: 0; left: 0; z-index: -1; pointer-events: none; }
     </style>
 
     <!-- 残りの style.css は非同期で読み込む -->
@@ -88,8 +143,8 @@
             </section>
 
             <section id="engineering">
-                <h2>Engineering</h2>
-                <p class="u-text-center">タイルをクリック</p>
+                <h2 data-num="○二">Engineering</h2>
+                <p class="u-text-center section-description">タイルをクリック</p>
                 <object data="tech_map_navigation.svg" type="image/svg+xml" width="100%" height="100%" class="tech-map" aria-label="技術スタック・テックマップ">
                     <!-- フォールバック用テキスト -->
                     <p>C++, C#, Python, Kotlin, ESP32などの技術スタック相関図</p>
@@ -99,7 +154,7 @@
             </section>
 
             <section id="photography">
-                <h2>Photography</h2>
+                <h2 data-num="○三">Photography</h2>
                 <div class="photo-grid">
                     <div class="photo-item">
                         <img src="Photo/photo01.jpg" alt="Nature photo 1" loading="lazy">
@@ -111,11 +166,11 @@
                         <img src="Photo/photo03.jpg" alt="Nature photo 3" loading="lazy">
                     </div>
                 </div>
-                <p class="section-description"><a href="Photo/index.html">全ての写真を見る →</a></p>
+                <p class="section-description" style="margin-top:1.5rem;"><a href="Photo/index.html">全ての写真を見る →</a></p>
             </section>
 
             <section id="profile">
-                <h2>Profile</h2>
+                <h2 data-num="○四">Profile</h2>
                 <div class="profile-content">
                     <div>
                         <p><strong>Favorite Hobbies</strong> - <a href="hobbies/hobbies.html">My Hobbies</a></p>
@@ -131,9 +186,9 @@
             </section>
 
             <section id="links">
-                <h2>Links</h2>
+                <h2 data-num="○五">Links</h2>
                 <ul class="links-list">
-                    <li><strong>Favorite Web Links</strong> - <a href="link/index.html">Linkへ</a></li>
+                    <li><strong>Favorite Web Links</strong> <a href="link/index.html">Linkへ →</a></li>
                 </ul>
             </section>
         </main>
