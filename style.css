@@ -615,6 +615,18 @@ footer { text-align: center; opacity: 0.5; font-family: var(--font-sans); }
     filter: saturate(1);
 }
 
+/* Photo ページ（app-page）用: 19枚対応の均等グリッド */
+.app-page .photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+}
+.app-page .photo-item {
+    aspect-ratio: 3/2;
+}
+.app-page .photo-item:first-child {
+    grid-row: auto;
+}
+
 /* --- Profile --- */
 .profile-content { display: flex; align-items: flex-start; gap: 2rem; }
 .linkedin-link {
