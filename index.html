@@ -411,9 +411,11 @@
         if (e.key === 'Escape') closeModal();
       });
 
-      document.addEventListener('click', (e) => {
+      document.addEventListener('mousedown', (e) => {
         const modal = document.getElementById('project-modal');
-        if (modal.classList.contains('active') && !e.target.closest('.project-modal-card')) {
+        if (!modal.classList.contains('active')) return;
+        // #project-modal の外側（ナビ等）またはオーバーレイ背景をクリックしたら閉じる
+        if (!e.target.closest('#project-modal') || e.target === modal) {
           closeModal();
         }
       });
