@@ -197,6 +197,7 @@
         <div id="project-modal" class="project-modal-overlay" onclick="closeModal()">
             <div class="project-modal-card" onclick="event.stopPropagation()">
                 <button class="modal-close-btn" onclick="closeModal()">&times;</button>
+                <h2 id="modal-title" class="modal-title"></h2>
                 <div id="modal-content-body"></div>
             </div>
         </div>
@@ -361,38 +362,43 @@
         'Bug': 'bug',
         'PLC': 'plc',
         'Desktop': 'desktop',
-        'C#': 'c#'
+        'C#': 'c#',
+        'window': 'windows',
+        'Arduino': 'arduino'
       };
 
       function sendPrompt(keyword) {
         const searchWord = (KEYWORD_MAPPING[keyword] || keyword).toLowerCase();
-        const allArticles = Array.from(document.querySelectorAll('main article'));
 
-        const matchedCards = allArticles.filter(card => {
-          const title = card.querySelector('h3')?.textContent.toLowerCase() || "";
-          const tagsAttr = card.getAttribute('data-tags')?.toLowerCase() || "";
-          const tagsText = Array.from(card.querySelectorAll('.tag')).map(t => t.textContent.trim().toLowerCase());
-          return title.includes(searchWord) || tagsAttr.includes(searchWord) || tagsText.some(tag => tag.includes(searchWord));
-        });
+        const matched = PROJECTS.filter(p =>
+          (p.tags || []).some(tag => tag.toLowerCase().includes(searchWord))
+        );
 
-        if (matchedCards.length > 0) {
-          const modal = document.getElementById('project-modal');
-          const modalBody = document.getElementById('modal-content-body');
+        const modal = document.getElementById('project-modal');
+        const modalBody = document.getElementById('modal-content-body');
+        const modalTitle = document.getElementById('modal-title');
 
-          modalBody.innerHTML = '';
-          matchedCards.forEach(card => {
-            const wrapper = document.createElement('div');
-            wrapper.className = 'modal-item-wrapper';
-            const separator = document.createElement('div');
-            separator.className = 'modal-item-separator';
-            wrapper.appendChild(separator);
-            wrapper.appendChild(card.cloneNode(true));
-            modalBody.appendChild(wrapper);
+        modalTitle.textContent = keyword;
+        modalBody.innerHTML = '';
+
+        if (matched.length > 0) {
+          const grid = document.createElement('div');
+          grid.className = 'archive-project-grid';
+          matched.forEach(project => {
+            const cardClass = project.category === 'main' ? 'project-card'
+                            : project.category === 'plan' ? 'plan-project-card'
+                            : 'archive-project-card';
+            grid.appendChild(buildCard(project, cardClass));
           });
-
-          modal.classList.add('active');
-          document.body.style.overflow = 'hidden';
+          modalBody.appendChild(grid);
+        } else {
+          const p = document.createElement('p');
+          p.textContent = '該当するプロジェクトはありません。';
+          modalBody.appendChild(p);
         }
+
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
       }
 
       function closeModal() {
