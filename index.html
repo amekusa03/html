@@ -397,15 +397,15 @@
           modalBody.appendChild(p);
         }
 
-        modal.style.pointerEvents = 'auto';
-        modal.classList.add('active');
+        requestAnimationFrame(() => {
+          modal.classList.add('active');
+        });
         document.body.style.overflow = 'hidden';
       }
 
       function closeModal() {
         const modal = document.getElementById('project-modal');
         modal.classList.remove('active');
-        modal.style.pointerEvents = 'none';
         document.body.style.overflow = '';
       }
 
