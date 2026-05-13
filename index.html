@@ -194,8 +194,8 @@
         </main>
 
         <!-- ポップアップ用オーバーレイ -->
-        <div id="project-modal" class="project-modal-overlay" onclick="closeModal()">
-            <div class="project-modal-card" onclick="event.stopPropagation()">
+        <div id="project-modal" class="project-modal-overlay">
+            <div class="project-modal-card">
                 <button class="modal-close-btn" onclick="closeModal()">&times;</button>
                 <h2 id="modal-title" class="modal-title"></h2>
                 <div id="modal-content-body"></div>
@@ -409,6 +409,13 @@
 
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeModal();
+      });
+
+      document.addEventListener('click', (e) => {
+        const modal = document.getElementById('project-modal');
+        if (modal.classList.contains('active') && !e.target.closest('.project-modal-card')) {
+          closeModal();
+        }
       });
     </script>
 </body>
