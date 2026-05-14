@@ -851,6 +851,14 @@ nav a {
 
 .app-page footer { margin-top: 8rem; font-size: 0.75rem; }
 
+/* --- Note Box --- */
+.note-box {
+    background: var(--card-bg);
+    padding: 1rem;
+    border-left: 4px solid var(--accent-green);
+    margin-top: 1rem;
+}
+
 /* --- Tables & Downloads --- */
 .table-wrapper {
     overflow-x: auto;
