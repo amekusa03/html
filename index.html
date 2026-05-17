@@ -127,6 +127,7 @@
             <ul>
                 <li><a href="#about">About</a></li>
                 <li><a href="#engineering">Engineering</a></li>
+                <li><a href="#upcycle">Upcycle</a></li>
                 <li><a href="#photography">Photography</a></li>
                 <li><a href="#profile">Profile</a></li>
                 <li><a href="#links">Links</a></li>
@@ -153,8 +154,14 @@
                 <div id="project-sections"></div>
             </section>
 
+            <section id="upcycle">
+                <h2 data-num="○三">App Upcycle</h2>
+                <p class="u-text-center section-description">古い端末を活かす実用ガイド</p>
+                <div id="upcycle-sections"></div>
+            </section>
+
             <section id="photography">
-                <h2 data-num="○三">Photography</h2>
+                <h2 data-num="○四">Photography</h2>
                 <div class="photo-grid">
                     <div class="photo-item">
                         <img src="Photo/photo01.jpg" alt="Nature photo 1" loading="lazy">
@@ -170,7 +177,7 @@
             </section>
 
             <section id="profile">
-                <h2 data-num="○四">Profile</h2>
+                <h2 data-num="○五">Profile</h2>
                 <div class="profile-content">
                     <div>
                         <p><strong>Favorite Hobbies</strong> - <a href="hobbies/hobbies.html">My Hobbies</a></p>
@@ -186,7 +193,7 @@
             </section>
 
             <section id="links">
-                <h2 data-num="○五">Links</h2>
+                <h2 data-num="○六">Links</h2>
                 <ul class="links-list">
                     <li><strong>Favorite Web Links</strong> <a href="link/index.html">Linkへ →</a></li>
                 </ul>
@@ -217,7 +224,6 @@
         // --- メインプロジェクト ---
         { category: "main", title: "Software Engineering and Me", youtubeId: "0gV_4Gl4rH8", altText: "Restless engineer", href: "app/app_detail/app_detail.html", tags: ["github"] },
         { category: "main", title: "Android web launcher2", youtubeId: "3B1LJLAfen8", altText: "Android web launcher2", href: "app/android_web_launcher2/android_web_launcher2.html", tags: ["android", "kotlin"] },
-        { category: "main", title: "Ubuntu 導入ガイド", youtubeId: "m0lFwpMAM2Q", altText: "Ubuntu Guide", href: "app/ubuntu/ubuntu.html", tags: ["ubuntu", "linux", "bug"] },
         { category: "main", title: "Avalonia UI & MVVM", youtubeId: "dhkjU1KkbTw", altText: "Avalonia UI Learning", href: "app/avalonia_ui/avalonia_ui.html", tags: ["avalonia", "c#", "desktop"] },
         { category: "main", title: "ESP32 Racing Game", youtubeId: "FJdXAT3jsQo", altText: "ESP32 Racing Game", href: "app/esp32_racing_game/esp32_racing_game.html", tags: ["Wokwi", "IDF-ESP", "c++", "embedded"] },
         { category: "main", title: "Qt Project Launcher", youtubeId: "mteT0aFFLCU", altText: "Qt Project Launcher", href: "app/qt_project_launcher/qt_project_launcher.html", tags: ["qt", "c++", "desktop"] },
@@ -231,7 +237,6 @@
         { category: "main", title: "Image for net v3.0", youtubeId: "dmGGBLUwR_o", altText: "Image for Net", href: "app/image_for_net/image_for_net.html", tags: ["avalonia", "desktop"] },
         { category: "main", title: "SekkaTi", youtubeId: "FXpCDcUNZzI", altText: "SekkaTi", href: "app/sekkati/sekkati.html", tags: ["avalonia", "desktop"] },
         { category: "main", title: "Android Auto Music Player", youtubeId: "AvIeaj8VLis", altText: "Android Auto Music Player", href: "app/android_auto_music_player/android_auto_music_player.html", tags: ["android", "kotlin", "mobile"] },
-        { category: "main", title: "Android table Clock", youtubeId: "iLq9jhhg-OM", altText: "Android table Clock", href: "app/android_table_clock/android_table_clock.html", tags: ["android", "kotlin", "mobile"] },
 
         // --- Kids Engineer ---
         { category: "kids", title: "Androidアプリのインストール方法", imageSrc: "amenoniwa.png", altText: "Android Install Guide", href: "app/android_install_guide/android_install_guide.html", tags: ["android", "github", "kids"] },
@@ -240,7 +245,6 @@
         // --- 過去プロジェクト ---
         { category: "archive", title: "Hello World Qt Creator", youtubeId: "v86BQykeWFY", altText: "Qt Creator Intro", href: "app/hello_world_qt_creator/hello_world_qt_creator.html", tags: ["qt", "c++"] },
         { category: "archive", title: "ESP32 World Clock for Wokwi", youtubeId: "GSfD1kVzAFw", altText: "ESP32 world Clock for Wokwi", href: "app/esp32_world_clock/esp32_world_clock.html", tags: ["Wokwi", "IDF-ESP", "c++"] },
-        { category: "archive", title: "My PC Audio", imageSrc: "app/my_pc_audio/pcMusic.png", altText: "My PC Audio", href: "app/my_pc_audio/my_pc_audio.html", tags: ["audio"] },
         { category: "archive", title: "SEO strategies", imageSrc: "app/seo/SEO.png", altText: "SEO strategies", href: "app/seo/seo.html", tags: ["vercel", "seo"] },
         { category: "archive", title: "Google Nest Script", youtubeId: "fbe6DP628qQ", altText: "Google Nest Script", href: "app/google_nest_script/google_nest_script.html", tags: ["google nest hub"] },
         { category: "archive", title: "暗号化Browse Wrapper", youtubeId: "zNFxTU8CWW4", altText: "EncBrowse", href: "app/enc_browse/enc_browse.html", tags: ["avalonia", "desktop"] },
@@ -249,17 +253,24 @@
         { category: "archive", title: "smart PC", youtubeId: "SRRmwL01tHY", altText: "smart PC Demo", href: "app/smartpc/smartpc.html", tags: ["IDF-ESP"] },
         { category: "archive", title: "Virtual Smart Device Control System", youtubeId: "K-S2Lh78OMA", altText: "Virtual Smart Device Control System Demo", href: "app/virtual_device/virtual_device.html", tags: ["IDF-ESP"] },
 
+        // --- アップリサイクル ---
+        { category: "upcycle", title: "Android不要アプリの整理方法", imageSrc: "app/android_clean_guide/android_clean_guide.png", altText: "Android App Cleanup Guide", href: "app/android_clean_guide/android_crean_guide.html", tags: ["android", "adb"] },
+        { category: "upcycle", title: "Ubuntu 導入ガイド", youtubeId: "m0lFwpMAM2Q", altText: "Ubuntu Guide", href: "app/ubuntu/ubuntu.html", tags: ["ubuntu", "linux", "bug"] },
+        { category: "upcycle", title: "Android table Clock", youtubeId: "iLq9jhhg-OM", altText: "Android table Clock", href: "app/android_table_clock/android_table_clock.html", tags: ["android", "kotlin", "mobile"] },
+        { category: "upcycle", title: "My PC Audio", imageSrc: "app/my_pc_audio/pcMusic.png", altText: "My PC Audio", href: "app/my_pc_audio/my_pc_audio.html", tags: ["audio"] },
+
         // --- 検討中プロジェクト ---
         { category: "plan", title: "smartOne PC", subtitle: "... Maybe" ,imageSrc: "iwana2.png", altText: "smartOne PC", tags: ["IDF-ESP"] },
         { category: "plan", title: "LocaTime", subtitle: "... Maybe" ,imageSrc: "iwana3.png", altText: "LocaTime", tags: ["android", "kotlin", "mobile"] },
       ];
 
       const SECTIONS = [
-        { category: "main",    gridClass: "project-grid",         cardClass: "project-card",         subtitle: null,                  description: null },
-        { category: "kids",    gridClass: "archive-project-grid", cardClass: "archive-project-card", subtitle: "Kids Engineer",       description: "やってみて" },
-        { category: "archive", gridClass: "archive-project-grid", cardClass: "archive-project-card", subtitle: "Archived Projects",   description: "過去プロジェクトやミニタスク" },
-        { category: "current", gridClass: "plan-project-grid",    cardClass: "plan-project-card",    subtitle: "Current Projects",    description: "現在進行中のプロジェクト" },
-        { category: "plan",    gridClass: "plan-project-grid",    cardClass: "plan-project-card",    subtitle: "I want to work on...", description: "検討のプロジェクト" },
+        { category: "main",    containerId: "project-sections",  gridClass: "project-grid",         cardClass: "project-card",         subtitle: null,                  description: null },
+        { category: "kids",    containerId: "project-sections",  gridClass: "archive-project-grid", cardClass: "archive-project-card", subtitle: "Kids Engineer",       description: "やってみて" },
+        { category: "archive", containerId: "project-sections",  gridClass: "archive-project-grid", cardClass: "archive-project-card", subtitle: "Archived Projects",   description: "過去プロジェクトやミニタスク" },
+        { category: "current", containerId: "project-sections",  gridClass: "plan-project-grid",    cardClass: "plan-project-card",    subtitle: "Current Projects",    description: "現在進行中のプロジェクト" },
+        { category: "plan",    containerId: "project-sections",  gridClass: "plan-project-grid",    cardClass: "plan-project-card",    subtitle: "I want to work on...", description: "検討のプロジェクト" },
+        { category: "upcycle", containerId: "upcycle-sections",  gridClass: "archive-project-grid", cardClass: "archive-project-card", subtitle: null,                  description: null },
       ];
 
       function buildCard(project, cardClass) {
@@ -315,10 +326,10 @@
       }
 
       function renderProjects() {
-        const container = document.getElementById('project-sections');
-        if (!container) return;
-
         SECTIONS.forEach(section => {
+          const container = document.getElementById(section.containerId || 'project-sections');
+          if (!container) return;
+
           const sectionProjects = PROJECTS.filter(p => p.category === section.category);
           if (!sectionProjects.length) return;
 
