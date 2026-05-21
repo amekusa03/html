@@ -19,12 +19,16 @@
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&display=swap"></noscript>
 
     <link rel="icon" href="Favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="amenoniwa.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://amekusa.vercel.app/">
     <meta name="description" content="amekusaのポートフォリオ。エンジニアリング、写真、趣味などを紹介しています。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://amekusa.vercel.app/">
     <meta property="og:title" content="雨草の庭 | Engineering & Nature Portfolio">
     <meta property="og:description" content="amekusaのポートフォリオ。エンジニアリング、写真、趣味などを紹介しています。">
+    <meta property="og:image" content="https://amekusa.vercel.app/amenoniwa.png">
     <title>雨草の庭 | Engineering & Nature Portfolio</title>
     <script>
       window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -164,13 +168,13 @@
                 <h2 data-num="○四">Photography</h2>
                 <div class="photo-grid">
                     <div class="photo-item">
-                        <img src="Photo/photo01.jpg" alt="Nature photo 1" loading="lazy">
+                        <img src="Photo/photo01.jpg" alt="Nature photo 1" loading="lazy" width="4320" height="2880">
                     </div>
                     <div class="photo-item">
-                        <img src="Photo/photo02.jpg" alt="Nature photo 2" loading="lazy">
+                        <img src="Photo/photo02.jpg" alt="Nature photo 2" loading="lazy" width="4320" height="2432">
                     </div>
                     <div class="photo-item">
-                        <img src="Photo/photo03.jpg" alt="Nature photo 3" loading="lazy">
+                        <img src="Photo/photo03.jpg" alt="Nature photo 3" loading="lazy" width="4320" height="2432">
                     </div>
                 </div>
                 <p class="section-description" style="margin-top:1.5rem;"><a href="Photo/index.html">全ての写真を見る →</a></p>
@@ -178,17 +182,15 @@
 
             <section id="profile">
                 <h2 data-num="○五">Profile</h2>
-                <div class="profile-content">
+                <div class="profile-content" style="margin-bottom: 1rem;">
                     <div>
                         <p><strong>Favorite Hobbies</strong> - <a href="hobbies/hobbies.html">My Hobbies</a></p>
                     </div>
-                    <br>
                 </div>
                 <div class="profile-content">
                     <div>
                         <a href="https://www.linkedin.com/in/amekusa-k-a925233b7/" target="_blank" rel="noopener noreferrer" class="linkedin-link">LinkedIn Profile</a>
                     </div>
-                    <br>
                 </div>
             </section>
 
@@ -238,6 +240,7 @@
         { category: "main", title: "SekkaTi", youtubeId: "FXpCDcUNZzI", altText: "SekkaTi", href: "app/sekkati/sekkati.html", tags: ["avalonia", "desktop"] },
         { category: "main", title: "Android Auto Music Player", youtubeId: "AvIeaj8VLis", altText: "Android Auto Music Player", href: "app/android_auto_music_player/android_auto_music_player.html", tags: ["android", "kotlin", "mobile"] },
         { category: "main", title: "LocTime", youtubeId: "EdCvGfPWmkA", altText: "LocTime", href: "app/android_loctime/android_loctime.html", tags: ["android", "kotlin", "mobile"] },
+        { category: "main", title: "smartOn PC", youtubeId: "f5ny7iTi6pg", altText: "smartOn PC", href: "app/smartonpc/smartonpc.html", tags: ["IDF-ESP"] },
 
         // --- Kids Engineer ---
         { category: "kids", title: "Androidアプリのインストール方法", imageSrc: "amenoniwa.png", altText: "Android Install Guide", href: "app/android_install_guide/android_install_guide.html", tags: ["android", "github", "kids"] },
@@ -261,7 +264,7 @@
         { category: "upcycle", title: "My PC Audio", youtubeId: "81wXBQizKV4", altText: "My PC Audio", href: "app/my_pc_audio/my_pc_audio.html", tags: ["audio"] },
 
         // --- 検討中プロジェクト ---
-        { category: "plan", title: "smartOne PC", subtitle: "... Maybe" ,imageSrc: "iwana2.png", altText: "smartOne PC", tags: ["IDF-ESP"] },
+        { category: "plan", title: "MP3tag-playlist", imageSrc: "iwana1.png", altText: "MP3tag-playlist", tags: ["Python", "mp3"] },
       ];
 
       const SECTIONS = [
@@ -425,7 +428,7 @@
         if (e.key === 'Escape') closeModal();
       });
 
-      document.addEventListener('mousedown', (e) => {
+      document.addEventListener('click', (e) => {
         const modal = document.getElementById('project-modal');
         if (!modal.classList.contains('active')) return;
         // #project-modal の外側（ナビ等）またはオーバーレイ背景をクリックしたら閉じる
