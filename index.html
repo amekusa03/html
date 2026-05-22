@@ -328,6 +328,55 @@
         return article;
       }
 
+      function buildTagFilterBar(projects) {
+        const tagSet = new Set();
+        projects.forEach(p => (p.tags || []).forEach(t => tagSet.add(t.toLowerCase())));
+        if (!tagSet.size) return null;
+
+        const bar = document.createElement('div');
+        bar.className = 'tag-filter-bar';
+
+        const allBtn = document.createElement('button');
+        allBtn.className = 'tag-filter-btn active';
+        allBtn.textContent = 'すべて';
+        allBtn.dataset.tag = '';
+        bar.appendChild(allBtn);
+
+        [...tagSet].sort().forEach(tag => {
+          const btn = document.createElement('button');
+          btn.className = 'tag-filter-btn';
+          btn.textContent = tag;
+          btn.dataset.tag = tag;
+          bar.appendChild(btn);
+        });
+
+        bar.addEventListener('click', e => {
+          const btn = e.target.closest('.tag-filter-btn');
+          if (!btn) return;
+          bar.querySelectorAll('.tag-filter-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const selectedTag = btn.dataset.tag;
+          const container = document.getElementById('project-sections');
+
+          container.querySelectorAll('[data-tags]').forEach(card => {
+            if (!selectedTag) {
+              card.hidden = false;
+            } else {
+              const tags = card.dataset.tags.split(',').map(t => t.toLowerCase());
+              card.hidden = !tags.includes(selectedTag);
+            }
+          });
+
+          container.querySelectorAll('.project-section-group').forEach(group => {
+            if (!selectedTag) { group.hidden = false; return; }
+            group.hidden = ![...group.querySelectorAll('[data-tags]')].some(c => !c.hidden);
+          });
+        });
+
+        return bar;
+      }
+
       function renderProjects() {
         SECTIONS.forEach(section => {
           const container = document.getElementById(section.containerId || 'project-sections');
@@ -336,25 +385,40 @@
           const sectionProjects = PROJECTS.filter(p => p.category === section.category);
           if (!sectionProjects.length) return;
 
+          const group = document.createElement('div');
+          group.className = 'project-section-group';
+          group.dataset.category = section.category;
+
           if (section.subtitle) {
             const h3 = document.createElement('h3');
             h3.className = 'section-subtitle';
             h3.textContent = section.subtitle;
-            container.appendChild(h3);
+            group.appendChild(h3);
           }
 
           if (section.description) {
             const p = document.createElement('p');
             p.className = 'section-description';
             p.textContent = section.description;
-            container.appendChild(p);
+            group.appendChild(p);
           }
 
           const grid = document.createElement('div');
           grid.className = section.gridClass;
           sectionProjects.forEach(project => grid.appendChild(buildCard(project, section.cardClass)));
-          container.appendChild(grid);
+          group.appendChild(grid);
+
+          container.appendChild(group);
         });
+
+        const projectContainer = document.getElementById('project-sections');
+        const engineeringProjects = PROJECTS.filter(p =>
+          ['main', 'kids', 'archive', 'plan'].includes(p.category)
+        );
+        const filterBar = buildTagFilterBar(engineeringProjects);
+        if (filterBar && projectContainer.firstChild) {
+          projectContainer.insertBefore(filterBar, projectContainer.firstChild);
+        }
       }
 
       renderProjects();
