@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://amekusa.vercel.app/app/like_button/like_button.html">
+    <meta name="description" content="Firebase Cloud FirestoreとクライアントJavaScriptを組み合わせた、静的サイト向け「いいねボタン」の設計と導入に関する技術レポートです。">
+    <title>いいねボタンの導入 (Firebase) | 雨草の庭</title>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="app-page">
+    <div class="container">
+        <nav>
+            <a href="../../index.html">← Back to Garden</a>
+        </nav>
+
+        <header>
+            <div class="header-tags u-margin-b-1">
+                <span class="tag">Firebase</span>
+                <span class="tag">Google Cloud</span>
+                <span class="tag">JavaScript</span>
+            </div>
+            <h1>いいねボタンの導入</h1>
+            <p class="u-opacity-8">Firebase Like Button Integration</p>
+        </header>
+
+        <main>
+            <section>
+                <h2>About this Project</h2>
+                <p>
+                    Vercel等でホスティングされる静的なポートフォリオサイトは、高速かつ低コストで運用可能ですが、動的なインタラクション（評価やコメント等）を導入する際にはサーバーサイドが必要になります。
+                </p>
+                <p>
+                    本プロジェクトでは、GoogleのBaaSである<strong>Firebase Cloud Firestore</strong>とクライアントサイドの<strong>JavaScript</strong>を組み合わせることで、完全なサーバーレス構成にて、安全で軽量な「いいねボタン（インクリメント評価）」機能を実装しました。
+                </p>
+            </section>
+
+            <section>
+                <h2>Technical Stack</h2>
+                <ul>
+                    <li><strong>Database:</strong> Cloud Firestore (NoSQL ドキュメント型データベース)</li>
+                    <li><strong>Frontend Logic:</strong> Vanilla JavaScript (ES Modules, Firebase Web SDK v10)</li>
+                    <li><strong>State Persistence:</strong> LocalStorage (ブラウザ内一時保存による重複防止)</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>System Architecture</h2>
+                <h3>1. Firestoreのデータ構造</h3>
+                <p>
+                    いいね数は、ページごとの識別子（パス名から生成）をドキュメントIDとして管理し、アトミックなインクリメント処理を行います。
+                </p>
+                <ul>
+                    <li><strong>コレクション名:</strong> <code>likes</code></li>
+                    <li><strong>ドキュメントID:</strong> <code>pageId</code>（例: <code>android_auto_music_player</code>）</li>
+                    <li><strong>フィールド:</strong> <code>{ count: number }</code></li>
+                </ul>
+
+                <h3>2. 重複防止のフロー</h3>
+                <ul>
+                    <li>1. ページロード時、ローカルストレージ（<code>liked__pageId</code>）に値があるかチェックする。</li>
+                    <li>2. 値が存在すれば、ボタンに <code>liked</code> クラスを追加し、アイコンを「♥」にする（再度クリックできないようにガードする）。</li>
+                    <li>3. クリックされた際、まだ「いいね」されていなければ、ローカルストレージにフラグを書き込み、Firestoreサーバーに対してインクリメント（+1）リクエストを送信する。</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Core Implementation</h2>
+                <h3>JavaScriptによる同期処理 (`like.js` 抜粋)</h3>
+                <p>
+                    Firestoreの <code>increment</code> 演算子を使用することで、複数のユーザーが同時にクリックしてもカウントが正確に更新（アトミック操作）される設計となっています。
+                </p>
+                <pre><code class="language-javascript">import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+import { getFirestore, doc, getDoc, setDoc, increment } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+
+// Firebase初期化設定
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  projectId: "YOUR_PROJECT_ID",
+  // ...その他の設定項目
+};
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// いいね処理の実行
+async function initLikeButton() {
+  const btn = document.getElementById('like-btn');
+  const countEl = document.getElementById('like-count');
+  // ...（DOM取得と存在確認）
+
+  const pageId = location.pathname.replace(/^\/|\/$/g, '').replace(/\//g, '__').replace(/\.html$/, '');
+  const storageKey = 'liked__' + pageId;
+  const docRef = doc(db, 'likes', pageId);
+
+  // 初回読み込み
+  const snap = await getDoc(docRef);
+  countEl.textContent = snap.exists() ? (snap.data().count ?? 0) : 0;
+
+  // クリックイベント
+  btn.addEventListener('click', async () => {
+    if (localStorage.getItem(storageKey)) return;
+    localStorage.setItem(storageKey, '1');
+    
+    // UIを先行して即時更新（楽観的UI更新）
+    btn.classList.add('liked');
+    countEl.textContent = parseInt(countEl.textContent || '0') + 1;
+
+    // サーバーへの送信（アトミックなインクリメント処理）
+    await setDoc(docRef, { count: increment(1) }, { merge: true });
+  });
+}</code></pre>
+            </section>
+
+            <section>
+                <h2>Security Design & Best Practices</h2>
+                <p>
+                    フロントエンドにAPIキーを公開することから、Firestoreのセキュリティとリソース保護は主に以下の2つのレイヤーで防御しています。
+                </p>
+
+                <h3>1. Firestoreセキュリティルール</h3>
+                <p>
+                    何者かが他人のドキュメントを勝手に削除したり、カウントを大幅に改ざんしたりできないよう、Firebaseコンソール上で強固なアクセス制限を記述しています。
+                </p>
+                <pre><code class="language-javascript">rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /likes/{pageId} {
+      // 誰でもいいね数の閲覧が可能
+      allow read: if true;
+      // 新規作成、または count フィールドの1増加更新のみを許可する
+      allow write: if request.resource.data.keys().hasAll(['count'])
+                   && (resource == null || request.resource.data.count == resource.data.count + 1);
+    }
+  }
+}</code></pre>
+
+                <h3>2. APIキーのHTTPリファラー制限</h3>
+                <p>
+                    Google Cloudコンソール側の設定において、APIキーが使用できるWebサイトのドメイン（HTTPリファラー）を <code>https://amekusa.vercel.app/*</code> に限定する制限を適用しています。これにより、第三者がAPIキーをそのままコピーして別ドメインで再利用することを技術的に防ぐ仕組みになっています。
+                </p>
+            </section>
+
+            <section>
+                <h2>Conclusion</h2>
+                <p>
+                    サーバーレス技術（BaaS）とクライアントJSの工夫により、個人ポートフォリオ等の静的サイトでも安全・低コストに動的なコミュニケーション機能を導入できることが確認できました。
+                </p>
+                <p>
+                    現在、本機能は「雨草の庭」内のすべての記事・解説ページに標準実装されており、訪問者からの有益なフィードバックとして役立てられています。
+                </p>
+            </section>
+        </main>
+
+        <nav>
+            <a href="../../index.html">← Back to Garden</a>
+        </nav>
+
+        <div class="like-section">
+            <button id="like-btn" class="like-btn" aria-label="いいね">
+                <span class="like-icon">♡</span>
+                <span id="like-count" class="like-count">…</span>
+            </button>
+            <p class="like-label">役に立ちましたか？</p>
+        </div>
+
+        <footer>
+            <p>Copyright &copy; amekusa All Rights Reserved.</p>
+        </footer>
+    </div>
+    <script type="module" src="../like.js"></script>
+</body>
+</html>
