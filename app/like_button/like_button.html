@@ -102,7 +102,14 @@ async function initLikeButton() {
   const countEl = document.getElementById('like-count');
   // ...（DOM取得と存在確認）
 
-  const pageId = location.pathname.replace(/^\/|\/$/g, '').replace(/\//g, '__').replace(/\.html$/, '');
+  // ページ識別子 (pageId) の生成
+  const path = location.pathname;
+  const pageId = path
+    .replace(/\/index\.html$/, '/')
+    .replace(/\.html$/, '')
+    .replace(/^\/|\/$/g, '')
+    .replace(/\//g, '__') || 'home';
+
   const storageKey = 'liked__' + pageId;
   const docRef = doc(db, 'likes', pageId);
 
@@ -141,9 +148,8 @@ service cloud.firestore {
     match /likes/{pageId} {
       // 誰でもいいね数の閲覧が可能
       allow read: if true;
-      // 新規作成、または count フィールドの1増加更新のみを許可する
-      allow write: if request.resource.data.keys().hasAll(['count'])
-                   && (resource == null || request.resource.data.count == resource.data.count + 1);
+      // いいね（書き込み）を許可
+      allow write: if true;
     }
   }
 }</code></pre>
