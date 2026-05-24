@@ -21,20 +21,35 @@ async function initLikeButton() {
   const iconEl = btn ? btn.querySelector('.like-icon') : null;
   if (!btn || !countEl || !iconEl) return;
 
-  const pageId = location.pathname
+  // ID生成のロジックを整理
+  const path = location.pathname;
+  const pageId = path
+    .replace(/\/index\.html$/, '/')
+    .replace(/\.html$/, '')
     .replace(/^\/|\/$/g, '')
-    .replace(/\//g, '__')
-    .replace(/\.html$/, '');
+    .replace(/\//g, '__') || 'home';
+
+  console.log("DEBUG: current pageId is [" + pageId + "]"); // IDをログ出力
+
   const storageKey = 'liked__' + pageId;
   const docRef = doc(db, 'likes', pageId);
 
   // カウント読み込み
   try {
     const snap = await getDoc(docRef);
-    countEl.textContent = snap.exists() ? (snap.data().count ?? 0) : 0;
-  } catch {
+    if (snap.exists()) {
+      const data = snap.data();
+      console.log("DEBUG: Firestore Data:", data);
+      countEl.textContent = data.count ?? 0;
+    } else {
+      console.log("DEBUG: No document found in Firestore. Defaulting to 0.");
+      countEl.textContent = '0';
+    }
+  } catch (e) {
+    console.error("DEBUG: Firestore Read Error:", e);
     countEl.textContent = '0';
   }
+
 
   // すでにいいね済みなら表示を変更
   if (localStorage.getItem(storageKey)) {
@@ -49,9 +64,12 @@ async function initLikeButton() {
     iconEl.textContent = '♥';
     countEl.textContent = parseInt(countEl.textContent || '0') + 1;
     try {
+      console.log("DEBUG: Attempting to update Firestore...");
       await setDoc(docRef, { count: increment(1) }, { merge: true });
-    } catch {
-      // Firestore への書き込み失敗（UIは既に更新済み）
+      console.log("DEBUG: Firestore update SUCCESS!");
+    } catch (e) {
+      console.error("DEBUG: Firestore Write Error:", e);
+      alert("保存に失敗しました: " + e.message); // エラーをダイアログで出す
     }
   });
 }

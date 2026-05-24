@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-SRGF2MMYGD');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://amekusa.vercel.app/app/tagplaylist/tagplaylist.html">
+    <meta name="description" content="MP3ファイルのID3タグを読み取り、ジャンルごとにプレイリストを自動生成するPythonツールの紹介です。">
+    <title>TagPlaylist Generator | 雨草の庭</title>
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+
+<body class="app-page">
+    <canvas id="rain-canvas"></canvas>
+    <div class="container">
+        <nav aria-label="ページナビゲーション">
+            <a href="../../index.html">← Back to Garden</a>
+        </nav>
+
+        <header>
+            <div class="header-tags u-margin-b-1">
+                <span class="tag">Python</span>
+                <span class="tag">Music</span>
+            </div>
+            <h1>TagPlaylist Generator</h1>
+            <p class="u-opacity-8">MP3のタグ情報からジャンル別プレイリストを自動生成します。</p>
+        </header>
+
+        <main>
+            <section>
+                <h2>About this Project</h2>
+                <p>
+                    音楽ライブラリの整理を効率化するために開発したツールです。
+                    大量のMP3ファイルからID3タグ（ジャンル）をスキャンし、ジャンルごとに <code>.m3u</code> プレイリストを自動的に作成します。
+                    GUIとCLIの両方に対応しており、ポータビリティを重視して相対パスでプレイリストを書き出します。
+                </p>
+            </section>
+            <section>
+                <h2>Video</h2>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/9AKDtL4bqXM" frameborder="0" allowfullscreen
+                        title="SekkaTi"></iframe>
+                </div>
+            </section>
+            <section>
+                <h2>Development Environment</h2>
+                <ul class="tech-stack">
+                    <li>Python 3.10+</li>
+                    <li>Mutagen (ID3 metadata library)</li>
+                    <li>Tkinter (GUI)</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Key Features</h2>
+                <ul>
+                    <li><strong>自動ジャンル分類:</strong> ID3v2タグのTCONフレームを元に分類します。</li>
+                    <li><strong>相対パス生成:</strong> プレイリストからの相対パスで記述するため、フォルダごと移動しても壊れません。</li>
+                    <li><strong>GUI/CLI両対応:</strong> ドラッグ＆ドロップ感覚で使えるGUIと、自動化に便利なCLIを備えています。</li>
+                    <li><strong>再帰的スキャン:</strong> 指定フォルダ以下のサブフォルダもすべて検索します。</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Resource</h2>
+                <p>ソースコードはGitHubで公開しています。</p>
+                <a href="https://github.com/amekusa03/tagplaylist" class="link-button" target="_blank"
+                    rel="noopener noreferrer">View on GitHub</a>
+            </section>
+        </main>
+
+        <nav aria-label="ページナビゲーション">
+            <a href="../../index.html">← Back to Garden</a>
+        </nav>
+        <div class="like-section">
+            <button id="like-btn" class="like-btn" aria-label="いいね">
+                <span class="like-icon">♡</span>
+                <span id="like-count" class="like-count">…</span>
+            </button>
+            <p class="like-label">見ていただけましたか？</p>
+        </div>
+        <footer>
+            <p>Copyright &copy; amekusa All Rights Reserved.</p>
+        </footer>
+    </div>
+    <script src="../../rain.js"></script>
+    <script type="module" src="../like.js"></script>
+</body>
+
+</html>
