@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-SRGF2MMYGD');
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-SRGF2MMYGD');
     </script>
 
     <link rel="icon" href="../../Favicon.png" type="image/png">
@@ -19,12 +20,13 @@
     <meta property="og:description" content="PowerShellスクリプトを使ってAndroidの不要アプリを削除・ログ管理する方法を解説します。">
     <title>Android不要アプリの整理方法（スクリプト編） | 雨草の庭</title>
     <script>
-      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script defer src="/_vercel/speed-insights/script.js"></script>
     <script defer src="/_vercel/insights/script.js"></script>
     <link rel="stylesheet" href="../../style.css">
 </head>
+
 <body class="app-page">
     <canvas id="rain-canvas"></canvas>
     <div class="container">
@@ -69,7 +71,8 @@
                 </ul>
                 <p>
                     上記がまだの方は、
-                    <a href="https://developer.android.com/tools/releases/platform-tools?hl=ja#downloads" target="_blank" rel="noopener noreferrer">SDK Platform-Tools 公式ページ</a>
+                    <a href="https://developer.android.com/tools/releases/platform-tools?hl=ja#downloads"
+                        target="_blank" rel="noopener noreferrer">SDK Platform-Tools 公式ページ</a>
                     などを参照して準備してください。
                 </p>
             </section>
@@ -77,7 +80,8 @@
             <section>
                 <h2>ステップ1：スクリプトを準備する</h2>
                 <p>
-                    ADBを解凍したフォルダ（<code>adb.exe</code> があるフォルダ）の中に、<code>uninstall.ps1</code> という名前でテキストファイルを作成し、以下の内容を貼り付けて保存します。
+                    ADBを解凍したフォルダ（<code>adb.exe</code> があるフォルダ）の中に、<code>uninstall.ps1</code>
+                    という名前でテキストファイルを作成し、以下の内容を貼り付けて保存します。
                 </p>
                 <pre><code>while ($true) {
     $pkg = Read-Host "パッケージ名を入力（終了はEnterのみ）"
@@ -149,32 +153,78 @@
                 <p>AQUOS特有の機能です。使っていなければ削除候補になります。</p>
                 <table>
                     <thead>
-                        <tr><th>パッケージ名</th><th>機能</th></tr>
+                        <tr>
+                            <th>パッケージ名</th>
+                            <th>機能</th>
+                        </tr>
                     </thead>
                     <tbody>
-                        <tr><td><code>jp.co.sharp.android.emopar</code></td><td rowspan="2">エモパー（AIアシスタント）</td></tr>
-                        <tr><td><code>jp.co.sharp.android.emopa.systemservice</code></td></tr>
-                        <tr><td><code>jp.co.sharp.android.launcherguide</code></td><td>操作ガイド</td></tr>
-                        <tr><td><code>jp.co.sharp.android.shtutorialapp</code></td><td>チュートリアル</td></tr>
-                        <tr><td><code>jp.co.sharp.android.pedometer.framework.server</code></td><td rowspan="2">歩数計</td></tr>
-                        <tr><td><code>jp.co.sharp.android.pedometersettingapp</code></td></tr>
-                        <tr><td><code>jp.co.sharp.android.karadamate</code></td><td>からだメイト</td></tr>
-                        <tr><td><code>jp.co.sharp.android.scrollauto</code></td><td>スクロールオート</td></tr>
-                        <tr><td><code>jp.co.sharp.android.paytriggerw</code></td><td>Payトリガー（指紋センサーで決済アプリ起動）</td></tr>
+                        <tr>
+                            <td><code>jp.co.sharp.android.emopar</code></td>
+                            <td rowspan="2">エモパー（AIアシスタント）</td>
+                        </tr>
+                        <tr>
+                            <td><code>jp.co.sharp.android.emopa.systemservice</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>jp.co.sharp.android.launcherguide</code></td>
+                            <td>操作ガイド</td>
+                        </tr>
+                        <tr>
+                            <td><code>jp.co.sharp.android.shtutorialapp</code></td>
+                            <td>チュートリアル</td>
+                        </tr>
+                        <tr>
+                            <td><code>jp.co.sharp.android.pedometer.framework.server</code></td>
+                            <td rowspan="2">歩数計</td>
+                        </tr>
+                        <tr>
+                            <td><code>jp.co.sharp.android.pedometersettingapp</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>jp.co.sharp.android.karadamate</code></td>
+                            <td>からだメイト</td>
+                        </tr>
+                        <tr>
+                            <td><code>jp.co.sharp.android.scrollauto</code></td>
+                            <td>スクロールオート</td>
+                        </tr>
+                        <tr>
+                            <td><code>jp.co.sharp.android.paytriggerw</code></td>
+                            <td>Payトリガー（指紋センサーで決済アプリ起動）</td>
+                        </tr>
                     </tbody>
                 </table>
 
                 <h3>Google系アプリ（代用アプリがあるなら）</h3>
                 <table>
                     <thead>
-                        <tr><th>パッケージ名</th><th>機能</th></tr>
+                        <tr>
+                            <th>パッケージ名</th>
+                            <th>機能</th>
+                        </tr>
                     </thead>
                     <tbody>
-                        <tr><td><code>com.google.android.apps.fitness</code></td><td>Google Fit</td></tr>
-                        <tr><td><code>com.google.android.apps.magazines</code></td><td>Google ニュース</td></tr>
-                        <tr><td><code>com.google.android.apps.books</code></td><td>Google Play ブックス</td></tr>
-                        <tr><td><code>com.google.android.apps.bard</code></td><td>Google Gemini / Bard</td></tr>
-                        <tr><td><code>com.google.chromeremotedesktop</code></td><td>リモートデスクトップ</td></tr>
+                        <tr>
+                            <td><code>com.google.android.apps.fitness</code></td>
+                            <td>Google Fit</td>
+                        </tr>
+                        <tr>
+                            <td><code>com.google.android.apps.magazines</code></td>
+                            <td>Google ニュース</td>
+                        </tr>
+                        <tr>
+                            <td><code>com.google.android.apps.books</code></td>
+                            <td>Google Play ブックス</td>
+                        </tr>
+                        <tr>
+                            <td><code>com.google.android.apps.bard</code></td>
+                            <td>Google Gemini / Bard</td>
+                        </tr>
+                        <tr>
+                            <td><code>com.google.chromeremotedesktop</code></td>
+                            <td>リモートデスクトップ</td>
+                        </tr>
                     </tbody>
                 </table>
 
@@ -182,15 +232,36 @@
                 <p>以下は削除するとスマホが正常に動かなくなる（最悪、起動しなくなる）可能性があります。絶対に消さないでください。</p>
                 <table>
                     <thead>
-                        <tr><th>パッケージ名</th><th>役割</th></tr>
+                        <tr>
+                            <th>パッケージ名</th>
+                            <th>役割</th>
+                        </tr>
                     </thead>
                     <tbody>
-                        <tr><td><code>android</code></td><td>システム根幹</td></tr>
-                        <tr><td><code>jp.co.sharp.android.launcher3</code></td><td>ホーム画面</td></tr>
-                        <tr><td><code>com.android.systemui</code></td><td>通知・画面表示</td></tr>
-                        <tr><td><code>com.felicanetworks.*</code></td><td>おサイフケータイ機能</td></tr>
-                        <tr><td><code>com.mediatek.*</code></td><td>CPU・通信チップの制御</td></tr>
-                        <tr><td><code>jp.co.sharp.overlay.*</code></td><td>画面表示の調整用データ</td></tr>
+                        <tr>
+                            <td><code>android</code></td>
+                            <td>システム根幹</td>
+                        </tr>
+                        <tr>
+                            <td><code>jp.co.sharp.android.launcher3</code></td>
+                            <td>ホーム画面</td>
+                        </tr>
+                        <tr>
+                            <td><code>com.android.systemui</code></td>
+                            <td>通知・画面表示</td>
+                        </tr>
+                        <tr>
+                            <td><code>com.felicanetworks.*</code></td>
+                            <td>おサイフケータイ機能</td>
+                        </tr>
+                        <tr>
+                            <td><code>com.mediatek.*</code></td>
+                            <td>CPU・通信チップの制御</td>
+                        </tr>
+                        <tr>
+                            <td><code>jp.co.sharp.overlay.*</code></td>
+                            <td>画面表示の調整用データ</td>
+                        </tr>
                     </tbody>
                 </table>
             </section>
@@ -224,7 +295,7 @@
                 <span class="like-icon">♡</span>
                 <span id="like-count" class="like-count">…</span>
             </button>
-            <p class="like-label">役に立ちましたか？</p>
+            <p class="like-label">見ていただけましたか？</p>
         </div>
         <footer>
             <p>Copyright &copy; amekusa All Rights Reserved.</p>
@@ -233,4 +304,5 @@
     <script src="../../rain.js"></script>
     <script type="module" src="../like.js"></script>
 </body>
+
 </html>

@@ -1,34 +1,39 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-SRGF2MMYGD');
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-SRGF2MMYGD');
     </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://amekusa.vercel.app/app/smartonpc/smartonpc.html">
-    <meta name="description" content="MatterとESP32-C3を使用して、Ubuntu PCをスマートホーム対応させるプロジェクトの紹介です。Google Nest Hub等からPCの電源操作や状態監視を実現します。">
+    <meta name="description"
+        content="MatterとESP32-C3を使用して、Ubuntu PCをスマートホーム対応させるプロジェクトの紹介です。Google Nest Hub等からPCの電源操作や状態監視を実現します。">
     <title>SmartOn PC | 雨草の庭</title>
     <script>
-      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        .step-table th, .step-table td {
+        .step-table th,
+        .step-table td {
             padding: 0.75rem 1rem;
         }
+
         .status-ok {
             color: #2a9d2a;
             font-weight: bold;
         }
+
         .circuit-block {
             background: #f5f5f5;
             border: 1px solid #ddd;
@@ -43,6 +48,7 @@
         }
     </style>
 </head>
+
 <body class="app-page">
     <div class="container">
         <nav>
@@ -72,7 +78,8 @@
             <section>
                 <h2>Video</h2>
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/f5ny7iTi6pg" frameborder="0" allowfullscreen title="SmartOn PC"></iframe>
+                    <iframe src="https://www.youtube.com/embed/f5ny7iTi6pg" frameborder="0" allowfullscreen
+                        title="SmartOn PC"></iframe>
                 </div>
             </section>
             <section>
@@ -106,7 +113,10 @@
                 <h3>Step 1 — 電源制御</h3>
                 <table>
                     <thead>
-                        <tr><th>機能</th><th>手段</th></tr>
+                        <tr>
+                            <th>機能</th>
+                            <th>手段</th>
+                        </tr>
                     </thead>
                     <tbody>
                         <tr>
@@ -126,13 +136,17 @@
                 <ul>
                     <li><strong>WoL（Wake on LAN）は不採用</strong> — このPCは設定したつもりでも、成功しなかった為</li>
                     <li><strong>ESP32ー ○○コマンド→PCで電源OFF</strong> — そもそもPCを操作するのと変わらないため検討外</li>
-                    <li><strong>電源OFF</strong>: リレーで電源ボタンを短押しし、Ubuntuの ACPI 設定（<code>HandlePowerKey=poweroff</code>）が正常シャットダウンを開始する</li>
+                    <li><strong>電源OFF</strong>: リレーで電源ボタンを短押しし、Ubuntuの ACPI
+                        設定（<code>HandlePowerKey=poweroff</code>）が正常シャットダウンを開始する</li>
                 </ul>
 
                 <h3>Step 2 — 電源状態監視</h3>
                 <table>
                     <thead>
-                        <tr><th>機能</th><th>手段</th></tr>
+                        <tr>
+                            <th>機能</th>
+                            <th>手段</th>
+                        </tr>
                     </thead>
                     <tbody>
                         <tr>
@@ -172,7 +186,11 @@
                 <h3>GPIO 割り当て</h3>
                 <table>
                     <thead>
-                        <tr><th>GPIO</th><th>役割</th><th>回路</th></tr>
+                        <tr>
+                            <th>GPIO</th>
+                            <th>役割</th>
+                            <th>回路</th>
+                        </tr>
                     </thead>
                     <tbody>
                         <tr>
@@ -196,35 +214,54 @@
                 <h3>回路図</h3>
                 <p><strong>PWR SW（GPIO 20 → メカリレー → マザーボード）</strong></p>
                 <div class="circuit-block">GPIO 20 → リレー制御入力
-リレー接点 → マザーボード PWR SW ヘッダ短絡</div>
+                    リレー接点 → マザーボード PWR SW ヘッダ短絡</div>
 
                 <p><strong>PWR LED（マザーボード → PC817 → GPIO 4）</strong></p>
                 <div class="circuit-block">PWR_LED+ → 470Ω → PC817 Anode(pin1)
-PC817 Cathode(pin2) → PWR_LED- (GND)
-3.3V → 10kΩ → PC817 Collector(pin4) → GPIO 4
-PC817 Emitter(pin3) → GND
+                    PC817 Cathode(pin2) → PWR_LED- (GND)
+                    3.3V → 10kΩ → PC817 Collector(pin4) → GPIO 4
+                    PC817 Emitter(pin3) → GND
 
-PC ON  : LED点灯 → PC817導通 → GPIO = LOW
-PC OFF : LED消灯 → PC817遮断 → GPIO = HIGH (pullup)</div>
+                    PC ON : LED点灯 → PC817導通 → GPIO = LOW
+                    PC OFF : LED消灯 → PC817遮断 → GPIO = HIGH (pullup)</div>
                 <p>極性は <code>pc_control.c</code> の <code>PWR_SW_ACTIVE_HIGH</code> ソースコードで切り替え可能。</p>
 
                 <h3>主な材料費</h3>
                 <table>
                     <thead>
-                        <tr><th>部品</th><th>価格</th></tr>
+                        <tr>
+                            <th>部品</th>
+                            <th>価格</th>
+                        </tr>
                     </thead>
                     <tbody>
-                        <tr><td>Generic ESP32-C3</td><td>539円</td></tr>
-                        <tr><td>リレーモジュール</td><td>464円</td></tr>
-                        <tr><td>PC817 フォトカプラ</td><td>388円</td></tr>
-                        <tr><td><strong>合計</strong></td><td><strong>1,391円</strong></td></tr>
+                        <tr>
+                            <td>Generic ESP32-C3</td>
+                            <td>539円</td>
+                        </tr>
+                        <tr>
+                            <td>リレーモジュール</td>
+                            <td>464円</td>
+                        </tr>
+                        <tr>
+                            <td>PC817 フォトカプラ</td>
+                            <td>388円</td>
+                        </tr>
+                        <tr>
+                            <td><strong>合計</strong></td>
+                            <td><strong>1,391円</strong></td>
+                        </tr>
                     </tbody>
                 </table>
 
                 <h3>待機電力（推測値）</h3>
                 <table>
                     <thead>
-                        <tr><th>機器</th><th>状態</th><th>推測消費電力</th></tr>
+                        <tr>
+                            <th>機器</th>
+                            <th>状態</th>
+                            <th>推測消費電力</th>
+                        </tr>
                     </thead>
                     <tbody>
                         <tr>
@@ -254,14 +291,19 @@ PC OFF : LED消灯 → PC817遮断 → GPIO = HIGH (pullup)</div>
                         </tr>
                     </tbody>
                 </table>
-                <p class="u-opacity-8" style="font-size: 0.9em;">上記は推測値。スマートフォン充電器の待機電力（0.1〜0.3W）と同程度であり、実用上は安心できるレベル。</p>
+                <p class="u-opacity-8" style="font-size: 0.9em;">上記は推測値。スマートフォン充電器の待機電力（0.1〜0.3W）と同程度であり、実用上は安心できるレベル。
+                </p>
             </section>
 
             <section>
                 <h2>ソフトウェアスタック</h2>
                 <table>
                     <thead>
-                        <tr><th>レイヤー</th><th>名称</th><th>バージョン</th></tr>
+                        <tr>
+                            <th>レイヤー</th>
+                            <th>名称</th>
+                            <th>バージョン</th>
+                        </tr>
                     </thead>
                     <tbody>
                         <tr>
@@ -306,12 +348,24 @@ idf.py -p /dev/ttyACM0 flash</code></pre>
                 <p>開発・テスト段階ではテスト用DAC（Device Attestation Certificate）を使用します。</p>
                 <table>
                     <thead>
-                        <tr><th>項目</th><th>値</th></tr>
+                        <tr>
+                            <th>項目</th>
+                            <th>値</th>
+                        </tr>
                     </thead>
                     <tbody>
-                        <tr><td>Manual Pairing Code</td><td><code>34970112332</code></td></tr>
-                        <tr><td>Setup PIN</td><td><code>20202021</code></td></tr>
-                        <tr><td>Discriminator</td><td><code>3840</code></td></tr>
+                        <tr>
+                            <td>Manual Pairing Code</td>
+                            <td><code>34970112332</code></td>
+                        </tr>
+                        <tr>
+                            <td>Setup PIN</td>
+                            <td><code>20202021</code></td>
+                        </tr>
+                        <tr>
+                            <td>Discriminator</td>
+                            <td><code>3840</code></td>
+                        </tr>
                     </tbody>
                 </table>
             </section>
@@ -321,10 +375,12 @@ idf.py -p /dev/ttyACM0 flash</code></pre>
 
                 <h3>BLE無効化・WiFiオンリーコミッショニング</h3>
                 <p>
-                    <code>sdkconfig.defaults</code> で BLE を完全に無効化しています（<code>CONFIG_BT_ENABLED=n</code>, <code>CONFIG_ENABLE_CHIPOBLE=n</code>）。
+                    <code>sdkconfig.defaults</code> で BLE を完全に無効化しています（<code>CONFIG_BT_ENABLED=n</code>,
+                    <code>CONFIG_ENABLE_CHIPOBLE=n</code>）。
                 </p>
                 <p>
-                    <strong>理由</strong>: <code>store_wifi_credentials()</code> でWiFi認証情報をハードコードしているため、デバイスは起動と同時にWiFi接続を試みます。
+                    <strong>理由</strong>: <code>store_wifi_credentials()</code>
+                    でWiFi認証情報をハードコードしているため、デバイスは起動と同時にWiFi接続を試みます。
                     この状態でCHIPoBLE（MatterのBLEアドバタイズ）が動作すると、BLE/WiFi無線の競合によりWiFi接続が阻害される可能性があります。
                     WiFi認証情報を事前に埋め込む設計においては、BLEを無効化してIPネットワーク経由コミッショニング（<code>kOnNetwork</code>）に統一しています。
                 </p>
@@ -372,7 +428,8 @@ idf.py -p /dev/ttyACM0 flash</code></pre>
             <section>
                 <h2>実機</h2>
                 <p>入力側のフォトカプラを配線した写真は取り忘れました。</p>
-                <img src="photo.JPG" alt="実機写真" class="u-margin-b-1" loading="lazy" width="800" height="451" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #ddd;">
+                <img src="photo.JPG" alt="実機写真" class="u-margin-b-1" loading="lazy" width="800" height="451"
+                    style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #ddd;">
             </section>
             <section>
                 <h2>Resources</h2>
@@ -389,7 +446,7 @@ idf.py -p /dev/ttyACM0 flash</code></pre>
                 <span class="like-icon">♡</span>
                 <span id="like-count" class="like-count">…</span>
             </button>
-            <p class="like-label">役に立ちましたか？</p>
+            <p class="like-label">見ていただけましたか？</p>
         </div>
         <footer>
             <p>Copyright &copy; amekusa All Rights Reserved.</p>
@@ -397,4 +454,5 @@ idf.py -p /dev/ttyACM0 flash</code></pre>
     </div>
     <script type="module" src="../like.js"></script>
 </body>
+
 </html>

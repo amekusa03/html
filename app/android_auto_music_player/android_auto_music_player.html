@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-SRGF2MMYGD');
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-SRGF2MMYGD');
     </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://amekusa.vercel.app/app/android_auto_music_player/android_auto_music_player.html">
+    <link rel="canonical"
+        href="https://amekusa.vercel.app/app/android_auto_music_player/android_auto_music_player.html">
     <meta name="description" content="Android端末向けのローカル音楽プレイヤーアプリです。MP3フォルダ再生・Android Auto対応。">
     <title>Android Auto Music Player | 雨草の庭</title>
     <script>
-      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script defer src="/_vercel/speed-insights/script.js"></script>
     <script defer src="/_vercel/insights/script.js"></script>
     <link rel="stylesheet" href="../../style.css">
 </head>
+
 <body class="app-page">
     <canvas id="rain-canvas"></canvas>
     <div class="container">
@@ -39,63 +42,66 @@
         </header>
 
         <main>
-        <section>
-            <h2>About this Project</h2>
-            <p>
-                使わなくなったスマートフォンを音楽プレイヤーとして再利用することを目的に開発しました。
-                フォルダを指定してMP3ファイルを再生でき、Android Autoにも対応しています。
-            </p>
-            <p>
-                設計・コード生成・デバッグまで、ほぼすべての工程を<a href="https://claude.ai/code" target="_blank" rel="noopener noreferrer">Claude Code</a>との対話で進めました。
-                Android Autoのアートワーク表示やシャッフルボタンの不具合など、深い原因調査と修正もAIが主導して対応しています。
-                生成されたコードは人間がレビューし、実機で動作確認を行っています。
-            </p>
-        </section>
-        <section>
-            <h2>Video</h2>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/AvIeaj8VLis" allowfullscreen title="android auto musik player" loading="lazy"></iframe>
-            </div>
-        </section>
-        <section>
-            <h2>Development Environment</h2>
-            <ul class="tech-stack">
-                <li>Kotlin</li>
-                <li>Kotlin Coroutines</li>
-                <li>AndroidX Media3 (ExoPlayer)</li>
-                <li>Media3 MediaLibraryService</li>
-                <li>androidx.car.app (Android Auto)</li>
-                <li>Android SDK (API 26+)</li>
-            </ul>
-        </section>
+            <section>
+                <h2>About this Project</h2>
+                <p>
+                    使わなくなったスマートフォンを音楽プレイヤーとして再利用することを目的に開発しました。
+                    フォルダを指定してMP3ファイルを再生でき、Android Autoにも対応しています。
+                </p>
+                <p>
+                    設計・コード生成・デバッグまで、ほぼすべての工程を<a href="https://claude.ai/code" target="_blank"
+                        rel="noopener noreferrer">Claude Code</a>との対話で進めました。
+                    Android Autoのアートワーク表示やシャッフルボタンの不具合など、深い原因調査と修正もAIが主導して対応しています。
+                    生成されたコードは人間がレビューし、実機で動作確認を行っています。
+                </p>
+            </section>
+            <section>
+                <h2>Video</h2>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/AvIeaj8VLis" allowfullscreen
+                        title="android auto musik player" loading="lazy"></iframe>
+                </div>
+            </section>
+            <section>
+                <h2>Development Environment</h2>
+                <ul class="tech-stack">
+                    <li>Kotlin</li>
+                    <li>Kotlin Coroutines</li>
+                    <li>AndroidX Media3 (ExoPlayer)</li>
+                    <li>Media3 MediaLibraryService</li>
+                    <li>androidx.car.app (Android Auto)</li>
+                    <li>Android SDK (API 26+)</li>
+                </ul>
+            </section>
 
-        <section>
-            <h2>Key Features</h2>
-            <ul>
-                <li><strong>フォルダ選択再生:</strong> フォルダを指定してMP3ファイルを一括再生できます。</li>
-                <li><strong>アルバムアート表示:</strong> 曲に埋め込まれたアルバムアートを画面に表示します。</li>
-                <li><strong>シャッフル再生:</strong> ランダムな順序で楽曲を再生できます。</li>
-                <li><strong>検索機能:</strong> 曲名・アーティスト名・アルバム名で絞り込み検索ができます。</li>
-                <li><strong>バックグラウンド再生:</strong> アプリを閉じてもフォアグラウンドサービスで再生を継続します。</li>
-                <li><strong>Android Auto 対応:</strong> 車載ディスプレイから曲の操作ができます。</li>
-                <li><strong>スキャン結果のキャッシュ:</strong> 起動を素早く保ち、フォルダ変更時に自動で更新します。</li>
-            </ul>
-        </section>
-        <section>
-            <h2>Known Issues / Out of Scope</h2>
-            <ul>
-                <li>
-                    <strong>Googleアシスタントの音声操作（「〇〇をかけて」）:</strong>
-                    インテントフィルタの追加と受け取り処理は実装済みですが、アシスタントがどのアプリに再生を委譲するかはOS側の判断に依存します。
-                    YouTube MusicやSpotifyが優先されることがあり、本アプリへの誘導を保証できないため、実質的な検証ができていません。
-                </li>
-            </ul>
-        </section>
-        <section>
-            <h2>Resource</h2>
-            <p>資料はGitHubで公開しています。個人の学習や小規模なプロジェクトでの再利用を歓迎します。</p>
-            <a href="https://github.com/amekusa03/MusicPlayer" class="link-button" target="_blank" rel="noopener noreferrer">View on GitHub</a>
-        </section>        
+            <section>
+                <h2>Key Features</h2>
+                <ul>
+                    <li><strong>フォルダ選択再生:</strong> フォルダを指定してMP3ファイルを一括再生できます。</li>
+                    <li><strong>アルバムアート表示:</strong> 曲に埋め込まれたアルバムアートを画面に表示します。</li>
+                    <li><strong>シャッフル再生:</strong> ランダムな順序で楽曲を再生できます。</li>
+                    <li><strong>検索機能:</strong> 曲名・アーティスト名・アルバム名で絞り込み検索ができます。</li>
+                    <li><strong>バックグラウンド再生:</strong> アプリを閉じてもフォアグラウンドサービスで再生を継続します。</li>
+                    <li><strong>Android Auto 対応:</strong> 車載ディスプレイから曲の操作ができます。</li>
+                    <li><strong>スキャン結果のキャッシュ:</strong> 起動を素早く保ち、フォルダ変更時に自動で更新します。</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Known Issues / Out of Scope</h2>
+                <ul>
+                    <li>
+                        <strong>Googleアシスタントの音声操作（「〇〇をかけて」）:</strong>
+                        インテントフィルタの追加と受け取り処理は実装済みですが、アシスタントがどのアプリに再生を委譲するかはOS側の判断に依存します。
+                        YouTube MusicやSpotifyが優先されることがあり、本アプリへの誘導を保証できないため、実質的な検証ができていません。
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>Resource</h2>
+                <p>資料はGitHubで公開しています。個人の学習や小規模なプロジェクトでの再利用を歓迎します。</p>
+                <a href="https://github.com/amekusa03/MusicPlayer" class="link-button" target="_blank"
+                    rel="noopener noreferrer">View on GitHub</a>
+            </section>
         </main>
 
         <nav aria-label="ページナビゲーション">
@@ -106,7 +112,7 @@
                 <span class="like-icon">♡</span>
                 <span id="like-count" class="like-count">…</span>
             </button>
-            <p class="like-label">役に立ちましたか？</p>
+            <p class="like-label">見ていただけましたか？</p>
         </div>
         <footer>
             <p>Copyright &copy; amekusa All Rights Reserved.</p>
@@ -115,4 +121,5 @@
     <script src="../../rain.js"></script>
     <script type="module" src="../like.js"></script>
 </body>
+
 </html>

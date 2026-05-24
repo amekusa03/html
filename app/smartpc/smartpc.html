@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-SRGF2MMYGD');
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-SRGF2MMYGD');
     </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://amekusa.vercel.app/app/smartpc/smartpc.html">
-    <meta name="description" content="MatterとESP32-C6を使用して、Ubuntu PCをスマートホーム対応させるプロジェクトの紹介です。Google Nest Hub等からPCの電源操作や状態監視を実現します。">
+    <meta name="description"
+        content="MatterとESP32-C6を使用して、Ubuntu PCをスマートホーム対応させるプロジェクトの紹介です。Google Nest Hub等からPCの電源操作や状態監視を実現します。">
     <title>smart PC | 雨草の庭</title>
     <script>
-      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
     <link rel="stylesheet" href="../../style.css">
@@ -30,6 +32,7 @@
             padding: 0;
             margin: 2rem 0;
         }
+
         .tech-stack li {
             background: #ffffff;
             border: 1px solid #eee;
@@ -40,23 +43,27 @@
             align-items: center;
             text-align: center;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
+
         .tech-stack li:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
         }
+
         .tech-stack i {
             font-size: 2.5rem;
             margin-bottom: 1rem;
             color: #444;
         }
+
         .tech-stack strong {
             display: block;
             margin-bottom: 0.5rem;
         }
     </style>
 </head>
+
 <body class="app-page">
     <div class="container">
         <nav>
@@ -76,7 +83,8 @@
             <section>
                 <h2>Video</h2>
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/SRRmwL01tHY" frameborder="0" allowfullscreen title="smart PC Demo" loading="lazy"></iframe>
+                    <iframe src="https://www.youtube.com/embed/SRRmwL01tHY" frameborder="0" allowfullscreen
+                        title="smart PC Demo" loading="lazy"></iframe>
                 </div>
             </section>
 
@@ -86,14 +94,16 @@
                     本プロジェクトは、Ubuntu PCにESP32-C6を統合し、最新のスマートホーム規格「<strong>Matter</strong>」に対応させる試みです。
                     PCの電源状態を他の家電と同様にシームレスに管理・操作できるようにすることを目指しています。
                 </p>
-                <img src="sysosi.png" alt="System Architecture" class="u-margin-b-1" loading="lazy" width="800" height="450" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #ddd;">
+                <img src="sysosi.png" alt="System Architecture" class="u-margin-b-1" loading="lazy" width="800"
+                    height="450" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #ddd;">
             </section>
 
             <section>
                 <h2>Specification</h2>
 
                 <h3>1. プロジェクト概要</h3>
-                <p>ESP32-C6マイコンとMatterプロトコルを使い、PCの電源をスマートホームから遠隔操作することを目指したプロジェクト。フォトカプラ（光絶縁素子）でマザーボードのPWR_SWピンを制御する構成。</p>
+                <p>ESP32-C6マイコンとMatterプロトコルを使い、PCの電源をスマートホームから遠隔操作することを目指したプロジェクト。フォトカプラ（光絶縁素子）でマザーボードのPWR_SWピンを制御する構成。
+                </p>
                 <h4>使用技術・部品</h4>
                 <ul>
                     <li>ESP32-C6-GEEK（Waveshare）/ ESP32-C6（THARED、1.47" LCD搭載）</li>
@@ -104,92 +114,104 @@
                     <li>NVS（Non-Volatile Storage、WiFi認証情報の保存）</li>
                     <li>FreeRTOS（ボタン長押し検知タスク）</li>
                 </ul>
-<h4>経緯</h4>
-<p>
-① 基本設計と初期実装
-PCの電源制御はプッシュボタンにより、PWR_SWを短絡することで制御している。この制御をESP32のGPIOでフォトカプラを駆動し、プッシュボタンと同等に制御を行う事こととする。
-Matterの OnOffPlugInUnit エンドポイントを作成し、chip-toolから onoff toggle コマンドで制御できる構成を実装する。WiFi認証情報はNVSに保存し、起動時に自動接続。LCDには接続状態・IP・PC電源状態を表示する。
-</p>
-<p>
-② フォトカプラのアクティブHIGH/LOWの扱い
-Hailege PC817基板はアクティブLOWの設計（GPIO LOW → LEDオン → スイッチ短絡）だったが、当初ファームウェアがアクティブHIGHを前提にしていた。これを検証・修正。Matterのコールバック PRE_UPDATE が正しく発火していることをログ（3秒ブロッキング遅延）で確認した。
-</p>
-<p>
-③ GEEK基板のGPIO不良発覚
-GPIO 10/11（H2コネクタ）がテスターで常時0V・変化なしと判明。要因は不明であり、利用を断念した。
-</p>
-<p>
-④ THAREDボードに切り替え
-別のESP32-C6ボード（THARED製、LCD・SDカード搭載）を入手。GPIO 3でブリンクテストを実施し、0V↔3.3Vの正常出力を確認。GPIO_PWR_SWをGPIO 3、GPIO_PWR_LEDをGPIO 4に変更。
-</p>
-<p>
-⑤ フォトカプラのLED常時点灯問題
-ファームウェアとMatterコールバックは動作していたが（ログで Pressing power button 確認済み）、フォトカプラのLEDが待機中も常時点灯。LCDでのGPIOの使用の推測、抵抗の不一致、配線ミスなどが重なり、当方では対処困難と判断。同時に基板自体も繰り返しのハンダにより損傷の可能性があると考え、フォトカプラ制御は断念することとした。
-</p>
+                <h4>経緯</h4>
+                <p>
+                    ① 基本設計と初期実装
+                    PCの電源制御はプッシュボタンにより、PWR_SWを短絡することで制御している。この制御をESP32のGPIOでフォトカプラを駆動し、プッシュボタンと同等に制御を行う事こととする。
+                    Matterの OnOffPlugInUnit エンドポイントを作成し、chip-toolから onoff toggle
+                    コマンドで制御できる構成を実装する。WiFi認証情報はNVSに保存し、起動時に自動接続。LCDには接続状態・IP・PC電源状態を表示する。
+                </p>
+                <p>
+                    ② フォトカプラのアクティブHIGH/LOWの扱い
+                    Hailege PC817基板はアクティブLOWの設計（GPIO LOW → LEDオン →
+                    スイッチ短絡）だったが、当初ファームウェアがアクティブHIGHを前提にしていた。これを検証・修正。Matterのコールバック PRE_UPDATE
+                    が正しく発火していることをログ（3秒ブロッキング遅延）で確認した。
+                </p>
+                <p>
+                    ③ GEEK基板のGPIO不良発覚
+                    GPIO 10/11（H2コネクタ）がテスターで常時0V・変化なしと判明。要因は不明であり、利用を断念した。
+                </p>
+                <p>
+                    ④ THAREDボードに切り替え
+                    別のESP32-C6ボード（THARED製、LCD・SDカード搭載）を入手。GPIO 3でブリンクテストを実施し、0V↔3.3Vの正常出力を確認。GPIO_PWR_SWをGPIO
+                    3、GPIO_PWR_LEDをGPIO 4に変更。
+                </p>
+                <p>
+                    ⑤ フォトカプラのLED常時点灯問題
+                    ファームウェアとMatterコールバックは動作していたが（ログで Pressing power button
+                    確認済み）、フォトカプラのLEDが待機中も常時点灯。LCDでのGPIOの使用の推測、抵抗の不一致、配線ミスなどが重なり、当方では対処困難と判断。同時に基板自体も繰り返しのハンダにより損傷の可能性があると考え、フォトカプラ制御は断念することとした。
+                </p>
 
-<h4>中止の判断</h4>
-<ul>
-    <li>電気的なリスク（マザーボードへの誤信号）が大きい</li>
-    <li>問題の解決には電子回路のスキルが必要</li>
-    <li>資材・機材などが不足</li>
-</ul>
-<h4>まとめ・得られた知見</h4>
-<table>
-    <tr>
-        <th>項目</th>
-        <th>結果</th>
-    </tr>
-    <tr>
-        <td>Matterコミッショニング</td>
-        <td>✅ 成功</td>
-    </tr>
-    <tr>
-        <td>chip-toolからのコマンド受信</td>
-        <td>✅ 成功</td>
-    </tr>
-    <tr>
-        <td>GPIO出力（THARED GPIO 3）</td>
-        <td>✅ 動作確認</td>
-    </tr>
-    <tr>
-        <td>LCD表示</td>
-        <td>✅ 動作確認</td>
-    </tr>
-    <tr>
-        <td>フォトカプラ制御</td>
-        <td>❌ 未完（VCC電圧不一致）</td>
-    </tr>
-    <tr>
-        <td>PC電源制御</td>
-        <td>❌ 未達成</td>
-    </tr>
-</table>
-<p>ファームウェアはMatterコミッショニングが重要なポイントであり、その他は安易な機能で十分であった事を見込んでいましたが、
-実際にはフォトカプラの電気的特性やGPIOの物理的な接続問題など、ハードウェア周りの課題が発生し、当方では対応困難（リスクあり）と判断しました。
-</p>
+                <h4>中止の判断</h4>
+                <ul>
+                    <li>電気的なリスク（マザーボードへの誤信号）が大きい</li>
+                    <li>問題の解決には電子回路のスキルが必要</li>
+                    <li>資材・機材などが不足</li>
+                </ul>
+                <h4>まとめ・得られた知見</h4>
+                <table>
+                    <tr>
+                        <th>項目</th>
+                        <th>結果</th>
+                    </tr>
+                    <tr>
+                        <td>Matterコミッショニング</td>
+                        <td>✅ 成功</td>
+                    </tr>
+                    <tr>
+                        <td>chip-toolからのコマンド受信</td>
+                        <td>✅ 成功</td>
+                    </tr>
+                    <tr>
+                        <td>GPIO出力（THARED GPIO 3）</td>
+                        <td>✅ 動作確認</td>
+                    </tr>
+                    <tr>
+                        <td>LCD表示</td>
+                        <td>✅ 動作確認</td>
+                    </tr>
+                    <tr>
+                        <td>フォトカプラ制御</td>
+                        <td>❌ 未完（VCC電圧不一致）</td>
+                    </tr>
+                    <tr>
+                        <td>PC電源制御</td>
+                        <td>❌ 未達成</td>
+                    </tr>
+                </table>
+                <p>ファームウェアはMatterコミッショニングが重要なポイントであり、その他は安易な機能で十分であった事を見込んでいましたが、
+                    実際にはフォトカプラの電気的特性やGPIOの物理的な接続問題など、ハードウェア周りの課題が発生し、当方では対応困難（リスクあり）と判断しました。
+                </p>
 
-	<h3>2. 筐体・設置仕様</h3>
-    
+                <h3>2. 筐体・設置仕様</h3>
 
-    <img src="sys.png" alt="Installation Method" class="u-margin-b-1" loading="lazy" width="800" height="600" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #ddd;">
-            <a href="https://www.amazon.jp/hz/wishlist/ls/216P92T92SPG9?ref_=wl_share_link" class="link-button" target="_blank" rel="noopener noreferrer">Parts list</a>
 
-    <h3>3. アーキテクチャ確認事項</h3>
-	                <img src="unit.png" alt="Development Setup" class="u-margin-b-1" loading="lazy" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #ddd;">
-    <ul>
-        <li><strong>BIOS/UEFI設定:</strong> PCのシャットダウン状態でもESP32-C6が信号を待ち受けるためには、マザーボードの給電設定（BIOS/UEFI）が必要です。特に「ErP Ready」をDisabledにし、シャットダウン中もUSB給電を維持する設定が必要です。
-        </li>
-        <li><strong>USB給電:</strong> PCがオフの時もUSBポートに給電され続けている必要があります。前述のErP設定に加え、「USB Standby Power」等の項目が有効であることを確認してください。
-        </li>
-        <li><strong>物理コネクタの適合性（重要）:</strong> ESP32-C6-GEEKの画像を見ると、側面のGPIO（GP0, GP10等）は一般的なピンヘッダではなく、**小型のJST規格コネクタ（おそらくSH 1.0mmピッチ等）**になっています
-。
-     一般的なデュポンケーブル（ブレッドボード用ワイヤ）は直接刺さりません。GEEKに付属している専用の「コネクタ付きケーブル」があるいは、そのコネクタから通常の配線へ変換する準備が必要です。
-        </li>
-        <li><strong>電源ボタンの「押し時間」の定義 :</strong>
-        ソースには「電源ON/OFFトリガー」とあるが、プログラム側で「何秒間スイッチを短絡させるか」のロジックが必要です
-        </li>
-    </ul>
-    </main>
+                <img src="sys.png" alt="Installation Method" class="u-margin-b-1" loading="lazy" width="800"
+                    height="600" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #ddd;">
+                <a href="https://www.amazon.jp/hz/wishlist/ls/216P92T92SPG9?ref_=wl_share_link" class="link-button"
+                    target="_blank" rel="noopener noreferrer">Parts list</a>
+
+                <h3>3. アーキテクチャ確認事項</h3>
+                <img src="unit.png" alt="Development Setup" class="u-margin-b-1" loading="lazy"
+                    style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #ddd;">
+                <ul>
+                    <li><strong>BIOS/UEFI設定:</strong>
+                        PCのシャットダウン状態でもESP32-C6が信号を待ち受けるためには、マザーボードの給電設定（BIOS/UEFI）が必要です。特に「ErP
+                        Ready」をDisabledにし、シャットダウン中もUSB給電を維持する設定が必要です。
+                    </li>
+                    <li><strong>USB給電:</strong> PCがオフの時もUSBポートに給電され続けている必要があります。前述のErP設定に加え、「USB Standby
+                        Power」等の項目が有効であることを確認してください。
+                    </li>
+                    <li><strong>物理コネクタの適合性（重要）:</strong> ESP32-C6-GEEKの画像を見ると、側面のGPIO（GP0,
+                        GP10等）は一般的なピンヘッダではなく、**小型のJST規格コネクタ（おそらくSH 1.0mmピッチ等）**になっています
+                        。
+                        一般的なデュポンケーブル（ブレッドボード用ワイヤ）は直接刺さりません。GEEKに付属している専用の「コネクタ付きケーブル」があるいは、そのコネクタから通常の配線へ変換する準備が必要です。
+                    </li>
+                    <li><strong>電源ボタンの「押し時間」の定義 :</strong>
+                        ソースには「電源ON/OFFトリガー」とあるが、プログラム側で「何秒間スイッチを短絡させるか」のロジックが必要です
+                    </li>
+                </ul>
+        </main>
         <nav>
             <a href="../../index.html">← Back to Garden</a>
         </nav>
@@ -198,7 +220,7 @@ GPIO 10/11（H2コネクタ）がテスターで常時0V・変化なしと判明
                 <span class="like-icon">♡</span>
                 <span id="like-count" class="like-count">…</span>
             </button>
-            <p class="like-label">役に立ちましたか？</p>
+            <p class="like-label">見ていただけましたか？</p>
         </div>
         <footer>
             <p>Copyright &copy; amekusa All Rights Reserved.</p>
@@ -206,4 +228,5 @@ GPIO 10/11（H2コネクタ）がテスターで常時0V・変化なしと判明
     </div>
     <script type="module" src="../like.js"></script>
 </body>
+
 </html>

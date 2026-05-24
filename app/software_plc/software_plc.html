@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <script defer src="/_vercel/speed-insights/script.js"></script>
     <link rel="stylesheet" href="../../style.css">
 </head>
+
 <body class="app-page">
     <div class="container">
         <nav>
@@ -36,17 +38,19 @@
                     <li>ソフトウェアPLCの動作確認</li>
                 </ul>
             </section>
-        <section>
-            <h2>Video</h2>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/S_0lev74dqg" style="border:0;" allowfullscreen title="Software PLC (CODESYS)"></iframe>
-            </div>
-        </section>
+            <section>
+                <h2>Video</h2>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/S_0lev74dqg" style="border:0;" allowfullscreen
+                        title="Software PLC (CODESYS)"></iframe>
+                </div>
+            </section>
 
             <section>
                 <h2>Definition: Soft PLC</h2>
                 <p>
-                    <strong>ソフトPLC (Software PLC):</strong> 制御ロジックが専用ハードウェアから切り離され、汎用的なハードウェアや仮想化環境（ハイパーバイザー等）上で実行可能な制御システムです。
+                    <strong>ソフトPLC (Software PLC):</strong>
+                    制御ロジックが専用ハードウェアから切り離され、汎用的なハードウェアや仮想化環境（ハイパーバイザー等）上で実行可能な制御システムです。
                 </p>
                 <p>
                     対して、三菱電機 Qシリーズやオムロン NJなどは、ハード・ソフト共に独自仕様となっており、これらは<strong>ハードウェアPLC</strong>と呼ばれます。
@@ -156,7 +160,7 @@
                         <p>IL：ランプが光るように、ラダー言語で処理ブロックを記述します。</p>
                     </div>
                 </div>
-                
+
                 <h3>7. シミュレーション実行</h3>
                 <p>ログイン実行することで、実機がなくてもPC上でロジックと画面の連動を確認できます。ボタン押下でランプが点灯する等の基本的な動作デバッグが可能です。</p>
                 <div class="image-container">
@@ -179,7 +183,7 @@
                 <div class="image-container">
                     <img src="etc_run_rader.png" alt="CODESYS 全体画面" class="image-back" />
                     <div class="text-content">
-                    <img src="etc_run_rader_on_lamp.png" alt="CODESYS 全体画面" class="image-back" />
+                        <img src="etc_run_rader_on_lamp.png" alt="CODESYS 全体画面" class="image-back" />
                     </div>
                 </div>
             </section>
@@ -189,7 +193,8 @@
                 <div class="info-box">
                     <ul>
                         <li><strong>互換性の注意:</strong> 開発環境のバージョン（Service Pack）が変わると、プロジェクトに互換性がなくなる場合があります。</li>
-                        <li><strong>ライセンス:</strong> 実行にはユーザー登録が必要です。シミュレーション自体は Code Meter のアンインストール後も動作することを確認済みです。</li>
+                        <li><strong>ライセンス:</strong> 実行にはユーザー登録が必要です。シミュレーション自体は Code Meter のアンインストール後も動作することを確認済みです。
+                        </li>
                         <li><strong>学習用途:</strong> 実機を用意せずとも、ラダーや最新のST言語などの学習を始められるため、非常に有用な環境です。</li>
                     </ul>
                 </div>
@@ -204,7 +209,7 @@
                 <span class="like-icon">♡</span>
                 <span id="like-count" class="like-count">…</span>
             </button>
-            <p class="like-label">役に立ちましたか？</p>
+            <p class="like-label">見ていただけましたか？</p>
         </div>
         <footer>
             <p>Copyright &copy; amekusa All Rights Reserved.</p>
@@ -212,4 +217,5 @@
     </div>
     <script type="module" src="../like.js"></script>
 </body>
+
 </html>

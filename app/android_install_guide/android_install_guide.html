@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-SRGF2MMYGD');
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-SRGF2MMYGD');
     </script>
 
     <link rel="icon" href="../../Favicon.png" type="image/png">
@@ -16,15 +17,17 @@
     <link rel="canonical" href="https://amekusa.vercel.app/app/android_install_guide/android_install_guide.html">
     <meta name="description" content="初心者向け：GitHubにあるAndroidアプリのソースコードを、Android Studioを使って自分のスマホにインストールする方法を解説します。">
     <meta property="og:title" content="Androidアプリのインストール方法 (GitHubからスマホまで) | 雨草の庭">
-    <meta property="og:description" content="初心者向け：GitHubにあるAndroidアプリのソースコードを、Android Studioを使って自分のスマホにインストールする方法を解説します。">
+    <meta property="og:description"
+        content="初心者向け：GitHubにあるAndroidアプリのソースコードを、Android Studioを使って自分のスマホにインストールする方法を解説します。">
     <title>Androidアプリのインストール方法 (GitHubからスマホまで) | 雨草の庭</title>
     <script>
-      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script defer src="/_vercel/speed-insights/script.js"></script>
     <script defer src="/_vercel/insights/script.js"></script>
     <link rel="stylesheet" href="../../style.css">
 </head>
+
 <body class="app-page">
     <canvas id="rain-canvas"></canvas>
     <div class="container">
@@ -56,7 +59,8 @@
                 <h2>ステップ1：Android Studioのインストール</h2>
                 <p>まずは開発ツールである「Android Studio」をパソコンに導入します。</p>
                 <ol>
-                    <li><a href="https://developer.android.com/studio" target="_blank" rel="noopener noreferrer">Android Studio公式サイト</a>へアクセスします。</li>
+                    <li><a href="https://developer.android.com/studio" target="_blank" rel="noopener noreferrer">Android
+                            Studio公式サイト</a>へアクセスします。</li>
                     <li>「Download Android Studio」ボタンをクリックし、規約に同意してインストーラーをダウンロードします。</li>
                     <li>ダウンロードしたファイルを実行し、基本的にはすべて「Next」のまま進めてインストールを完了させます。</li>
                     <li>初回起動時にいくつかのコンポーネントがダウンロードされます。少し時間がかかるので待ちましょう。</li>
@@ -67,7 +71,8 @@
                 <h2>ステップ2：GitHubからコードを取得する</h2>
                 <p>次に、動かしたいアプリのプログラム（ソースコード）をダウンロードします。</p>
                 <ol>
-                    <li>GitHubのプロジェクトページ（例：<a href="https://github.com/amekusa03/WebLauncher2" target="_blank" rel="noopener noreferrer">WebLauncher2</a>）を開きます。</li>
+                    <li>GitHubのプロジェクトページ（例：<a href="https://github.com/amekusa03/WebLauncher2" target="_blank"
+                            rel="noopener noreferrer">WebLauncher2</a>）を開きます。</li>
                     <li>緑色の「<> Code」ボタンをクリックし、「Download ZIP」を選択します。</li>
                     <li>ダウンロードしたZIPファイルを、パソコンの好きな場所（デスクトップなど）に展開（解凍）します。</li>
                 </ol>
@@ -122,7 +127,7 @@
                 <span class="like-icon">♡</span>
                 <span id="like-count" class="like-count">…</span>
             </button>
-            <p class="like-label">役に立ちましたか？</p>
+            <p class="like-label">見ていただけましたか？</p>
         </div>
         <footer>
             <p>Copyright &copy; amekusa All Rights Reserved.</p>
@@ -131,4 +136,5 @@
     <script src="../../rain.js"></script>
     <script type="module" src="../like.js"></script>
 </body>
+
 </html>

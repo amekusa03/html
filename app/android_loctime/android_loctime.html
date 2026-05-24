@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-SRGF2MMYGD');
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-SRGF2MMYGD');
     </script>
 
     <meta charset="UTF-8">
@@ -16,11 +17,12 @@
     <meta name="description" content="Androidの場所と時間で通知する「LocTime」アプリの開発です。">
     <title>Android Location Time | 雨草の庭</title>
     <script>
-      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
     <link rel="stylesheet" href="../../style.css">
 </head>
+
 <body class="app-page">
     <canvas id="rain-canvas"></canvas>
     <div class="container">
@@ -38,44 +40,46 @@
         </header>
 
         <main>
-        <section>
-            <h2>About this Project</h2>
-            <p>
-                特定の場所と時間に合わせて通知する「LocTime」アプリです。
-                職場での休憩時間や、就業時間を数分前に通知するなど、ユーザーの生活スタイルに合わせて柔軟に通知を設定できます。
-                自宅にいる時は不要だけど、職場にいる時は時刻通知が欲しい、というようなシーンを想定しています。
-                特定の場所と時間に合わせて時刻通知を受け取ることができます。<br>
-                「LocTime」という名前は、様々な場所と時間に合わせた通知を可能にするという意味を持っています。
-            </p>
-        </section>
-        <section>
-            <h2>Video</h2>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/EdCvGfPWmkA" style="border:0;" allowfullscreen title="LocTime Demo" loading="lazy"></iframe>
-            </div>
-        </section>
-        <section>
-            <h2>Development Environment</h2>
-            <ul class="tech-stack">
-                <li>Jetpack Compose</li>
-                <li>Material3</li>
-                <li>Room</li>
-            </ul>
-        </section>
+            <section>
+                <h2>About this Project</h2>
+                <p>
+                    特定の場所と時間に合わせて通知する「LocTime」アプリです。
+                    職場での休憩時間や、就業時間を数分前に通知するなど、ユーザーの生活スタイルに合わせて柔軟に通知を設定できます。
+                    自宅にいる時は不要だけど、職場にいる時は時刻通知が欲しい、というようなシーンを想定しています。
+                    特定の場所と時間に合わせて時刻通知を受け取ることができます。<br>
+                    「LocTime」という名前は、様々な場所と時間に合わせた通知を可能にするという意味を持っています。
+                </p>
+            </section>
+            <section>
+                <h2>Video</h2>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/EdCvGfPWmkA" style="border:0;" allowfullscreen
+                        title="LocTime Demo" loading="lazy"></iframe>
+                </div>
+            </section>
+            <section>
+                <h2>Development Environment</h2>
+                <ul class="tech-stack">
+                    <li>Jetpack Compose</li>
+                    <li>Material3</li>
+                    <li>Room</li>
+                </ul>
+            </section>
 
-        <section>
-            <h2>Key Features</h2>
-            <ul>
-                <li><strong>場所と時間の通知:</strong> 特定の場所と時間に合わせて通知を表示。</li>
-                <li><strong>住所より場所を指定:</strong> 住所を入力することで、より正確な場所を指定できます。</li>
-                <li><strong>ユーザーフレンドリー:</strong> 直感的なUIで簡単に操作可能。</li> 
-            </ul>
-        </section>
-        <section>
-            <h2>Resource</h2>
-            <p>資料はGitHubで公開しています。個人の学習や小規模なプロジェクトでの再利用を歓迎します。</p>
-            <a href="https://github.com/amekusa03/LocTime" class="link-button" target="_blank" rel="noopener noreferrer">View on GitHub</a>
-        </section>
+            <section>
+                <h2>Key Features</h2>
+                <ul>
+                    <li><strong>場所と時間の通知:</strong> 特定の場所と時間に合わせて通知を表示。</li>
+                    <li><strong>住所より場所を指定:</strong> 住所を入力することで、より正確な場所を指定できます。</li>
+                    <li><strong>ユーザーフレンドリー:</strong> 直感的なUIで簡単に操作可能。</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Resource</h2>
+                <p>資料はGitHubで公開しています。個人の学習や小規模なプロジェクトでの再利用を歓迎します。</p>
+                <a href="https://github.com/amekusa03/LocTime" class="link-button" target="_blank"
+                    rel="noopener noreferrer">View on GitHub</a>
+            </section>
         </main>
 
         <nav aria-label="ページナビゲーション">
@@ -86,7 +90,7 @@
                 <span class="like-icon">♡</span>
                 <span id="like-count" class="like-count">…</span>
             </button>
-            <p class="like-label">役に立ちましたか？</p>
+            <p class="like-label">見ていただけましたか？</p>
         </div>
         <footer>
             <p>Copyright &copy; amekusa All Rights Reserved.</p>
@@ -95,4 +99,5 @@
     <script src="../../rain.js"></script>
     <script type="module" src="../like.js"></script>
 </body>
+
 </html>

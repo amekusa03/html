@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://amekusa.vercel.app/app/like_button/like_button.html">
-    <meta name="description" content="Firebase Cloud FirestoreとクライアントJavaScriptを組み合わせた、静的サイト向け「いいねボタン」の設計と導入に関する技術レポートです。">
+    <meta name="description"
+        content="Firebase Cloud FirestoreとクライアントJavaScriptを組み合わせた、静的サイト向け「いいねボタン」の設計と導入に関する技術レポートです。">
     <title>いいねボタンの導入 (Firebase) | 雨草の庭</title>
     <script defer src="/_vercel/speed-insights/script.js"></script>
     <link rel="stylesheet" href="../../style.css">
 </head>
+
 <body class="app-page">
     <div class="container">
         <nav>
@@ -32,17 +35,19 @@
                     Vercel等でホスティングされる静的なポートフォリオサイトは、高速かつ低コストで運用可能ですが、動的なインタラクション（評価やコメント等）を導入する際にはサーバーサイドが必要になります。
                 </p>
                 <p>
-                    本プロジェクトでは、GoogleのBaaSである<strong>Firebase Cloud Firestore</strong>とクライアントサイドの<strong>JavaScript</strong>を組み合わせることで、完全なサーバーレス構成にて、安全で軽量な「いいねボタン（インクリメント評価）」機能を実装しました。
+                    本プロジェクトでは、GoogleのBaaSである<strong>Firebase Cloud
+                        Firestore</strong>とクライアントサイドの<strong>JavaScript</strong>を組み合わせることで、完全なサーバーレス構成にて、安全で軽量な「いいねボタン（インクリメント評価）」機能を実装しました。
                 </p>
             </section>
 
 
-        <section>
-            <h2>Video</h2>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/GMRHpnpdwL8" frameborder="0" allowfullscreen title="いいねボタンの導入 (Firebase)"></iframe>
-            </div>
-        </section>
+            <section>
+                <h2>Video</h2>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/GMRHpnpdwL8" frameborder="0" allowfullscreen
+                        title="いいねボタンの導入 (Firebase)"></iframe>
+                </div>
+            </section>
 
             <section>
                 <h2>Technical Stack</h2>
@@ -145,7 +150,9 @@ service cloud.firestore {
 
                 <h3>2. APIキーのHTTPリファラー制限</h3>
                 <p>
-                    Google Cloudコンソール側の設定において、APIキーが使用できるWebサイトのドメイン（HTTPリファラー）を <code>https://amekusa.vercel.app/*</code> に限定する制限を適用しています。これにより、第三者がAPIキーをそのままコピーして別ドメインで再利用することを技術的に防ぐ仕組みになっています。
+                    Google Cloudコンソール側の設定において、APIキーが使用できるWebサイトのドメイン（HTTPリファラー）を
+                    <code>https://amekusa.vercel.app/*</code>
+                    に限定する制限を適用しています。これにより、第三者がAPIキーをそのままコピーして別ドメインで再利用することを技術的に防ぐ仕組みになっています。
                 </p>
             </section>
 
@@ -169,7 +176,7 @@ service cloud.firestore {
                 <span class="like-icon">♡</span>
                 <span id="like-count" class="like-count">…</span>
             </button>
-            <p class="like-label">役に立ちましたか？</p>
+            <p class="like-label">見ていただけましたか？</p>
         </div>
 
         <footer>
@@ -178,4 +185,5 @@ service cloud.firestore {
     </div>
     <script type="module" src="../like.js"></script>
 </body>
+
 </html>
