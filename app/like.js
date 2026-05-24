@@ -5,9 +5,9 @@ import { getFirestore, doc, getDoc, setDoc, increment } from 'https://www.gstati
 //       ウェブアプリの設定からコピーして書き換えてください
 const firebaseConfig = {
   apiKey: "AIzaSyAru3eFz24cBAnuou8PsI2jFHYbFHWBc6U",
-  authDomain: "amekusa-site.firebaseapp.com",
-  projectId: "amekusa-site",
-  storageBucket: "amekusa-site.firebasestorage.app",
+  authDomain: "amekusa-site-916ef.firebaseapp.com",
+  projectId: "amekusa-site-916ef",
+  storageBucket: "amekusa-site-916ef.firebasestorage.app",
   messagingSenderId: "871496120687",
   appId: "1:871496120687:web:3d9f21140432d23e98909a"
 };
