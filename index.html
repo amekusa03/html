@@ -243,7 +243,7 @@
         { category: "main", title: "SEO strategies", imageSrc: "app/seo/SEO.png", altText: "SEO strategies", href: "app/seo/seo.html", tags: ["vercel", "seo"] },
         { category: "main", title: "Software Engineering and Me", youtubeId: "0gV_4Gl4rH8", altText: "Restless engineer", href: "app/app_detail/app_detail.html", tags: ["github"] },
         { category: "main", title: "MP3tag-playlist", youtubeId: "9AKDtL4bqXM", altText: "TagPlaylist Generator", href: "app/tagplaylist/tagplaylist.html", tags: ["Python", "mp3"] },
-
+        { category: "main", title: "AutoShutdown", youtubeId: "NWzfF0Hg9_k", altText: "AutoShutdown", href: "app/auto_shutdown/auto_shutdown.html", tags: ["ubuntu", "linux", "systemd"] },
         // --- Kids Engineer ---
         { category: "kids", title: "Androidアプリのインストール方法", youtubeId: "LCtJxWLGkkY", altText: "Android Install Guide", href: "app/android_install_guide/android_install_guide.html", tags: ["android", "github", "kids"] },
         { category: "kids", title: "メールでGeminiとおしゃべり", youtubeId: "pId5SnPjoOw", altText: "メールでGeminiとおしゃべり", href: "app/ask_gemini_by_email/Build_Your_Email_AI.html", tags: ["google cloud", "gas"] },
@@ -267,7 +267,8 @@
         { category: "upcycle", title: "My PC Audio", youtubeId: "81wXBQizKV4", altText: "My PC Audio", href: "app/my_pc_audio/my_pc_audio.html", tags: ["audio"] },
 
         // --- 検討中プロジェクト ---
-        { category: "plan", title: "Image for net Andoroid", imageSrc: "iwana2.png", altText: "Image for Net",  tags: ["avalonia", "desktop"] },
+        { category: "plan", title: "畑でESP32", imageSrc: "iwana2.png", altText: "畑でESP32",  tags: ["IDF-ESP", "mobile"] },
+        { category: "plan", title: "車でESP32", imageSrc: "iwana3.png", altText: "車でESP32",  tags: ["IDF-ESP", "mobile"] },
       ];
 
       const SECTIONS = [
@@ -275,8 +276,8 @@
         { category: "kids",    containerId: "project-sections",  gridClass: "archive-project-grid", cardClass: "archive-project-card", subtitle: "Kids Engineer",       description: "やってみて" },
         { category: "archive", containerId: "project-sections",  gridClass: "archive-project-grid", cardClass: "archive-project-card", subtitle: "Archived Projects",   description: "過去プロジェクトやミニタスク" },
         { category: "current", containerId: "project-sections",  gridClass: "plan-project-grid",    cardClass: "plan-project-card",    subtitle: "Current Projects",    description: "現在進行中のプロジェクト" },
-        { category: "plan",    containerId: "project-sections",  gridClass: "plan-project-grid",    cardClass: "plan-project-card",    subtitle: "I want to work on...", description: "検討のプロジェクト" },
         { category: "upcycle", containerId: "upcycle-sections",  gridClass: "archive-project-grid", cardClass: "archive-project-card", subtitle: null,                  description: null },
+        { category: "plan",    containerId: "project-sections",  gridClass: "plan-project-grid",    cardClass: "plan-project-card",    subtitle: "I want to work on...", description: "検討のプロジェクト" },
       ];
 
       function buildCard(project, cardClass) {
