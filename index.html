@@ -284,7 +284,7 @@
       function buildCard(project, cardClass) {
         const article = document.createElement('article');
         article.className = cardClass;
-        if (project.tags && project.tags.length) {
+        if (project.tags) {
           article.dataset.tags = project.tags.join(',');
         }
 
@@ -361,21 +361,24 @@
           bar.querySelectorAll('.tag-filter-btn').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
 
-          const selectedTag = btn.dataset.tag;
-          const container = document.getElementById('project-sections');
+          const selectedTag = (btn.dataset.tag || '').toLowerCase();
+          const containers = [
+            document.getElementById('project-sections'),
+            document.getElementById('main-projectsections'),
+            document.getElementById('upcycle-sections'),
+          ].filter(Boolean);
 
-          container.querySelectorAll('[data-tags]').forEach(card => {
-            if (!selectedTag) {
-              card.hidden = false;
-            } else {
-              const tags = card.dataset.tags.split(',').map(t => t.toLowerCase());
+          containers.forEach(container => {
+            container.querySelectorAll('[data-tags]').forEach(card => {
+              if (!selectedTag) { card.hidden = false; return; }
+              const tags = (card.dataset.tags || '').split(',').map(t => t.trim().toLowerCase());
               card.hidden = !tags.includes(selectedTag);
-            }
-          });
+            });
 
-          container.querySelectorAll('.project-section-group').forEach(group => {
-            if (!selectedTag) { group.hidden = false; return; }
-            group.hidden = ![...group.querySelectorAll('[data-tags]')].some(c => !c.hidden);
+            container.querySelectorAll('.project-section-group').forEach(group => {
+              if (!selectedTag) { group.hidden = false; return; }
+              group.hidden = ![...group.querySelectorAll('[data-tags]')].some(c => !c.hidden);
+            });
           });
         });
 
@@ -421,8 +424,21 @@
           ['main', 'kids', 'archive', 'plan'].includes(p.category)
         );
         const filterBar = buildTagFilterBar(engineeringProjects);
-        if (filterBar && projectContainer.firstChild) {
+        if (filterBar) {
           projectContainer.insertBefore(filterBar, projectContainer.firstChild);
+        
+          // URLパラメータでタグを選択（例: ?tag=android）
+          try {
+            const params = new URLSearchParams(window.location.search);
+            const requestedTag = params.get('tag');
+            if (requestedTag) {
+              const wanted = requestedTag.toLowerCase().trim();
+              const btn = filterBar && Array.from(filterBar.querySelectorAll('.tag-filter-btn')).find(b => (b.dataset.tag||'').toLowerCase() === wanted);
+              if (btn) btn.click();
+            }
+          } catch (e) {
+            console.warn('tag param handling failed', e);
+          }
         }
       }
 
@@ -454,8 +470,9 @@
       function sendPrompt(keyword) {
         const searchWord = (KEYWORD_MAPPING[keyword] || keyword).toLowerCase();
 
+        // タグは部分一致ではなく完全一致でマッチさせる
         const matched = PROJECTS.filter(p =>
-          (p.tags || []).some(tag => tag.toLowerCase().includes(searchWord))
+          (p.tags || []).map(t => t.toLowerCase()).includes(searchWord)
         );
 
         const modal = document.getElementById('project-modal');
