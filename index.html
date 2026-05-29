@@ -361,10 +361,9 @@
           bar.querySelectorAll('.tag-filter-btn').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
 
-          const selectedTag = (btn.dataset.tag || '').toLowerCase();
+          const selectedTag = (btn.dataset.tag || '').toLowerCase().trim();
           const containers = [
             document.getElementById('project-sections'),
-            document.getElementById('main-projectsections'),
             document.getElementById('upcycle-sections'),
           ].filter(Boolean);
 
@@ -420,26 +419,11 @@
         });
 
         const projectContainer = document.getElementById('project-sections');
-        const engineeringProjects = PROJECTS.filter(p =>
-          ['main', 'kids', 'archive', 'plan'].includes(p.category)
-        );
-        const filterBar = buildTagFilterBar(engineeringProjects);
-        if (filterBar) {
+        const filterBar = buildTagFilterBar(PROJECTS);
+        if (filterBar && projectContainer) {
           projectContainer.insertBefore(filterBar, projectContainer.firstChild);
-        
-          // URLパラメータでタグを選択（例: ?tag=android）
-          try {
-            const params = new URLSearchParams(window.location.search);
-            const requestedTag = params.get('tag');
-            if (requestedTag) {
-              const wanted = requestedTag.toLowerCase().trim();
-              const btn = filterBar && Array.from(filterBar.querySelectorAll('.tag-filter-btn')).find(b => (b.dataset.tag||'').toLowerCase() === wanted);
-              if (btn) btn.click();
-            }
-          } catch (e) {
-            console.warn('tag param handling failed', e);
-          }
         }
+
       }
 
       renderProjects();
