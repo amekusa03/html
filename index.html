@@ -222,55 +222,55 @@
       // 新規プロジェクトはここに追加するだけでOK
       // category: "main" | "kids" | "archive" | "current" | "plan"
       // =====================================================================
-      const PROJECTS = [
-        // --- メインプロジェクト ---
-        { category: "main", title: "Image for net Android", youtubeId: "AbBa6crKpO8", altText: "Image for Net", href: "app/android_image_for_net/android_image_for_net.html", tags: ["android", "kotlin", "mobile"] },
-        { category: "main", title: "LocTime", youtubeId: "EdCvGfPWmkA", altText: "LocTime", href: "app/android_loctime/android_loctime.html", tags: ["android", "kotlin", "mobile"] },
-        { category: "main", title: "SekkaTi", youtubeId: "FXpCDcUNZzI", altText: "SekkaTi", href: "app/sekkati/sekkati.html", tags: ["avalonia", "desktop"] },
-        { category: "main", title: "smartOn PC", youtubeId: "f5ny7iTi6pg", altText: "smartOn PC", href: "app/smartonpc/smartonpc.html", tags: ["IDF-ESP"] },
-        { category: "main", title: "Ask Gemini by email", youtubeId: "rSXiyFyoC2w", altText: "Ask Gemini by email", href: "app/ask_gemini_by_email/ask_gemini_by_email.html", tags: ["google cloud", "gas"] },
-        { category: "main", title: "Android PDF Unlocker", youtubeId: "u6uoOYWjGDM", altText: "Android PDF Unlocker", href: "app/android_pdf_unlocker/android_pdf_unlocker.html", tags: ["android", "kotlin", "mobile"] },
-        { category: "main", title: "Android web launcher2", youtubeId: "3B1LJLAfen8", altText: "Android web launcher2", href: "app/android_web_launcher2/android_web_launcher2.html", tags: ["android", "kotlin"] },
-        { category: "main", title: "ESP32 Racing Game", youtubeId: "FJdXAT3jsQo", altText: "ESP32 Racing Game", href: "app/esp32_racing_game/esp32_racing_game.html", tags: ["Wokwi", "IDF-ESP", "c++", "embedded"] },
-        { category: "main", title: "Qt Project Launcher", youtubeId: "mteT0aFFLCU", altText: "Qt Project Launcher", href: "app/qt_project_launcher/qt_project_launcher.html", tags: ["qt", "c++", "desktop"] },
-        { category: "main", title: "PC Audio Application", youtubeId: "mHtCYgG4A4Y", altText: "PC Audio Application", href: "app/my_pc_audio_appli/my_pc_audio_appli.html", tags: ["audio", "desktop"] },
-        { category: "main", title: "Unlock PDF", youtubeId: "F5ah5UK3LFw", altText: "Unlock PDF", href: "app/unlockpdf/unlockpdf.html", tags: ["python", "google cloud"] },
-        { category: "main", title: "Android web launcher", youtubeId: "1ZIV0SYgC7o", altText: "Android Web Launcher", href: "app/android_web_launcher/android_web_launcher.html", tags: ["android", "kotlin", "mobile"] },
-        { category: "main", title: "Software PLC", subtitle: "CoDeSys", youtubeId: "S_0lev74dqg", altText: "Software PLC", href: "app/software_plc/software_plc.html", tags: ["plc", "c++", "embedded"] },
-        { category: "main", title: "Image for net v3.0", youtubeId: "dmGGBLUwR_o", altText: "Image for Net", href: "app/image_for_net/image_for_net.html", tags: ["avalonia", "desktop"] },
-        { category: "main", title: "Android Auto Music Player", youtubeId: "AvIeaj8VLis", altText: "Android Auto Music Player", href: "app/android_auto_music_player/android_auto_music_player.html", tags: ["android", "kotlin", "mobile"] },
-        { category: "main", title: "Add Firebase Like Button", youtubeId: "GMRHpnpdwL8", altText: "Add Firebase Like Button", href: "app/like_button/like_button.html", tags: ["firebase", "google cloud", "javascript"] },
-        { category: "main", title: "SEO strategies", imageSrc: "app/seo/SEO.png", altText: "SEO strategies", href: "app/seo/seo.html", tags: ["vercel", "seo"] },
-        { category: "main", title: "Software Engineering and Me", youtubeId: "0gV_4Gl4rH8", altText: "Restless engineer", href: "app/app_detail/app_detail.html", tags: ["github"] },
-        { category: "main", title: "MP3tag-playlist", youtubeId: "9AKDtL4bqXM", altText: "TagPlaylist Generator", href: "app/tagplaylist/tagplaylist.html", tags: ["Python", "mp3"] },
-        { category: "main", title: "AutoShutdown", youtubeId: "NWzfF0Hg9_k", altText: "AutoShutdown", href: "app/auto_shutdown/auto_shutdown.html", tags: ["ubuntu", "linux", "systemd"] },
-        // --- Kids Engineer ---
-        { category: "kids", title: "Androidアプリのインストール方法", youtubeId: "LCtJxWLGkkY", altText: "Android Install Guide", href: "app/android_install_guide/android_install_guide.html", tags: ["android", "github", "kids"] },
-        { category: "kids", title: "メールでGeminiとおしゃべり", youtubeId: "pId5SnPjoOw", altText: "メールでGeminiとおしゃべり", href: "app/ask_gemini_by_email/Build_Your_Email_AI.html", tags: ["google cloud", "gas"] },
+const PROJECTS = [
+  // --- メインプロジェクト ---
+  { category: "main", title: "Image for net Android", youtubeId: "AbBa6crKpO8", altText: "Image for Net", href: "app/android_image_for_net/android_image_for_net.html", tags: ["android", "kotlin", "mobile"] },
+  { category: "main", title: "LocTime", youtubeId: "EdCvGfPWmkA", altText: "LocTime", href: "app/android_loctime/android_loctime.html", tags: ["android", "kotlin", "mobile"] },
+  { category: "main", title: "SekkaTi", youtubeId: "FXpCDcUNZzI", altText: "SekkaTi", href: "app/sekkati/sekkati.html", tags: ["avalonia", "desktop"] },
+  { category: "main", title: "smartOn PC", youtubeId: "f5ny7iTi6pg", altText: "smartOn PC", href: "app/smartonpc/smartonpc.html", tags: ["IDF-ESP", "embedded", "c++"] },
+  { category: "main", title: "Ask Gemini by email", youtubeId: "rSXiyFyoC2w", altText: "Ask Gemini by email", href: "app/ask_gemini_by_email/ask_gemini_by_email.html", tags: ["google cloud", "gas"] },
+  { category: "main", title: "Android PDF Unlocker", youtubeId: "u6uoOYWjGDM", altText: "Android PDF Unlocker", href: "app/android_pdf_unlocker/android_pdf_unlocker.html", tags: ["android", "kotlin", "mobile"] },
+  { category: "main", title: "Android web launcher2", youtubeId: "3B1LJLAfen8", altText: "Android web launcher2", href: "app/android_web_launcher2/android_web_launcher2.html", tags: ["android", "kotlin"] },
+  { category: "main", title: "ESP32 Racing Game", youtubeId: "FJdXAT3jsQo", altText: "ESP32 Racing Game", href: "app/esp32_racing_game/esp32_racing_game.html", tags: ["Wokwi", "IDF-ESP", "c++", "embedded"] },
+  { category: "main", title: "Qt Project Launcher", youtubeId: "mteT0aFFLCU", altText: "Qt Project Launcher", href: "app/qt_project_launcher/qt_project_launcher.html", tags: ["qt", "c++", "desktop"] },
+  { category: "main", title: "PC Audio Application", youtubeId: "mHtCYgG4A4Y", altText: "PC Audio Application", href: "app/my_pc_audio_appli/my_pc_audio_appli.html", tags: ["audio", "desktop","mp3"] },
+  { category: "main", title: "Unlock PDF", youtubeId: "F5ah5UK3LFw", altText: "Unlock PDF", href: "app/unlockpdf/unlockpdf.html", tags: ["python", "google cloud"] },
+  { category: "main", title: "Android web launcher", youtubeId: "1ZIV0SYgC7o", altText: "Android Web Launcher", href: "app/android_web_launcher/android_web_launcher.html", tags: ["android", "kotlin", "mobile"] },
+  { category: "main", title: "Software PLC", subtitle: "CoDeSys", youtubeId: "S_0lev74dqg", altText: "Software PLC", href: "app/software_plc/software_plc.html", tags: ["plc", "c++", "embedded"] },
+  { category: "main", title: "Image for net v3.0", youtubeId: "dmGGBLUwR_o", altText: "Image for Net", href: "app/image_for_net/image_for_net.html", tags: ["avalonia", "desktop"] },
+  { category: "main", title: "Android Auto Music Player", youtubeId: "AvIeaj8VLis", altText: "Android Auto Music Player", href: "app/android_auto_music_player/android_auto_music_player.html", tags: ["android", "kotlin", "mobile","mp3"] },
+  { category: "main", title: "Add Firebase Like Button", youtubeId: "GMRHpnpdwL8", altText: "Add Firebase Like Button", href: "app/like_button/like_button.html", tags: ["firebase", "google cloud", "javascript"] },
+  { category: "main", title: "SEO strategies", imageSrc: "app/seo/SEO.png", altText: "SEO strategies", href: "app/seo/seo.html", tags: ["vercel", "seo"] },
+  { category: "main", title: "Software Engineering and Me", youtubeId: "0gV_4Gl4rH8", altText: "Restless engineer", href: "app/app_detail/app_detail.html", tags: ["github", "c#", "python"] },
+  { category: "main", title: "MP3tag-playlist", youtubeId: "9AKDtL4bqXM", altText: "TagPlaylist Generator", href: "app/tagplaylist/tagplaylist.html", tags: ["python", "mp3"] },
+  { category: "main", title: "AutoShutdown", youtubeId: "NWzfF0Hg9_k", altText: "AutoShutdown", href: "app/auto_shutdown/auto_shutdown.html", tags: ["ubuntu", "linux", "systemd", "python"] },
+  // --- Kids Engineer ---
+  { category: "kids", title: "Androidアプリのインストール方法", youtubeId: "LCtJxWLGkkY", altText: "Android Install Guide", href: "app/android_install_guide/android_install_guide.html", tags: ["android", "github", "kids"] },
+  { category: "kids", title: "メールでGeminiとおしゃべり", youtubeId: "pId5SnPjoOw", altText: "メールでGeminiとおしゃべり", href: "app/ask_gemini_by_email/Build_Your_Email_AI.html", tags: ["google cloud", "gas"] },
 
-        // --- 過去プロジェクト ---
-        { category: "archive", title: "Avalonia UI & MVVM", youtubeId: "dhkjU1KkbTw", altText: "Avalonia UI Learning", href: "app/avalonia_ui/avalonia_ui.html", tags: ["avalonia", "c#", "desktop"] },
-        { category: "archive", title: "Hello World Qt Creator", youtubeId: "v86BQykeWFY", altText: "Qt Creator Intro", href: "app/hello_world_qt_creator/hello_world_qt_creator.html", tags: ["qt", "c++"] },
-        { category: "archive", title: "ESP32 World Clock for Wokwi", youtubeId: "GSfD1kVzAFw", altText: "ESP32 world Clock for Wokwi", href: "app/esp32_world_clock/esp32_world_clock.html", tags: ["Wokwi", "IDF-ESP", "c++"] },
-        { category: "archive", title: "Google Nest Script", youtubeId: "fbe6DP628qQ", altText: "Google Nest Script", href: "app/google_nest_script/google_nest_script.html", tags: ["google nest hub"] },
-        { category: "archive", title: "暗号化Browse Wrapper", youtubeId: "zNFxTU8CWW4", altText: "EncBrowse", href: "app/enc_browse/enc_browse.html", tags: ["avalonia", "desktop"] },
-        { category: "archive", title: "HTML to Blogger Python", youtubeId: "gFgYCVHIfW0", altText: "HTML to Blogger", href: "app/html_to_blogger/html_to_blogger.html", tags: ["python"] },
-        { category: "archive", title: "android Google Store", youtubeId: "pIFfRgCD9go", altText: "android Google Store", href: "app/android_google_store/android_google_store.html", tags: ["android"] },
-        { category: "archive", title: "Bug Report", youtubeId: "V43PmeQKoSA", altText: "Bug Report", href: "app/bug_report/bug_report.html", tags: ["bug", "windows"] },
-        { category: "archive", title: "smart PC", youtubeId: "SRRmwL01tHY", altText: "smart PC Demo", href: "app/smartpc/smartpc.html", tags: ["IDF-ESP"] },
-        { category: "archive", title: "Virtual Smart Device Control System", youtubeId: "K-S2Lh78OMA", altText: "Virtual Smart Device Control System Demo", href: "app/virtual_device/virtual_device.html", tags: ["IDF-ESP"] },
+  // --- 過去プロジェクト ---
+  { category: "archive", title: "Avalonia UI & MVVM", youtubeId: "dhkjU1KkbTw", altText: "Avalonia UI Learning", href: "app/avalonia_ui/avalonia_ui.html", tags: ["avalonia", "c#", "desktop"] },
+  { category: "archive", title: "Hello World Qt Creator", youtubeId: "v86BQykeWFY", altText: "Qt Creator Intro", href: "app/hello_world_qt_creator/hello_world_qt_creator.html", tags: ["qt", "c++"] },
+  { category: "archive", title: "ESP32 World Clock for Wokwi", youtubeId: "GSfD1kVzAFw", altText: "ESP32 world Clock for Wokwi", href: "app/esp32_world_clock/esp32_world_clock.html", tags: ["Wokwi", "IDF-ESP", "c++"] },
+  { category: "archive", title: "Google Nest Script", youtubeId: "fbe6DP628qQ", altText: "Google Nest Script", href: "app/google_nest_script/google_nest_script.html", tags: ["google nest hub"] },
+  { category: "archive", title: "暗号化Browse Wrapper", youtubeId: "zNFxTU8CWW4", altText: "EncBrowse", href: "app/enc_browse/enc_browse.html", tags: ["avalonia", "desktop"] },
+  { category: "archive", title: "HTML to Blogger Python", youtubeId: "gFgYCVHIfW0", altText: "HTML to Blogger", href: "app/html_to_blogger/html_to_blogger.html", tags: ["python"] },
+  { category: "archive", title: "android Google Store", youtubeId: "pIFfRgCD9go", altText: "android Google Store", href: "app/android_google_store/android_google_store.html", tags: ["android"] },
+  { category: "archive", title: "Bug Report", youtubeId: "V43PmeQKoSA", altText: "Bug Report", href: "app/bug_report/bug_report.html", tags: ["bug", "windows"] },
+  { category: "archive", title: "smart PC", youtubeId: "SRRmwL01tHY", altText: "smart PC Demo", href: "app/smartpc/smartpc.html", tags: ["IDF-ESP"] },
+  { category: "archive", title: "Virtual Smart Device Control System", youtubeId: "K-S2Lh78OMA", altText: "Virtual Smart Device Control System Demo", href: "app/virtual_device/virtual_device.html", tags: ["IDF-ESP"] },
 
-        // --- アップリサイクル ---
-        { category: "upcycle", title: "Android不要アプリの整理方法", youtubeId: "JYM_qNLSHz4", altText: "Android App Cleanup Guide", href: "app/android_clean_guide/android_crean_guide.html", tags: ["android", "adb"] },
-        { category: "upcycle", title: "Ubuntu 導入ガイド", youtubeId: "m0lFwpMAM2Q", altText: "Ubuntu Guide", href: "app/ubuntu/ubuntu.html", tags: ["ubuntu", "linux", "bug"] },
-        { category: "upcycle", title: "Android 置き時計", youtubeId: "iLq9jhhg-OM", altText: "Android table Clock", href: "app/android_table_clock/android_table_clock.html", tags: ["android", "kotlin", "mobile"] },
-        { category: "upcycle", title: "My PC Audio", youtubeId: "81wXBQizKV4", altText: "My PC Audio", href: "app/my_pc_audio/my_pc_audio.html", tags: ["audio"] },
+  // --- アップリサイクル ---
+  { category: "upcycle", title: "Android不要アプリの整理方法", youtubeId: "JYM_qNLSHz4", altText: "Android App Cleanup Guide", href: "app/android_clean_guide/android_crean_guide.html", tags: ["android", "adb"] },
+  { category: "upcycle", title: "Ubuntu 導入ガイド", youtubeId: "m0lFwpMAM2Q", altText: "Ubuntu Guide", href: "app/ubuntu/ubuntu.html", tags: ["ubuntu", "linux", "bug"] },
+  { category: "upcycle", title: "Android 置き時計", youtubeId: "iLq9jhhg-OM", altText: "Android table Clock", href: "app/android_table_clock/android_table_clock.html", tags: ["android", "kotlin", "mobile"] },
+  { category: "upcycle", title: "My PC Audio", youtubeId: "81wXBQizKV4", altText: "My PC Audio", href: "app/my_pc_audio/my_pc_audio.html", tags: ["audio","mp3", "desktop"] },
 
-        // --- 検討中プロジェクト ---
-        { category: "plan", title: "ランチメモ",imageSrc: "iwana4.png", altText: "LunchMemo", tags: ["android", "kotlin", "mobile"] },
-        { category: "plan", title: "畑でESP32", imageSrc: "iwana2.png", altText: "畑でESP32",  tags: ["IDF-ESP", "mobile"] },
-        { category: "plan", title: "車でESP32", imageSrc: "iwana3.png", altText: "車でESP32",  tags: ["IDF-ESP", "mobile"] },
-      ];
+  // --- 検討中プロジェクト ---
+  { category: "plan", title: "ランチメモ",imageSrc: "iwana4.png", altText: "LunchMemo", tags: ["android", "kotlin", "mobile"] },
+  { category: "plan", title: "畑でESP32", imageSrc: "iwana2.png", altText: "畑でESP32", tags: ["IDF-ESP", "mobile"] },
+  { category: "plan", title: "車でESP32", imageSrc: "iwana3.png", altText: "車でESP32", tags: ["IDF-ESP", "mobile"] },
+];
 
       const SECTIONS = [
         { category: "main",    containerId: "project-sections",  gridClass: "project-grid",         cardClass: "project-card",         subtitle: null,                  description: null },
