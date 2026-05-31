@@ -99,6 +99,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://amekusa.vercel.app/app/lunch_memo/lunch_memo.html</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://amekusa.vercel.app/app/enc_browse/enc_browse.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>

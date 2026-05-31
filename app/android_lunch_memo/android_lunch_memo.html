@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-SRGF2MMYGD');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://amekusa.vercel.app/app/lunch_memo/lunch_memo.html">
+    <meta name="description" content="Lunch Memo はランチ予定と記録を Material 3 で管理する Android アプリです。Room、WorkManager、Jetpack Compose を使用しています。">
+    <meta property="og:url" content="https://amekusa.vercel.app/app/lunch_memo/lunch_memo.html">
+    <title>Lunch Memo | 雨草の庭</title>
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+
+<body class="app-page">
+    <canvas id="rain-canvas"></canvas>
+    <div class="container">
+        <nav aria-label="ページナビゲーション">
+            <a href="../../index.html">← Back to Garden</a>
+        </nav>
+
+        <header>
+            <div class="header-tags u-margin-b-1">
+                <span class="tag">Kotlin</span>
+                <span class="tag">Android</span>
+                <span class="tag">Jetpack Compose</span>
+            </div>
+            <h1>Lunch Memo</h1>
+            <p class="u-opacity-8">Lunch Memo は、ランチ予定をシンプルに管理する Android アプリです。Material 3 デザインと通知機能で毎日のランチを快適にします。</p>
+        </header>
+
+        <main>
+            <section>
+                <h2>About this Project</h2>
+                <p>
+                    Lunch Memo は、日々のランチの予定や予約をスタイリッシュに管理できる Android アプリです。
+                    カレンダー形式のカード操作でメモをすばやく残せるように工夫し、
+                    お昼の通知によって今日の予定をお知らせします。
+                </p>
+            </section>
+
+            <section>
+                <h2>Video</h2>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/i9NiwBay37c" style="border:0;" allowfullscreen
+                        title="LocTime Demo" loading="lazy"></iframe>
+                </div>
+            </section>            
+            <section>
+                <h2>Key Features</h2>
+                <ul>
+                    <li><strong>スマートな記録:</strong> カレンダー形式のカードをスワイプして、ランチ内容をすばやくメモできます。</li>
+                    <li><strong>お昼の通知:</strong> 毎日12:00に、その日のランチメモを通知します。</li>
+                    <li><strong>モダンなデザイン:</strong> Material 3 をフル活用し、滑らかなカードアニメーションとグラデーション背景を採用しています。</li>
+                    <li><strong>通知権限対応:</strong> Android 13 以上の通知権限に対応しています。</li>
+                    <li><strong>クリーンなデータ保持:</strong> 過去のメモを自動整理し、アプリを常に軽快に保ちます。</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Technology Stack</h2>
+                <ul class="tech-stack">
+                    <li>Kotlin</li>
+                    <li>Jetpack Compose (Material 3)</li>
+                    <li>Room (SQLite)</li>
+                    <li>WorkManager</li>
+                    <li>Coroutines &amp; Flow</li>
+                    <li>MVVM</li>
+                    <li>Gradle Version Catalog (libs.versions.toml)</li>
+                    <li>KSP (Kotlin Symbol Processing)</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Setup</h2>
+                <ol>
+                    <li>Android Studio (Ladybug 以降推奨) でプロジェクトを開きます。</li>
+                    <li>Gradle Sync を実行します。</li>
+                    <li>Android デバイスまたはエミュレータでアプリを実行します。</li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>License</h2>
+                <p>このプロジェクトは MIT ライセンスの下で公開されています。</p>
+            </section>
+        </main>
+
+        <nav aria-label="ページナビゲーション">
+            <a href="../../index.html">← Back to Garden</a>
+        </nav>
+
+        <div class="like-section">
+            <button id="like-btn" class="like-btn" aria-label="いいね">
+                <span class="like-icon">♡</span>
+                <span id="like-count" class="like-count">…</span>
+            </button>
+            <p class="like-label">見ていただけましたか？</p>
+        </div>
+        <footer>
+            <p>Copyright &copy; amekusa All Rights Reserved.</p>
+        </footer>
+    </div>
+    <script src="../../rain.js"></script>
+    <script type="module" src="../like.js"></script>
+</body>
+
+</html>
