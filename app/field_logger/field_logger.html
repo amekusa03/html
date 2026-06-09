@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-SRGF2MMYGD');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://amekusa.vercel.app/app/field_logger/field_logger.html">
+    <meta name="description" content="山の畑（電源・ネット環境なし）の環境データを長期間にわたり自動記録し、現地でスマートフォンを使ってデータを回収するための自立型データロガーの仕様。">
+    <title>山の畑用 温湿度データロガー | 雨草の庭</title>
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body class="app-page">
+    <div class="container">
+        <nav>
+            <a href="../../index.html">← Back to Garden</a>
+        </nav>
+
+        <header>
+            <div class="header-tags u-margin-b-1">
+                <span class="tag">ESP32-C3</span>
+                <span class="tag">Data Logger</span>
+                <span class="tag">SHT31</span>
+                <span class="tag">LittleFS</span>
+            </div>
+            <h1>山の畑用 温湿度データロガー (Hata logger)</h1>
+            <p class="u-opacity-8">山の畑（電源・ネット環境なし）の環境データを長期間にわたり自動記録し、現地でスマートフォンを使ってデータを回収するための自立型データロガーの仕様。</p>
+        </header>
+
+        <main>
+            <section>
+                <h2>1. システム概要</h2>
+                <ul>
+                    <li><strong>用途:</strong> 山の畑における温度・湿度の定点観測</li>
+                    <li><strong>計測間隔:</strong> 1時間ごと（ディープスリープによる省電力運用）</li>
+                    <li><strong>データ保存:</strong> ESP32-C3の内部フラッシュメモリ（LittleFS）にCSV形式で保存</li>
+                    <li><strong>データ回収:</strong> 現地にてWi-Fi（アクセスポイントモード）経由でスマホのブラウザからダウンロード</li>
+                    <li><strong>電源:</strong> 設置済みのソーラーチャージコントローラー（USB 5V）から給電</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>2. ハードウェア構成（部品リスト）</h2>
+                
+                <h3>① マイコンボード</h3>
+                <ul>
+                    <li><strong>型番:</strong> ESP32-C3 開発ボード（推奨：Seeed Studio XIAO ESP32C3 など省電力設計のもの）</li>
+                    <li><strong>特徴:</strong> 低消費電力（スリープ時約50μA以下）、Wi-Fi搭載、小型</li>
+                </ul>
+
+                <h3>② 温湿度センサー</h3>
+                <ul>
+                    <li><strong>型番:</strong> GY-SHT31-D（Sensirion SHT31搭載モジュール）</li>
+                    <li><strong>特徴:</strong> 高精度（温度±0.2℃ / 湿度±2%）、結露への高い耐久性</li>
+                </ul>
+
+                <h3>③ その他部品</h3>
+                <ul>
+                    <li><strong>データ回収スイッチ:</strong> タクトスイッチ × 1（手元でのモード切り替え用）</li>
+                    <li><strong>ケース:</strong> 防水・防塵プラスチックボックス（タカチ電機工業製など）</li>
+                    <li><strong>配線材:</strong> センサー延長用の4芯ケーブル、ハンダ、熱収縮チューブ</li>
+                    <li><strong>サビ・防水対策:</strong> 自己融着テープ、パテ（またはシリコンシーラント）、防湿コーティング剤（ハヤコート）</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>3. ピン配線図（接続表）</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>接続元（ESP32-C3側）</th>
+                            <th>接続先（センサー・スイッチ）</th>
+                            <th>役割</th>
+                            <th>備考</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>3.3V</td><td>GY-SHT31-D: VIN</td><td>センサー電源</td><td>3.3Vを供給</td></tr>
+                        <tr><td>GND</td><td>GY-SHT31-D: GND</td><td>グランド</td><td>電源のマイナス</td></tr>
+                        <tr><td>GPIO 5 (SCL)</td><td>GY-SHT31-D: SCL</td><td>I2Cクロック信号</td><td>通信タイミング用</td></tr>
+                        <tr><td>GPIO 4 (SDA)</td><td>GY-SHT31-D: SDA</td><td>I2Cデータ信号</td><td>温湿度データの送受信用</td></tr>
+                        <tr><td>GPIO 9</td><td>タクトスイッチの足①</td><td>回収モード検知</td><td>起動時に状態をチェック</td></tr>
+                        <tr><td>GND</td><td>タクトスイッチの足②</td><td>グランド</td><td>スイッチ押下時にLOWにする</td></tr>
+                    </tbody>
+                </table>
+                <p>※注: ESP32-C3のUSB Type-Cポートには、ソーラーコントローラーからのUSBケーブルを接続。</p>
+            </section>
+
+            <section>
+                <h2>4. 動作仕様（ソフトウェア処理フロー）</h2>
+                
+                <h3>【通常時：ロガーモード】</h3>
+                <ol>
+                    <li><strong>スリープ解除:</strong> 内蔵タイマーにより1時間ごとに自動起動。</li>
+                    <li><strong>初期化:</strong> LittleFS および SHT31 センサーの初期化。</li>
+                    <li><strong>データ計測:</strong> 温度・湿度を計測。</li>
+                    <li><strong>データ保存:</strong> <code>log.csv</code> の末尾にデータを追記（フォーマット: 通番, 温度, 湿度）。</li>
+                    <li><strong>就寝:</strong> 1時間（3,600秒）のタイマーを設定し、即座にディープスリープに移行。</li>
+                </ol>
+
+                <h3>【回収時：Wi-Fiモード】</h3>
+                <ol>
+                    <li><strong>起動トリガー:</strong> GPIO 9 に繋いだスイッチを押しながら、本体の「EN（リセット）ボタン」を押す。</li>
+                    <li><strong>モード分岐:</strong> 起動直後に GPIO 9 が LOW であることを検知し、Wi-Fi親機として起動。</li>
+                    <li><strong>Wi-Fi起動:</strong> SSID: <code>Hata_Logger</code> / PASS: <code>12345678</code> でアクセスポイントを展開。</li>
+                    <li><strong>Webサーバー起動:</strong> <code>http://192.168.4.1</code> にWebサーバーを立ち上げる。</li>
+                    <li><strong>スマホ接続・回収:</strong>
+                        <ul>
+                            <li>スマホのWi-Fiを <code>Hata_Logger</code> に接続。</li>
+                            <li>ブラウザで <code>http://192.168.4.1</code> にアクセス。</li>
+                            <li>画面上のボタンから「CSVダウンロード」および「データ削除」を実行。</li>
+                        </ul>
+                    </li>
+                    <li><strong>終了方法:</strong> 回収完了後、スイッチを押さずに再度「ENボタン」を押す（通常モードに復帰）。</li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>5. 特記事項・長期運用対策</h2>
+                <ul>
+                    <li><strong>時間精度:</strong> 外部RTC（時計モジュール）を省いているため、内蔵タイマーの温度特性により1週間で1時間程度の累積誤差（ズレ）が発生する前提で運用（回収時に実時間と照らし合わせて逆算する）。</li>
+                    <li><strong>センサー保護:</strong> ハンダ付けの際、ハンダの煙（フラックスのガス）がセンサー中央の穴に入らないようマスキングテープ等で保護して作業すること。</li>
+                    <li><strong>防湿・防虫:</strong> 結露対策として基板（センサー以外）にハヤコート等の防湿剤を塗布。ケースからセンサーへ伸ばす配線の穴はパテで完全に埋め、虫の侵入を防ぐ。</li>
+                    <li><strong>サビ対策:</strong> ソーラーコントローラーとESP32-C3のUSB接続部は、湿気による腐食を防ぐため自己融着テープで密閉する。</li>
+                </ul>
+            </section>
+        </main>
+
+        <nav>
+            <a href="../../index.html">← Back to Garden</a>
+        </nav>
+        <div class="like-section">
+            <button id="like-btn" class="like-btn" aria-label="いいね">
+                <span class="like-icon">♡</span>
+                <span id="like-count" class="like-count">…</span>
+            </button>
+            <p class="like-label">見ていただけましたか？</p>
+        </div>
+        <footer>
+            <p>Copyright &copy; amekusa All Rights Reserved.</p>
+        </footer>
+    </div>
+    <script type="module" src="../like.js"></script>
+</body>
+
+</html>
