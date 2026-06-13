@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-SRGF2MMYGD');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://amekusa.vercel.app/app/esp32_air_con/esp32_air_con.html">
+    <meta name="description" content="ESP32-C3とSHT30温湿度センサーを用い、SwitchBotハブミニ経由でエアコンを自動制御して快適な室温を維持するプロジェクト。">
+    <title>ESP32 Air Conditioner Control | 雨草の庭</title>
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+
+<body class="app-page">
+    <div class="container">
+        <nav>
+            <a href="../../index.html">← Back to Garden</a>
+        </nav>
+
+        <header>
+            <div class="header-tags u-margin-b-1">
+                <span class="tag">ESP32</span>
+                <span class="tag">C++</span>
+                <span class="tag">IoT</span>
+                <span class="tag">SwitchBot</span>
+            </div>
+            <h1>ESP32 Air Conditioner Control</h1>
+            <p class="u-opacity-8">ESPでエアコンを自動制御して不快感を緩和する</p>
+        </header>
+        <main>
+            <section>
+                <h2>1. プロジェクト概要</h2>
+                <p>
+                    本プロジェクトは、追加のサーバー機器（ミニPCやRaspberry Piなど）を購入せず、USB電源のみで動作するマイクロコントローラー「ESP32-C3」と高精度温湿度センサー「SHT30」を用いて、自宅の室温・湿度を24時間監視し、SwitchBotハブミニ経由でエアコンを綿密に自動制御することで、「冷えすぎ（寒さ）」や「エアコンが効かない（暑さ）」といった室内の温度ムラを緩和し、快適な室内環境を維持するシステムである。
+                </p>
+            </section> 
+            <section>
+                <h2>Video</h2>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/3QauXF-Pw2U" frameborder="0" allowfullscreen
+                        title="ESP32 aircon"></iframe>
+                </div>
+            </section>
+
+            <section>
+                <h2>2. システム構成・役割分担</h2>
+                <p>本システムはクラウド（SwitchBot Web API）を経由したローカル・スタンドアロン制御を行う。</p>
+                <pre><code>[室内環境] ➔ (I2C) ➔ [ESP32-C3 ＋ SHT30] (親機なしで単体動作)
+       │ (Wi-Fi / HTTPS)
+       ▼
+[SwitchBot Web API]
+       │ (クラウド経由)
+       ▼
+[SwitchBot ハブミニ] ➔ (赤外線) ➔ [エアコン]</code></pre>
+
+                <h3>2.1 構成部品と役割</h3>
+                <ul>
+                    <li><strong>子機兼制御本体: ESP32-C3 開発ボード</strong>（電源：5V USB給電のみ）
+                        <ul>
+                            <li>SHT30から10〜30秒間隔で室温を取得。</li>
+                            <li>制御ロジック（ヒステリシス）の判定および管理。</li>
+                            <li>Wi-Fi経由でSwitchBot Web APIへHTTPSリクエスト（制御コマンド）を直接送信。</li>
+                        </ul>
+                    </li>
+                    <li><strong>センサー: SHT30</strong>（温度・湿度センサーモジュール）
+                        <ul>
+                            <li>生活動線上の高さ（床上70〜100cm）に設置し、正確な体感温度を計測。</li>
+                            <li>ESP32-C3の通信発熱による影響を受けないよう、物理的に数センチ離して配置。</li>
+                        </ul>
+                    </li>
+                    <li><strong>赤外線中継機: SwitchBotハブミニ</strong>（既存導入済み）
+                        <ul>
+                            <li>クラウドからの要求を受け取り、エアコンへ赤外線信号を送信。</li>
+                        </ul>
+                    </li>
+                    <li><strong>操作対象:</strong> 既存のエアコン</li>
+                    <li><strong>外部サービス: SwitchBot Web API (v1.1)</strong>
+                        <ul>
+                            <li>デバイス一覧の取得、およびエアコンの遠隔操作（<code>setAll</code> コマンド）に使用。</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>3. ハードウェア配線（I2C接続）</h2>
+                <p>ESP32-C3とSHT30は以下のピンマップで接続する。</p>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>SHT30 側</th>
+                                <th>ESP32-C3 側</th>
+                                <th>信号名・役割</th>
+                                <th>備考</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>VCC</strong></td>
+                                <td><strong>3.3V</strong></td>
+                                <td>電源供給</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><strong>GND</strong></td>
+                                <td><strong>GND</strong></td>
+                                <td>グランド</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><strong>SDA</strong></td>
+                                <td><strong>GPIO 8</strong></td>
+                                <td>I2C データ線</td>
+                                <td>プログラム内で任意に変更可能</td>
+                            </tr>
+                            <tr>
+                                <td><strong>SCL</strong></td>
+                                <td><strong>GPIO 9</strong></td>
+                                <td>I2C クロック線</td>
+                                <td>プログラム内で任意に変更可能</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="u-opacity-8 u-text-sm" style="margin-top: 1rem;">
+                    ※注意1: Wi-Fi接続時の突入電流（電流スパイク）による不安定化を防ぐため、品質の良いUSBケーブルを使用すること。<br>
+                    ※注意2: GPIO 9はESP32-C3のブートストラップピンです。接続するSHT30モジュールに強力なプルダウン抵抗がある場合、起動不良（書き込みモードへの遷移）を起こす可能性があります。その場合は、I2Cピンを別のGPIO（例: SDA=GPIO 5, SCL=GPIO 6など）へ変更してください。
+                </p>
+            </section>
+
+            <section>
+                <h2>4. 制御ロジック（エアコン不快感緩和仕様）</h2>
+                <p>チャタリング（エアコンの頻繁なオンオフ）およびハンチング現象を防ぐため、<strong>1.5℃〜2.0℃の幅（ヒステリシス）</strong>を持たせた2状態フラグ管理を行う。</p>
+
+                <h3>4.1 自動制御ルール</h3>
+                <ul>
+                    <li><strong>【冷えすぎ（肌寒さ）防止トリガー】</strong>
+                        <ul>
+                            <li><strong>条件</strong>: 室温が <strong>24.5℃以下</strong> に低下、かつ 現在「通常モード（または判定前）」の場合。</li>
+                            <li><strong>アクション</strong>: エアコンの設定を <strong>「冷房 27℃ / 風量：しずかに（微風） / 風向：上向き」</strong> へ変更し、状態を「弱風モード」へ移行する。</li>
+                            <li><strong>目的</strong>: 部屋を完全に冷やし切らず、微風と上向き送風で冷気の直撃を緩和する。</li>
+                        </ul>
+                    </li>
+                    <li><strong>【効かない（暑さ）対策トリガー】</strong>
+                        <ul>
+                            <li><strong>条件</strong>: 室温が <strong>26.5℃以上</strong> に上昇、かつ 現在「弱風モード」の場合。</li>
+                            <li><strong>アクション</strong>: エアコンの設定を <strong>「冷房 25℃ / 風量：自動」</strong> へ変更し、状態を「通常モード」へ移行する。</li>
+                            <li><strong>目的</strong>: 部屋が本格的に暑くなる前に先手を打って冷やし始める。</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>4.2 信頼性・安全対策仕様</h3>
+                <ul>
+                    <li><strong>【ガードタイム（最低送信間隔の制限）】</strong>
+                        <ul>
+                            <li>エアコンの頻繁な設定変更（チャタリング）によるコンプレッサー負荷軽減およびSwitchBot APIの制限（1日10,000回まで）回避のため、一度コマンドを送信した後は<strong>最低15分間、次のコマンド送信を行わない</strong>ようガードタイムを設ける。</li>
+                        </ul>
+                    </li>
+                    <li><strong>【状態（ステータス）の永続化】</strong>
+                        <ul>
+                            <li>ESP32-C3が電源瞬断やWi-Fi切断等で再起動した場合に状態を見失わないよう、現在の制御状態（通常モード / 弱風モード）を内蔵Flashメモリ（<code>Preferences</code> ライブラリ）へ随時書き込み保存する。</li>
+                            <li>起動時に保存された状態がない場合は、安全のため「室温が25.5℃未満なら弱風モード、25.5℃以上なら通常モード」として初期化する。</li>
+                        </ul>
+                    </li>
+                    <li><strong>【センサー異常時のフェールセーフ】</strong>
+                        <ul>
+                            <li>SHT30とのI2C通信エラーや測定値の異常（<code>NAN</code> など）を検出した場合は、エアコンの暴走を防ぐため制御処理を一時中断し、シリアルモニター等へエラーを出力して待機する。</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>5. ソフトウェア仕様（通信および認証）</h2>
+                <p>SwitchBot Web API v1.1 の仕様に準拠したセキュアな通信をESP32-C3内で実装する。</p>
+
+                <h3>5.1 認証情報の準備</h3>
+                <p>事前にスマホアプリの「開発者オプション」から以下の情報を取得し、プログラムへ埋め込む。</p>
+                <ul>
+                    <li><strong>Token (トークン)</strong></li>
+                    <li><strong>Client Secret (クライアントシークレット)</strong></li>
+                    <li><strong>エアコンのデバイスID</strong>（事前に一覧取得用コードを用いて特定する）</li>
+                </ul>
+
+                <h3>5.2 APIリクエスト仕様</h3>
+                <ul>
+                    <li><strong>エンドポイント</strong>: <code>https://api.switch-bot.com/v1.1/devices/{device_id}/commands</code></li>
+                    <li><strong>リクエストメソッド</strong>: <code>POST</code></li>
+                    <li><strong>必須HTTPヘッダー</strong>:
+                        <ul>
+                            <li><code>Content-Type: application/json</code></li>
+                            <li><code>Authorization: {Token}</code></li>
+                            <li><code>sign: {HMAC-SHA256署名文字列}</code>（Secret、ミリ秒タイムスタンプ、Nonceの結合文字をHMAC-SHA256ハッシュ化し、Base64エンコード後に<strong>すべて大文字（Uppercase）</strong>へ変換したもの）</li>
+                            <li><code>t: {ミリ秒タイムスタンプ}</code></li>
+                            <li><code>nonce: {ランダムな文字列/UUID}</code></li>
+                        </ul>
+                    </li>
+                    <li><strong>送信ペイロード（JSON例）</strong>:
+                        <pre><code>{
+  "command": "setAll",
+  "parameter": "27,cool,1,on", 
+  "commandType": "command"
+}</code></pre>
+                        <p class="u-opacity-8 u-text-sm">*(※parameter書式: "設定温度,運転モード,風量,電源状態")*</p>
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>6. 開発ロードマップ（今後のステップ）</h2>
+                <ul>
+                    <li><input type="checkbox" disabled> <strong>Step 1</strong>: SHT30の値を正しくシリアルモニターに表示させる（配線確認）。</li>
+                    <li><input type="checkbox" disabled> <strong>Step 2</strong>: 1度だけ実行するコードを書き、SwitchBotに登録されている機器の「エアコンのデバイスID」をログから特定する。</li>
+                    <li><input type="checkbox" disabled> <strong>Step 3</strong>: ESP32-C3内で、API v1.1必須の「ミリ秒タイムスタンプ取得（NTPサーバー同期と同期完了待ち）」と「HMAC-SHA256署名（シグネチャ）の自動生成（大文字変換を含む）」を実装し、単体テストする。</li>
+                    <li><input type="checkbox" disabled> <strong>Step 4</strong>: <code>Preferences</code> による制御状態の永続化と、ガードタイム処理を実装する。</li>
+                    <li><input type="checkbox" disabled> <strong>Step 5</strong>: 制御ロジックおよびフェールセーフ（センサー異常検出）を組み込み、本運用を開始する。</li>
+                </ul>
+            </section>
+
+        </main>
+
+        <nav>
+            <a href="../../index.html">← Back to Garden</a>
+        </nav>
+        <div class="like-section">
+            <button id="like-btn" class="like-btn" aria-label="いいね">
+                <span class="like-icon">♡</span>
+                <span id="like-count" class="like-count">…</span>
+            </button>
+            <p class="like-label">見ていただけましたか？</p>
+        </div>
+        <footer>
+            <p>Copyright &copy; amekusa All Rights Reserved.</p>
+        </footer>
+    </div>
+    <script type="module" src="../like.js"></script>
+</body>
+
+</html>
