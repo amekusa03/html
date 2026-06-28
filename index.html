@@ -33,6 +33,10 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
     :root {
       --bg-color: #f5f0e8;
       --text-color: #1c1a17;
@@ -448,6 +452,60 @@
         margin-top: 3rem;
       }
     }
+
+    /* グローバルナビゲーション */
+    .global-nav {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-bottom: 3.5rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid rgba(58, 90, 46, 0.08);
+    }
+
+    .nav-item {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text-color);
+      text-decoration: none;
+      opacity: 0.6;
+      transition: opacity 0.3s, color 0.3s;
+      position: relative;
+      letter-spacing: 0.1em;
+    }
+
+    .nav-item:hover,
+    .nav-item.active {
+      opacity: 1;
+      color: var(--accent-green);
+    }
+
+    .nav-item::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 1px;
+      bottom: -6px;
+      left: 0;
+      background-color: var(--accent-green);
+      transition: width 0.3s ease;
+    }
+
+    .nav-item:hover::after,
+    .nav-item.active::after {
+      width: 100%;
+    }
+
+    @media (max-width: 600px) {
+      .global-nav {
+        gap: 1.5rem;
+        margin-bottom: 2.5rem;
+      }
+      .nav-item {
+        font-size: 0.9rem;
+      }
+    }
   </style>
 </head>
 
@@ -460,6 +518,13 @@
       <h1>雨草の庭</h1>
       <p class="subtitle">Engineering & Nature Notes</p>
     </header>
+
+    <nav class="global-nav">
+      <a href="#" class="nav-item">Notes</a>
+      <a href="#photography" class="nav-item">Photography</a>
+      <a href="#profile" class="nav-item">Profile</a>
+      <a href="#links" class="nav-item">Links</a>
+    </nav>
 
     <main id="app-content">
       <!-- ここに動的に一覧または詳細が読み込まれます -->
@@ -551,19 +616,17 @@
         const slug = hash.replace('#essay=', '');
         const essay = ESSAYS.find(e => e.slug === slug);
         if (essay) {
-          // loadEssay(slug);
           loadEssay(slug);
           toggleHomeSections(false);
         } else {
-          // render404();
           render404();
           toggleHomeSections(false);
         }
       } else {
-        // renderEssayList();
         renderEssayList();
         toggleHomeSections(true);
       }
+      updateActiveNav();
     }
 
     // トップページのセクション表示切り替え
@@ -585,7 +648,7 @@
 
       let html = `
         <section class="essay-list-section">
-          <h2>記録</h2>
+          <h2>Notes</h2>
           <ul class="essay-list">
       `;
 
@@ -651,9 +714,72 @@
       `;
     }
 
+    // ナビゲーションのアクティブ状態更新
+    function updateActiveNav() {
+      const hash = window.location.hash;
+      const navItems = document.querySelectorAll('.nav-item');
+      navItems.forEach(item => item.classList.remove('active'));
+
+      if (hash.startsWith('#essay=')) {
+        const notesNav = document.querySelector('.nav-item[href="#"]');
+        if (notesNav) notesNav.classList.add('active');
+      } else {
+        const activeNav = document.querySelector(`.nav-item[href="${hash || '#'}"]`);
+        if (activeNav) {
+          activeNav.classList.add('active');
+        } else {
+          const notesNav = document.querySelector('.nav-item[href="#"]');
+          if (notesNav) notesNav.classList.add('active');
+        }
+      }
+    }
+
+    // スクロールスパイ（Intersection Observer）の設定
+    let observer;
+    function initScrollSpy() {
+      const observerOptions = {
+        root: null,
+        rootMargin: '-30% 0px -50% 0px',
+        threshold: 0
+      };
+
+      observer = new IntersectionObserver((entries) => {
+        // エッセイ詳細表示時はスクロールスパイを無効化
+        if (window.location.hash.startsWith('#essay=')) return;
+
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => item.classList.remove('active'));
+
+            let targetHref = `#${id}`;
+            if (id === 'app-content') {
+              targetHref = '#';
+            }
+            const activeNav = document.querySelector(`.nav-item[href="${targetHref}"]`);
+            if (activeNav) activeNav.classList.add('active');
+          }
+        });
+      }, observerOptions);
+
+      const targets = [
+        document.getElementById('app-content'),
+        document.getElementById('photography'),
+        document.getElementById('profile'),
+        document.getElementById('links')
+      ];
+      targets.forEach(t => {
+        if (t) observer.observe(t);
+      });
+    }
+
     // ハッシュ変更と初回読み込み時の監視
     window.addEventListener('hashchange', router);
-    window.addEventListener('DOMContentLoaded', router);
+    window.addEventListener('DOMContentLoaded', () => {
+      router();
+      initScrollSpy();
+    });
   </script>
 
 
