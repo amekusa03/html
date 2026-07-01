@@ -1,147 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://amekusa.vercel.app/</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/Photo/</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/Photo2/</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://amekusa.vercel.app/google0f273dca6c86b0ed.html</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>https://amekusa.vercel.app/app/android_auto_music_player/android_auto_music_player</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-06-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/android_clean_guide/android_crean_guide</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/android_cockpit_scope/android_cockpit_scope</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-06-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/android_google_store/android_google_store</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/android_image_for_net/android_image_for_net</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/android_install_guide/android_install_guide</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/android_loctime/android_loctime</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/android_lunch_memo/android_lunch_memo</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/android_pdf_unlocker/android_pdf_unlocker</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/android_sekkati/android_sekkati</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-06-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/android_table_clock/android_table_clock</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/android_web_launcher/android_web_launcher</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/android_web_launcher2/android_web_launcher2</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/app_detail/app_detail</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/ask_gemini_by_email/Build_Your_Email_AI</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/ask_gemini_by_email/ask_gemini_by_email</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/auto_shutdown/auto_shutdown</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/avalonia_ui/avalonia_ui</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/bug_report/bug_report</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/enc_browse/enc_browse</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amekusa.vercel.app/app/esp32_air_con/esp32_air_con</loc>
+    <lastmod>2026-06-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -153,129 +152,141 @@
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/esp32_racing_game/esp32_racing_game</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/esp32_world_clock/esp32_world_clock</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amekusa.vercel.app/app/field_logger/field_logger</loc>
+    <lastmod>2026-06-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/google_nest_script/google_nest_script</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/hello_world_qt_creator/hello_world_qt_creator</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/html_to_blogger/html_to_blogger</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/html_to_blogger_en/html_to_blogger_en</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/image_for_net/image_for_net</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/like_button/like_button</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/my_pc_audio/my_pc_audio</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/my_pc_audio_appli/my_pc_audio_appli</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/qt_project_launcher/qt_project_launcher</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/sekkati/sekkati</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/seo/seo</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/smartonpc/smartonpc</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/smartpc/smartpc</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/software_plc/software_plc</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/tagplaylist/tagplaylist</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/ubuntu/ubuntu</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/unlockpdf/unlockpdf</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/app/virtual_device/virtual_device</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amekusa.vercel.app/google0f273dca6c86b0ed.html</loc>
+    <lastmod>2026-03-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/hobbies/</loc>
     <xhtml:link rel="alternate" hreflang="ja" href="https://amekusa.vercel.app/hobbies/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://amekusa.vercel.app/hobbies/index_en.html"/>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -283,13 +294,19 @@
     <loc>https://amekusa.vercel.app/hobbies/index_en.html</loc>
     <xhtml:link rel="alternate" hreflang="ja" href="https://amekusa.vercel.app/hobbies/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://amekusa.vercel.app/hobbies/index_en.html"/>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://amekusa.vercel.app/index_archive</loc>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://amekusa.vercel.app/link/</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
