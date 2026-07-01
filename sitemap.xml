@@ -272,17 +272,17 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://amekusa.vercel.app/hobbies/hobbies</loc>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://amekusa.vercel.app/hobbies/hobbies.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://amekusa.vercel.app/hobbies/hobbies_en.html"/>
+    <loc>https://amekusa.vercel.app/hobbies/</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://amekusa.vercel.app/hobbies/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amekusa.vercel.app/hobbies/index_en.html"/>
     <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://amekusa.vercel.app/hobbies/hobbies_en</loc>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://amekusa.vercel.app/hobbies/hobbies.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://amekusa.vercel.app/hobbies/hobbies_en.html"/>
+    <loc>https://amekusa.vercel.app/hobbies/index_en.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://amekusa.vercel.app/hobbies/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amekusa.vercel.app/hobbies/index_en.html"/>
     <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

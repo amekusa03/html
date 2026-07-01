@@ -16,12 +16,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="canonical" href="https://amekusa.vercel.app/">
-  <meta name="description" content="amekusaのNotes。">
+  <meta name="description" content="雨草の庭 — エンジニアリングと自然の記録。技術随筆・写真・リンク集。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://amekusa.vercel.app/">
   <meta property="og:title" content="雨草の庭">
-  <meta property="og:description" content="amekusaのNotes。">
-  <meta property="og:image" content="https://amekusa.vercel.app/amenoniwa.png">
+  <meta property="og:description" content="雨草の庭 — エンジニアリングと自然の記録。技術随筆・写真・リンク集。">
+  <meta property="og:image" content="https://amekusa.vercel.app/ogp.png">
   <title>雨草の庭 | Notes</title>
 
   <!-- Google Fonts: Noto Serif JP と Noto Sans JP -->
@@ -520,13 +520,13 @@
     </header>
 
     <nav class="global-nav">
-      <a href="#" class="nav-item">Notes</a>
+      <a href="#notes" class="nav-item">Notes</a>
       <a href="#photography" class="nav-item">Photography</a>
       <a href="#profile" class="nav-item">Profile</a>
       <a href="#links" class="nav-item">Links</a>
     </nav>
 
-    <main id="app-content">
+    <main id="notes">
       <!-- ここに動的に一覧または詳細が読み込まれます -->
     </main>
 
@@ -534,13 +534,13 @@
       <h2 data-num="○四">Photography</h2>
       <div class="photo-grid">
         <div class="photo-item">
-          <img src="Photo/photo01.jpg" alt="Nature photo 1" loading="lazy" width="4320" height="2880">
+          <img src="Photo/photo01.jpg" alt="山々と満開の桜" loading="lazy" width="4320" height="2880">
         </div>
         <div class="photo-item">
-          <img src="Photo/photo02.jpg" alt="Nature photo 2" loading="lazy" width="4320" height="2432">
+          <img src="Photo/photo02.jpg" alt="白い野菊の花" loading="lazy" width="4320" height="2432">
         </div>
         <div class="photo-item">
-          <img src="Photo/photo03.jpg" alt="Nature photo 3" loading="lazy" width="4320" height="2432">
+          <img src="Photo/photo03.jpg" alt="紫色のアザミの花" loading="lazy" width="4320" height="2432">
         </div>
       </div>
       <p class="section-description" style="margin-top:1.5rem;"><a href="Photo/index.html">全ての写真を見る →</a></p>
@@ -549,7 +549,7 @@
     <section id="profile">
       <h2 data-num="○五">Profile</h2>
       <ul class="links-list" style="margin-bottom: 1.5rem;">
-        <li><strong>Favorite Hobbies</strong> <a href="hobbies/hobbies.html">My Hobbiesへ →</a></li>
+        <li><strong>Favorite Hobbies</strong> <a href="hobbies/">My Hobbiesへ →</a></li>
       </ul>
       <div class="profile-content">
         <div>
@@ -562,7 +562,7 @@
     <section id="links">
       <h2 data-num="○六">Links</h2>
       <ul class="links-list">
-        <li><strong>Favorite Web Links</strong> <a href="link/index.html">Linkへ →</a></li>
+        <li><strong>Favorite Web Links</strong> <a href="link/">お気に入りリンク集へ →</a></li>
       </ul>
     </section>
 
@@ -608,10 +608,15 @@
         slug: "2026-06-29-usageAlert",
         date: "2026.06.29",
         title: "パケット残量通知アプリを作った話"
+      },
+      {
+        slug: "2026-07-01-dualsim",
+        date: "2026.07.01",
+        title: "デュアルSIMにも対応した話"
       }
     ];
 
-    const contentArea = document.getElementById('app-content');
+    const contentArea = document.getElementById('notes');
 
     // 画面ルーティング処理
     function router() {
@@ -696,7 +701,7 @@
 
         contentArea.innerHTML = `
           <section class="essay-detail-section">
-            <a href="#" class="back-btn">← 一覧に戻る</a>
+            <a href="#notes" class="back-btn">← 一覧に戻る</a>
             <div class="essay-content">
               ${parsedHtml}
             </div>
@@ -714,7 +719,7 @@
       contentArea.innerHTML = `
         <div style="text-align: center; padding: 3rem 0;">
           <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">エッセイが見つかりませんでした。</p>
-          <a href="#" class="back-btn" style="margin-bottom: 0;">← 一覧に戻る</a>
+          <a href="#notes" class="back-btn" style="margin-bottom: 0;">← 一覧に戻る</a>
         </div>
       `;
     }
@@ -726,14 +731,14 @@
       navItems.forEach(item => item.classList.remove('active'));
 
       if (hash.startsWith('#essay=')) {
-        const notesNav = document.querySelector('.nav-item[href="#"]');
+        const notesNav = document.querySelector('.nav-item[href="#notes"]');
         if (notesNav) notesNav.classList.add('active');
       } else {
-        const activeNav = document.querySelector(`.nav-item[href="${hash || '#'}"]`);
+        const activeNav = document.querySelector(`.nav-item[href="${hash || '#notes'}"]`);
         if (activeNav) {
           activeNav.classList.add('active');
         } else {
-          const notesNav = document.querySelector('.nav-item[href="#"]');
+          const notesNav = document.querySelector('.nav-item[href="#notes"]');
           if (notesNav) notesNav.classList.add('active');
         }
       }
@@ -759,9 +764,6 @@
             navItems.forEach(item => item.classList.remove('active'));
 
             let targetHref = `#${id}`;
-            if (id === 'app-content') {
-              targetHref = '#';
-            }
             const activeNav = document.querySelector(`.nav-item[href="${targetHref}"]`);
             if (activeNav) activeNav.classList.add('active');
           }
@@ -769,7 +771,7 @@
       }, observerOptions);
 
       const targets = [
-        document.getElementById('app-content'),
+        document.getElementById('notes'),
         document.getElementById('photography'),
         document.getElementById('profile'),
         document.getElementById('links')
