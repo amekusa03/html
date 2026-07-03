@@ -7,13 +7,13 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://amekusa.vercel.app/Photo/</loc>
+    <loc>https://amekusa.vercel.app/Photo</loc>
     <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://amekusa.vercel.app/Photo2/</loc>
+    <loc>https://amekusa.vercel.app/Photo2</loc>
     <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -283,17 +283,17 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://amekusa.vercel.app/hobbies/</loc>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://amekusa.vercel.app/hobbies/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://amekusa.vercel.app/hobbies/index_en.html"/>
+    <loc>https://amekusa.vercel.app/hobbies</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://amekusa.vercel.app/hobbies"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amekusa.vercel.app/hobbies/index_en"/>
     <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://amekusa.vercel.app/hobbies/index_en.html</loc>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://amekusa.vercel.app/hobbies/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://amekusa.vercel.app/hobbies/index_en.html"/>
+    <loc>https://amekusa.vercel.app/hobbies/index_en</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://amekusa.vercel.app/hobbies"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amekusa.vercel.app/hobbies/index_en"/>
     <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -305,7 +305,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://amekusa.vercel.app/link/</loc>
+    <loc>https://amekusa.vercel.app/link</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
