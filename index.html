@@ -79,13 +79,15 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      /* .containerをmax-width内で中央配置、stickyも正常動作 */
+      align-items: stretch;
       padding: 3rem 1.5rem;
     }
 
     .container {
       max-width: 750px;
       width: 100%;
+      margin: 0 auto;
       background: var(--card-bg);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
@@ -95,6 +97,11 @@
       border: 1px solid rgba(255, 255, 255, 0.1);
       position: relative;
       animation: fadeIn 0.8s ease-out;
+    }
+
+    /* モバイル: サイドバーを通常フロー（縦並び）で表示 */
+    .sidebar {
+      margin-bottom: 2.5rem;
     }
 
     @media (max-width: 600px) {
@@ -561,6 +568,70 @@
         font-size: 0.9rem;
       }
     }
+
+    /* PC表示時の2カラムレイアウト設定 */
+    @media (min-width: 900px) {
+      .container {
+        max-width: 1000px;
+        display: flex;
+        gap: 4.5rem;
+        padding: 4rem 3.5rem;
+      }
+
+      .sidebar {
+        width: 240px;
+        flex-shrink: 0;
+        position: sticky;
+        top: 3rem;
+        height: fit-content;
+        text-align: left;
+        margin-bottom: 0;
+      }
+
+      .main-content {
+        flex-grow: 1;
+        min-width: 0;
+      }
+
+      header {
+        text-align: left;
+        margin-bottom: 3rem;
+      }
+
+      .hero-gif {
+        margin-left: 0;
+      }
+
+      h1 {
+        font-size: 2rem;
+        letter-spacing: 0.2em;
+        margin-bottom: 0.75rem;
+      }
+
+      .global-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+        border-bottom: none;
+        padding-bottom: 0;
+        margin-bottom: 0;
+      }
+
+      .nav-item {
+        font-size: 1.05rem;
+      }
+
+      /* 右側コンテンツの調整 */
+      #photography,
+      #profile,
+      #links {
+        margin-top: 4rem;
+      }
+      
+      #notes {
+        margin-top: 0;
+      }
+    }
   </style>
 </head>
 
@@ -568,67 +639,71 @@
   <canvas id="rain-canvas"></canvas>
 
   <div class="container">
-    <header>
-      <a href="#"><img src="amenoniwa.png" alt="Character animation" class="hero-gif"></a>
-      <h1>雨草の庭</h1>
-      <p class="subtitle">Engineering & Nature Notes</p>
-    </header>
+    <div class="sidebar">
+      <header>
+        <a href="#"><img src="amenoniwa.png" alt="Character animation" class="hero-gif"></a>
+        <h1>雨草の庭</h1>
+        <p class="subtitle">Engineering & Nature Notes</p>
+      </header>
 
-    <nav class="global-nav">
-      <a href="#notes" class="nav-item">Notes</a>
-      <a href="#photography" class="nav-item">Photography</a>
-      <a href="#profile" class="nav-item">Profile</a>
-      <a href="#links" class="nav-item">Links</a>
-    </nav>
+      <nav class="global-nav">
+        <a href="#notes" class="nav-item">Notes</a>
+        <a href="#photography" class="nav-item">Photography</a>
+        <a href="#profile" class="nav-item">Profile</a>
+        <a href="#links" class="nav-item">Links</a>
+      </nav>
+    </div>
 
-    <main id="notes">
-      <!-- ここに動的に一覧または詳細が読み込まれます -->
-    </main>
+    <div class="main-content">
+      <main id="notes">
+        <!-- ここに動的に一覧または詳細が読み込まれます -->
+      </main>
 
-    <section id="photography">
-      <h2 data-num="○四">Photography</h2>
-      <div class="photo-grid">
-        <div class="photo-item">
-          <img src="Photo/photo01.jpg" alt="山々と満開の桜" loading="lazy" width="4320" height="2880">
+      <section id="photography">
+        <h2 data-num="○四">Photography</h2>
+        <div class="photo-grid">
+          <div class="photo-item">
+            <img src="Photo/photo01.jpg" alt="山々と満開の桜" loading="lazy" width="4320" height="2880">
+          </div>
+          <div class="photo-item">
+            <img src="Photo/photo02.jpg" alt="白い野菊の花" loading="lazy" width="4320" height="2432">
+          </div>
+          <div class="photo-item">
+            <img src="Photo/photo03.jpg" alt="紫色のアザミの花" loading="lazy" width="4320" height="2432">
+          </div>
         </div>
-        <div class="photo-item">
-          <img src="Photo/photo02.jpg" alt="白い野菊の花" loading="lazy" width="4320" height="2432">
-        </div>
-        <div class="photo-item">
-          <img src="Photo/photo03.jpg" alt="紫色のアザミの花" loading="lazy" width="4320" height="2432">
-        </div>
-      </div>
-      <p class="section-description" style="margin-top:1.5rem;"><a href="Photo/index.html">全ての写真を見る →</a></p>
-    </section>
+        <p class="section-description" style="margin-top:1.5rem;"><a href="Photo/index.html">全ての写真を見る →</a></p>
+      </section>
 
-    <section id="profile">
-      <h2 data-num="○五">Profile</h2>
-      <ul class="links-list" style="margin-bottom: 1.5rem;">
-        <li><strong>Favorite Hobbies</strong> <a href="hobbies/">My Hobbiesへ →</a></li>
-      </ul>
-      <div class="profile-content">
-        <div>
-          <a href="https://www.linkedin.com/in/amekusa-k-a925233b7/" target="_blank" rel="noopener noreferrer"
-            class="linkedin-link">LinkedIn Profile</a>
+      <section id="profile">
+        <h2 data-num="○五">Profile</h2>
+        <ul class="links-list" style="margin-bottom: 1.5rem;">
+          <li><strong>Favorite Hobbies</strong> <a href="hobbies/">My Hobbiesへ →</a></li>
+        </ul>
+        <div class="profile-content">
+          <div>
+            <a href="https://www.linkedin.com/in/amekusa-k-a925233b7/" target="_blank" rel="noopener noreferrer"
+              class="linkedin-link">LinkedIn Profile</a>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="links">
-      <h2 data-num="○六">Links</h2>
-      <ul class="links-list">
-        <li><strong>Favorite Web Links</strong> <a href="link/">お気に入りリンク集へ →</a></li>
-      </ul>
-    </section>
+      <section id="links">
+        <h2 data-num="○六">Links</h2>
+        <ul class="links-list">
+          <li><strong>Favorite Web Links</strong> <a href="link/">お気に入りリンク集へ →</a></li>
+        </ul>
+      </section>
 
-    <footer>
-      <div class="visitor-counter">
-        <span class="counter-label">訪問者数</span>
-        <span id="visitor-count" class="counter-value">—</span>
-      </div>
-      <p>Copyright &copy; amekusa All Rights Reserved.</p>
-      <p><a href="index_archive.html" class="archive-link">旧サイト（カード型カタログ）はこちら</a></p>
-    </footer>
+      <footer>
+        <div class="visitor-counter">
+          <span class="counter-label">訪問者数</span>
+          <span id="visitor-count" class="counter-value">—</span>
+        </div>
+        <p>Copyright &copy; amekusa All Rights Reserved.</p>
+        <p><a href="index_archive.html" class="archive-link">旧サイト（カード型カタログ）はこちら</a></p>
+      </footer>
+    </div>
   </div>
 
   <script defer src="rain.js"></script>
@@ -681,7 +756,12 @@
       {
         slug: "2026-07-03-amazon",
         date: "2026.07.03",
-        title: "Amazonで注文した品物をキャンセルした話" 
+        title: "Amazonで注文した品物をキャンセルした話（前編）" 
+      },
+      {
+        slug: "2026-07-07-amazon",
+        date: "2026.07.07",
+        title: "Amazonで注文した品物をキャンセルした話（後編）"
       }
     ];
 
