@@ -32,7 +32,9 @@
   <!-- Google Fonts: Noto Serif JP と Noto Sans JP -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;600&display=swap"
+    rel="stylesheet">
 
   <!-- Markdown Parser (marked.js) -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -108,14 +110,22 @@
       body {
         padding: 1.5rem 1rem;
       }
+
       .container {
         padding: 2rem 1.5rem;
       }
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(15px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     header {
@@ -163,8 +173,24 @@
       list-style: none;
     }
 
+    /* カテゴリグループ */
+    .essay-category-group {
+      margin-bottom: 3rem;
+    }
+
+    .essay-category-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.45;
+      font-weight: 400;
+      margin-bottom: 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid rgba(58, 90, 46, 0.12);
+    }
+
     .essay-item {
-      margin-bottom: 2rem;
+      margin-bottom: 1.6rem;
       position: relative;
       transition: transform 0.2s;
     }
@@ -233,7 +259,7 @@
     }
 
     /* テンプレートの "YYYY.MM.DD ・ プロジェクト名" 記述用 */
-    .essay-content h1 + p {
+    .essay-content h1+p {
       font-size: 0.9rem;
       opacity: 0.65;
       margin-bottom: 3.5rem;
@@ -264,7 +290,7 @@
     }
 
     /* ソースコードのリンク（脚注的扱い） */
-    .essay-content hr + p {
+    .essay-content hr+p {
       font-size: 0.85rem;
       opacity: 0.7;
     }
@@ -334,6 +360,7 @@
       .visitor-counter {
         border-color: rgba(160, 180, 140, 0.15);
       }
+
       .visitor-counter:hover {
         border-color: rgba(160, 180, 140, 0.3);
         box-shadow: 0 4px 12px rgba(160, 180, 140, 0.06);
@@ -505,9 +532,11 @@
         grid-template-columns: 1fr;
         grid-template-rows: 200px 140px 140px;
       }
+
       .photo-item:first-child {
         grid-row: auto;
       }
+
       #photography,
       #profile,
       #links {
@@ -564,6 +593,7 @@
         gap: 1.5rem;
         margin-bottom: 2.5rem;
       }
+
       .nav-item {
         font-size: 0.9rem;
       }
@@ -627,7 +657,7 @@
       #links {
         margin-top: 4rem;
       }
-      
+
       #notes {
         margin-top: 0;
       }
@@ -663,16 +693,16 @@
         <h2 data-num="○四">Photography</h2>
         <div class="photo-grid">
           <div class="photo-item">
-            <img src="Photo/photo01.jpg" alt="山々と満開の桜" loading="lazy" width="4320" height="2880">
+            <img src="Photo1/photo01.jpg" alt="多くのバイクが行き交う東南アジアの街並み" loading="lazy" width="4320" height="2880">
           </div>
           <div class="photo-item">
-            <img src="Photo/photo02.jpg" alt="白い野菊の花" loading="lazy" width="4320" height="2432">
+            <img src="Photo1/photo02.jpg" alt="緑のトレイに載ったベトナムのフォーとハーブ・調味料のセット" loading="lazy" width="4320" height="2432">
           </div>
           <div class="photo-item">
-            <img src="Photo/photo03.jpg" alt="紫色のアザミの花" loading="lazy" width="4320" height="2432">
+            <img src="Photo1/photo03.jpg" alt="ベトナムのスーパーの精肉売り場にある赤い値札" loading="lazy" width="4320" height="2432">
           </div>
         </div>
-        <p class="section-description" style="margin-top:1.5rem;"><a href="Photo/index.html">全ての写真を見る →</a></p>
+        <p class="section-description" style="margin-top:1.5rem;"><a href="Photo1/index.html">全ての写真を見る →</a></p>
       </section>
 
       <section id="profile">
@@ -716,54 +746,79 @@
       {
         slug: "2026-06-20-portfolio-redesign",
         date: "2026.06.20",
-        title: "ポートフォリオの再設計"
+        title: "ポートフォリオの再設計",
+        category: "開発"
       },
       {
         slug: "2026-06-21-Sekkati-TextField",
         date: "2026.06.21",
-        title: "Android版の文字入力不具合"
+        title: "Android版の文字入力不具合",
+        category: "開発"
       },
       {
         slug: "2026-06-26-pythonBase",
         date: "2026.06.26",
-        title: "Python GUIファイラーの雛形を作った" 
+        title: "Python GUIファイラーの雛形を作った",
+        category: "開発"
       },
       {
         slug: "2026-06-28-pythonpicMusic",
         date: "2026.06.28",
-        title: "音楽管理機能付きのGUIファイラーを作った"
+        title: "音楽管理機能付きのGUIファイラーを作った",
+        category: "開発"
       },
       {
         slug: "2026-06-28-projectMan",
         date: "2026.06.28",
-        title: "プロジェクトの進め方"
+        title: "プロジェクトの進め方",
+        category: "車"
       },
       {
         slug: "2026-06-29-usageAlert",
         date: "2026.06.29",
-        title: "パケット残量通知アプリを作った話"
+        title: "パケット残量通知アプリを作った話",
+        category: "開発"
       },
       {
         slug: "2026-07-01-dualsim",
         date: "2026.07.01",
-        title: "デュアルSIMにも対応した話"
+        title: "デュアルSIMにも対応した話",
+        category: "開発"
       },
       {
         slug: "2026-07-01-lunchmemo",
         date: "2026.07.01",
-        title: "Lunch Memoをバージョン2.0にメジャーアップデートした"
+        title: "Lunch Memoをバージョン2.0にメジャーアップデートした",
+        category: "開発"
       },
       {
         slug: "2026-07-03-amazon",
         date: "2026.07.03",
-        title: "Amazonで注文した品物をキャンセルした話（前編）" 
+        title: "Amazonで注文した品物をキャンセルした話（前編）",
+        category: "日常"
       },
       {
         slug: "2026-07-07-amazon",
         date: "2026.07.07",
-        title: "Amazonで注文した品物をキャンセルした話（後編）"
+        title: "Amazonで注文した品物をキャンセルした話（後編）",
+        category: "日常"
+      },
+      {
+        slug: "2026-07-09-netshop",
+        date: "2026.07.09",
+        title: "ネットショッピング",
+        category: "日常"
+      },
+      {
+        slug: "2026-07-09-soundtune",
+        date: "2026.07.09",
+        title: "車のイコライザー設定アプリを作ってみた",
+        category: "車"
       }
     ];
+
+    // カテゴリの表示順序
+    const CATEGORY_ORDER = ["開発", "車", "日常", "その他"];
 
     const contentArea = document.getElementById('notes');
 
@@ -805,25 +860,36 @@
       // トップに戻ったらタイトルをリセット
       document.title = "雨草の庭 | Notes";
 
+      // カテゴリ別にグループ化
+      const groups = {};
+      ESSAYS.forEach(essay => {
+        const cat = essay.category || "その他";
+        if (!groups[cat]) groups[cat] = [];
+        groups[cat].push(essay);
+      });
+
       let html = `
         <section class="essay-list-section">
           <h2>Notes</h2>
-          <ul class="essay-list">
       `;
 
-      ESSAYS.forEach(essay => {
-        html += `
-          <li class="essay-item">
-            <span class="essay-date">${essay.date}</span>
-            <a href="#essay=${essay.slug}" class="essay-title">${essay.title}</a>
-          </li>
-        `;
+      CATEGORY_ORDER.forEach(cat => {
+        if (!groups[cat] || groups[cat].length === 0) return;
+        html += `<div class="essay-category-group">`;
+        html += `<p class="essay-category-label">${cat}</p>`;
+        html += `<ul class="essay-list">`;
+        groups[cat].forEach(essay => {
+          html += `
+            <li class="essay-item">
+              <span class="essay-date">${essay.date}</span>
+              <a href="#essay=${essay.slug}" class="essay-title">${essay.title}</a>
+            </li>
+          `;
+        });
+        html += `</ul></div>`;
       });
 
-      html += `
-          </ul>
-        </section>
-      `;
+      html += `</section>`;
 
       contentArea.innerHTML = html;
       window.scrollTo(0, 0);

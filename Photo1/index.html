@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H7C45PPLP6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-H7C45PPLP6');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://amekusa.vercel.app/Photo1">
+  <meta name="description" content="amekusaの写真館。山並み、花々、街の風景など日々の断片を記録した写真ギャラリーです。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://amekusa.vercel.app/Photo1">
+  <meta property="og:title" content="Photography | 雨草の庭">
+  <meta property="og:description" content="amekusaの写真館。山並み、花々、街の風景など日々の断片を記録した写真ギャラリーです。">
+  <meta property="og:image" content="https://amekusa.vercel.app/ogp.png">
+    <title>Photography | 雨草の庭</title>
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body class="app-page">
+    <div class="container">
+        <nav>
+            <a href="../index.html">← Back to Garden</a>
+        </nav>
+
+        <header>
+            <h1>Photography</h1>
+            <p style="opacity: 0.8;">日々の断片</p>
+        </header>
+        <nav>
+            
+            <a href="../Photo2/index.html">Next to Page→</a>
+        </nav>
+
+        <section>
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="../Photo1/photo01.jpg" alt="多くのバイクが行き交う東南アジアの街並み" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="../Photo1/photo02.jpg" alt="緑のトレイに載ったベトナムのフォーとハーブ・調味料のセット" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="../Photo1/photo03.jpg" alt="ベトナムのスーパーの精肉売り場にある赤い値札" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="../Photo1/photo04.jpg" alt="青空と雲を背景にしたレンガ造りのサイゴン大聖堂" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="../Photo1/photo05.jpg" alt="澄んだエメラルドグリーンの水面に浮かぶ大きな岩石" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="../Photo1/photo06.jpg" alt="草むらの中で可憐に咲く白いユリの花" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="../Photo1/photo07.jpg" alt="緑の葉の中で鮮やかに咲く黄色いユリの花" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="../Photo1/photo08.jpg" alt="こちらを見つめるライオンの顔のアップ" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="../Photo1/photo09.jpg" alt="横を向いて佇む大きなゾウ" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="../Photo1/photo10.jpg" alt="地面に座り込むキジトラ猫" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="../Photo1/photo11.jpg" alt="青空と白い雲を背にした高い電波塔" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="../Photo1/photo12.jpg" alt="青空に映えるピンクの桜の花" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="../Photo1/photo13.jpg" alt="木の手すりにとまる赤とんぼと水面のきらめき" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="../Photo1/photo14.jpg" alt="間近から見る激しく流れ落ちる滝の水しぶき" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="../Photo1/photo15.jpg" alt="水草の生い茂る水面を泳ぐカモの群れ" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="../Photo1/photo16.jpg" alt="満開に咲き誇る黄色いコスモスの花々" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="../Photo1/photo17.jpg" alt="船が停泊する静かな港" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="../Photo1/photo18.jpg" alt="満開の白いウツギの花" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="../Photo1/photo19.jpg" alt="星型の白いウツギの花" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Copyright &copy; amekusa All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="photo-lightbox" id="photoLightbox">
+        <button class="photo-lightbox-close" id="lightboxClose">&#x2715;</button>
+        <button class="photo-lightbox-prev" id="lightboxPrev">&#x2039;</button>
+        <img class="photo-lightbox-img" id="lightboxImg" src="" alt="">
+        <button class="photo-lightbox-next" id="lightboxNext">&#x203A;</button>
+    </div>
+
+    <script>
+        const lightbox = document.getElementById('photoLightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const items = Array.from(document.querySelectorAll('.photo-item img'));
+        let current = 0;
+
+        function open(index) {
+            current = index;
+            lightboxImg.src = items[current].src;
+            lightboxImg.alt = items[current].alt;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function close() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        function prev() { open((current - 1 + items.length) % items.length); }
+        function next() { open((current + 1) % items.length); }
+
+        items.forEach((img, i) => img.parentElement.addEventListener('click', () => open(i)));
+        document.getElementById('lightboxClose').addEventListener('click', close);
+        document.getElementById('lightboxPrev').addEventListener('click', prev);
+        document.getElementById('lightboxNext').addEventListener('click', next);
+        lightbox.addEventListener('click', e => { if (e.target === lightbox) close(); });
+        document.addEventListener('keydown', e => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') close();
+            if (e.key === 'ArrowLeft') prev();
+            if (e.key === 'ArrowRight') next();
+        });
+    </script>
+</body>
+</html>
