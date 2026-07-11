@@ -52,11 +52,13 @@ Version=1.0
 Type=Application
 Name=Antigravity IDE
 Comment=Antigravity IDE Editor
-Exec=/opt/antigravity-ide/antigravity-ide
+Exec=/opt/antigravity-ide/antigravity-ide %F
 Icon=/opt/antigravity-ide/resources/app/resources/linux/code.png
 Terminal=false
 Categories=Development;IDE;
 ```
+
+(2026/07/11 Execに%Fを追加)
 
 ## え
 
