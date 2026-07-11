@@ -77,7 +77,7 @@ Trace/breakpoint trap (コアダンプ)
 sudo chown root:root /opt/antigravity-ide/chrome-sandbox
 ```
 
-2. 権限を「4755」（SUIDビットを立てる）に設定します
+1. 権限を「4755」（SUIDビットを立てる）に設定します
 
 ```bash
 sudo chmod 4755 /opt/antigravity-ide/chrome-sandbox
@@ -85,8 +85,11 @@ sudo chmod 4755 /opt/antigravity-ide/chrome-sandbox
 
 ## 起動できましたが
 
-まだ、関連ファイルからの起動ができない。
-これはまた追って調査します。
+~~まだ、関連ファイルからの起動ができない。
+これはまた追って調査します。~~
+(2026年7月11日追記)
+
+- ケアレスミスでした。antigravity-ide.desktopのExecの最後に%Fが抜けていただけでした。
 
 ## ソース
 
