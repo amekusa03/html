@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-SRGF2MMYGD');
+  </script>
+
+  <link rel="icon" href="../Favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="../amenoniwa.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://amekusa.vercel.app/essays/">
+  <meta name="description" content="雨草の庭 — 全記事アーカイブ。技術随筆・日常メモ・車・その他。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://amekusa.vercel.app/essays/">
+  <meta property="og:title" content="Notes Archive | 雨草の庭">
+  <meta property="og:description" content="雨草の庭 — 全記事アーカイブ。技術随筆・日常メモ・車・その他。">
+  <meta property="og:image" content="https://amekusa.vercel.app/ogp.png">
+  <title>Notes Archive | 雨草の庭</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;600&display=swap"
+    rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --bg-color: #f5f0e8;
+      --text-color: #1c1a17;
+      --accent-green: #3a5a2e;
+      --accent-hover: #4e753f;
+      --card-bg: rgba(255, 255, 255, 0.55);
+      --font-serif: 'Noto Serif JP', "Hiragino Mincho ProN", "Yu Mincho", serif;
+      --font-sans: 'Noto Sans JP', "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+      --washi-line: rgba(58, 90, 46, 0.05);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-color: #18160f;
+        --text-color: #e8e2d8;
+        --card-bg: rgba(38, 34, 26, 0.65);
+        --washi-line: rgba(160, 180, 140, 0.04);
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-sans);
+      line-height: 1.9;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 39px, var(--washi-line) 39px, var(--washi-line) 40px),
+        repeating-linear-gradient(90deg, transparent, transparent 39px, var(--washi-line) 39px, var(--washi-line) 40px);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      padding: 3rem 1.5rem;
+    }
+
+    .container {
+      max-width: 750px;
+      width: 100%;
+      margin: 0 auto;
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 12px;
+      padding: 3.5rem 3rem;
+      box-shadow: 0 10px 40px 0 rgba(0,0,0,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      position: relative;
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    .sidebar { margin-bottom: 2.5rem; }
+
+    @media (max-width: 600px) {
+      body { padding: 1.5rem 1rem; }
+      .container { padding: 2rem 1.5rem; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    header { text-align: center; margin-bottom: 3.5rem; }
+
+    .hero-gif {
+      width: 70px;
+      margin-bottom: 1.5rem;
+      mask-image: radial-gradient(circle, black 40%, rgba(0,0,0,0) 100%);
+      -webkit-mask-image: radial-gradient(circle, black 40%, rgba(0,0,0,0) 100%);
+    }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      letter-spacing: 0.25em;
+      font-weight: 300;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      letter-spacing: 0.15em;
+      color: var(--accent-green);
+      opacity: 0.8;
+    }
+
+    /* ナビ */
+    .global-nav {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-bottom: 3.5rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid rgba(58,90,46,0.08);
+    }
+
+    .nav-item {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text-color);
+      text-decoration: none;
+      opacity: 0.6;
+      transition: opacity 0.3s, color 0.3s;
+      position: relative;
+      letter-spacing: 0.1em;
+    }
+
+    .nav-item:hover, .nav-item.active {
+      opacity: 1;
+      color: var(--accent-green);
+    }
+
+    .nav-item::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 1px;
+      bottom: -6px;
+      left: 0;
+      background-color: var(--accent-green);
+      transition: width 0.3s ease;
+    }
+
+    .nav-item:hover::after, .nav-item.active::after { width: 100%; }
+
+    @media (max-width: 600px) {
+      .global-nav { gap: 1.5rem; margin-bottom: 2.5rem; }
+      .nav-item { font-size: 0.9rem; }
+    }
+
+    /* アーカイブヘッダー */
+    .archive-header { margin-bottom: 2.5rem; }
+
+    .archive-header h2 {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(58,90,46,0.15);
+      letter-spacing: 0.1em;
+    }
+
+    .archive-count {
+      font-size: 0.85rem;
+      opacity: 0.55;
+      letter-spacing: 0.05em;
+    }
+
+    /* カテゴリフィルター */
+    .category-filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .cat-btn {
+      background: transparent;
+      border: 1px solid rgba(58,90,46,0.25);
+      color: var(--text-color);
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      padding: 0.3em 0.9em;
+      border-radius: 4px;
+      cursor: pointer;
+      letter-spacing: 0.06em;
+      transition: all 0.2s ease;
+      opacity: 0.7;
+    }
+
+    .cat-btn:hover {
+      opacity: 1;
+      border-color: var(--accent-green);
+      color: var(--accent-green);
+    }
+
+    .cat-btn.active {
+      background: var(--accent-green);
+      border-color: var(--accent-green);
+      color: #fff;
+      opacity: 1;
+    }
+
+    /* 一覧 */
+    .essay-list { list-style: none; }
+
+    .essay-item {
+      margin-bottom: 1.6rem;
+      position: relative;
+      transition: transform 0.2s;
+    }
+
+    .essay-item:hover { transform: translateX(4px); }
+
+    .essay-date {
+      font-size: 0.85rem;
+      opacity: 0.6;
+      margin-bottom: 0.2rem;
+      display: block;
+      letter-spacing: 0.05em;
+    }
+
+    .essay-title {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: var(--text-color);
+      text-decoration: none;
+      transition: color 0.2s;
+      line-height: 1.5;
+    }
+
+    .essay-title:hover { color: var(--accent-green); }
+
+    .essay-category-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      padding: 0.1em 0.55em;
+      border-radius: 3px;
+      border: 1px solid rgba(58,90,46,0.25);
+      color: var(--accent-green);
+      letter-spacing: 0.06em;
+      margin-left: 0.5em;
+      vertical-align: middle;
+      opacity: 0.85;
+    }
+
+    /* 詳細表示 */
+    .essay-detail-section { animation: fadeIn 0.5s ease-out; }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--accent-green);
+      font-size: 0.9rem;
+      margin-bottom: 2.5rem;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .back-btn:hover { color: var(--accent-hover); transform: translateX(-4px); }
+
+    /* Markdownコンテンツ */
+    .essay-content { font-size: 1.05rem; line-height: 2.1; font-weight: 300; }
+
+    .essay-content h1 {
+      font-family: var(--font-serif);
+      font-size: 1.9rem;
+      font-weight: 400;
+      margin-bottom: 0.8rem;
+      text-align: left;
+      line-height: 1.4;
+      letter-spacing: 0.05em;
+    }
+
+    .essay-content h1+p {
+      font-size: 0.9rem;
+      opacity: 0.65;
+      margin-bottom: 3.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    .essay-content h2 {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 400;
+      margin-top: 3.5rem;
+      margin-bottom: 1.2rem;
+      color: var(--accent-green);
+      border-left: 2px solid var(--accent-green);
+      padding-left: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+
+    .essay-content p { margin-bottom: 1.8rem; text-align: justify; }
+
+    .essay-content hr {
+      border: none;
+      border-top: 1px solid rgba(58,90,46,0.15);
+      margin: 3.5rem 0 2rem 0;
+    }
+
+    .essay-content hr+p { font-size: 0.85rem; opacity: 0.7; }
+
+    .essay-content a {
+      color: var(--accent-green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      transition: color 0.2s;
+    }
+
+    .essay-content a:hover { color: var(--accent-hover); }
+
+    .loading {
+      text-align: center;
+      padding: 3rem 0;
+      font-size: 1rem;
+      opacity: 0.7;
+      letter-spacing: 0.1em;
+    }
+
+    .empty-msg {
+      text-align: center;
+      padding: 3rem 0;
+      font-size: 0.95rem;
+      opacity: 0.55;
+      letter-spacing: 0.05em;
+    }
+
+    #rain-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    footer { margin-top: 4rem; text-align: center; font-size: 0.8rem; }
+    footer p { opacity: 0.5; }
+
+    /* PC 2カラム */
+    @media (min-width: 900px) {
+      .container {
+        max-width: 1000px;
+        display: flex;
+        gap: 4.5rem;
+        padding: 4rem 3.5rem;
+      }
+
+      .sidebar {
+        width: 240px;
+        flex-shrink: 0;
+        position: sticky;
+        top: 3rem;
+        height: fit-content;
+        text-align: left;
+        margin-bottom: 0;
+      }
+
+      .main-content { flex-grow: 1; min-width: 0; }
+
+      header { text-align: left; margin-bottom: 3rem; }
+      .hero-gif { margin-left: 0; }
+
+      h1 { font-size: 2rem; letter-spacing: 0.2em; margin-bottom: 0.75rem; }
+
+      .global-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+        border-bottom: none;
+        padding-bottom: 0;
+        margin-bottom: 0;
+      }
+
+      .nav-item { font-size: 1.05rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="rain-canvas"></canvas>
+
+  <div class="container">
+    <div class="sidebar">
+      <header>
+        <a href="../"><img src="../amenoniwa.png" alt="Character animation" class="hero-gif"></a>
+        <h1>雨草の庭</h1>
+        <p class="subtitle">Engineering &amp; Nature Notes</p>
+      </header>
+
+      <nav class="global-nav">
+        <a href="../#notes" class="nav-item active">Notes</a>
+        <a href="../#photography" class="nav-item">Photography</a>
+        <a href="../#profile" class="nav-item">Profile</a>
+        <a href="../#links" class="nav-item">Links</a>
+      </nav>
+    </div>
+
+    <div class="main-content">
+      <main id="archive-main">
+        <!-- JSで描画 -->
+      </main>
+      <footer>
+        <p>Copyright &copy; amekusa All Rights Reserved.</p>
+      </footer>
+    </div>
+  </div>
+
+  <script defer src="../rain.js"></script>
+  <script>
+    // =====================================================================
+    // エッセイデータ定義（index.html と同期すること）
+    // =====================================================================
+    const ESSAYS = [
+      { slug: "2026-06-20-portfolio-redesign", date: "2026.06.20", title: "ポートフォリオの再設計", category: "開発" },
+      { slug: "2026-06-21-Sekkati-TextField", date: "2026.06.21", title: "Android版の文字入力不具合", category: "開発" },
+      { slug: "2026-06-26-pythonBase", date: "2026.06.26", title: "Python GUIファイラーの雛形を作った", category: "開発" },
+      { slug: "2026-06-28-pythonpicMusic", date: "2026.06.28", title: "音楽管理機能付きのGUIファイラーを作った", category: "開発" },
+      { slug: "2026-06-28-projectMan", date: "2026.06.28", title: "プロジェクトの進め方", category: "車" },
+      { slug: "2026-06-29-usageAlert", date: "2026.06.29", title: "パケット残量通知アプリを作った話", category: "開発" },
+      { slug: "2026-07-01-dualsim", date: "2026.07.01", title: "デュアルSIMに対応できなかった", category: "開発" },
+      { slug: "2026-07-01-lunchmemo", date: "2026.07.01", title: "Lunch Memoをバージョン2.0にメジャーアップデートした", category: "開発" },
+      { slug: "2026-07-03-amazon", date: "2026.07.03", title: "Amazonで注文した品物をキャンセルした話（前編）", category: "日常" },
+      { slug: "2026-07-07-amazon", date: "2026.07.07", title: "Amazonで注文した品物をキャンセルした話（後編）", category: "日常" },
+      { slug: "2026-07-09-netshop", date: "2026.07.09", title: "ネットショッピング", category: "日常" },
+      { slug: "2026-07-09-soundtune", date: "2026.07.09", title: "車のイコライザー設定アプリを作ってみた", category: "車" },
+      { slug: "2026-07-10-woofer", date: "2026.07.10", title: "サブウーファー動作確認", category: "車" },
+      { slug: "2026-07-10-antigravity", date: "2026.07.10", title: "Antigravityのアップデート", category: "開発" },
+      { slug: "2026-07-11-ubuntu", date: "2026.07.11", title: "Ubuntuが人気がない理由", category: "その他" },
+      { slug: "2026-07-11-cable", date: "2026.07.11", title: "電源ケーブルの選定", category: "車" },
+      { slug: "2026-07-12-timealignment", date: "2026.07.12", title: "タイムアライメント設定アプリを作ってみて失敗した", category: "車" },
+      { slug: "2026-07-13-androidauto", date: "2026.07.13", title: "Android AutoのCarApp APIについて", category: "車" },
+      { slug: "2026-07-13-crow", date: "2026.07.13", title: "カラスの害を減らすには", category: "その他" },
+      { slug: "2026-07-13-farm", date: "2026.07.13", title: "植物の生育を左右する飽差と環境制御の法則", category: "その他" },
+      { slug: "2026-07-13-soundset", date: "2026.07.13", title: "カーオーディオのシステム構成", category: "車" },
+      { slug: "2026-07-14-pcaudio", date: "2026.07.14", title: "PCオーディオのスピーカーを交換した話", category: "日常" },
+      { slug: "2026-01-30-htmltoblogger", date: "2026.01.30", title: "HTML to Blogger", category: "開発" },
+      { slug: "2026-02-26-worldclock", date: "2026.02.26", title: "ESP32 world Clock for Wokwi", category: "開発" },
+      { slug: "2026-03-02-avalonia_ui", date: "2026.03.02", title: "Avalonia学習", category: "開発" },
+      { slug: "2026-03-06-qtlauncher", date: "2026.03.06", title: "Qt Project Launcher", category: "開発" },
+      { slug: "2026-03-08-qtcreator", date: "2026.03.08", title: "Hello World Qt Creator", category: "開発" },
+      { slug: "2026-03-12-pdfunlocker", date: "2026.03.12", title: "Android PDF Unlocker", category: "開発" },
+      { slug: "2026-03-21-ubuntu", date: "2026.03.21", title: "Ubuntu導入ガイド", category: "開発" },
+      { slug: "2026-04-02-weblauncher", date: "2026.04.02", title: "Android Web Launcher", category: "開発" },
+      { slug: "2026-04-05-pcaudioappli", date: "2026.04.05", title: "My PC Audio - Software Setup", category: "開発" },
+      { slug: "2026-04-05_pcaudio", date: "2026.04.05", title: "My PC Audio", category: "日常" },
+      { slug: "2026-04-06-seo", date: "2026.04.06", title: "SEO strategies", category: "開発" },
+      { slug: "2026-04-12-nestscript", date: "2026.04.12", title: "Google Nest Script", category: "開発" },
+      { slug: "2026-04-14-plc", date: "2026.04.14", title: "Software PLC : CODESYS", category: "開発" },
+      { slug: "2026-04-16-askgeminibyemail", date: "2026.04.16", title: "メールでGemini", category: "開発" },
+      { slug: "2026-04-19-encbrowse", date: "2026.04.19", title: "EncBrowse", category: "開発" },
+      { slug: "2026-04-28-unlockpdf", date: "2026.04.28", title: "Gmail PDF Unlocker", category: "開発" },
+      { slug: "2026-04-29-googlestore", date: "2026.04.29", title: "Androidアプリの配信方針", category: "開発" },
+      { slug: "2026-04-30-racinggame", date: "2026.04.30", title: "ESP32 Racing Game for Wokwi", category: "開発" },
+      { slug: "2026-04-30-weblauncher2", date: "2026.04.30", title: "Android Web Launcher 2", category: "開発" },
+      { slug: "2026-05-08-smartpc", date: "2026.05.08", title: "[Canceled] Smart PC Project", category: "開発" },
+      { slug: "2026-05-09-sekkati", date: "2026.05.09", title: "SekkaTi", category: "開発" },
+      { slug: "2026-05-09-virtual_device", date: "2026.05.09", title: "Virtual Smart Device Control System", category: "開発" },
+      { slug: "2026-05-13-table_clock", date: "2026.05.13", title: "Android Table Clock", category: "開発" },
+      { slug: "2026-05-17-cleanguide", date: "2026.05.17", title: "Android不要アプリの整理方法（スクリプト編）", category: "開発" },
+      { slug: "2026-05-21-musicplayer", date: "2026.05.21", title: "Android Auto Music Player", category: "開発" },
+      { slug: "2026-05-21-tagplaylist", date: "2026.05.21", title: "TagPlaylist Generator", category: "開発" },
+      { slug: "2026-05-23-likebutton", date: "2026.05.23", title: "いいねボタンの導入", category: "開発" },
+      { slug: "2026-05-25-installguide", date: "2026.05.25", title: "Androidアプリのインストール方法", category: "開発" },
+      { slug: "2026-05-28-autoshutdown", date: "2026.05.28", title: "AutoShutdown — 無操作時の自動シャットダウン", category: "開発" },
+      { slug: "2026-05-28-imagefornet", date: "2026.05.28", title: "Android Image for net", category: "開発" },
+      { slug: "2026-05-31-sekkati", date: "2026.05.31", title: "SekkaTi for android", category: "開発" },
+      { slug: "2026-06-14-fieldlogger", date: "2026.06.14", title: "山の畑用 温湿度データロガー (Hata logger)", category: "開発" },
+      { slug: "2026-06-16loctime", date: "2026.06.16", title: "LocTime", category: "開発" },
+      { slug: "2026-06-18-cockpitscope", date: "2026.06.18", title: "Cockpit Scope", category: "開発" },
+      { slug: "2026-06-23-imagefornet", date: "2026.06.23", title: "Image for net v3", category: "開発" },
+      { slug: "2026-06-24-smartonpc", date: "2026.06.24", title: "SmartOn PC", category: "開発" },
+      { slug: "2026-07-01-lunchmemo1", date: "2026.07.01", title: "Lunch Memo", category: "開発" },
+      { slug: "2026-07-01-lunchmemo2", date: "2026.07.01", title: "Lunch Memoをバージョン2.0にメジャーアップデートした", category: "開発" },
+      { slug: "2026-07-15-esp32aircon", date: "2026.07.15", title: "ESP32 Air Conditioner Control (+ SwitchBot Web API)", category: "開発" }
+    ];
+
+    const CATEGORY_ORDER = ["開発", "車", "日常", "その他"];
+    const allCategories = ["すべて", ...CATEGORY_ORDER.filter(cat => ESSAYS.some(e => e.category === cat))];
+
+    const mainEl = document.getElementById('archive-main');
+    let currentCat = "すべて";
+
+    function renderArchiveList() {
+      document.title = "Notes Archive | 雨草の庭";
+
+      const sorted = [...ESSAYS].sort((a, b) => b.slug.localeCompare(a.slug));
+      const filtered = currentCat === "すべて" ? sorted : sorted.filter(e => e.category === currentCat);
+
+      let html = `
+        <div class="archive-header">
+          <h2>Notes Archive</h2>
+          <p class="archive-count">全 ${ESSAYS.length} 件</p>
+        </div>
+        <div class="category-filter" id="cat-filter">
+      `;
+
+      allCategories.forEach(cat => {
+        const isActive = cat === currentCat ? ' active' : '';
+        html += `<button class="cat-btn${isActive}" data-cat="${cat}">${cat}</button>`;
+      });
+
+      html += `</div><ul class="essay-list">`;
+
+      if (filtered.length === 0) {
+        html += `<li class="empty-msg">該当する記事がありません。</li>`;
+      } else {
+        filtered.forEach(essay => {
+          html += `
+            <li class="essay-item" data-cat="${essay.category || 'その他'}">
+              <span class="essay-date">${essay.date}
+                <span class="essay-category-badge">${essay.category || 'その他'}</span>
+              </span>
+              <a href="#essay=${essay.slug}" class="essay-title">${essay.title}</a>
+            </li>
+          `;
+        });
+      }
+
+      html += `</ul>`;
+      mainEl.innerHTML = html;
+
+      document.getElementById('cat-filter').addEventListener('click', e => {
+        const btn = e.target.closest('.cat-btn');
+        if (!btn) return;
+        currentCat = btn.dataset.cat;
+        renderArchiveList();
+      });
+
+      window.scrollTo(0, 0);
+    }
+
+    async function loadEssay(slug) {
+      mainEl.innerHTML = '<div class="loading">読み込み中...</div>';
+
+      try {
+        const response = await fetch(`${slug}.md`);
+        if (!response.ok) throw new Error('File not found');
+        const markdownText = await response.text();
+        const parsedHtml = marked.parse(markdownText);
+
+        const essay = ESSAYS.find(e => e.slug === slug);
+        if (essay) document.title = `${essay.title} | 雨草の庭`;
+
+        mainEl.innerHTML = `
+          <section class="essay-detail-section">
+            <a href="#" class="back-btn" id="back-to-list">← 一覧に戻る</a>
+            <div class="essay-content">${parsedHtml}</div>
+          </section>
+        `;
+
+        document.getElementById('back-to-list').addEventListener('click', e => {
+          e.preventDefault();
+          history.replaceState(null, '', location.pathname);
+          renderArchiveList();
+        });
+
+      } catch (error) {
+        console.error(error);
+        mainEl.innerHTML = `
+          <div style="text-align:center;padding:3rem 0;">
+            <p style="font-size:1.2rem;margin-bottom:1.5rem;">エッセイが見つかりませんでした。</p>
+            <a href="#" class="back-btn" id="back-to-list" style="margin-bottom:0;">← 一覧に戻る</a>
+          </div>
+        `;
+        document.getElementById('back-to-list').addEventListener('click', e => {
+          e.preventDefault();
+          history.replaceState(null, '', location.pathname);
+          renderArchiveList();
+        });
+      }
+      window.scrollTo(0, 0);
+    }
+
+    function router() {
+      const hash = window.location.hash;
+      if (hash.startsWith('#essay=')) {
+        loadEssay(hash.replace('#essay=', ''));
+      } else {
+        renderArchiveList();
+      }
+    }
+
+    window.addEventListener('hashchange', router);
+    window.addEventListener('DOMContentLoaded', router);
+  </script>
+</body>
+
+</html>

@@ -396,6 +396,25 @@
       opacity: 1;
     }
 
+    .archive-link-wrap {
+      margin-top: 2rem;
+      text-align: right;
+    }
+
+    /* カテゴリバッジ */
+    .essay-category-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      padding: 0.1em 0.55em;
+      border-radius: 3px;
+      border: 1px solid rgba(58, 90, 46, 0.25);
+      color: var(--accent-green);
+      letter-spacing: 0.06em;
+      margin-left: 0.5em;
+      vertical-align: middle;
+      opacity: 0.85;
+    }
+
     /* Photography, Profile, Links Section Styling */
     #photography,
     #profile,
@@ -724,7 +743,12 @@
           <li><strong>Favorite Web Links</strong> <a href="link/">お気に入りリンク集へ →</a></li>
         </ul>
       </section>
-
+      <section id="links">
+        <h2 data-num="○七">BBS by blogger.com</h2>
+        <ul class="links-list">
+          <li><strong><a href="https://amekusa03.blogspot.com/" target="_blank" rel="noopener noreferrer">Favorite Web Linksへ →</a></strong></li>
+        </ul>
+      </section>
       <footer>
         <div class="visitor-counter">
           <span class="counter-label">訪問者数</span>
@@ -743,126 +767,67 @@
     // 新しいエッセイを追加した場合は、以下に日付とファイル名のスラッグを追記する
     // =====================================================================
     const ESSAYS = [
-      {
-        slug: "2026-06-20-portfolio-redesign",
-        date: "2026.06.20",
-        title: "ポートフォリオの再設計",
-        category: "開発"
-      },
-      {
-        slug: "2026-06-21-Sekkati-TextField",
-        date: "2026.06.21",
-        title: "Android版の文字入力不具合",
-        category: "開発"
-      },
-      {
-        slug: "2026-06-26-pythonBase",
-        date: "2026.06.26",
-        title: "Python GUIファイラーの雛形を作った",
-        category: "開発"
-      },
-      {
-        slug: "2026-06-28-pythonpicMusic",
-        date: "2026.06.28",
-        title: "音楽管理機能付きのGUIファイラーを作った",
-        category: "開発"
-      },
-      {
-        slug: "2026-06-28-projectMan",
-        date: "2026.06.28",
-        title: "プロジェクトの進め方",
-        category: "車"
-      },
-      {
-        slug: "2026-06-29-usageAlert",
-        date: "2026.06.29",
-        title: "パケット残量通知アプリを作った話",
-        category: "開発"
-      },
-      {
-        slug: "2026-07-01-dualsim",
-        date: "2026.07.01",
-        title: "デュアルSIMにも対応した話",
-        category: "開発"
-      },
-      {
-        slug: "2026-07-01-lunchmemo",
-        date: "2026.07.01",
-        title: "Lunch Memoをバージョン2.0にメジャーアップデートした",
-        category: "開発"
-      },
-      {
-        slug: "2026-07-03-amazon",
-        date: "2026.07.03",
-        title: "Amazonで注文した品物をキャンセルした話（前編）",
-        category: "日常"
-      },
-      {
-        slug: "2026-07-07-amazon",
-        date: "2026.07.07",
-        title: "Amazonで注文した品物をキャンセルした話（後編）",
-        category: "日常"
-      },
-      {
-        slug: "2026-07-09-netshop",
-        date: "2026.07.09",
-        title: "ネットショッピング",
-        category: "日常"
-      },
-      {
-        slug: "2026-07-09-soundtune",
-        date: "2026.07.09",
-        title: "車のイコライザー設定アプリを作ってみた",
-        category: "車"
-      },
-      {
-        slug: "2026-07-10-woofer",
-        date: "2026.07.10",
-        title: "サブウーファー動作確認",
-        category: "車"
-      },
-      {
-        slug: "2026-07-10-antigravity",
-        date: "2026.07.10",
-        title: "Antigravityのアップデート",
-        category: "開発"
-      },
-      {
-        slug: "2026-07-11-ubuntu",
-        date: "2026.07.11",
-        title: "Ubuntuが人気がない理由",
-        category: "その他"
-      },
-      {
-        slug: "2026-07-11-cable",
-        date: "2026.07.11",
-        title: "電源ケーブルの選定",
-        category: "車"
-      },
-      {
-        slug: "2026-07-12-timealignment",
-        date: "2026.07.12",
-        title: "タイムアライメント設定アプリを作ってみて失敗した",
-        category: "車"
-      },
-      {
-        slug: "2026-07-13-androidauto",
-        date: "2026.07.13",
-        title: "Android AutoのCarApp APIについて",
-        category: "車"
-      },
-      {
-        slug: "2026-07-13-farm",
-        date: "2026.07.13",
-        title: "植物の生育を左右する飽差と環境制御の法則",
-        category: "その他"
-      },
-      {
-        slug: "2026-07-14-pcaudio",
-        date: "2026.07.14",
-        title: "PCオーディオのスピーカーを交換した話",
-        category: "日常"
-      }
+      { slug: "2026-06-20-portfolio-redesign", date: "2026.06.20", title: "ポートフォリオの再設計", category: "開発" },
+      { slug: "2026-06-21-Sekkati-TextField", date: "2026.06.21", title: "Android版の文字入力不具合", category: "開発" },
+      { slug: "2026-06-26-pythonBase", date: "2026.06.26", title: "Python GUIファイラーの雛形を作った", category: "開発" },
+      { slug: "2026-06-28-pythonpicMusic", date: "2026.06.28", title: "音楽管理機能付きのGUIファイラーを作った", category: "開発" },
+      { slug: "2026-06-28-projectMan", date: "2026.06.28", title: "プロジェクトの進め方", category: "車" },
+      { slug: "2026-06-29-usageAlert", date: "2026.06.29", title: "パケット残量通知アプリを作った話", category: "開発" },
+      { slug: "2026-07-01-dualsim", date: "2026.07.01", title: "デュアルSIMに対応できなかった", category: "開発" },
+      { slug: "2026-07-01-lunchmemo", date: "2026.07.01", title: "Lunch Memoをバージョン2.0にメジャーアップデートした", category: "開発" },
+      { slug: "2026-07-03-amazon", date: "2026.07.03", title: "Amazonで注文した品物をキャンセルした話（前編）", category: "日常" },
+      { slug: "2026-07-07-amazon", date: "2026.07.07", title: "Amazonで注文した品物をキャンセルした話（後編）", category: "日常" },
+      { slug: "2026-07-09-netshop", date: "2026.07.09", title: "ネットショッピング", category: "日常" },
+      { slug: "2026-07-09-soundtune", date: "2026.07.09", title: "車のイコライザー設定アプリを作ってみた", category: "車" },
+      { slug: "2026-07-10-woofer", date: "2026.07.10", title: "サブウーファー動作確認", category: "車" },
+      { slug: "2026-07-10-antigravity", date: "2026.07.10", title: "Antigravityのアップデート", category: "開発" },
+      { slug: "2026-07-11-ubuntu", date: "2026.07.11", title: "Ubuntuが人気がない理由", category: "その他" },
+      { slug: "2026-07-11-cable", date: "2026.07.11", title: "電源ケーブルの選定", category: "車" },
+      { slug: "2026-07-12-timealignment", date: "2026.07.12", title: "タイムアライメント設定アプリを作ってみて失敗した", category: "車" },
+      { slug: "2026-07-13-androidauto", date: "2026.07.13", title: "Android AutoのCarApp APIについて", category: "車" },
+      { slug: "2026-07-13-crow", date: "2026.07.13", title: "カラスの害を減らすには", category: "その他" },
+      { slug: "2026-07-13-farm", date: "2026.07.13", title: "植物の生育を左右する飽差と環境制御の法則", category: "その他" },
+      { slug: "2026-07-13-soundset", date: "2026.07.13", title: "カーオーディオのシステム構成", category: "車" },
+      { slug: "2026-07-14-pcaudio", date: "2026.07.14", title: "PCオーディオのスピーカーを交換した話", category: "日常" },
+      { slug: "2026-01-30-htmltoblogger", date: "2026.01.30", title: "HTML to Blogger", category: "開発" },
+      { slug: "2026-02-26-worldclock", date: "2026.02.26", title: "ESP32 world Clock for Wokwi", category: "開発" },
+      { slug: "2026-03-02-avalonia_ui", date: "2026.03.02", title: "Avalonia学習", category: "開発" },
+      { slug: "2026-03-06-qtlauncher", date: "2026.03.06", title: "Qt Project Launcher", category: "開発" },
+      { slug: "2026-03-08-qtcreator", date: "2026.03.08", title: "Hello World Qt Creator", category: "開発" },
+      { slug: "2026-03-12-pdfunlocker", date: "2026.03.12", title: "Android PDF Unlocker", category: "開発" },
+      { slug: "2026-03-21-ubuntu", date: "2026.03.21", title: "Ubuntu導入ガイド", category: "開発" },
+      { slug: "2026-04-02-weblauncher", date: "2026.04.02", title: "Android Web Launcher", category: "開発" },
+      { slug: "2026-04-05-pcaudioappli", date: "2026.04.05", title: "My PC Audio - Software Setup", category: "開発" },
+      { slug: "2026-04-05_pcaudio", date: "2026.04.05", title: "My PC Audio", category: "日常" },
+      { slug: "2026-04-06-seo", date: "2026.04.06", title: "SEO strategies", category: "開発" },
+      { slug: "2026-04-12-nestscript", date: "2026.04.12", title: "Google Nest Script", category: "開発" },
+      { slug: "2026-04-14-plc", date: "2026.04.14", title: "Software PLC : CODESYS", category: "開発" },
+      { slug: "2026-04-16-askgeminibyemail", date: "2026.04.16", title: "メールでGemini", category: "開発" },
+      { slug: "2026-04-19-encbrowse", date: "2026.04.19", title: "EncBrowse", category: "開発" },
+      { slug: "2026-04-28-unlockpdf", date: "2026.04.28", title: "Gmail PDF Unlocker", category: "開発" },
+      { slug: "2026-04-29-googlestore", date: "2026.04.29", title: "Androidアプリの配信方針", category: "開発" },
+      { slug: "2026-04-30-racinggame", date: "2026.04.30", title: "ESP32 Racing Game for Wokwi", category: "開発" },
+      { slug: "2026-04-30-weblauncher2", date: "2026.04.30", title: "Android Web Launcher 2", category: "開発" },
+      { slug: "2026-05-08-smartpc", date: "2026.05.08", title: "[Canceled] Smart PC Project", category: "開発" },
+      { slug: "2026-05-09-sekkati", date: "2026.05.09", title: "SekkaTi", category: "開発" },
+      { slug: "2026-05-09-virtual_device", date: "2026.05.09", title: "Virtual Smart Device Control System", category: "開発" },
+      { slug: "2026-05-13-table_clock", date: "2026.05.13", title: "Android Table Clock", category: "開発" },
+      { slug: "2026-05-17-cleanguide", date: "2026.05.17", title: "Android不要アプリの整理方法（スクリプト編）", category: "開発" },
+      { slug: "2026-05-21-musicplayer", date: "2026.05.21", title: "Android Auto Music Player", category: "開発" },
+      { slug: "2026-05-21-tagplaylist", date: "2026.05.21", title: "TagPlaylist Generator", category: "開発" },
+      { slug: "2026-05-23-likebutton", date: "2026.05.23", title: "いいねボタンの導入", category: "開発" },
+      { slug: "2026-05-25-installguide", date: "2026.05.25", title: "Androidアプリのインストール方法", category: "開発" },
+      { slug: "2026-05-28-autoshutdown", date: "2026.05.28", title: "AutoShutdown — 無操作時の自動シャットダウン", category: "開発" },
+      { slug: "2026-05-28-imagefornet", date: "2026.05.28", title: "Android Image for net", category: "開発" },
+      { slug: "2026-05-31-sekkati", date: "2026.05.31", title: "SekkaTi for android", category: "開発" },
+      { slug: "2026-06-14-fieldlogger", date: "2026.06.14", title: "山の畑用 温湿度データロガー (Hata logger)", category: "開発" },
+      { slug: "2026-06-16loctime", date: "2026.06.16", title: "LocTime", category: "開発" },
+      { slug: "2026-06-18-cockpitscope", date: "2026.06.18", title: "Cockpit Scope", category: "開発" },
+      { slug: "2026-06-23-imagefornet", date: "2026.06.23", title: "Image for net v3", category: "開発" },
+      { slug: "2026-06-24-smartonpc", date: "2026.06.24", title: "SmartOn PC", category: "開発" },
+      { slug: "2026-07-01-lunchmemo1", date: "2026.07.01", title: "Lunch Memo", category: "開発" },
+      { slug: "2026-07-01-lunchmemo2", date: "2026.07.01", title: "Lunch Memoをバージョン2.0にメジャーアップデートした", category: "開発" },
+      { slug: "2026-07-15-esp32aircon", date: "2026.07.15", title: "ESP32 Air Conditioner Control (+ SwitchBot Web API)", category: "開発" }
     ];
 
     // カテゴリの表示順序
@@ -903,39 +868,44 @@
       });
     }
 
-    // エッセイ一覧の描画
+    // エッセイ一覧の描画（最新20件、日付降順）
+    const RECENT_COUNT = 20;
+
     function renderEssayList() {
       // トップに戻ったらタイトルをリセット
       document.title = "雨草の庭 | Notes";
 
-      // カテゴリ別にグループ化
-      const groups = {};
-      ESSAYS.forEach(essay => {
-        const cat = essay.category || "その他";
-        if (!groups[cat]) groups[cat] = [];
-        groups[cat].push(essay);
-      });
+      // 日付降順にソートして最新20件を取得
+      const sorted = [...ESSAYS].sort((a, b) => b.slug.localeCompare(a.slug));
+      const recent = sorted.slice(0, RECENT_COUNT);
+      const hasMore = sorted.length > RECENT_COUNT;
 
       let html = `
         <section class="essay-list-section">
           <h2>Notes</h2>
+          <ul class="essay-list">
       `;
 
-      CATEGORY_ORDER.forEach(cat => {
-        if (!groups[cat] || groups[cat].length === 0) return;
-        html += `<div class="essay-category-group">`;
-        html += `<p class="essay-category-label">${cat}</p>`;
-        html += `<ul class="essay-list">`;
-        groups[cat].forEach(essay => {
-          html += `
-            <li class="essay-item">
-              <span class="essay-date">${essay.date}</span>
-              <a href="#essay=${essay.slug}" class="essay-title">${essay.title}</a>
-            </li>
-          `;
-        });
-        html += `</ul></div>`;
+      recent.forEach(essay => {
+        html += `
+          <li class="essay-item">
+            <span class="essay-date">${essay.date}
+              <span class="essay-category-badge">${essay.category || 'その他'}</span>
+            </span>
+            <a href="#essay=${essay.slug}" class="essay-title">${essay.title}</a>
+          </li>
+        `;
       });
+
+      html += `</ul>`;
+
+      if (hasMore) {
+        html += `
+          <div class="archive-link-wrap">
+            <a href="essays/" class="archive-link">過去の記事をもっと見る →</a>
+          </div>
+        `;
+      }
 
       html += `</section>`;
 
