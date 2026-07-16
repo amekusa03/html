@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-SRGF2MMYGD');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://amekusa.vercel.app/app/esp32_world_clock/esp32_world_clock">
+    <meta name="description" content="ESP32とNTPサーバーを利用して正確な時刻を表示する世界時計プロジェクト。Wokwiでのシミュレーションに対応。">
+    <title>ESP32 World Clock | 雨草の庭</title>
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+
+<body class="app-page">
+    <div class="container">
+        <nav>
+            <a href="../../index.html">← Back to Garden</a>
+        </nav>
+
+        <header>
+            <div class="header-tags u-margin-b-1">
+                <span class="tag">ESP32</span>
+                <span class="tag">C</span>
+                <span class="tag">Wokwi</span>
+            </div>
+            <h1>ESP32 world Clock for Wokwi</h1>
+            <p class="u-opacity-8">ESP32で世界時計をシミュレートする</p>
+        </header>
+        <main>
+            <section>
+                <h2>About this Project</h2>
+                <p>
+                    これはWokwiプロジェクトです。LCD1602ディスプレイに時刻と日付を表示する世界時計です。時刻はNTP経由で同期されます。
+                </p>
+            </section>
+            <section>
+                <h2>Video</h2>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/GSfD1kVzAFw" frameborder="0" allowfullscreen
+                        title="ESP32 World Clock Demo"></iframe>
+                </div>
+            </section>
+
+            <section>
+                <h2>Development Environment</h2>
+                <ul class="tech-stack">
+                    <li>ESP32</li>
+                    <li>C</li>
+                    <li>Wokwi</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Key Features</h2>
+                <ul>
+                    <li><strong>NTP時刻同期:</strong> インターネット経由で正確な時刻を取得し、自動的に同期します。</li>
+                    <li><strong>LCD1602表示:</strong> 限られた表示領域の中で、日付と時刻を効率的にレイアウト。</li>
+                    <li><strong>Wokwiシミュレーション:</strong> ブラウザ上で完結する開発環境により、ハードウェアなしで動作確認が可能。</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Qiita Articles</h2>
+                <ul>
+                    <li><a href="https://qiita.com/amekusa03/items/db48a9612b369b399ea3" target="_blank">ESP32 world
+                            Clock for Wokwiの開発記録</a></li>
+                </ul>
+            </section>
+            <section>
+                <h2>Resource</h2>
+                <p>資料はGitHubで公開しています。個人の学習や小規模なプロジェクトでの再利用を歓迎します。</p>
+                <a href="https://github.com/amekusa03/esp32-world-clock-main" class="link-button">View on GitHub</a>
+            </section>
+        </main>
+
+        <nav>
+            <a href="../../index.html">← Back to Garden</a>
+        </nav>
+        <div class="like-section">
+            <button id="like-btn" class="like-btn" aria-label="いいね">
+                <span class="like-icon">♡</span>
+                <span id="like-count" class="like-count">…</span>
+            </button>
+            <p class="like-label">見ていただけましたか？</p>
+        </div>
+        <footer>
+            <p>Copyright &copy; amekusa All Rights Reserved.</p>
+        </footer>
+    </div>
+    <script type="module" src="../like.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-SRGF2MMYGD');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://amekusa.vercel.app/app/android_loctime/android_loctime">
+    <meta name="description" content="Androidの場所と時間で通知する「LocTime」アプリの開発です。">
+    <title>Android Location Time | 雨草の庭</title>
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+
+<body class="app-page">
+    <canvas id="rain-canvas"></canvas>
+    <div class="container">
+        <nav aria-label="ページナビゲーション">
+            <a href="../../index.html">← Back to Garden</a>
+        </nav>
+
+        <header>
+            <div class="header-tags u-margin-b-1">
+                <span class="tag">Kotlin</span>
+                <span class="tag">Android</span>
+            </div>
+            <h1>LocTime</h1>
+            <p class="u-opacity-8">場所と言葉、時間に合わせた通知を届ける Android アプリ</p>
+        </header>
+
+        <main>
+            <section>
+                <h2>About this Project</h2>
+                <p>
+                    特定の場所と時間に合わせて通知する「LocTime」アプリです。
+                    職場での休憩時間や、就業時間を数分前に通知するなど、ユーザーの生活スタイルに合わせて柔軟に通知を設定できます。
+                    自宅にいる時は不要だけど、職場にいる時は時刻通知が欲しい、というようなシーンを想定しています。
+                    特定の場所と時間に合わせて時刻通知を受け取ることができます。<br>
+                    「LocTime」という名前は、様々な場所と時間に合わせた通知を可能にするという意味を持っています。
+                </p>
+            </section>
+            <section>
+                <h2>Video</h2>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/EdCvGfPWmkA" style="border:0;" allowfullscreen
+                        title="LocTime Demo" loading="lazy"></iframe>
+                </div>
+            </section>
+            <section>
+                <h2>Development Environment</h2>
+                <ul class="tech-stack">
+                    <li>Jetpack Compose</li>
+                    <li>Material3</li>
+                    <li>Room</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Key Features</h2>
+                <ul>
+                    <li><strong>場所と時間の通知:</strong> 特定の場所と時間に合わせて通知を表示。</li>
+                    <li><strong>住所より場所を指定:</strong> 住所を入力することで、より正確な場所を指定できます。</li>
+                    <li><strong>ユーザーフレンドリー:</strong> 直感的なUIで簡単に操作可能。</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Resource</h2>
+                <p>資料はGitHubで公開しています。個人の学習や小規模なプロジェクトでの再利用を歓迎します。</p>
+                <a href="https://github.com/amekusa03/LocTime" class="link-button" target="_blank"
+                    rel="noopener noreferrer">View on GitHub</a>
+            </section>
+                <h2>Update</h2>
+                <ul>
+                <p>11.メッセージをメインに表示する</p>
+                <p>10.時間ズレ対応</p>
+                <p>9.通知時間ズレ対応</p>
+                <p>8.アイコンの色の変更</p>
+                <p>7.オフセット時間追加</p>
+                <p>6.渡航からの距離追加。デザイン変更</p>
+                <p>5.通知修正</p>
+                <p>4.場所判定半径200みぎ1000m、通知メッセージの変更</p>
+                <p>3.機能追加・バグ修正・コメント追加</p>
+                <p>2.場所編集画面の機能追加とUI改善</p>
+                <p>1.初期コミット: LocTime アプリの初期実装</p>
+                </ul>
+            </section>
+        </main>
+
+        <nav aria-label="ページナビゲーション">
+            <a href="../../index.html">← Back to Garden</a>
+        </nav>
+        <div class="like-section">
+            <button id="like-btn" class="like-btn" aria-label="いいね">
+                <span class="like-icon">♡</span>
+                <span id="like-count" class="like-count">…</span>
+            </button>
+            <p class="like-label">見ていただけましたか？</p>
+        </div>
+        <footer>
+            <p>Copyright &copy; amekusa All Rights Reserved.</p>
+        </footer>
+    </div>
+    <script src="../../rain.js"></script>
+    <script type="module" src="../like.js"></script>
+</body>
+
+</html>

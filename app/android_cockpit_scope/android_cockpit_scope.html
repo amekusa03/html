@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-SRGF2MMYGD');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://amekusa.vercel.app/app/android_cockpit_scope/android_cockpit_scope">
+    <meta name="description" content="Cockpit Scope — ELM327 OBD-IIアダプタとスマホセンサーで車両のテレメトリを表示するAndroidアプリの紹介ページです。">
+    <title>Cockpit Scope | 雨草の庭</title>
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+
+<body class="app-page">
+    <div class="container">
+        <nav>
+            <a href="../../index.html">← Back to Garden</a>
+        </nav>
+
+        <header>
+            <div class="header-tags u-margin-b-1">
+                <span class="tag">Android</span>
+                <span class="tag">OBD</span>
+            </div>
+            <h1>Cockpit Scope</h1>
+            <p class="header-subtitle u-opacity-8">ELM327 / スマホセンサーを利用したリアルタイム・テレメトリ表示アプリ</p>
+        </header>
+
+        <main>
+
+            <section>
+                <h2>概要</h2>
+                <p>Bluetooth Classic 経由で車両の OBD-II データ（ELM327）を取得し、時系列グラフとして表示します。スマホ内蔵の加速度センサーを利用した G-Force 計測にも対応しています。「走りの見える化」に特化したテレメトリ表示を目指しています。</p>
+            </section>
+            <section>
+                <h2>解説動画</h2>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/IuevvaZ0d3A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </section>
+
+            <section>
+                <h2>主要機能</h2>
+                <ul>
+                    <li>リアルタイム・マルチグラフ表示（複数データを同一時間軸上に表示）</li>
+                    <li>ELM327 アダプタ経由で RPM、速度、アクセル開度、水温などを取得</li>
+                    <li>スマホ加速度センサーによる G-Force 計測（0.1G単位）</li>
+                    <li>表示項目・色のカスタマイズ</li>
+                    <li>テレメトリーログ保存機能（プレースホルダー）</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>動作要件</h2>
+                <ul>
+                    <li>Android 6.0 (API 23) 以上</li>
+                    <li>Bluetooth Classic 対応</li>
+                    <li>ELM327 OBD-II アダプタ（v1.5/v2.1 推奨）</li>
+                </ul>
+                <p>※ アダプタ未接続時はデモモード（Mockデータ）で動作します。</p>
+            </section>
+
+            <section>
+                <h2>使い方</h2>
+                <ol>
+                    <li>Android の設定から ELM327 アダプタとペアリングする。</li>
+                    <li>アプリを起動し、ツールバーの設定から「表示設定」を開く。</li>
+                    <li>「Bluetoothデバイスを選択」から接続するアダプタを選ぶ。</li>
+                    <li>表示したい項目にチェックを入れ、必要に応じて色を設定する。</li>
+                    <li>メイン画面に戻ると接続が試行され、リアルタイム表示が開始される。</li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>表示項目一覧</h2>
+                <ul>
+                    <li>エンジン回転数 (RPM)</li>
+                    <li>車速 (Speed) [km/h]</li>
+                    <li>アクセル開度 (Throttle) [%]</li>
+                    <li>エンジン水温 (Water Temp) [°C]</li>
+                    <li>電圧 (Voltage) [V]（0.1V単位）</li>
+                    <li>加速度 (G-Force) [G]（0.1G単位）</li>
+                    <li>エンジン負荷 (Load) [%]</li>
+                    <li>インマニ圧 (MAP) [kPa]</li>
+                    <li>吸入空気量 (MAF) [g/s]</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>開発ロードマップ</h2>
+                <ul>
+                    <li>ベースシステムの構築（OBD通信・基本波形描画） ✅</li>
+                    <li>スマホ内蔵センサー（加速度）の統合 ✅</li>
+                    <li>設定画面の実装 ✅</li>
+                    <li>視覚演出の強化（検討中）</li>
+                    <li>データのローカル保存・リプレイ機能（未実装）</li>
+                    <li>Android Auto 対応の検討（未実装）</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>ライセンス</h2>
+                <p>このプロジェクトは <a href="../../LICENSE">MIT License</a> の下で公開されています。</p>
+            </section>
+
+            <section>
+                <h2>免責事項</h2>
+                <p>本アプリは走行中の補助的表示を目的としており、診断や整備の正確性を保証するものではありません。運転中の操作は危険ですので、必ず安全な場所で操作してください。</p>
+            </section>
+        <section>
+            <h2>更新履歴</h2>
+            <ul>
+                <li>初回リリース</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Resource</h2>
+            <p>資料はGitHubで公開しています。個人の学習や小規模なプロジェクトでの再利用を歓迎します。</p>
+            <a href="https://github.com/amekusa03/cockpitScope" class="link-button" target="_blank"
+                rel="noopener noreferrer">View on GitHub</a>
+        </section>            
+        </main>
+
+        <nav>
+            <a href="../../index.html">← Back to Garden</a>
+        </nav>
+
+        <div class="like-section">
+            <button id="like-btn" class="like-btn" aria-label="いいね">
+                <span class="like-icon">♡</span>
+                <span id="like-count" class="like-count">…</span>
+            </button>
+            <p class="like-label">見ていただけましたか？</p>
+        </div>
+
+        <footer>
+            <p>Copyright &copy; amekusa All Rights Reserved.</p>
+        </footer>
+    </div>
+    <script type="module" src="../like.js"></script>
+</body>
+
+</html>

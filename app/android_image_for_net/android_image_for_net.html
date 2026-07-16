@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-SRGF2MMYGD');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://amekusa.vercel.app/app/android_image_for_net/android_image_for_net">
+    <meta name="description"
+        content="Androidアプリ、EXIF情報の削除や透かし追加が可能な画像処理ツール「Android Image for net」の紹介ページです。">
+    <title>Android Image for net | 雨草の庭</title>
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body class="app-page">
+    <div class="container">
+        <nav>
+            <a href="../../index.html">← Back to Garden</a>
+        </nav>
+
+        <header>
+            <div class="header-tags u-margin-b-1">
+                <span class="tag">Android</span>
+                <span class="tag">Kotlin</span>
+                <span class="tag">Jetpack Compose</span>
+                <span class="tag">MVVM</span>
+            </div>
+            <h1>Android Image for net</h1>
+            <p class="u-opacity-8">EXIF情報削除と透かし追加に対応したAndroid画像加工アプリ</p>
+        </header>
+        <main>
+            <section>
+                <h2>About this Project</h2>
+                <p>
+                    Android Image for net は、インターネットへの画像投稿前にプライバシー保護（EXIF情報の削除）とウォーターマーク（透かし）の追加を簡単に行うための Android アプリです。Android 6.0 (API 23) 以上に対応しています。
+                </p>
+                <p>
+                    画像をネット上に公開する際のプライバシー保護や、オリジナルコンテンツの識別に役立ちます。
+                </p>
+            </section>
+            <section>
+                <h2>Video</h2>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/AbBa6crKpO8" style="border:0;" allowfullscreen
+                        title="LocTime Demo" loading="lazy"></iframe>
+                </div>
+            </section>
+            <section>
+                <h2>Key Features</h2>
+                <ul>
+                    <li><strong>EXIF情報の削除</strong>: GPS位置情報、撮影日時、カメラモデルなどのメタデータを完全に削除します。</li>
+                    <li><strong>リアルタイム・ウォーターマーク</strong>: 自由なテキストを設定し、左上／右上／左下／右下へ配置できます。</li>
+                    <li><strong>カスタマイズ可能</strong>: 文字色、サイズ、不透明度を調整し、プレビューで即座に確認できます。</li>
+                    <li><strong>共有機能</strong>: 加工した画像をそのまま他のアプリへ共有できます。</li>
+                    <li><strong>シンプルな操作</strong>: ギャラリーから画像を選択し、直感的な UI で加工して保存するだけのスムーズなフローです。</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Technology Stack</h2>
+                <ul class="tech-stack">
+                    <li>Kotlin</li>
+                    <li>Jetpack Compose / Material Design 3</li>
+                    <li>MVVM (ViewModel + State)</li>
+                    <li>androidx.exifinterface</li>
+                    <li>Bitmap API</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Setup</h2>
+                <p>
+                    Android Studio でプロジェクトを開き、Gradle の同期を行ってからデバイスまたはエミュレータで実行してください。
+                </p>
+            </section>
+            <section>
+                <h2>Repository</h2>
+                <p>ソースコードおよび資料は GitHub で公開しています。個人の学習や小規模プロジェクトでの再利用を歓迎します。</p>
+                <a href="https://github.com/amekusa03/AndroidImageForNet/" class="link-button">View on GitHub</a>
+            </section>
+        </main>
+
+        <nav>
+            <a href="../../index.html">← Back to Garden</a>
+        </nav>
+        <div class="like-section">
+            <button id="like-btn" class="like-btn" aria-label="いいね">
+                <span class="like-icon">♡</span>
+                <span id="like-count" class="like-count">…</span>
+            </button>
+            <p class="like-label">見ていただけましたか？</p>
+        </div>
+        <footer>
+            <p>Copyright &copy; amekusa All Rights Reserved.</p>
+        </footer>
+    </div>
+    <script type="module" src="../like.js"></script>
+</body>
+
+</html>

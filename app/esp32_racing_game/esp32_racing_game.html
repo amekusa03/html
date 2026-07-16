@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-SRGF2MMYGD');
+  </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://amekusa.vercel.app/app/esp32_racing_game/esp32_racing_game">
+    <meta name="description" content="ESP32とWokwiシミュレーターを活用した、レトロスタイルのレーシングゲーム開発プロジェクトの解説です。">
+    <title>ESP32 Racing Game | 雨草の庭</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+
+<body class="app-page">
+    <div class="container">
+        <nav>
+            <a href="../../index.html">← Back to Garden</a>
+        </nav>
+
+        <header>
+            <div class="header-tags u-margin-b-1">
+                <span class="tag">ESP32</span>
+                <span class="tag">C (Arduino)</span>
+                <span class="tag">Wokwi</span>
+            </div>
+            <h1>ESP32 Racing Game for Wokwi</h1>
+            <p class="u-opacity-8">ESP32を使用したレーシングゲーム</p>
+        </header>
+        <main>
+            <section>
+                <h2>About this Project</h2>
+                <p>
+                    ESP32を使用したレーシングゲームです。Wokwiで動作させることを想定しています。
+                </p>
+            </section>
+            <section>
+                <h2>Circuit Demo</h2>
+                <div class="Electronic-circuit-board-video-container">
+                    <iframe src="https://www.youtube.com/embed/I8psuUOOh4o" allowfullscreen
+                        title="ESP32 Racing Game Circuit Demo"></iframe>
+                </div>
+            </section>
+
+            <section>
+                <h2>Video</h2>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/FJdXAT3jsQo" frameborder="0" allowfullscreen
+                        title="ESP32 Racing Game"></iframe>
+                </div>
+            </section>
+
+
+            <section>
+                <h2>Development Environment</h2>
+                <ul class="tech-stack">
+                    <li>ESP32</li>
+                    <li>C (Arduino Core)</li>
+                    <li>Wokwi</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Key Features</h2>
+                <ul>
+                    <li><strong>ESP32制御:</strong> ESP32のハードウェアを制御し、レーシングゲームの動作を実現。</li>
+                    <li><strong>Wokwiシミュレーション:</strong> Wokwiでゲームをシミュレーションし、開発効率を向上。</li>
+                    <li><strong>ユーザーアクション:</strong> ユーザーの入力に応じてゲームの進行を制御。</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Qiita Articles</h2>
+                <ul>
+                    <li><a href="https://qiita.com/amekusa03/items/d8ffc2c7b9618a4e275a" target="_blank"
+                            rel="noopener">Wokwiで楽しむESP32レーシングゲーム開発</a></li>
+                </ul>
+            </section>
+            <section>
+                <h2>Resource</h2>
+                <p>資料はGitHubで公開しています。個人の学習や小規模なプロジェクトでの再利用を歓迎します。</p>
+                <a href="https://github.com/amekusa03/esp32-racing-game" class="link-button">View on GitHub</a>
+            </section>
+        </main>
+
+        <nav>
+            <a href="../../index.html">← Back to Garden</a>
+        </nav>
+        <div class="like-section">
+            <button id="like-btn" class="like-btn" aria-label="いいね">
+                <span class="like-icon">♡</span>
+                <span id="like-count" class="like-count">…</span>
+            </button>
+            <p class="like-label">見ていただけましたか？</p>
+        </div>
+        <footer>
+            <p>Copyright &copy; amekusa All Rights Reserved.</p>
+        </footer>
+    </div>
+    <script type="module" src="../like.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-SRGF2MMYGD');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://amekusa.vercel.app/app/my_pc_audio_appli/my_pc_audio_appli">
+    <meta name="description" content="Music Player Daemon (MPD) と M.A.L.P.を使用した、スマホから操作可能な高音質PCオーディオ環境の構築記録です。">
+    <title>My PC Audio - Software | 雨草の庭</title>
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+
+<body class="app-page">
+    <div class="container">
+        <nav aria-label="ページナビゲーション">
+            <a href="../../index.html">← Back to Garden</a>
+        </nav>
+
+        <header>
+            <div class="header-tags u-margin-b-1">
+                <span class="tag">Audio</span>
+                <span class="tag">Software</span>
+            </div>
+            <h1>My PC Audio - Software Setup</h1>
+            <p class="header-subtitle u-opacity-8">PCオーディオの操作を快適に</p>
+        </header>
+
+        <main>
+            <section>
+                <h2>About this Project</h2>
+                <p>
+                    <a href="../my_pc_audio/index.html">前回のアナログ・デジタル環境の整備</a>により、
+                    PCオーディオとして満足できる音質に到達しました。
+                </p>
+                <p>
+                    今回は操作性の向上させます。
+                </p>
+            </section>
+
+            <section>
+                <h2>Video</h2>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/mHtCYgG4A4Y" frameborder="0" allowfullscreen
+                        title="MPD and M.A.L.P. Setup Demo"></iframe>
+                </div>
+            </section>
+            <section>
+                <h2>Current situation</h2>
+                <p>
+                    現在の物理的な接続構成は以下の通りです。
+                </p>
+                <ul>
+                    <li><a href="pcaudios6.png" target="_blank" rel="noopener noreferrer"><img src="pcaudios6.png"
+                                alt="Current PC audio setup" loading="lazy" class="img-responsive-50"></a></li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Issues</h2>
+                <p>
+                    現状のシステムではPCの前にいるときしか操作ができないことが課題です。
+                </p>
+            </section>
+
+            <section>
+                <h2>Action</h2>
+                <p>手元で操作する方法を模索しました。</p>
+                <ul>
+                    <li>PCのキーボードショートカットを活用する → 仰々しいので見送り</li>
+                    <li>スマホから操作する方法を模索する → 採用</li>
+                </ul>
+                <p>PCをMusic Player Daemon (MPD)サーバーとして動かし、スマホ(Android)のアプリM.A.L.P.からWi-Fiを通じて選曲・操作する環境を構築します。</p>
+
+                <pre><code class="language-text">
+Android - M.A.L.P.で選曲・操作
+        | WiFi  Cantata（PCのGUI）
+        ↓         ↓
+MPD（高音質再生エンジン） ポート: 6600
+        ↓ PipeWire
+ALC892 S/PDIF出力（カード1、デバイス1）
+        ↓
+TSS-1アンプ → スピーカー</code></pre>
+
+            </section>
+
+            <section>
+                <h2>Comparison of Components</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Software</th>
+                            <th>Role</th>
+                            <th>Note</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>MPD</strong></td>
+                            <td>高音質再生エンジン</td>
+                            <td>今回のメイン。バックグラウンドで動作。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>M.A.L.P.</strong></td>
+                            <td>スマホ用リモコン</td>
+                            <td>AndroidからWi-Fi経由で操作。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cantata</strong></td>
+                            <td>PC用クライアント</td>
+                            <td>PC上で操作したい場合に使用。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <h2>Setup</h2>
+                <p>PC (Ubuntu) に Music Player Daemon (MPD) をインストールします。</p>
+
+                <h3>1. 依存パッケージと権限の設定</h3>
+                <pre><code class="language-bash">sudo apt update && sudo apt install ffmpeg -y</code></pre>
+
+                <p>MPDがユーザーディレクトリ内の音楽ファイルにアクセスできるよう、パーミッションを調整します。</p>
+                <pre><code class="language-bash">chmod o+x /home/[username]
+chmod o+rx "/home/[username]/ミュージック"
+chmod o+rx "/home/[username]/ミュージック/公開"</code></pre>
+
+                <h3>2. MPD のインストールと設定</h3>
+                <pre><code class="language-bash">sudo apt install mpd mpc -y</code></pre>
+
+                <h4>設定のポイント</h4>
+                <p><code>~/.config/mpd/mpd.conf</code> を編集し、オーディオ出力を PipeWire に設定します。</p>
+                <pre><code class="language-toml">audio_output {
+    type        "pipewire"
+    name        "PipeWire Output"
+}</code></pre>
+
+                <h4>自動起動の設定</h4>
+                <pre><code class="language-bash"># ユーザーサービスとして有効化
+systemctl --user enable mpd
+systemctl --user start mpd
+# ログイン前からの自動起動を許可
+sudo loginctl enable-linger [username]</code></pre>
+
+                <h3>3. Android アプリ（M.A.L.P.）の設定</h3>
+                <ul>
+                    <li><strong>ホスト名:</strong> Ubuntu の IP アドレス (例: 192.168.11.13)</li>
+                    <li><strong>ポート:</strong> 6600</li>
+                </ul>
+                <h3>4. PC用クライアント (Cantata) のインストール</h3>
+                <p>PCのデスクトップから操作するためにインストールします。</p>
+                <pre><code class="language-bash">sudo apt install cantata -y</code></pre>
+            </section>
+
+            <section>
+                <h2>Summary</h2>
+                <p>
+                    これらのソフトウェアを組み合わせることで、PCオーディオ環境をスマホから操作できるようになりました。
+                </p>
+                <h3>Bonus</h3>
+                <p>
+                    M.A.L.P.の操作は追加設定することなく、スマートウォッチからも可能でした。
+                </p>
+            </section>
+
+            <section>
+                <h2>Figure</h2>
+                <ul>
+                    <li><a href="audiostep71.png" target="_blank" rel="noopener noreferrer"><img src="audiostep71.png"
+                                alt="Current PC audio setup" loading="lazy" class="img-responsive-50"></a></li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Key Features</h2>
+                <ul>
+                    <li><strong>スマホからの操作:</strong> M.A.L.P.を使用して、PCオーディオ環境をスマホから操作可能に。</li>
+                    <li><strong>高音質再生:</strong> MPDを使用して高音質なオーディオ再生を実現。</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Option</h2>
+                <p>Navidromeをインストールしましたが、不要でした。</p>
+                <p>インストール方法だけ、メモさせてください。</p>
+
+                <h3>Navidrome のインストール</h3>
+                <h4>ffmpeg のインストール</h4>
+                <pre><code class="language-bash">sudo apt update
+sudo apt install ffmpeg -y</code></pre>
+
+                <h4>Navidrome 本体のインストール</h4>
+                <pre><code class="language-bash">wget https://github.com/navidrome/navidrome/releases/download/v0.61.0/navidrome_0.61.0_linux_amd64.deb
+sudo apt install ./navidrome_0.61.0_linux_amd64.deb</code></pre>
+
+                <h4>設定ファイルの編集</h4>
+                <pre><code class="language-toml"># /etc/navidrome/navidrome.toml
+MusicFolder = "/home/[username]/ミュージック/公開"</code></pre>
+
+                <h4>音楽フォルダのアクセス権設定</h4>
+                <pre><code class="language-bash">chmod o+x /home/[username]
+chmod o+rx "/home/[username]/ミュージック"
+chmod o+rx "/home/[username]/ミュージック/公開"</code></pre>
+
+                <h4>サービスの起動</h4>
+                <pre><code class="language-bash">sudo systemctl enable navidrome
+sudo systemctl start navidrome</code></pre>
+
+            </section>
+        </main>
+        <nav aria-label="ページナビゲーション">
+            <a href="../../index.html">← Back to Garden</a>
+        </nav>
+        <div class="like-section">
+            <button id="like-btn" class="like-btn" aria-label="いいね">
+                <span class="like-icon">♡</span>
+                <span id="like-count" class="like-count">…</span>
+            </button>
+            <p class="like-label">見ていただけましたか？</p>
+        </div>
+        <footer>
+            <p>Copyright &copy; amekusa All Rights Reserved.</p>
+        </footer>
+    </div>
+    <script type="module" src="../like.js"></script>
+</body>
+
+</html>
