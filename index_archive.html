@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-SRGF2MMYGD');
+  </script>
+
+  <!-- 外部リソースへの事前接続 -->
+  <link rel="preconnect" href="https://img.youtube.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&display=swap"
+    onload="this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&display=swap">
+  </noscript>
+
+  <link rel="icon" href="Favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="amenoniwa.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://amekusa.vercel.app/index_archive">
+  <meta name="description" content="amekusaのポートフォリオ。エンジニアリング、写真、趣味などを紹介しています。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://amekusa.vercel.app/">
+  <meta property="og:title" content="雨草の庭 | Engineering & Nature Portfolio">
+  <meta property="og:description" content="amekusaのポートフォリオ。エンジニアリング、写真、趣味などを紹介しています。">
+  <meta property="og:image" content="https://amekusa.vercel.app/ogp.png">
+  <title>雨草の庭 | Engineering & Nature Portfolio</title>
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script defer src="/_vercel/insights/script.js"></script>
+
+  <!-- クリティカルな CSS だけインラインで書く -->
+  <style>
+    :root {
+      --bg-color: #f5f0e8;
+      --text-color: #1c1a17;
+      --accent-green: #3a5a2e;
+      --card-bg: rgba(255, 255, 255, 0.6);
+      --font-family: 'Noto Serif JP', "Hiragino Mincho ProN", "Yu Mincho", serif;
+      --washi-line: rgba(58, 90, 46, 0.06);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-color: #18160f;
+        --text-color: #e8e2d8;
+        --card-bg: rgba(38, 34, 26, 0.75);
+        --washi-line: rgba(160, 180, 140, 0.05);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+      line-height: 1.8;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 39px, var(--washi-line) 39px, var(--washi-line) 40px),
+        repeating-linear-gradient(90deg, transparent, transparent 39px, var(--washi-line) 39px, var(--washi-line) 40px);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem;
+      position: relative;
+    }
+
+    /* ファーストビュー用ヒーロー */
+    .home-page header {
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding: 4rem 2rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .home-page header::before,
+    .home-page header::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0.5px;
+      height: 60px;
+      background: linear-gradient(to bottom, transparent, var(--accent-green));
+    }
+
+    .home-page header::before {
+      top: 0;
+    }
+
+    .home-page header::after {
+      bottom: 0;
+      background: linear-gradient(to bottom, var(--accent-green), transparent);
+    }
+
+    .hero-gif {
+      width: 80px;
+      margin-bottom: 2.5rem;
+      mask-image: radial-gradient(circle, black 40%, rgba(0, 0, 0, 0) 100%);
+      -webkit-mask-image: radial-gradient(circle, black 40%, rgba(0, 0, 0, 0) 100%);
+    }
+
+    .home-page header h1 {
+      font-family: var(--font-family);
+      font-size: 3rem;
+      letter-spacing: 0.35em;
+      font-weight: 300;
+    }
+
+    /* ページ固有のスタイル */
+    article img[src*="youtube.com"] {
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    #rain-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      pointer-events: none;
+    }
+  </style>
+
+  <!-- 残りの style.css は非同期で読み込む -->
+  <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="style.css">
+  </noscript>
+</head>
+
+<body class="home-page">
+  <canvas id="rain-canvas"></canvas>
+  <div class="container">
+    <div style="background-color: var(--accent-green); color: var(--bg-color); text-align: center; padding: 0.5rem 1rem; font-size: 0.9rem; border-radius: 4px; margin-bottom: 1.5rem; box-shadow: 0 4px 12px rgba(58, 90, 46, 0.15);">
+      これはアーカイブ（旧サイト）のページです。メインページへは <a href="index.html" style="color: inherit; text-decoration: underline; font-weight: bold;">こちら</a> をクリックしてください。
+    </div>
+    <!-- 英語は廃止方向へ<a href="index_en.html" class="language-link" hreflang="en" aria-label="Switch to English version">English</a> -->
+    <header>
+      <!-- LCP向上のため fetchpriority を追加 -->
+      <img src="amenoniwa.png" alt="Character animation" class="hero-gif" fetchpriority="high">
+      <h1>雨草の庭</h1>
+      <p class="subtitle">Engineering</p>
+      <p class="subtitle-note">雨宿りでもしていってください。</p>
+    </header>
+
+    <nav class="sticky-nav" aria-label="メインナビゲーション">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#engineering">Engineering</a></li>
+        <li><a href="#upcycle">Upcycle</a></li>
+        <li><a href="#photography">Photography</a></li>
+        <li><a href="#profile">Profile</a></li>
+        <li><a href="#links">Links</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <section id="about">
+        <div class="about-content">
+          <p class="about-text">
+            個人的なソフトウェア開発記録や写真、趣味など興味のあることを気ままに記載しています。
+          </p>
+        </div>
+      </section>
+
+      <section id="engineering">
+        <h2 data-num="○二">Engineering</h2>
+        <p class="u-text-center section-description">タイルをクリック</p>
+        <object data="tech_map_navigation.svg" type="image/svg+xml" width="100%" height="100%" class="tech-map"
+          aria-label="技術スタック・テックマップ">
+          <!-- フォールバック用テキスト -->
+          <p>C++, C#, Python, Kotlin, ESP32などの技術スタック相関図</p>
+        </object>
+
+        <div id="project-sections"></div>
+      </section>
+
+      <section id="upcycle">
+        <h2 data-num="○三">App Upcycle</h2>
+        <p class="u-text-center section-description">古い端末を活かす実用ガイド</p>
+        <div id="upcycle-sections"></div>
+      </section>
+
+      <section id="photography">
+        <h2 data-num="○四">Photography</h2>
+        <div class="photo-grid">
+          <div class="photo-item">
+            <img src="Photo/photo01.jpg" alt="山々と満開の桜" loading="lazy" width="4320" height="2880">
+          </div>
+          <div class="photo-item">
+            <img src="Photo/photo02.jpg" alt="白い野菊の花" loading="lazy" width="4320" height="2432">
+          </div>
+          <div class="photo-item">
+            <img src="Photo/photo03.jpg" alt="紫色のアザミの花" loading="lazy" width="4320" height="2432">
+          </div>
+        </div>
+        <p class="section-description" style="margin-top:1.5rem;"><a href="Photo/index.html">全ての写真を見る →</a></p>
+      </section>
+
+      <section id="profile">
+        <h2 data-num="○五">Profile</h2>
+        <div class="profile-content" style="margin-bottom: 1rem;">
+          <div>
+            <p><strong>Favorite Hobbies</strong> - <a href="hobbies/">My Hobbies</a></p>
+          </div>
+        </div>
+        <div class="profile-content">
+          <div>
+            <a href="https://www.linkedin.com/in/amekusa-k-a925233b7/" target="_blank" rel="noopener noreferrer"
+              class="linkedin-link">LinkedIn Profile</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="links">
+        <h2 data-num="○六">Links</h2>
+        <ul class="links-list">
+          <li><strong>Favorite Web Links</strong> <a href="link/">お気に入りリンク集へ →</a></li>
+        </ul>
+      </section>
+    </main>
+
+    <!-- ポップアップ用オーバーレイ -->
+    <div id="project-modal" class="project-modal-overlay">
+      <div class="project-modal-card">
+        <button class="modal-close-btn" onclick="closeModal()">&times;</button>
+        <h2 id="modal-title" class="modal-title"></h2>
+        <div id="modal-content-body"></div>
+      </div>
+    </div>
+
+    <footer>
+      <p class="section-description footer-note">Copyright &copy; amekusa All Rights Reserved.</p>
+    </footer>
+  </div>
+  <script defer src="rain.js"></script>
+  <script>
+    // =====================================================================
+    // プロジェクトデータ
+    // 新規プロジェクトはここに追加するだけでOK
+    // category: "main" | "kids" | "archive" | "current" | "plan"
+    // =====================================================================
+    const PROJECTS = [
+      // --- メインプロジェクト ---
+      { category: "main", title: "SekkaTi Android", youtubeId: "AkKYzU7-c5Q", altText: "SekkaTi", href: "app/android_sekkati/android_sekkati.html", tags: ["Android", "Kotlin"] },
+      { category: "main", title: "lunch memo", youtubeId: "i9NiwBay37c", altText: "LunchMemo", href: "app/android_lunch_memo/android_lunch_memo.html", tags: ["android", "kotlin", "mobile"] },
+      { category: "main", title: "Image for net Android", youtubeId: "AbBa6crKpO8", altText: "Image for Net", href: "app/android_image_for_net/android_image_for_net.html", tags: ["android", "kotlin", "mobile"] },
+      { category: "main", title: "LocTime", youtubeId: "EdCvGfPWmkA", altText: "LocTime", href: "app/android_loctime/android_loctime.html", tags: ["android", "kotlin", "mobile"] },
+      { category: "main", title: "SekkaTi", youtubeId: "FXpCDcUNZzI", altText: "SekkaTi", href: "app/sekkati/sekkati.html", tags: ["avalonia", "desktop"] },
+      { category: "main", title: "smartOn PC", youtubeId: "f5ny7iTi6pg", altText: "smartOn PC", href: "app/smartonpc/smartonpc.html", tags: ["IDF-ESP", "embedded", "c++"] },
+      { category: "main", title: "Ask Gemini by email", youtubeId: "rSXiyFyoC2w", altText: "Ask Gemini by email", href: "app/ask_gemini_by_email/ask_gemini_by_email.html", tags: ["google cloud", "gas"] },
+      { category: "main", title: "Android PDF Unlocker", youtubeId: "u6uoOYWjGDM", altText: "Android PDF Unlocker", href: "app/android_pdf_unlocker/android_pdf_unlocker.html", tags: ["android", "kotlin", "mobile"] },
+      { category: "main", title: "Android web launcher2", youtubeId: "3B1LJLAfen8", altText: "Android web launcher2", href: "app/android_web_launcher2/android_web_launcher2.html", tags: ["android", "kotlin"] },
+      { category: "main", title: "ESP32 Racing Game", youtubeId: "FJdXAT3jsQo", altText: "ESP32 Racing Game", href: "app/esp32_racing_game/esp32_racing_game.html", tags: ["Wokwi", "IDF-ESP", "c++", "embedded"] },
+      { category: "main", title: "Qt Project Launcher", youtubeId: "mteT0aFFLCU", altText: "Qt Project Launcher", href: "app/qt_project_launcher/qt_project_launcher.html", tags: ["qt", "c++", "desktop"] },
+      { category: "main", title: "PC Audio Application", youtubeId: "mHtCYgG4A4Y", altText: "PC Audio Application", href: "app/my_pc_audio_appli/my_pc_audio_appli.html", tags: ["audio", "desktop", "mp3"] },
+      { category: "main", title: "Unlock PDF", youtubeId: "F5ah5UK3LFw", altText: "Unlock PDF", href: "app/unlockpdf/unlockpdf.html", tags: ["python", "google cloud"] },
+      { category: "main", title: "Android web launcher", youtubeId: "1ZIV0SYgC7o", altText: "Android Web Launcher", href: "app/android_web_launcher/android_web_launcher.html", tags: ["android", "kotlin", "mobile"] },
+      { category: "main", title: "Software PLC", subtitle: "CoDeSys", youtubeId: "S_0lev74dqg", altText: "Software PLC", href: "app/software_plc/software_plc.html", tags: ["plc", "c++", "embedded"] },
+      { category: "main", title: "Image for net v3.0", youtubeId: "dmGGBLUwR_o", altText: "Image for Net", href: "app/image_for_net/image_for_net.html", tags: ["avalonia", "desktop"] },
+      { category: "main", title: "Android Auto Music Player", youtubeId: "AvIeaj8VLis", altText: "Android Auto Music Player", href: "app/android_auto_music_player/android_auto_music_player.html", tags: ["android", "kotlin", "mobile", "mp3"] },
+      { category: "main", title: "Add Firebase Like Button", youtubeId: "GMRHpnpdwL8", altText: "Add Firebase Like Button", href: "app/like_button/like_button.html", tags: ["firebase", "google cloud", "javascript"] },
+      { category: "main", title: "SEO strategies", youtubeId: "p-TPNOYUZvU", altText: "SEO strategies", href: "app/seo/seo.html", tags: ["vercel", "seo"] },
+      { category: "main", title: "Software Engineering and Me", youtubeId: "0gV_4Gl4rH8", altText: "Restless engineer", href: "app/app_detail/app_detail.html", tags: ["github", "c#", "python"] },
+      { category: "main", title: "MP3tag-playlist", youtubeId: "9AKDtL4bqXM", altText: "TagPlaylist Generator", href: "app/tagplaylist/tagplaylist.html", tags: ["python", "mp3"] },
+      { category: "main", title: "AutoShutdown", youtubeId: "NWzfF0Hg9_k", altText: "AutoShutdown", href: "app/auto_shutdown/auto_shutdown.html", tags: ["ubuntu", "linux", "systemd", "python"] },
+      // --- Kids Engineer ---
+      { category: "kids", title: "Androidアプリのインストール方法", youtubeId: "LCtJxWLGkkY", altText: "Android Install Guide", href: "app/android_install_guide/android_install_guide.html", tags: ["android", "github", "kids"] },
+      { category: "kids", title: "メールでGeminiとおしゃべり", youtubeId: "pId5SnPjoOw", altText: "メールでGeminiとおしゃべり", href: "app/ask_gemini_by_email/Build_Your_Email_AI.html", tags: ["google cloud", "gas"] },
+
+      // --- 過去プロジェクト ---
+      { category: "archive", title: "Avalonia UI & MVVM", youtubeId: "dhkjU1KkbTw", altText: "Avalonia UI Learning", href: "app/avalonia_ui/avalonia_ui.html", tags: ["avalonia", "c#", "desktop"] },
+      { category: "archive", title: "Hello World Qt Creator", youtubeId: "v86BQykeWFY", altText: "Qt Creator Intro", href: "app/hello_world_qt_creator/hello_world_qt_creator.html", tags: ["qt", "c++"] },
+      { category: "archive", title: "ESP32 World Clock for Wokwi", youtubeId: "GSfD1kVzAFw", altText: "ESP32 world Clock for Wokwi", href: "app/esp32_world_clock/esp32_world_clock.html", tags: ["Wokwi", "IDF-ESP", "c++"] },
+      { category: "archive", title: "Google Nest Script", youtubeId: "fbe6DP628qQ", altText: "Google Nest Script", href: "app/google_nest_script/google_nest_script.html", tags: ["google nest hub"] },
+      { category: "archive", title: "暗号化Browse Wrapper", youtubeId: "zNFxTU8CWW4", altText: "EncBrowse", href: "app/enc_browse/enc_browse.html", tags: ["avalonia", "desktop"] },
+      { category: "archive", title: "HTML to Blogger Python", youtubeId: "gFgYCVHIfW0", altText: "HTML to Blogger", href: "app/html_to_blogger/html_to_blogger.html", tags: ["python"] },
+      { category: "archive", title: "android Google Store", youtubeId: "pIFfRgCD9go", altText: "android Google Store", href: "app/android_google_store/android_google_store.html", tags: ["android"] },
+      { category: "archive", title: "Bug Report", youtubeId: "V43PmeQKoSA", altText: "Bug Report", href: "app/bug_report/bug_report.html", tags: ["bug", "windows"] },
+      { category: "archive", title: "smart PC", youtubeId: "SRRmwL01tHY", altText: "smart PC Demo", href: "app/smartpc/smartpc.html", tags: ["IDF-ESP"] },
+      { category: "archive", title: "Virtual Smart Device Control System", youtubeId: "K-S2Lh78OMA", altText: "Virtual Smart Device Control System Demo", href: "app/virtual_device/virtual_device.html", tags: ["IDF-ESP"] },
+
+      // --- アップリサイクル ---
+      { category: "upcycle", title: "Android不要アプリの整理方法", youtubeId: "JYM_qNLSHz4", altText: "Android App Cleanup Guide", href: "app/android_clean_guide/android_crean_guide.html", tags: ["android", "adb"] },
+      { category: "upcycle", title: "Ubuntu 導入ガイド", youtubeId: "m0lFwpMAM2Q", altText: "Ubuntu Guide", href: "app/ubuntu/ubuntu.html", tags: ["ubuntu", "linux", "bug"] },
+      { category: "upcycle", title: "Android 置き時計", youtubeId: "iLq9jhhg-OM", altText: "Android table Clock", href: "app/android_table_clock/android_table_clock.html", tags: ["android", "kotlin", "mobile"] },
+      { category: "upcycle", title: "My PC Audio", youtubeId: "81wXBQizKV4", altText: "My PC Audio", href: "app/my_pc_audio/my_pc_audio.html", tags: ["audio", "mp3", "desktop"] },
+
+      // --- 検討中プロジェクト ---
+      { category: "current", title: "esp32 car log",  youtubeId: "GqM3mngYtn0",altText: "esp32 carlog",href: "app/esp32_car_log/esp32_car_log.html",  tags: ["IDF-ESP", "mobile"] },
+      { category: "current", title: "cockpit scope",  youtubeId: "IuevvaZ0d3A",altText: "cockpit scope",href: "app/android_cockpit_scope/android_cockpit_scope.html",  tags: ["android", "kotlin", "mobile"] },
+      { category: "plan", title: "畑でESP32", imageSrc: "iwana2.png", altText: "畑でESP32", href: "app/field_logger/field_logger.html", tags: ["IDF-ESP", "mobile"] },
+      { category: "plan", title: "夏のESP32", imageSrc: "iwana3.png", altText: "夏のESP32", href: "app/esp32_air_con/esp32_air_con.html", tags: ["c++", "iot", "switchbot"] },
+    ];
+
+    const SECTIONS = [
+      { category: "main", containerId: "project-sections", gridClass: "project-grid", cardClass: "project-card", subtitle: null, description: null },
+      { category: "kids", containerId: "project-sections", gridClass: "archive-project-grid", cardClass: "archive-project-card", subtitle: "Kids Engineer", description: "やってみて" },
+      { category: "archive", containerId: "project-sections", gridClass: "archive-project-grid", cardClass: "archive-project-card", subtitle: "Archived Projects", description: "過去プロジェクトやミニタスク" },
+      { category: "current", containerId: "project-sections", gridClass: "plan-project-grid", cardClass: "plan-project-card", subtitle: "Current Projects", description: "現在進行中のプロジェクト" },
+      { category: "upcycle", containerId: "upcycle-sections", gridClass: "archive-project-grid", cardClass: "archive-project-card", subtitle: null, description: null },
+      { category: "plan", containerId: "project-sections", gridClass: "plan-project-grid", cardClass: "plan-project-card", subtitle: "I want to work on...", description: "検討のプロジェクト" },
+    ];
+
+    function buildCard(project, cardClass) {
+      const article = document.createElement('article');
+      article.className = cardClass;
+      if (project.tags) {
+        article.dataset.tags = project.tags.join(',');
+      }
+
+      const h3 = document.createElement('h3');
+      if (cardClass === 'project-card') h3.className = 'project-card__title';
+      h3.textContent = project.title;
+      article.appendChild(h3);
+
+      if (project.subtitle) {
+        const h4 = document.createElement('h4');
+        h4.textContent = project.subtitle;
+        article.appendChild(h4);
+      }
+
+      (project.tags || []).forEach(tag => {
+        const span = document.createElement('span');
+        span.className = 'tag';
+        span.style.display = 'none';
+        span.textContent = tag;
+        article.appendChild(span);
+      });
+
+      const img = document.createElement('img');
+      img.src = project.youtubeId
+        ? `https://img.youtube.com/vi/${project.youtubeId}/hqdefault.jpg`
+        : project.imageSrc;
+      img.alt = project.altText || project.title;
+      img.className = 'project-card__image';
+      img.loading = 'lazy';
+      if (project.youtubeId) { img.width = 480; img.height = 360; }
+      article.appendChild(img);
+
+      if (project.href) {
+        const p = document.createElement('p');
+        const a = document.createElement('a');
+        a.href = project.href;
+        if (cardClass === 'project-card') a.className = 'project-card__link';
+        a.setAttribute('aria-label', `${project.title} の詳細を見る`);
+        a.textContent = '詳細 →';
+        p.appendChild(a);
+        article.appendChild(p);
+      } else if (project.category === 'plan') {
+        article.appendChild(document.createTextNode('Maybe. My plan'));
+      }
+
+      return article;
+    }
+
+    function buildTagFilterBar(projects) {
+      const tagSet = new Set();
+      projects.forEach(p => (p.tags || []).forEach(t => tagSet.add(t.toLowerCase())));
+      if (!tagSet.size) return null;
+
+      const bar = document.createElement('div');
+      bar.className = 'tag-filter-bar';
+
+      const allBtn = document.createElement('button');
+      allBtn.className = 'tag-filter-btn active';
+      allBtn.textContent = 'すべて';
+      allBtn.dataset.tag = '';
+      bar.appendChild(allBtn);
+
+      [...tagSet].sort().forEach(tag => {
+        const btn = document.createElement('button');
+        btn.className = 'tag-filter-btn';
+        btn.textContent = tag;
+        btn.dataset.tag = tag;
+        bar.appendChild(btn);
+      });
+
+      bar.addEventListener('click', e => {
+        const btn = e.target.closest('.tag-filter-btn');
+        if (!btn) return;
+        bar.querySelectorAll('.tag-filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const selectedTag = (btn.dataset.tag || '').toLowerCase().trim();
+        const containers = [
+          document.getElementById('project-sections'),
+          document.getElementById('upcycle-sections'),
+        ].filter(Boolean);
+
+        containers.forEach(container => {
+          container.querySelectorAll('[data-tags]').forEach(card => {
+            if (!selectedTag) { card.hidden = false; return; }
+            const tags = (card.dataset.tags || '').split(',').map(t => t.trim().toLowerCase());
+            card.hidden = !tags.includes(selectedTag);
+          });
+
+          container.querySelectorAll('.project-section-group').forEach(group => {
+            if (!selectedTag) { group.hidden = false; return; }
+            group.hidden = ![...group.querySelectorAll('[data-tags]')].some(c => !c.hidden);
+          });
+        });
+      });
+
+      return bar;
+    }
+
+    function renderProjects() {
+      SECTIONS.forEach(section => {
+        const container = document.getElementById(section.containerId || 'project-sections');
+        if (!container) return;
+
+        const sectionProjects = PROJECTS.filter(p => p.category === section.category);
+        if (!sectionProjects.length) return;
+
+        const group = document.createElement('div');
+        group.className = 'project-section-group';
+        group.dataset.category = section.category;
+
+        if (section.subtitle) {
+          const h3 = document.createElement('h3');
+          h3.className = 'section-subtitle';
+          h3.textContent = section.subtitle;
+          group.appendChild(h3);
+        }
+
+        if (section.description) {
+          const p = document.createElement('p');
+          p.className = 'section-description';
+          p.textContent = section.description;
+          group.appendChild(p);
+        }
+
+        const grid = document.createElement('div');
+        grid.className = section.gridClass;
+        sectionProjects.forEach(project => grid.appendChild(buildCard(project, section.cardClass)));
+        group.appendChild(grid);
+
+        container.appendChild(group);
+      });
+
+      const projectContainer = document.getElementById('project-sections');
+      const filterBar = buildTagFilterBar(PROJECTS);
+      if (filterBar && projectContainer) {
+        projectContainer.insertBefore(filterBar, projectContainer.firstChild);
+      }
+
+    }
+
+    renderProjects();
+
+    // =====================================================================
+    // SVGテックマップ連携
+    // =====================================================================
+    const KEYWORD_MAPPING = {
+      'ESP32': 'esp32',
+      'C/C++': 'c++',
+      'Qt/QML': 'qt',
+      'Avalonia': 'avalonia',
+      'Python': 'python',
+      'Audio': 'audio',
+      'Ubuntu': 'ubuntu',
+      'Kotlin': 'kotlin',
+      'Vercel': 'vercel',
+      'Google Nest Hub': 'google nest hub',
+      'Google Cloud': 'google cloud',
+      'Bug': 'bug',
+      'PLC': 'plc',
+      'Desktop': 'desktop',
+      'C#': 'c#',
+      'window': 'windows',
+      'Arduino': 'arduino'
+    };
+
+    function sendPrompt(keyword) {
+      const searchWord = (KEYWORD_MAPPING[keyword] || keyword).toLowerCase();
+
+      // タグは部分一致ではなく完全一致でマッチさせる
+      const matched = PROJECTS.filter(p =>
+        (p.tags || []).map(t => t.toLowerCase()).includes(searchWord)
+      );
+
+      const modal = document.getElementById('project-modal');
+      const modalBody = document.getElementById('modal-content-body');
+      const modalTitle = document.getElementById('modal-title');
+
+      modalTitle.textContent = keyword;
+      modalBody.innerHTML = '';
+
+      if (matched.length > 0) {
+        const grid = document.createElement('div');
+        grid.className = 'archive-project-grid';
+        matched.forEach(project => {
+          const cardClass = project.category === 'main' ? 'project-card'
+            : project.category === 'plan' ? 'plan-project-card'
+              : 'archive-project-card';
+          grid.appendChild(buildCard(project, cardClass));
+        });
+        modalBody.appendChild(grid);
+      } else {
+        const p = document.createElement('p');
+        p.textContent = '該当するプロジェクトはありません。';
+        modalBody.appendChild(p);
+      }
+
+      requestAnimationFrame(() => {
+        modal.classList.add('active');
+      });
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('project-modal');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    document.addEventListener('click', (e) => {
+      const modal = document.getElementById('project-modal');
+      if (!modal.classList.contains('active')) return;
+      // #project-modal の外側（ナビ等）またはオーバーレイ背景をクリックしたら閉じる
+      if (!e.target.closest('#project-modal') || e.target === modal) {
+        closeModal();
+      }
+    });
+  </script>
+</body>
+
+</html>
