@@ -480,9 +480,6 @@ html {
 
     .links-list li {
       font-size: 0.95rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       padding: 0.8rem 0;
       border-bottom: 1px solid rgba(58, 90, 46, 0.08);
     }
@@ -500,10 +497,17 @@ html {
       text-decoration: none;
       font-size: 0.9rem;
       transition: color 0.2s;
+      margin-left: 0.25em;
     }
 
     .links-list li a:hover {
       color: var(--accent-hover);
+    }
+
+    .links-list li p {
+      margin: 0.2rem 0 0;
+      font-size: 0.85rem;
+      opacity: 0.7;
     }
 
     @media (max-width: 600px) {
@@ -653,4 +657,10 @@ html {
 }
 .app-page .photo-item:first-child {
     grid-row: auto;
+}
+
+/* app-page (Linksなど) ではコンテナがPCでも横並び(flex)にならないよう縦配置に固定 */
+.app-page .container {
+    display: block;
+    max-width: 750px;
 }
