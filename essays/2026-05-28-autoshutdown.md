@@ -11,27 +11,27 @@ Ubuntu上で、マウスやキーボードの操作が一定時間ない場合�
 
 ## 機能
 
-- X11のアイドル検出を使用した正確な無操作検出 
-- GNOME/Wayland環境での `gdbus` フォールバック 
-- 設定可能な無操作時間（デフォルト5分） 
-- systemdユーザーサービスとして自動起動 
-- ログファイルで動作を監視可能 
+- X11のアイドル検出を使用した正確な無操作検出
+- GNOME/Wayland環境での `gdbus` フォールバック
+- 設定可能な無操作時間（デフォルト5分）
+- systemdユーザーサービスとして自動起動
+- ログファイルで動作を監視可能
 - シャットダウン前に1分の予告時間
 
 ## インストール
 
-```
+```bash
 cd /home/kusa/ドキュメント/AutoShutdown
 bash install.sh
 ```
+
 インストールスクリプトを実行すると、依存関係のインストールと systemd サービスの登録が行われます。スクリプトの内容を事前に確認してください。
 
 ## 設定
 
-設定は `config.ini `で行います（例）: 
+設定は `config.ini`で行います（例）:
 
-
-```
+```ini
 [general]
 idle_timeout = 300      # 無操作時間（秒）
 check_interval = 10     # チェック間隔（秒）
@@ -40,16 +40,15 @@ enabled = true
 
 設定変更後はサービスを再起動してください。
 
-```
+```bash
 systemctl --user restart auto-shutdown
 ```
 
 ## 使用方法
 
-サービス操作の例： 
+サービス操作の例：
 
-
-```
+```bash
 # 起動
 systemctl --user start auto-shutdown
 
@@ -60,27 +59,26 @@ systemctl --user stop auto-shutdown
 systemctl --user status auto-shutdown
 
 # ログ（リアルタイム）
-journalctl --user -u auto-shutdown -f `
+journalctl --user -u auto-shutdown -f
 ```
-手動実行： 
 
+手動実行：
 
-```
-`python3 /home/kusa/ドキュメント/AutoShutdown/auto_shutdown.py `
+```bash
+python3 /home/kusa/ドキュメント/AutoShutdown/auto_shutdown.py
 ```
 
 ## トラブルシューティング
 
 ### xprintidleが見つからない
 
-
+```bash
+sudo apt install xprintidle libglib2.0-bin
 ```
-`sudo apt install xprintidle libglib2.0-bin `
-```
-Wayland環境でのアイドル検出は gdbus 経由で行います。動作確認コマンド： 
 
+Wayland環境でのアイドル検出は gdbus 経由で行います。動作確認コマンド：
 
-```
+```bash
 gdbus call --session --dest org.gnome.Mutter.IdleMonitor \
   --object-path /org/gnome/Mutter/IdleMonitor/Core \
   --method org.gnome.Mutter.IdleMonitor.GetIdletime
@@ -88,11 +86,12 @@ gdbus call --session --dest org.gnome.Mutter.IdleMonitor \
 
 ## アンインストール
 
-```
-`systemctl --user stop auto-shutdown
+```bash
+systemctl --user stop auto-shutdown
 systemctl --user disable auto-shutdown
-sudo rm /etc/sudoers.d/autoshutdown `
+sudo rm /etc/sudoers.d/autoshutdown
 ```
+
 ## Resource
 
-https://github.com/amekusa03/AutoShutdown
+[https://github.com/amekusa03/AutoShutdown](https://github.com/amekusa03/AutoShutdown)
