@@ -47,7 +47,7 @@ PCの電源状態を他の家電と同様にシームレスに管理・操作す
 ## ソフトウェアスタック
 
 | レイヤー | 名称 | バージョン / 設定 |
-|---------|------|------------------|
+| --------- | ------ | ----------------- |
 | OS / SDK | ESP-IDF | v5.4.1 |
 | ターゲット | ESP32-C6 | `esp32c6` |
 | スマートホーム規格 | esp-matter / Matter | Wi-Fi (`kOnNetwork`) |
@@ -78,6 +78,6 @@ Ubuntu専用になりますが、電源OFF機能機能も追加しました。
 
 詳細はGithubのREADMEを参照ください。
 
-### Resources
+## Resources
 
 [View on GitHub](https://github.com/amekusa03/smartonoff-pc-c6)
