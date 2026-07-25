@@ -62,3 +62,22 @@ PCの電源状態を他の家電と同様にシームレスに管理・操作す
 ## Resources
 
 [View on GitHub](https://github.com/amekusa03/smarton-pc-c6)
+
+## オプション
+
+### Ubuntu版電源OFF機能
+
+Ubuntu専用になりますが、電源OFF機能機能も追加しました。
+
+#### 概要フロー
+
+1. Google Home等からOFF操作を受信。
+2. ESP32-C6 から Wi-Fi 経由で PC のPC_SHUTDOWN_PORT宛先に TCP 接続。
+3. PC_SHUTDOWN_TOKEN（本人）を送信します。
+4. PC側の常駐デモプログラム（デーモン）が自ら認証し、shutdown実行します。
+
+詳細はGithubのREADMEを参照ください。
+
+### Resources
+
+[View on GitHub](https://github.com/amekusa03/smartonoff-pc-c6)
