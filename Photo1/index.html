@@ -126,28 +126,28 @@
         const items = Array.from(document.querySelectorAll('.photo-item img'));
         let current = 0;
 
-        function open(index) {
+        function openLightbox(index) {
             current = index;
             lightboxImg.src = items[current].src;
             lightboxImg.alt = items[current].alt;
             lightbox.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
-        function close() {
+        function closeLightbox() {
             lightbox.classList.remove('active');
             document.body.style.overflow = '';
         }
-        function prev() { open((current - 1 + items.length) % items.length); }
-        function next() { open((current + 1) % items.length); }
+        function prev() { openLightbox((current - 1 + items.length) % items.length); }
+        function next() { openLightbox((current + 1) % items.length); }
 
-        items.forEach((img, i) => img.parentElement.addEventListener('click', () => open(i)));
-        document.getElementById('lightboxClose').addEventListener('click', close);
+        items.forEach((img, i) => img.parentElement.addEventListener('click', () => openLightbox(i)));
+        document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
         document.getElementById('lightboxPrev').addEventListener('click', prev);
         document.getElementById('lightboxNext').addEventListener('click', next);
-        lightbox.addEventListener('click', e => { if (e.target === lightbox) close(); });
+        lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
         document.addEventListener('keydown', e => {
             if (!lightbox.classList.contains('active')) return;
-            if (e.key === 'Escape') close();
+            if (e.key === 'Escape') closeLightbox();
             if (e.key === 'ArrowLeft') prev();
             if (e.key === 'ArrowRight') next();
         });
