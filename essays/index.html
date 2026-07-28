@@ -38,7 +38,9 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
   <style>
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     :root {
       --bg-color: #f5f0e8;
@@ -60,7 +62,11 @@
       }
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
       background-color: var(--bg-color);
@@ -86,31 +92,48 @@
       -webkit-backdrop-filter: blur(12px);
       border-radius: 12px;
       padding: 3.5rem 3rem;
-      box-shadow: 0 10px 40px 0 rgba(0,0,0,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       position: relative;
       animation: fadeIn 0.8s ease-out;
     }
 
-    .sidebar { margin-bottom: 2.5rem; }
+    .sidebar {
+      margin-bottom: 2.5rem;
+    }
 
     @media (max-width: 600px) {
-      body { padding: 1.5rem 1rem; }
-      .container { padding: 2rem 1.5rem; }
+      body {
+        padding: 1.5rem 1rem;
+      }
+
+      .container {
+        padding: 2rem 1.5rem;
+      }
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(15px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    header { text-align: center; margin-bottom: 3.5rem; }
+    header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
 
     .hero-gif {
       width: 70px;
       margin-bottom: 1.5rem;
-      mask-image: radial-gradient(circle, black 40%, rgba(0,0,0,0) 100%);
-      -webkit-mask-image: radial-gradient(circle, black 40%, rgba(0,0,0,0) 100%);
+      mask-image: radial-gradient(circle, black 40%, rgba(0, 0, 0, 0) 100%);
+      -webkit-mask-image: radial-gradient(circle, black 40%, rgba(0, 0, 0, 0) 100%);
     }
 
     h1 {
@@ -135,7 +158,7 @@
       gap: 3rem;
       margin-bottom: 3.5rem;
       padding-bottom: 1.2rem;
-      border-bottom: 1px solid rgba(58,90,46,0.08);
+      border-bottom: 1px solid rgba(58, 90, 46, 0.08);
     }
 
     .nav-item {
@@ -150,7 +173,8 @@
       letter-spacing: 0.1em;
     }
 
-    .nav-item:hover, .nav-item.active {
+    .nav-item:hover,
+    .nav-item.active {
       opacity: 1;
       color: var(--accent-green);
     }
@@ -166,15 +190,26 @@
       transition: width 0.3s ease;
     }
 
-    .nav-item:hover::after, .nav-item.active::after { width: 100%; }
+    .nav-item:hover::after,
+    .nav-item.active::after {
+      width: 100%;
+    }
 
     @media (max-width: 600px) {
-      .global-nav { gap: 1.5rem; margin-bottom: 2.5rem; }
-      .nav-item { font-size: 0.9rem; }
+      .global-nav {
+        gap: 1.5rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .nav-item {
+        font-size: 0.9rem;
+      }
     }
 
     /* アーカイブヘッダー */
-    .archive-header { margin-bottom: 2.5rem; }
+    .archive-header {
+      margin-bottom: 2.5rem;
+    }
 
     .archive-header h2 {
       font-family: var(--font-serif);
@@ -182,7 +217,7 @@
       font-weight: 400;
       margin-bottom: 0.5rem;
       padding-bottom: 0.5rem;
-      border-bottom: 1px solid rgba(58,90,46,0.15);
+      border-bottom: 1px solid rgba(58, 90, 46, 0.15);
       letter-spacing: 0.1em;
     }
 
@@ -202,7 +237,7 @@
 
     .cat-btn {
       background: transparent;
-      border: 1px solid rgba(58,90,46,0.25);
+      border: 1px solid rgba(58, 90, 46, 0.25);
       color: var(--text-color);
       font-family: var(--font-sans);
       font-size: 0.82rem;
@@ -228,7 +263,9 @@
     }
 
     /* 一覧 */
-    .essay-list { list-style: none; }
+    .essay-list {
+      list-style: none;
+    }
 
     .essay-item {
       margin-bottom: 1.6rem;
@@ -236,7 +273,9 @@
       transition: transform 0.2s;
     }
 
-    .essay-item:hover { transform: translateX(4px); }
+    .essay-item:hover {
+      transform: translateX(4px);
+    }
 
     .essay-date {
       font-size: 0.85rem;
@@ -256,14 +295,16 @@
       line-height: 1.5;
     }
 
-    .essay-title:hover { color: var(--accent-green); }
+    .essay-title:hover {
+      color: var(--accent-green);
+    }
 
     .essay-category-badge {
       display: inline-block;
       font-size: 0.7rem;
       padding: 0.1em 0.55em;
       border-radius: 3px;
-      border: 1px solid rgba(58,90,46,0.25);
+      border: 1px solid rgba(58, 90, 46, 0.25);
       color: var(--accent-green);
       letter-spacing: 0.06em;
       margin-left: 0.5em;
@@ -272,7 +313,9 @@
     }
 
     /* 詳細表示 */
-    .essay-detail-section { animation: fadeIn 0.5s ease-out; }
+    .essay-detail-section {
+      animation: fadeIn 0.5s ease-out;
+    }
 
     .back-btn {
       display: inline-flex;
@@ -284,10 +327,17 @@
       transition: color 0.2s, transform 0.2s;
     }
 
-    .back-btn:hover { color: var(--accent-hover); transform: translateX(-4px); }
+    .back-btn:hover {
+      color: var(--accent-hover);
+      transform: translateX(-4px);
+    }
 
     /* Markdownコンテンツ */
-    .essay-content { font-size: 1.05rem; line-height: 2.1; font-weight: 300; }
+    .essay-content {
+      font-size: 1.05rem;
+      line-height: 2.1;
+      font-weight: 300;
+    }
 
     .essay-content h1 {
       font-family: var(--font-serif);
@@ -318,15 +368,21 @@
       letter-spacing: 0.05em;
     }
 
-    .essay-content p { margin-bottom: 1.8rem; text-align: justify; }
+    .essay-content p {
+      margin-bottom: 1.8rem;
+      text-align: justify;
+    }
 
     .essay-content hr {
       border: none;
-      border-top: 1px solid rgba(58,90,46,0.15);
+      border-top: 1px solid rgba(58, 90, 46, 0.15);
       margin: 3.5rem 0 2rem 0;
     }
 
-    .essay-content hr+p { font-size: 0.85rem; opacity: 0.7; }
+    .essay-content hr+p {
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
 
     .essay-content a {
       color: var(--accent-green);
@@ -335,7 +391,9 @@
       transition: color 0.2s;
     }
 
-    .essay-content a:hover { color: var(--accent-hover); }
+    .essay-content a:hover {
+      color: var(--accent-hover);
+    }
 
     .loading {
       text-align: center;
@@ -355,13 +413,21 @@
 
     #rain-canvas {
       position: fixed;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       z-index: -1;
       pointer-events: none;
     }
 
-    footer { margin-top: 4rem; text-align: center; font-size: 0.8rem; }
-    footer p { opacity: 0.5; }
+    footer {
+      margin-top: 4rem;
+      text-align: center;
+      font-size: 0.8rem;
+    }
+
+    footer p {
+      opacity: 0.5;
+    }
 
     /* PC 2カラム */
     @media (min-width: 900px) {
@@ -382,12 +448,25 @@
         margin-bottom: 0;
       }
 
-      .main-content { flex-grow: 1; min-width: 0; }
+      .main-content {
+        flex-grow: 1;
+        min-width: 0;
+      }
 
-      header { text-align: left; margin-bottom: 3rem; }
-      .hero-gif { margin-left: 0; }
+      header {
+        text-align: left;
+        margin-bottom: 3rem;
+      }
 
-      h1 { font-size: 2rem; letter-spacing: 0.2em; margin-bottom: 0.75rem; }
+      .hero-gif {
+        margin-left: 0;
+      }
+
+      h1 {
+        font-size: 2rem;
+        letter-spacing: 0.2em;
+        margin-bottom: 0.75rem;
+      }
 
       .global-nav {
         flex-direction: column;
@@ -398,7 +477,9 @@
         margin-bottom: 0;
       }
 
-      .nav-item { font-size: 1.05rem; }
+      .nav-item {
+        font-size: 1.05rem;
+      }
     }
   </style>
 </head>
@@ -501,7 +582,7 @@
       { slug: "2026-07-01-lunchmemo2", date: "2026.07.01", title: "Lunch Memoをバージョン2.0にメジャーアップデートした", categories: ["開発"] },
       { slug: "2026-07-16-kicad", date: "2026.07.16", title: "Kicadのすすめ", categories: ["開発"] },
       { slug: "2026-07-18-imari", date: "2026.07.18", title: "伊万里の染付", categories: ["その他"] },
-      { slug: "2026-07-18-base", date: "2026.07.18", title: "Windows11とUbuntuのデュアルブート", categories: [ "開発"] },
+      { slug: "2026-07-18-base", date: "2026.07.18", title: "Windows11とUbuntuのデュアルブート", categories: ["開発"] },
       { slug: "2026-07-18-autoshutdown", date: "2026.07.18", title: "AutoShutdown-GUIの再実装", categories: ["開発"] },
       { slug: "2026-07-18-biwa", date: "2026.07.18", title: "庭にビワは植えないほうがいいかも", categories: ["その他"] },
       { slug: "2026-07-19-rain", date: "2026.07.19", title: "雨男には", categories: ["その他"] },
@@ -524,6 +605,9 @@
       { slug: "2026-07-27-carselect", date: "2026.07.27", title: "250万円の車の検討", categories: ["車"] },
       { slug: "2026-07-27-carcost", date: "2026.07.27", title: "電気自動車とガソリン車の包括的比較・維持費分析", categories: ["車"] },
       { slug: "2026-07-27-esp32notify", date: "2026.07.27", title: "ESP32-C6-GEEKに通知を表示してみた", categories: ["開発"] },
+      { slug: "2026-07-28-smapho", date: "2026.07.28", title: "3万円で買えるスマホ、あなどれない件", categories: ["その他"] },
+      { slug: "2026-07-28-yasai", date: "2026.07.28", title: "無農薬野菜、実は禁止されているらしい", categories: ["その他"] },
+
     ];
 
     const CATEGORY_ORDER = ["開発", "車", "音楽", "日常", "その他"];
