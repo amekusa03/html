@@ -30,6 +30,4 @@ GUIはもうちょっと機能があってもいいかも。
 
 ## ソース
 
-https://github.com/amekusa03/AutoShutdown
-
-
+[AutoShutdown-GUI](https://github.com/amekusa03/AutoShutdown)
