@@ -262,6 +262,32 @@
       opacity: 1;
     }
 
+    /* 年別見出し */
+    .year-heading {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      margin: 2.2rem 0 1.2rem 0;
+      padding-bottom: 0.45rem;
+      border-bottom: 1px solid rgba(58, 90, 46, 0.2);
+      color: var(--accent-green);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .year-heading:first-of-type {
+      margin-top: 0.5rem;
+    }
+
+    .year-count {
+      font-size: 0.8rem;
+      font-weight: normal;
+      opacity: 0.6;
+      font-family: var(--font-sans);
+    }
+
     /* 一覧 */
     .essay-list {
       list-style: none;
@@ -651,12 +677,31 @@
         html += `<button class="cat-btn${isActive}" data-cat="${cat}">${cat}</button>`;
       });
 
-      html += `</div><ul class="essay-list">`;
+      html += `</div>`;
 
       if (filtered.length === 0) {
-        html += `<li class="empty-msg">該当する記事がありません。</li>`;
+        html += `<ul class="essay-list"><li class="empty-msg">該当する記事がありません。</li></ul>`;
       } else {
+        let currentYear = null;
+
         filtered.forEach(essay => {
+          const year = essay.date ? essay.date.substring(0, 4) : essay.slug.substring(0, 4);
+
+          if (year !== currentYear) {
+            if (currentYear !== null) {
+              html += `</ul>`;
+            }
+            currentYear = year;
+            const countInYear = filtered.filter(e => (e.date ? e.date.substring(0, 4) : e.slug.substring(0, 4)) === year).length;
+            html += `
+              <h3 class="year-heading">
+                <span>${year}年</span>
+                <span class="year-count">${countInYear}件</span>
+              </h3>
+              <ul class="essay-list">
+            `;
+          }
+
           const cats = essay.categories && essay.categories.length ? essay.categories : ['その他'];
           html += `
             <li class="essay-item" data-cat="${cats.join(' ')}">
@@ -667,9 +712,9 @@
             </li>
           `;
         });
+        html += `</ul>`;
       }
 
-      html += `</ul>`;
       mainEl.innerHTML = html;
 
       document.getElementById('cat-filter').addEventListener('click', e => {
