@@ -2,7 +2,7 @@ import net from 'net';
 import tls from 'tls';
 
 // 以前のカウンターの引継ぎベース値
-const INITIAL_OFFSET = 451;
+const INITIAL_OFFSET = 0;
 
 function sendRedisTcpCommand(redisUrlStr, commandArgs) {
   return new Promise((resolve, reject) => {
