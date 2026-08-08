@@ -1,6 +1,9 @@
 import net from 'net';
 import tls from 'tls';
 
+// 以前のカウンターの引継ぎベース値
+const INITIAL_OFFSET = 451;
+
 function sendRedisTcpCommand(redisUrlStr, commandArgs) {
   return new Promise((resolve, reject) => {
     try {
@@ -65,6 +68,8 @@ export default async function handler(req, res) {
 
   const isUp = req.query.up === 'true';
 
+  let rawCount = 0;
+
   // 1. REST API の設定がある場合
   if (restUrl && restToken) {
     try {
@@ -77,8 +82,8 @@ export default async function handler(req, res) {
         return res.status(response.status).json({ error: errText });
       }
       const data = await response.json();
-      const count = typeof data.result === 'number' ? data.result : parseInt(data.result || '0', 10);
-      return res.status(200).json({ count });
+      rawCount = typeof data.result === 'number' ? data.result : parseInt(data.result || '0', 10);
+      return res.status(200).json({ count: INITIAL_OFFSET + rawCount });
     } catch (err) {
       return res.status(500).json({ error: err.message });
     }
@@ -91,12 +96,12 @@ export default async function handler(req, res) {
         const endpoint = isUp ? `${redisUrl}/incr/visitors` : `${redisUrl}/get/visitors`;
         const response = await fetch(endpoint);
         const data = await response.json();
-        const count = typeof data.result === 'number' ? data.result : parseInt(data.result || '0', 10);
-        return res.status(200).json({ count });
+        rawCount = typeof data.result === 'number' ? data.result : parseInt(data.result || '0', 10);
+        return res.status(200).json({ count: INITIAL_OFFSET + rawCount });
       } else {
         const cmd = isUp ? ['INCR', 'visitors'] : ['GET', 'visitors'];
-        const count = await sendRedisTcpCommand(redisUrl, cmd);
-        return res.status(200).json({ count });
+        rawCount = await sendRedisTcpCommand(redisUrl, cmd);
+        return res.status(200).json({ count: INITIAL_OFFSET + rawCount });
       }
     } catch (err) {
       return res.status(500).json({ error: 'Redis Error: ' + err.message });
