@@ -249,6 +249,7 @@
 
     // カテゴリの表示順序
     const CATEGORY_ORDER = ["開発", "車", "音楽", "日常", "その他"];
+    const CATEGORY_ICONS = { "開発": "🛠️", "車": "🏎️", "音楽": "🎧", "日常": "☕", "その他": "🌿" };
 
     const contentArea = document.getElementById('notes');
 
@@ -307,8 +308,9 @@
         const cats = essay.categories && essay.categories.length ? essay.categories : (essay.category ? [essay.category] : ['その他']);
         html += `
           <li class="essay-item">
-            <span class="essay-date">${essay.date}
-              ${cats.map(c => `<span class="essay-category-badge">${c}</span>`).join('')}
+            <span class="essay-date">
+              ${cats.map(c => `<span class="essay-category-badge">${CATEGORY_ICONS[c] || ''} ${c}</span>`).join('')}
+              ${essay.date}
             </span>
             <a href="#essay=${essay.slug}" class="essay-title">${essay.title}</a>
           </li>

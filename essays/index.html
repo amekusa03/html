@@ -662,6 +662,7 @@
     ];
 
     const CATEGORY_ORDER = ["開発", "車", "音楽", "日常", "その他"];
+    const CATEGORY_ICONS = { "開発": "🛠️", "車": "🏎️", "音楽": "🎧", "日常": "☕", "その他": "🌿" };
     const allCategories = ["すべて", ...CATEGORY_ORDER.filter(cat => ESSAYS.some(e => e.categories.includes(cat)))];
 
     const mainEl = document.getElementById('archive-main');
@@ -683,7 +684,8 @@
 
       allCategories.forEach(cat => {
         const isActive = cat === currentCat ? ' active' : '';
-        html += `<button class="cat-btn${isActive}" data-cat="${cat}">${cat}</button>`;
+        const icon = CATEGORY_ICONS[cat] ? CATEGORY_ICONS[cat] + ' ' : '';
+        html += `<button class="cat-btn${isActive}" data-cat="${cat}">${icon}${cat}</button>`;
       });
 
       html += `</div>`;
@@ -714,8 +716,9 @@
           const cats = essay.categories && essay.categories.length ? essay.categories : ['その他'];
           html += `
             <li class="essay-item" data-cat="${cats.join(' ')}">
-              <span class="essay-date">${essay.date}
-                ${cats.map(c => `<span class="essay-category-badge">${c}</span>`).join('')}
+              <span class="essay-date">
+                ${cats.map(c => `<span class="essay-category-badge">${CATEGORY_ICONS[c] || ''} ${c}</span>`).join('')}
+                ${essay.date}
               </span>
               <a href="/#essay=${essay.slug}" class="essay-title">${essay.title}</a>
             </li>
