@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-H7C45PPLP6"></script>
+<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-H7C45PPLP6');
+    </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://amekusa.vercel.app/Photo1" rel="canonical"/>
+<meta content="amekusa's photo gallery. This is a photo gallery that records fragments of everyday life, such as mountains, flowers, and cityscapes." name="description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://amekusa.vercel.app/Photo1" property="og:url"/>
+<meta content="Photography | Raingrass Garden" property="og:title"/>
+<meta content="amekusa's photo gallery. This is a photo gallery that records fragments of everyday life, such as mountains, flowers, and cityscapes." property="og:description"/>
+<meta content="https://amekusa.vercel.app/ogp.png" property="og:image"/>
+<title>Photography | Raingrass Garden</title>
+<script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+<script defer="" src="/_vercel/insights/script.js"></script>
+<link href="../style.css" rel="stylesheet"/>
+</head>
+<body class="app-page">
+<div class="container">
+<nav>
+<a href="../index.html">← Back to Garden</a>
+</nav>
+<header>
+<h1>Photography</h1>
+<p style="opacity: 0.8;">daily fragments</p>
+</header>
+<nav>
+<a href="../Photo2/index.html">Next to Page→</a>
+</nav>
+<section>
+<div class="photo-grid">
+<div class="photo-item">
+<img alt="Streets in Southeast Asia where many motorcycles come and go" loading="lazy" src="../Photo1/photo01.jpg"/>
+</div>
+<div class="photo-item">
+<img alt="A set of Vietnamese pho and herbs and seasonings on a green tray" loading="lazy" src="../Photo1/photo02.jpg"/>
+</div>
+<div class="photo-item">
+<img alt="Red price tag in the meat section of a Vietnamese supermarket" loading="lazy" src="../Photo1/photo03.jpg"/>
+</div>
+<div class="photo-item">
+<img alt="Brick Saigon Cathedral with blue sky and clouds in the background" loading="lazy" src="../Photo1/photo04.jpg"/>
+</div>
+<div class="photo-item">
+<img alt="Large rocks floating on the surface of clear emerald green water" loading="lazy" src="../Photo1/photo05.jpg"/>
+</div>
+<div class="photo-item">
+<img alt="Beautiful white lily flowers blooming in the grass" loading="lazy" src="../Photo1/photo06.jpg"/>
+</div>
+<div class="photo-item">
+<img alt="Bright yellow lily flowers blooming among green leaves" loading="lazy" src="../Photo1/photo07.jpg"/>
+</div>
+<div class="photo-item">
+<img alt="Close-up of a lion's face staring at us" loading="lazy" src="../Photo1/photo08.jpg"/>
+</div>
+<div class="photo-item">
+<img alt="A large elephant standing sideways" loading="lazy" src="../Photo1/photo09.jpg"/>
+</div>
+<div class="photo-item">
+<img alt="A tabby cat sitting on the ground" loading="lazy" src="../Photo1/photo10.jpg"/>
+</div>
+<div class="photo-item">
+<img alt="High radio tower with blue sky and white clouds in the background" loading="lazy" src="../Photo1/photo11.jpg"/>
+</div>
+<div class="photo-item">
+<img alt="Pink plum blossoms against the blue sky" loading="lazy" src="../Photo1/photo12.jpg"/>
+</div>
+<div class="photo-item">
+<img alt="Red dragonfly perched on the wooden railing and the sparkle on the water surface" loading="lazy" src="../Photo1/photo13.jpg"/>
+</div>
+<div class="photo-item">
+<img alt="Rotating brushes and water spray seen from inside the car wash machine" loading="lazy" src="../Photo1/photo14.jpg"/>
+</div>
+<div class="photo-item">
+<img alt="A flock of ducks swimming on the water surface covered with aquatic plants" loading="lazy" src="../Photo1/photo15.jpg"/>
+</div>
+<div class="photo-item">
+<img alt="Golden daisy flowers in full bloom" loading="lazy" src="../Photo1/photo16.jpg"/>
+</div>
+<div class="photo-item">
+<img alt="A quiet port where ships dock" loading="lazy" src="../Photo1/photo17.jpg"/>
+</div>
+<div class="photo-item">
+<img alt="White Deutsche flowers in full bloom" loading="lazy" src="../Photo1/photo18.jpg"/>
+</div>
+<div class="photo-item">
+<img alt="Star-shaped white Deutsche flower" loading="lazy" src="../Photo1/photo19.jpg"/>
+</div>
+</div>
+</section>
+<nav>
+<a href="../Photo2/index.html">Next to Page→</a>
+</nav>
+<footer>
+<p>Copyright © amekusa All Rights Reserved.</p>
+</footer>
+</div>
+<!-- Lightbox -->
+<div class="photo-lightbox" id="photoLightbox">
+<button class="photo-lightbox-close" id="lightboxClose">✕</button>
+<button class="photo-lightbox-prev" id="lightboxPrev">‹</button>
+<img alt="" class="photo-lightbox-img" id="lightboxImg" src=""/>
+<button class="photo-lightbox-next" id="lightboxNext">›</button>
+</div>
+<script>
+        const lightbox = document.getElementById('photoLightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const items = Array.from(document.querySelectorAll('.photo-item img'));
+        let current = 0;
+
+        function openLightbox(index) {
+            current = index;
+            lightboxImg.src = items[current].src;
+            lightboxImg.alt = items[current].alt;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        function prev() { openLightbox((current - 1 + items.length) % items.length); }
+        function next() { openLightbox((current + 1) % items.length); }
+
+        items.forEach((img, i) => img.parentElement.addEventListener('click', () => openLightbox(i)));
+        document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+        document.getElementById('lightboxPrev').addEventListener('click', prev);
+        document.getElementById('lightboxNext').addEventListener('click', next);
+        lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+        document.addEventListener('keydown', e => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') prev();
+            if (e.key === 'ArrowRight') next();
+        });
+    </script>
+</body>
+</html>

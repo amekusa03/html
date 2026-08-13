@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+<script defer="" src="/_vercel/insights/script.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-SRGF2MMYGD');
+  </script>
+<link href="../Favicon.png" rel="icon" type="image/png"/>
+<link href="../amenoniwa.png" rel="apple-touch-icon"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://amekusa.vercel.app/essays/" rel="canonical"/>
+<meta content="Rainweed Garden — Full article archive. Technical essays, daily memos, cars, etc." name="description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://amekusa.vercel.app/essays/" property="og:url"/>
+<meta content="Notes Archive | Raingrass Garden" property="og:title"/>
+<meta content="Rainweed Garden — Full article archive. Technical essays, daily memos, cars, etc." property="og:description"/>
+<meta content="https://amekusa.vercel.app/ogp.png" property="og:image"/>
+<title>Notes Archive | Raingrass Garden</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&amp;family=Noto+Serif+JP:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --bg-color: #f5f0e8;
+      --text-color: #1c1a17;
+      --accent-green: #3a5a2e;
+      --accent-hover: #4e753f;
+      --card-bg: rgba(255, 255, 255, 0.55);
+      --font-serif: 'Noto Serif JP', "Hiragino Mincho ProN", "Yu Mincho", serif;
+      --font-sans: 'Noto Sans JP', "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+      --washi-line: rgba(58, 90, 46, 0.05);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-color: #18160f;
+        --text-color: #e8e2d8;
+        --card-bg: rgba(38, 34, 26, 0.65);
+        --washi-line: rgba(160, 180, 140, 0.04);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-sans);
+      line-height: 1.9;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 39px, var(--washi-line) 39px, var(--washi-line) 40px),
+        repeating-linear-gradient(90deg, transparent, transparent 39px, var(--washi-line) 39px, var(--washi-line) 40px);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      padding: 3rem 1.5rem;
+    }
+
+    .container {
+      max-width: 750px;
+      width: 100%;
+      margin: 0 auto;
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 12px;
+      padding: 3.5rem 3rem;
+      box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    .sidebar {
+      margin-bottom: 2.5rem;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 1.5rem 1rem;
+      }
+
+      .container {
+        padding: 2rem 1.5rem;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .hero-gif {
+      width: 70px;
+      margin-bottom: 1.5rem;
+      mask-image: radial-gradient(circle, black 40%, rgba(0, 0, 0, 0) 100%);
+      -webkit-mask-image: radial-gradient(circle, black 40%, rgba(0, 0, 0, 0) 100%);
+    }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      letter-spacing: 0.25em;
+      font-weight: 300;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      letter-spacing: 0.15em;
+      color: var(--accent-green);
+      opacity: 0.8;
+    }
+
+    /* ナビ */
+    .global-nav {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-bottom: 3.5rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid rgba(58, 90, 46, 0.08);
+    }
+
+    .nav-item {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text-color);
+      text-decoration: none;
+      opacity: 0.6;
+      transition: opacity 0.3s, color 0.3s;
+      position: relative;
+      letter-spacing: 0.1em;
+    }
+
+    .nav-item:hover,
+    .nav-item.active {
+      opacity: 1;
+      color: var(--accent-green);
+    }
+
+    .nav-item::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 1px;
+      bottom: -6px;
+      left: 0;
+      background-color: var(--accent-green);
+      transition: width 0.3s ease;
+    }
+
+    .nav-item:hover::after,
+    .nav-item.active::after {
+      width: 100%;
+    }
+
+    @media (max-width: 600px) {
+      .global-nav {
+        gap: 1.5rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .nav-item {
+        font-size: 0.9rem;
+      }
+    }
+
+    /* アーカイブヘッダー */
+    .archive-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .archive-header h2 {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(58, 90, 46, 0.15);
+      letter-spacing: 0.1em;
+    }
+
+    .archive-count {
+      font-size: 0.85rem;
+      opacity: 0.55;
+      letter-spacing: 0.05em;
+    }
+
+    /* カテゴリフィルター */
+    .category-filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .cat-btn {
+      background: transparent;
+      border: 1px solid rgba(58, 90, 46, 0.25);
+      color: var(--text-color);
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      padding: 0.3em 0.9em;
+      border-radius: 4px;
+      cursor: pointer;
+      letter-spacing: 0.06em;
+      transition: all 0.2s ease;
+      opacity: 0.7;
+    }
+
+    .cat-btn:hover {
+      opacity: 1;
+      border-color: var(--accent-green);
+      color: var(--accent-green);
+    }
+
+    .cat-btn.active {
+      background: var(--accent-green);
+      border-color: var(--accent-green);
+      color: #fff;
+      opacity: 1;
+    }
+
+    /* 年別見出し */
+    .year-heading {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      margin: 2.2rem 0 1.2rem 0;
+      padding-bottom: 0.45rem;
+      border-bottom: 1px solid rgba(58, 90, 46, 0.2);
+      color: var(--accent-green);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .year-heading:first-of-type {
+      margin-top: 0.5rem;
+    }
+
+    .year-count {
+      font-size: 0.8rem;
+      font-weight: normal;
+      opacity: 0.6;
+      font-family: var(--font-sans);
+    }
+
+    /* 一覧 */
+    .essay-list {
+      list-style: none;
+    }
+
+    .essay-item {
+      margin-bottom: 1.6rem;
+      position: relative;
+      transition: transform 0.2s;
+    }
+
+    .essay-item:hover {
+      transform: translateX(4px);
+    }
+
+    .essay-date {
+      font-size: 0.85rem;
+      opacity: 0.6;
+      margin-bottom: 0.2rem;
+      display: block;
+      letter-spacing: 0.05em;
+    }
+
+    .essay-title {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: var(--text-color);
+      text-decoration: none;
+      transition: color 0.2s;
+      line-height: 1.5;
+    }
+
+    .essay-title:hover {
+      color: var(--accent-green);
+    }
+
+    .essay-category-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      padding: 0.1em 0.55em;
+      border-radius: 3px;
+      border: 1px solid rgba(58, 90, 46, 0.25);
+      color: var(--accent-green);
+      letter-spacing: 0.06em;
+      margin-left: 0.5em;
+      vertical-align: middle;
+      opacity: 0.85;
+    }
+
+    /* 詳細表示 */
+    .essay-detail-section {
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--accent-green);
+      font-size: 0.9rem;
+      margin-bottom: 2.5rem;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .back-btn:hover {
+      color: var(--accent-hover);
+      transform: translateX(-4px);
+    }
+
+    /* Markdownコンテンツ */
+    .essay-content {
+      font-size: 1.05rem;
+      line-height: 2.1;
+      font-weight: 300;
+    }
+
+    .essay-content h1 {
+      font-family: var(--font-serif);
+      font-size: 1.9rem;
+      font-weight: 400;
+      margin-bottom: 0.8rem;
+      text-align: left;
+      line-height: 1.4;
+      letter-spacing: 0.05em;
+    }
+
+    .essay-content h1+p {
+      font-size: 0.9rem;
+      opacity: 0.65;
+      margin-bottom: 3.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    .essay-content h2 {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 400;
+      margin-top: 3.5rem;
+      margin-bottom: 1.2rem;
+      color: var(--accent-green);
+      border-left: 2px solid var(--accent-green);
+      padding-left: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+
+    .essay-content p {
+      margin-bottom: 1.8rem;
+      text-align: justify;
+    }
+
+    .essay-content hr {
+      border: none;
+      border-top: 1px solid rgba(58, 90, 46, 0.15);
+      margin: 3.5rem 0 2rem 0;
+    }
+
+    .essay-content hr+p {
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
+
+    .essay-content a {
+      color: var(--accent-green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      transition: color 0.2s;
+    }
+
+    .essay-content a:hover {
+      color: var(--accent-hover);
+    }
+
+    .loading {
+      text-align: center;
+      padding: 3rem 0;
+      font-size: 1rem;
+      opacity: 0.7;
+      letter-spacing: 0.1em;
+    }
+
+    .empty-msg {
+      text-align: center;
+      padding: 3rem 0;
+      font-size: 0.95rem;
+      opacity: 0.55;
+      letter-spacing: 0.05em;
+    }
+
+    #rain-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    footer {
+      margin-top: 4rem;
+      text-align: center;
+      font-size: 0.8rem;
+    }
+
+    footer p {
+      opacity: 0.5;
+    }
+
+    /* PC 2カラム */
+    @media (min-width: 900px) {
+      .container {
+        max-width: 1000px;
+        display: flex;
+        gap: 4.5rem;
+        padding: 4rem 3.5rem;
+      }
+
+      .sidebar {
+        width: 240px;
+        flex-shrink: 0;
+        position: sticky;
+        top: 3rem;
+        height: fit-content;
+        text-align: left;
+        margin-bottom: 0;
+      }
+
+      .main-content {
+        flex-grow: 1;
+        min-width: 0;
+      }
+
+      header {
+        text-align: left;
+        margin-bottom: 3rem;
+      }
+
+      .hero-gif {
+        margin-left: 0;
+      }
+
+      h1 {
+        font-size: 2rem;
+        letter-spacing: 0.2em;
+        margin-bottom: 0.75rem;
+      }
+
+      .global-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+        border-bottom: none;
+        padding-bottom: 0;
+        margin-bottom: 0;
+      }
+
+      .nav-item {
+        font-size: 1.05rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<canvas id="rain-canvas"></canvas>
+<div class="container">
+<div class="sidebar">
+<header>
+<a href="../"><img alt="Character animation" class="hero-gif" src="../amenoniwa.png"/></a>
+<h1>Amekusa's Garden</h1>
+<p class="subtitle">Engineering &amp; Nature Notes</p>
+</header>
+<nav class="global-nav">
+<a class="nav-item active" href="../#notes">Notes</a>
+<a class="nav-item" href="../#photography">Photography</a>
+<a class="nav-item" href="../#profile">Profile</a>
+<a class="nav-item" href="../#links">Links</a>
+</nav>
+</div>
+<div class="main-content">
+<main id="archive-main">
+<!-- JSで描画 -->
+</main>
+<footer>
+<p>Copyright © amekusa All Rights Reserved.</p>
+</footer>
+</div>
+</div>
+<script defer="" src="../rain.js"></script>
+<script>
+    // =====================================================================
+    // エッセイデータ定義（index.html と同期すること）
+    // =====================================================================
+    const ESSAYS = [
+      { slug: "2025-11-08-ubuntu", date: "2025.11.08", title: "I started Ubuntu", categories: ["Development"] },
+      { slug: "2025-12-13-soft", date: "2025.12.13", title: "don't blame the engineer", categories: ["Development"] },
+      { slug: "2025-12-28-ai", date: "2025.12.28", title: "AI", categories: ["Development"] },
+      { slug: "2025-12-30-sim", date: "2025.12.30", title: "SIM card", categories: ["Daily Life"] },
+      { slug: "2026-01-04-cobol", date: "2026.01.04", title: "COBOL", categories: ["Development"] },
+      { slug: "2026-01-07-music", date: "2026.01.07", title: "Music files are stuck in the swamp", categories: ["Daily Life", "Music"] },
+      { slug: "2026-06-20-portfolio-redesign", date: "2026.06.20", title: "Portfolio redesign", categories: ["Development"] },
+      { slug: "2026-06-21-Sekkati-TextField", date: "2026.06.21", title: "Android version text input problem", categories: ["Development"] },
+      { slug: "2026-06-26-pythonBase", date: "2026.06.26", title: "I created a template for a Python GUI filer.", categories: ["Development"] },
+      { slug: "2026-06-28-pythonpicMusic", date: "2026.06.28", title: "I created a GUI filer with music management function.", categories: ["Development"] },
+      { slug: "2026-06-28-projectMan", date: "2026.06.28", title: "How to proceed with the project", categories: ["Car"] },
+      { slug: "2026-06-29-usageAlert", date: "2026.06.29", title: "A story about creating a packet remaining amount notification app", categories: ["Development"] },
+      { slug: "2026-07-01-dualsim", date: "2026.07.01", title: "Could not support dual SIM", categories: ["Development"] },
+      { slug: "2026-07-01-lunchmemo", date: "2026.07.01", title: "Major update of Lunch Memo to version 2.0", categories: ["Development"] },
+      { slug: "2026-07-03-amazon", date: "2026.07.03", title: "A story about canceling an item ordered on Amazon (Part 1)", categories: ["Daily Life"] },
+      { slug: "2026-07-07-amazon", date: "2026.07.07", title: "A story about canceling an item ordered on Amazon (Part 2)", categories: ["Daily Life"] },
+      { slug: "2026-07-09-netshop", date: "2026.07.09", title: "online shopping", categories: ["Daily Life"] },
+      { slug: "2026-07-09-soundtune", date: "2026.07.09", title: "I made a car equalizer setting app", categories: ["Car", "Development", "Music"] },
+      { slug: "2026-07-10-woofer", date: "2026.07.10", title: "Subwoofer operation confirmation", categories: ["Car", "Music"] },
+      { slug: "2026-07-10-antigravity", date: "2026.07.10", title: "Antigravity updates", categories: ["Development"] },
+      { slug: "2026-07-11-ubuntu", date: "2026.07.11", title: "Why Ubuntu is not popular", categories: ["Others"] },
+      { slug: "2026-07-11-cable", date: "2026.07.11", title: "Selection of power cable", categories: ["Car"] },
+      { slug: "2026-07-12-timealignment", date: "2026.07.12", title: "I tried creating a time alignment setting app and it failed.", categories: ["Car", "Development", "Music"] },
+      { slug: "2026-07-13-androidauto", date: "2026.07.13", title: "About Android Auto's CarApp API", categories: ["Car", "Development"] },
+      { slug: "2026-07-13-crow", date: "2026.07.13", title: "How to reduce the damage caused by crows", categories: ["Others"] },
+      { slug: "2026-07-13-farm", date: "2026.07.13", title: "Laws of saturation difference and environmental control that affect plant growth", categories: ["Others"] },
+      { slug: "2026-07-13-soundset", date: "2026.07.13", title: "Car audio system configuration", categories: ["Car", "Music"] },
+      { slug: "2026-07-14-pcaudio", date: "2026.07.14", title: "A story about replacing PC audio speakers", categories: ["Daily Life", "Music"] },
+      { slug: "2026-01-30-htmltoblogger", date: "2026.01.30", title: "HTML to Blogger", categories: ["Development"] },
+      { slug: "2026-02-26-worldclock", date: "2026.02.26", title: "ESP32 world Clock for Wokwi", categories: ["Development"] },
+      { slug: "2026-03-02-avalonia_ui", date: "2026.03.02", title: "Avalonia learning", categories: ["Development"] },
+      { slug: "2026-03-06-qtlauncher", date: "2026.03.06", title: "Qt Project Launcher", categories: ["Development"] },
+      { slug: "2026-03-08-qtcreator", date: "2026.03.08", title: "Hello World Qt Creator", categories: ["Development"] },
+      { slug: "2026-03-12-pdfunlocker", date: "2026.03.12", title: "Android PDF Unlocker", categories: ["Development"] },
+      { slug: "2026-03-21-ubuntu", date: "2026.03.21", title: "Ubuntu introduction guide", categories: ["Development"] },
+      { slug: "2026-04-02-weblauncher", date: "2026.04.02", title: "Android Web Launcher", categories: ["Development"] },
+      { slug: "2026-04-05-pcaudioappli", date: "2026.04.05", title: "My PC Audio - Software Setup", categories: ["Development", "Music"] },
+      { slug: "2026-04-05_pcaudio", date: "2026.04.05", title: "My PC Audio", categories: ["Daily Life", "Music"] },
+      { slug: "2026-04-06-seo", date: "2026.04.06", title: "SEO strategies", categories: ["Development"] },
+      { slug: "2026-04-12-nestscript", date: "2026.04.12", title: "Google Nest Script", categories: ["Development"] },
+      { slug: "2026-04-14-plc", date: "2026.04.14", title: "Software PLC : CODESYS", categories: ["Development"] },
+      { slug: "2026-04-16-askgeminibyemail", date: "2026.04.16", title: "Email Gemini", categories: ["Development"] },
+      { slug: "2026-04-19-encbrowse", date: "2026.04.19", title: "EncBrowse", categories: ["Development"] },
+      { slug: "2026-04-23-Refactoring", date: "2026.04.23", title: "refactoring", categories: ["Development"] },
+      { slug: "2026-04-28-unlockpdf", date: "2026.04.28", title: "Gmail PDF Unlocker", categories: ["Development"] },
+      { slug: "2026-04-29-googlestore", date: "2026.04.29", title: "Android app distribution policy", categories: ["Development"] },
+      { slug: "2026-04-30-racinggame", date: "2026.04.30", title: "ESP32 Racing Game for Wokwi", categories: ["Development"] },
+      { slug: "2026-04-30-weblauncher2", date: "2026.04.30", title: "Android Web Launcher 2", categories: ["Development"] },
+      { slug: "2026-05-08-smartpc", date: "2026.05.08", title: "[Canceled] Smart PC Project", categories: ["Development"] },
+      { slug: "2026-05-09-sekkati", date: "2026.05.09", title: "SekkaTi", categories: ["Development"] },
+      { slug: "2026-05-09-virtual_device", date: "2026.05.09", title: "Virtual Smart Device Control System", categories: ["Development"] },
+      { slug: "2026-05-13-table_clock", date: "2026.05.13", title: "Android Table Clock", categories: ["Development"] },
+      { slug: "2026-05-17-cleanguide", date: "2026.05.17", title: "How to organize Android unnecessary apps (script edition)", categories: ["Development"] },
+      { slug: "2026-05-21-musicplayer", date: "2026.05.21", title: "Android Auto Music Player", categories: ["Development", "Car", "Music"] },
+      { slug: "2026-05-21-tagplaylist", date: "2026.05.21", title: "TagPlaylist Generator", categories: ["Development", "Music"] },
+      { slug: "2026-05-23-likebutton", date: "2026.05.23", title: "Introduction of like button", categories: ["Development"] },
+      { slug: "2026-05-25-installguide", date: "2026.05.25", title: "How to install Android apps", categories: ["Development"] },
+      { slug: "2026-05-28-autoshutdown", date: "2026.05.28", title: "AutoShutdown — automatic shutdown during inactivity", categories: ["Development"] },
+      { slug: "2026-05-28-imagefornet", date: "2026.05.28", title: "Android Image for net", categories: ["Development"] },
+      { slug: "2026-05-31-sekkati", date: "2026.05.31", title: "SekkaTi for android", categories: ["Development"] },
+      { slug: "2026-06-14-fieldlogger", date: "2026.06.14", title: "Temperature and humidity data logger for mountain fields (Hata logger)", categories: ["Development"] },
+      { slug: "2026-06-15-esp32aircon", date: "2026.06.15", title: "ESP32 Air Conditioner Control (+ SwitchBot Web API)", categories: ["Development"] },
+      { slug: "2026-06-16loctime", date: "2026.06.16", title: "LocTime", categories: ["Development"] },
+      { slug: "2026-06-18-cockpitscope", date: "2026.06.18", title: "Cockpit Scope", categories: ["Development", "Car"] },
+      { slug: "2026-06-23-imagefornet", date: "2026.06.23", title: "Image for net v3", categories: ["Development"] },
+      { slug: "2026-06-24-smartonpc", date: "2026.06.24", title: "SmartOn PC", categories: ["Development"] },
+      { slug: "2026-07-01-lunchmemo1", date: "2026.07.01", title: "Lunch Memo", categories: ["Development"] },
+      { slug: "2026-07-01-lunchmemo2", date: "2026.07.01", title: "Major update of Lunch Memo to version 2.0", categories: ["Development"] },
+      { slug: "2026-07-10-gasvsEle", date: "2026.07.10", title: "I thought about what I should do for residential energy supply and hot water supply equipment.", categories: ["Others"] },
+      { slug: "2026-07-16-kicad", date: "2026.07.16", title: "Kicad recommendation", categories: ["Development"] },
+      { slug: "2026-07-18-imari", date: "2026.07.18", title: "Imari dyeing", categories: ["Others"] },
+      { slug: "2026-07-18-dualboot", date: "2026.07.18", title: "Dual booting Windows11 and Ubuntu", categories: ["Development"] },
+      { slug: "2026-07-18-autoshutdown", date: "2026.07.18", title: "AutoShutdown-GUI reimplementation", categories: ["Development"] },
+      { slug: "2026-07-18-biwa", date: "2026.07.18", title: "It might be better not to plant loquats in the garden.", categories: ["Others"] },
+      { slug: "2026-07-19-rain", date: "2026.07.19", title: "To the rain man", categories: ["Others"] },
+      { slug: "2026-07-19-soundreset", date: "2026.07.19", title: "Car DSP again", categories: ["Car", "Music"] },
+      { slug: "2026-07-20-obd", date: "2026.07.20", title: "Car additional meter Android and ELM327", categories: ["Development", "Car"] },
+      { slug: "2026-07-20-sizuoka", date: "2026.07.20", title: "Shizuoka Tourism Chubu", categories: ["Daily Life"] },
+      { slug: "2026-07-21-eml327", date: "2026.07.21", title: "ELM327 ACC power supply", categories: ["Development", "Car"] },
+      { slug: "2026-07-21-oldandroid", date: "2026.07.21", title: "Security measures due to end of Android support", categories: ["Development"] },
+      { slug: "2026-07-22-tv", date: "2026.07.22", title: "Understanding QD-OLED, Mini LED, and display technology", categories: ["Others"] },
+      { slug: "2026-07-23-ESP32", date: "2026.07.23", title: "Communication between ESP32-C6 and OBD2", categories: ["Development", "Car"] },
+      { slug: "2026-07-24-smartonpc", date: "2026.07.24", title: "Control your PC power with Google Nest Hub", categories: ["Development"] },
+      { slug: "2026-07-24-ubuntu", date: "2026.07.24", title: "Ubuntu vs Windows 11", categories: ["Development"] },
+      { slug: "2026-07-24-hiking", date: "2026.07.24", title: "Who owns the hiking trail?", categories: ["Others"] },
+      { slug: "2026-07-25-speakerspec", date: "2026.07.25", title: "How to read speaker catalog specifications", categories: ["Music"] },
+      { slug: "2026-07-25-speaker", date: "2026.07.25", title: "Comparison and selection of Yamaha NS-B210 and NS-10MMT", categories: ["Music"] },
+      { slug: "2026-07-25-audiosucked", date: "2026.07.25", title: "audio swamp", categories: ["Music"] },
+      { slug: "2026-07-26-farm", date: "2026.07.26", title: "loose farming methods", categories: ["Daily Life"] },
+      { slug: "2026-07-27-planter", date: "2026.07.27", title: "A story about growing flowers with an air conditioner", categories: ["Daily Life"] },
+      { slug: "2026-07-27-hybridcar", date: "2026.07.27", title: "I've put together a summary of hybrid cars.", categories: ["Car"] },
+      { slug: "2026-07-27-carselect", date: "2026.07.27", title: "Consideration of a car costing 2.5 million yen", categories: ["Car"] },
+      { slug: "2026-07-27-carcost", date: "2026.07.27", title: "Comprehensive comparison and maintenance cost analysis of electric cars and gasoline cars", categories: ["Car"] },
+      { slug: "2026-07-27-esp32notify", date: "2026.07.27", title: "I tried displaying a notification on ESP32-C6-GEEK", categories: ["Development"] },
+      { slug: "2026-07-28-smapho", date: "2026.07.28", title: "Smartphones you can buy for 30,000 yen, things you can't underestimate", categories: ["Others"] },
+      { slug: "2026-07-28-yasai", date: "2026.07.28", title: "Apparently pesticide-free vegetables are actually prohibited.", categories: ["Others"] },
+      { slug: "2026-07-29-esp32", date: "2026.07.29", title: "This is next! Standard for electronic work “ESP32”", categories: ["Development"] },
+      { slug: "2026-07-30-ESP32", date: "2026.07.30", title: "Even ESP32 could not connect to ELM327", categories: ["Development", "Car"] },
+      { slug: "2026-07-31-androidESP32", date: "2026.07.31", title: "I tried displaying Android notifications on ESP32", categories: ["Development"] },
+      { slug: "2026-08-01-car", date: "2026.08.01", title: "What kind of car is best for going outdoors?", categories: ["Car"] },
+      { slug: "2026-08-01-amazon", date: "2026.08.01", title: "A story about how the product arrived after Amazon canceled it.", categories: ["Others"] },
+      { slug: "2026-08-02-meter", date: "2026.08.02", title: "hybrid multimeter", categories: ["Car"] },
+      { slug: "2026-08-02-homedev", date: "2026.08.02", title: "Turn your PC into a virtual Google Home device", categories: ["Development"] },
+      { slug: "2026-08-03-cam", date: "2026.08.03", title: "No USB camera", categories: ["Development"] },
+      { slug: "2026-08-03-notepc", date: "2026.08.03", title: "I just want to listen to music on my laptop", categories: ["Music"] },
+      { slug: "2026-08-04-soundtune", date: "2026.08.04", title: "I tried making a frequency sweep sound source for my PC.", categories: ["Development"] },
+      { slug: "2026-08-05-rakuten", date: "2026.08.05", title: "Rakuten AI PPTX", categories: ["Development"] },
+      { slug: "2026-08-05-esp32", date: "2026.08.05", title: "A story about touching the ESP32's \"interrupt\" with bare hands", categories: ["Development"] },
+      { slug: "2026-08-06-pipewire", date: "2026.08.06", title: "A story about being addicted to the sound swamp - Chasing the \"original sound\" with Ubuntu -", categories: ["Music"] },
+      { slug: "2026-08-07-ai", date: "2026.08.07", title: "Why does AI praise us?", categories: ["Others"] },
+      { slug: "2026-08-08-smartsensor", date: "2026.08.08", title: "“Lighting automation” for your home with just one coin", categories: ["Development"] },
+      { slug: "2026-08-09-counter", date: "2026.08.09", title: "Building a visitor counter using Vercel Redis (KV) + Serverless API", categories: ["Development"] },
+      { slug: "2026-08-09-switchbothome", date: "2026.08.09", title: "SwitchBot Smart Home", categories: ["Development"] },
+      { slug: "2026-08-10-imagefornet", date: "2026.08.10", title: "Face mosaic processing added to Android image processing app", categories: ["Development"] },
+      { slug: "2026-08-12-qt6autoshutdown", date: "2026.08.12", title: "Qt6(C++) AutoShutdown reimplementation", categories: ["Development"] },
+      { slug: "2026-08-13-smartswichbot", date: "2026.08.13", title: "I made my own Android SwitchBot app.", categories: ["Development"] },
+    ];
+
+    const CATEGORY_ORDER = ["Development", "Car", "Music", "Daily Life", "Others"];
+    const CATEGORY_ICONS = { "Development": "🛠️", "Car": "🏎️", "Music": "🎧", "Daily Life": "☕", "Others": "🌿" };
+    const allCategories = ["all", ...CATEGORY_ORDER.filter(cat => ESSAYS.some(e => e.categories.includes(cat)))];
+
+    const mainEl = document.getElementById('archive-main');
+    let currentCat = "all";
+
+    function renderArchiveList() {
+      document.title = "Notes Archive | Raingrass Garden";
+
+      const sorted = [...ESSAYS].sort((a, b) => b.slug.localeCompare(a.slug));
+      const filtered = currentCat === "all" ? sorted : sorted.filter(e => e.categories.includes(currentCat));
+
+      let html = `
+        <div class="archive-header">
+          <h2>Notes Archive</h2>
+          <p class="archive-count">All ${ESSAYS.length} cases</p>
+        </div>
+        <div class="category-filter" id="cat-filter">
+      `;
+
+      allCategories.forEach(cat => {
+        const isActive = cat === currentCat ? ' active' : '';
+        const icon = CATEGORY_ICONS[cat] ? CATEGORY_ICONS[cat] + ' ' : '';
+        html += `<button class="cat-btn${isActive}" data-cat="${cat}">${icon}${cat}</button>`;
+      });
+
+      html += `</div>`;
+
+      if (filtered.length === 0) {
+        html += `<ul class="essay-list"><li class="empty-msg">There are no matching articles. </li></ul>`;
+      } else {
+        let currentYear = null;
+
+        filtered.forEach(essay => {
+          const year = essay.date ? essay.date.substring(0, 4) : essay.slug.substring(0, 4);
+
+          if (year !== currentYear) {
+            if (currentYear !== null) {
+              html += `</ul>`;
+            }
+            currentYear = year;
+            const countInYear = filtered.filter(e => (e.date ? e.date.substring(0, 4) : e.slug.substring(0, 4)) === year).length;
+            html += `
+              <h3 class="year-heading">
+                <span>${year}year</span>
+                <span class="year-count">${countInYear} cases</span>
+              </h3>
+              <ul class="essay-list">
+            `;
+          }
+
+          const cats = essay.categories && essay.categories.length ? essay.categories : ['その他'];
+          html += `
+            <li class="essay-item" data-cat="${cats.join(' ')}">
+              <span class="essay-date">
+                ${cats.map(c => `<span class="essay-category-badge">${CATEGORY_ICONS[c] || ''} ${c}</span>`).join('')}
+                ${essay.date}
+              </span>
+              <a href="/#essay=${essay.slug}" class="essay-title">${essay.title}</a>
+            </li>
+          `;
+        });
+        html += `</ul>`;
+      }
+
+      mainEl.innerHTML = html;
+
+      document.getElementById('cat-filter').addEventListener('click', e => {
+        const btn = e.target.closest('.cat-btn');
+        if (!btn) return;
+        currentCat = btn.dataset.cat;
+        renderArchiveList();
+      });
+
+      window.scrollTo(0, 0);
+    }
+
+    async function loadEssay(slug) {
+      mainEl.innerHTML = '<div class="loading">読み込み中...</div>';
+
+      try {
+        const response = await fetch(`${slug}.md`);
+        if (!response.ok) throw new Error('File not found');
+        const markdownText = await response.text();
+        const parsedHtml = marked.parse(markdownText);
+
+        const essay = ESSAYS.find(e => e.slug === slug);
+        if (essay) document.title = `${essay.title} | Rainweed Garden`;
+
+        mainEl.innerHTML = `
+          <section class="essay-detail-section">
+            <a href="#" class="back-btn" id="back-to-list">← Return to list</a>
+            <div class="essay-content">${parsedHtml}</div>
+          </section>
+        `;
+
+        document.getElementById('back-to-list').addEventListener('click', e => {
+          e.preventDefault();
+          history.replaceState(null, '', location.pathname);
+          renderArchiveList();
+        });
+
+      } catch (error) {
+        console.error(error);
+        mainEl.innerHTML = `
+          <div style="text-align:center;padding:3rem 0;">
+            <p style="font-size:1.2rem;margin-bottom:1.5rem;">No essays found. </p>
+            <a href="#" class="back-btn" id="back-to-list" style="margin-bottom:0;">← Return to list</a>
+          </div>
+        `;
+        document.getElementById('back-to-list').addEventListener('click', e => {
+          e.preventDefault();
+          history.replaceState(null, '', location.pathname);
+          renderArchiveList();
+        });
+      }
+      window.scrollTo(0, 0);
+    }
+
+    function router() {
+      const hash = window.location.hash;
+      if (hash.startsWith('#essay=')) {
+        loadEssay(hash.replace('#essay=', ''));
+      } else {
+        renderArchiveList();
+      }
+    }
+
+    window.addEventListener('hashchange', router);
+    window.addEventListener('DOMContentLoaded', router);
+  </script>
+</body>
+</html>

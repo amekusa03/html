@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-H7C45PPLP6"></script>
+<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-H7C45PPLP6');
+    </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://amekusa.vercel.app/Photo2" rel="canonical"/>
+<meta content="amekusa's photo gallery (page 2). This is a photo gallery that collects quiet moments from everyday life and scenery from travel destinations." name="description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://amekusa.vercel.app/Photo2" property="og:url"/>
+<meta content="Photography | Raingrass Garden" property="og:title"/>
+<meta content="amekusa's photo gallery (page 2). This is a photo gallery that collects quiet moments from everyday life and scenery from travel destinations." property="og:description"/>
+<meta content="https://amekusa.vercel.app/ogp.png" property="og:image"/>
+<title>Photography | Raingrass Garden</title>
+<script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+<script defer="" src="/_vercel/insights/script.js"></script>
+<link href="../style.css" rel="stylesheet"/>
+</head>
+<body class="app-page">
+<div class="container">
+<nav>
+<a href="../index.html">← Back to Garden</a>
+</nav>
+<header>
+<h1>Photography</h1>
+<p style="opacity: 0.8;">daily fragments</p>
+</header>
+<nav>
+<a href="../Photo1/index.html">← Back to Page |</a>
+<a href="../Photo3/index.html">Next to Page→</a>
+</nav>
+<section>
+<div class="photo-grid">
+<div class="photo-item">
+<img alt="A large fresh green tree covered with ivy" loading="lazy" src="../Photo2/photo20.jpg"/>
+</div>
+<div class="photo-item">
+<img alt="pink oxalis basking in the sun" loading="lazy" src="../Photo2/photo21.jpg"/>
+</div>
+<div class="photo-item">
+<img alt="purple radish flower" loading="lazy" src="../Photo2/photo22.jpg"/>
+</div>
+<div class="photo-item">
+<img alt="Yellow oxalis blooming among fallen leaves" loading="lazy" src="../Photo2/photo23.jpg"/>
+</div>
+<div class="photo-item">
+<img alt="Vast cityscape seen from the hill" loading="lazy" src="../Photo2/photo24.jpg"/>
+</div>
+<div class="photo-item">
+<img alt="small purple flowers blooming in the grass" loading="lazy" src="../Photo2/photo25.jpg"/>
+</div>
+<div class="photo-item">
+<img alt="Training aircraft flying in formation" loading="lazy" src="../Photo2/photo26.jpg"/>
+</div>
+<div class="photo-item">
+<img alt="Night cityscape with blurred lights" loading="lazy" src="../Photo2/photo27.jpg"/>
+</div>
+<div class="photo-item">
+<img alt="Dusk sea and floating yacht" loading="lazy" src="../Photo2/photo28.jpg"/>
+</div>
+<div class="photo-item">
+<img alt="Quiet yacht harbor at sunset" loading="lazy" src="../Photo2/photo29.jpg"/>
+</div>
+<div class="photo-item">
+<img alt="A city after the rain with sparkling lights" loading="lazy" src="../Photo2/photo30.jpg"/>
+</div>
+<div class="photo-item">
+<img alt="Mt. Fuji seen across the sea" loading="lazy" src="../Photo2/photo31.jpg"/>
+</div>
+<div class="photo-item">
+<img alt="A flock of birds dancing in the cloudy sky" loading="lazy" src="../Photo2/photo32.jpg"/>
+</div>
+<div class="photo-item">
+<img alt="Thistle flowers blooming in the field" loading="lazy" src="../Photo2/photo33.jpg"/>
+</div>
+<div class="photo-item">
+<img alt="pink cherry blossoms blooming against the blue sky" loading="lazy" src="../Photo2/photo34.jpg"/>
+</div>
+<div class="photo-item">
+<img alt="pretty white wild chrysanthemum flowers" loading="lazy" src="../Photo2/photo35.jpg"/>
+</div>
+</div>
+</section>
+<nav>
+<a href="../Photo1/index.html">← Back to Page |</a>
+<a href="../Photo3/index.html">Next to Page→</a>
+</nav>
+<footer>
+<p>Copyright © amekusa All Rights Reserved.</p>
+</footer>
+</div>
+<!-- Lightbox -->
+<div class="photo-lightbox" id="photoLightbox">
+<button class="photo-lightbox-close" id="lightboxClose">✕</button>
+<button class="photo-lightbox-prev" id="lightboxPrev">‹</button>
+<img alt="" class="photo-lightbox-img" id="lightboxImg" src=""/>
+<button class="photo-lightbox-next" id="lightboxNext">›</button>
+</div>
+<script>
+        const lightbox = document.getElementById('photoLightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const items = Array.from(document.querySelectorAll('.photo-item img'));
+        let current = 0;
+
+        function openLightbox(index) {
+            current = index;
+            lightboxImg.src = items[current].src;
+            lightboxImg.alt = items[current].alt;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        function prev() { openLightbox((current - 1 + items.length) % items.length); }
+        function next() { openLightbox((current + 1) % items.length); }
+
+        items.forEach((img, i) => img.parentElement.addEventListener('click', () => openLightbox(i)));
+        document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+        document.getElementById('lightboxPrev').addEventListener('click', prev);
+        document.getElementById('lightboxNext').addEventListener('click', next);
+        lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+        document.addEventListener('keydown', e => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') prev();
+            if (e.key === 'ArrowRight') next();
+        });
+    </script>
+</body>
+</html>
