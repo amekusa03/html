@@ -1,115 +1,127 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
-<script>
+  <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
   </script>
-<script defer="" src="/_vercel/insights/script.js"></script>
-<!-- Google tag (gtag.js) -->
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
-<script>
+  <script defer="" src="/_vercel/insights/script.js"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+  <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-SRGF2MMYGD');
   </script>
-<link href="Favicon.png" rel="icon" type="image/png"/>
-<link href="amenoniwa.png" rel="apple-touch-icon"/>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link href="https://amekusa.vercel.app/en/" rel="canonical"/>
-<meta content="Amekusa's Garden — A record of engineering and nature. Technical essays, photos, and links." name="description"/>
-<meta content="website" property="og:type"/>
-<meta content="https://amekusa.vercel.app/en/" property="og:url"/>
-<meta content="Amekusa's Garden" property="og:title"/>
-<meta content="Amekusa's Garden — A record of engineering and nature. Technical essays, photos, and links." property="og:description"/>
-<meta content="https://amekusa.vercel.app/ogp.png" property="og:image"/>
-<title>Amekusa's Garden | Notes</title>
-<!-- Google Fonts: Noto Serif JP と Noto Sans JP -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&amp;family=Noto+Serif+JP:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
-<!-- Markdown Parser (marked.js) -->
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<link href="style.css" rel="stylesheet"/>
+  <link href="Favicon.png" rel="icon" type="image/png" />
+  <link href="amenoniwa.png" rel="apple-touch-icon" />
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <link href="https://amekusa.vercel.app/en/" rel="canonical" />
+  <meta content="Amekusa's Garden — A record of engineering and nature. Technical essays, photos, and links."
+    name="description" />
+  <meta content="website" property="og:type" />
+  <meta content="https://amekusa.vercel.app/en/" property="og:url" />
+  <meta content="Amekusa's Garden" property="og:title" />
+  <meta content="Amekusa's Garden — A record of engineering and nature. Technical essays, photos, and links."
+    property="og:description" />
+  <meta content="https://amekusa.vercel.app/ogp.png" property="og:image" />
+  <title>Amekusa's Garden | Notes</title>
+  <!-- Google Fonts: Noto Serif JP と Noto Sans JP -->
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&amp;family=Noto+Serif+JP:wght@300;400;600&amp;display=swap"
+    rel="stylesheet" />
+  <!-- Markdown Parser (marked.js) -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <link href="style.css" rel="stylesheet" />
 </head>
+
 <body>
-<canvas id="rain-canvas"></canvas>
-<div class="container">
-<div class="sidebar">
-<header>
-<a href="#"><img alt="Character animation" class="hero-gif" src="amenoniwa.png"/></a>
-<h1>Amekusa's Garden</h1>
-<p class="subtitle">Engineering &amp; Nature Notes</p>
-</header>
-<nav class="global-nav">
-<a class="nav-item" href="#notes">Notes</a>
-<a class="nav-item" href="#photography">Photography</a>
-<a class="nav-item" href="#profile">Profile</a>
-<a class="nav-item" href="#links">Links</a>
-<a class="nav-item" href="../index.html">🌐 日本語</a>
-</nav>
-</div>
-<div class="main-content">
-<main id="notes">
-<!-- Essay list or detail is dynamically loaded here -->
-</main>
-<section id="photography">
-<h2 data-num="○四">Photography</h2>
-<div class="photo-grid">
-<div class="photo-item">
-<img alt="Streets in Southeast Asia where many motorcycles come and go" height="2880" loading="lazy" src="Photo1/photo01.jpg" width="4320"/>
-</div>
-<div class="photo-item">
-<img alt="A set of Vietnamese pho and herbs and seasonings on a green tray" height="2432" loading="lazy" src="Photo1/photo02.jpg" width="4320"/>
-</div>
-<div class="photo-item">
-<img alt="Red price tag in the meat section of a Vietnamese supermarket" height="2432" loading="lazy" src="Photo1/photo03.jpg" width="4320"/>
-</div>
-</div>
-<p class="section-description" style="margin-top:1.5rem;"><a href="Photo1/index.html">View all photos →</a></p>
-</section>
-<section id="profile">
-<h2 data-num="○五">Profile</h2>
-<ul class="links-list" style="margin-bottom: 1.5rem;">
-<li><strong>Favorite Hobbies</strong> <a href="hobbies/">My Hobbies →</a></li>
-</ul>
-<div class="profile-content">
-<div>
-<a class="linkedin-link" href="https://www.linkedin.com/in/amekusa-k-a925233b7/" rel="noopener noreferrer" target="_blank">LinkedIn Profile</a>
-</div>
-</div>
-</section>
-<section id="links">
-<h2 data-num="○六">Links</h2>
-<ul class="links-list">
-<li><strong>Favorite Web Links</strong> <a href="link/">Favorite Links →</a></li>
-</ul>
-</section>
-<section id="youtube">
-<h2 data-num="○七">YouTube</h2>
-<ul class="links-list">
-<li><strong><a href="https://www.youtube.com/channel/UCYLSOnZ_maDJ7grPjXqVt2w" rel="noopener noreferrer" target="_blank">Go to YouTube →</a></strong></li>
-</ul>
-</section>
-<section id="bbs">
-<h2 data-num="○八">BBS by blogger.com</h2>
-<ul class="links-list">
-<li><strong><a href="https://amekusa03.blogspot.com/" rel="noopener noreferrer" target="_blank">To BBS →</a></strong></li>
-</ul>
-</section>
-<footer>
-<div class="visitor-counter">
-<span class="counter-label">Visitor Count</span>
-<span class="counter-value" id="visitor-count">—</span>
-</div>
-<p>Copyright © amekusa All Rights Reserved.</p>
-</footer>
-</div>
-</div>
-<script defer="" src="rain.js"></script>
-<script>
+  <canvas id="rain-canvas"></canvas>
+  <div class="container">
+    <div class="sidebar">
+      <header>
+        <a href="#"><img alt="Character animation" class="hero-gif" src="amenoniwa.png" /></a>
+        <h1>Amekusa's Garden</h1>
+        <p class="subtitle">Engineering &amp; Nature Notes</p>
+      </header>
+      <nav class="global-nav">
+        <a class="nav-item" href="#notes">Notes</a>
+        <a class="nav-item" href="#photography">Photography</a>
+        <a class="nav-item" href="#profile">Profile</a>
+        <a class="nav-item" href="#links">Links</a>
+        <a class="nav-item" href="../index.html">🌐 日本語</a>
+      </nav>
+    </div>
+    <div class="main-content">
+      <main id="notes">
+        <!-- Essay list or detail is dynamically loaded here -->
+      </main>
+      <section id="photography">
+        <h2 data-num="○四">Photography</h2>
+        <div class="photo-grid">
+          <div class="photo-item">
+            <img alt="Streets in Southeast Asia where many motorcycles come and go" height="2880" loading="lazy"
+              src="Photo1/photo01.jpg" width="4320" />
+          </div>
+          <div class="photo-item">
+            <img alt="A set of Vietnamese pho and herbs and seasonings on a green tray" height="2432" loading="lazy"
+              src="Photo1/photo02.jpg" width="4320" />
+          </div>
+          <div class="photo-item">
+            <img alt="Red price tag in the meat section of a Vietnamese supermarket" height="2432" loading="lazy"
+              src="Photo1/photo03.jpg" width="4320" />
+          </div>
+        </div>
+        <p class="section-description" style="margin-top:1.5rem;"><a href="Photo1/index.html">View all photos →</a></p>
+      </section>
+      <section id="profile">
+        <h2 data-num="○五">Profile</h2>
+        <ul class="links-list" style="margin-bottom: 1.5rem;">
+          <li><strong>Favorite Hobbies</strong> <a href="hobbies/">My Hobbies →</a></li>
+        </ul>
+        <div class="profile-content">
+          <div>
+            <a class="linkedin-link" href="https://www.linkedin.com/in/amekusa-k-a925233b7/" rel="noopener noreferrer"
+              target="_blank">LinkedIn Profile</a>
+          </div>
+        </div>
+      </section>
+      <section id="links">
+        <h2 data-num="○六">Links</h2>
+        <ul class="links-list">
+          <li><strong>Favorite Web Links</strong> <a href="link/">Favorite Links →</a></li>
+        </ul>
+      </section>
+      <section id="youtube">
+        <h2 data-num="○七">YouTube</h2>
+        <ul class="links-list">
+          <li><strong><a href="https://www.youtube.com/channel/UCYLSOnZ_maDJ7grPjXqVt2w" rel="noopener noreferrer"
+                target="_blank">Go to YouTube →</a></strong></li>
+        </ul>
+      </section>
+      <section id="bbs">
+        <h2 data-num="○八">BBS by blogger.com</h2>
+        <ul class="links-list">
+          <li><strong><a href="https://amekusa03.blogspot.com/" rel="noopener noreferrer" target="_blank">To BBS
+                →</a></strong></li>
+        </ul>
+      </section>
+      <footer>
+        <div class="visitor-counter">
+          <span class="counter-label">Visitor Count</span>
+          <span class="counter-value" id="visitor-count">—</span>
+        </div>
+        <p>Copyright © amekusa All Rights Reserved.</p>
+      </footer>
+    </div>
+  </div>
+  <script defer="" src="rain.js"></script>
+  <script>
     // =====================================================================
     // エッセイデータ定義
     // 新しいエッセイを追加した場合は、以下に日付とファイル名のスラッグを追記する
@@ -232,7 +244,7 @@
       { slug: "2026-08-10-imagefornet", date: "2026.08.10", title: "Face mosaic processing added to Android image processing app", categories: ["Development"] },
       { slug: "2026-08-12-qt6autoshutdown", date: "2026.08.12", title: "Qt6(C++) AutoShutdown reimplementation", categories: ["Development"] },
       { slug: "2026-08-13-smartswichbot", date: "2026.08.13", title: "I made my own Android SwitchBot app.", categories: ["Development"] },
- ];
+    ];
 
     // Category display order
     const CATEGORY_ORDER = ["Development", "Car", "Music", "Daily Life", "Others"];
@@ -309,7 +321,7 @@
       if (hasMore) {
         html += `
           <div class="archive-link-wrap">
-            <a href="essays/" class="archive-link">See more past articles →</a>
+            <a href="en/essays/" class="archive-link">See more past articles →</a>
           </div>
         `;
       }
@@ -460,4 +472,5 @@
     });
   </script>
 </body>
+
 </html>
