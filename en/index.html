@@ -322,10 +322,10 @@
 
     // Load and draw essay details
     async function loadEssay(slug) {
-      contentArea.innerHTML = '<div class="loading">読み込み中...</div>';
+      contentArea.innerHTML = '<div class="loading">Loading...</div>';
 
       try {
-        const response = await fetch(`essays/${slug}.md`);
+        const response = await fetch(`/en/essays/${slug}.md`);
         if (!response.ok) {
           throw new Error('File not found');
         }
