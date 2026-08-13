@@ -18,14 +18,14 @@
 <link href="amenoniwa.png" rel="apple-touch-icon"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link href="https://amekusa.vercel.app" rel="canonical"/>
-<meta content="Rainweed Garden — A record of engineering and nature. A collection of technical essays, photos, and links." name="description"/>
+<link href="https://amekusa.vercel.app/en/" rel="canonical"/>
+<meta content="Amekusa's Garden — A record of engineering and nature. Technical essays, photos, and links." name="description"/>
 <meta content="website" property="og:type"/>
-<meta content="https://amekusa.vercel.app/" property="og:url"/>
+<meta content="https://amekusa.vercel.app/en/" property="og:url"/>
 <meta content="Amekusa's Garden" property="og:title"/>
-<meta content="Rainweed Garden — A record of engineering and nature. A collection of technical essays, photos, and links." property="og:description"/>
+<meta content="Amekusa's Garden — A record of engineering and nature. Technical essays, photos, and links." property="og:description"/>
 <meta content="https://amekusa.vercel.app/ogp.png" property="og:image"/>
-<title>Raingrass garden | Notes</title>
+<title>Amekusa's Garden | Notes</title>
 <!-- Google Fonts: Noto Serif JP と Noto Sans JP -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -53,7 +53,7 @@
 </div>
 <div class="main-content">
 <main id="notes">
-<!-- ここに動的に一覧または詳細が読み込まれます -->
+<!-- Essay list or detail is dynamically loaded here -->
 </main>
 <section id="photography">
 <h2 data-num="○四">Photography</h2>
@@ -68,12 +68,12 @@
 <img alt="Red price tag in the meat section of a Vietnamese supermarket" height="2432" loading="lazy" src="Photo1/photo03.jpg" width="4320"/>
 </div>
 </div>
-<p class="section-description" style="margin-top:1.5rem;"><a href="en/Photo1/index.html">View all photos →</a></p>
+<p class="section-description" style="margin-top:1.5rem;"><a href="Photo1/index.html">View all photos →</a></p>
 </section>
 <section id="profile">
 <h2 data-num="○五">Profile</h2>
 <ul class="links-list" style="margin-bottom: 1.5rem;">
-<li><strong>Favorite Hobbies</strong> <a href="en/hobbies/">To My Hobbies →</a></li>
+<li><strong>Favorite Hobbies</strong> <a href="hobbies/">My Hobbies →</a></li>
 </ul>
 <div class="profile-content">
 <div>
@@ -84,7 +84,7 @@
 <section id="links">
 <h2 data-num="○六">Links</h2>
 <ul class="links-list">
-<li><strong>Favorite Web Links</strong> <a href="en/link/">To Favorite Links →</a></li>
+<li><strong>Favorite Web Links</strong> <a href="link/">Favorite Links →</a></li>
 </ul>
 </section>
 <section id="youtube">
@@ -278,7 +278,7 @@
 
     function renderEssayList() {
       // Reset title when returning to top
-      document.title = "Raingrass garden | Notes";
+      document.title = "Amekusa's Garden | Notes";
 
       // Sort by date in descending order and get the latest 20 results
       const sorted = [...ESSAYS].sort((a, b) => b.slug.localeCompare(a.slug));
@@ -292,7 +292,7 @@
       `;
 
       recent.forEach(essay => {
-        const cats = essay.categories && essay.categories.length ? essay.categories : (essay.category ? [essay.category] : ['その他']);
+        const cats = essay.categories && essay.categories.length ? essay.categories : (essay.category ? [essay.category] : ['Others']);
         html += `
           <li class="essay-item">
             <span class="essay-date">
