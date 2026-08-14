@@ -404,7 +404,10 @@
       contentArea.innerHTML = '<div class="loading">読み込み中...</div>';
 
       try {
-        const response = await fetch(`essays/${slug}.md`);
+        // pathname が /en や /en/ で終わる場合でも正しく essays/ を取得できるよう
+        // ルートからの絶対パスで fetch する
+        const basePath = window.location.pathname.replace(/\/index\.html$/, '').replace(/\/$/, '');
+        const response = await fetch(`${basePath}/essays/${slug}.md`);
         if (!response.ok) {
           throw new Error('File not found');
         }
