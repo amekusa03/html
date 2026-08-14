@@ -6,7 +6,7 @@
 
 ImageForNet is an Android app that allows you to easily protect your privacy (mosaic your face, remove EXIF ​​information), resize images, and add watermarks, and is compatible with Android 6.0 (API 23) or higher.
 
-![Main screen](/en/essays/2026-08-10-imagefornet.png)
+![Main screen](essays/2026-08-10-imagefornet.png)
 
 ## background
 

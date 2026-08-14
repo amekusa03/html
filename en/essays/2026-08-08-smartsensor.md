@@ -4,7 +4,7 @@
 
 This is a craft that uses a single CdS cell (photoconductive element) to create an illuminance sensor that works with Google Home. The total parts cost is less than 500 yen. I wrote Matter firmware on the ESP32-C6 to incorporate weather effects into the automatic lighting logic of my home's lights.
 
-![Light sensor in Google Home app](__HTML_PH_0__)
+![Light sensor in Google Home app](/en/essays/__HTML_PH_0__)
 
 ### parts
 

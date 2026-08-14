@@ -10,7 +10,7 @@ Without really coming up with any good ideas, I decided to create an English web
 
 I decided to write a Python script to translate each page at once. The mechanism is to use the Google Translate API, sequentially input existing Markdown files, and generate the English version under the `en/` folder.
 
-[Python Script](/en/essays/2026-08-14-translate.text)
+[Python Script](/en/essays/essays/2026-08-14-translate.text)
 
 The batch conversion itself worked easily, but when I reviewed it, I found some issues.
 
@@ -35,4 +35,4 @@ The batch conversion itself worked easily, but when I reviewed it, I found some 
 
 Although it is rough cut, it will be released in this condition. There is no point in waiting for perfection.
 
-![English site top page](/en/essays/2026-08-14-translate.png)
+![English site top page](essays/2026-08-14-translate.png)

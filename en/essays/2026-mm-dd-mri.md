@@ -39,4 +39,4 @@ There were no abnormalities at all, and I fell asleep despite the loud noise. It
 
 The next time I have the opportunity to undergo an MRI, I would definitely like to use a machine from a manufacturer that prides itself on its silent technology.
 
-![alt text](/en/essays/2026-08-07-mri.png)
+![alt text](essays/2026-08-07-mri.png)

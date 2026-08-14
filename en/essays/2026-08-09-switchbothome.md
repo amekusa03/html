@@ -27,7 +27,7 @@ If Wi-Fi settings are not yet configured or the connection fails, it will automa
 
 Technically, if you look into the ADC voltage divider circuit, HMAC signature, and Matter endpoint definition, you can find information somewhere. However, the work of putting all of this together into a moving object on a single ESP32-C3 takes a certain amount of effort, and gives me a mysterious sense of accomplishment. This time as well, I spent the whole day just trying to feel that sense of accomplishment.
 
-![Switchbot Home](/en/essays/2026-08-09-switchbothome.png)
+![Switchbot Home](essays/2026-08-09-switchbothome.png)
 
 ## sauce
 

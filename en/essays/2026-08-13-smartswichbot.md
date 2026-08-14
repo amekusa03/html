@@ -8,7 +8,7 @@ The Android SwitchBot app was a bit of a hassle for me. It has a two-step struct
 
 Therefore, I decided to use SwitchBot Open API v1.1 to create my own app to control smart home devices directly from Android.
 
-![SmartSwitchBot](/en/essays/2026-08-13-smartswichbot.png)
+![SmartSwitchBot](essays/2026-08-13-smartswichbot.png)
 
 ## An example of the ritual of authentication
 

@@ -96,19 +96,42 @@ def fix_url_for_en(url, current_rel_path=""):
     if url.startswith(('http://', 'https://')):
         return url
 
+    # Ignore asset files (images, stylesheets, js, etc.)
+    url_without_query = url.split('?')[0].split('#')[0]
+    if any(url_without_query.lower().endswith(ext) for ext in ['.png', '.jpg', '.jpeg', '.gif', '.svg', '.ico', '.css', '.js']) or url.startswith('/_vercel'):
+        return url
+
+    # Separate hash fragment
+    hash_fragment = ''
+    if '#' in url:
+        url_part, hash_fragment = url.split('#', 1)
+        hash_fragment = '#' + hash_fragment
+    else:
+        url_part = url
+
+    if not url_part and hash_fragment:
+        return hash_fragment
+
     # Root-relative path
-    if url.startswith('/'):
-        if any(url.startswith(p) for p in ['/_vercel', '/Favicon.png', '/amenoniwa.png', '/ogp.png', '/css/', '/js/', '/en/']):
+    if url_part.startswith('/'):
+        if any(url_part.startswith(p) for p in ['/_vercel', '/Favicon.png', '/amenoniwa.png', '/ogp.png', '/css/', '/js/', '/en/']):
             return url
-        if url == '/' or url == '/index.html':
-            return '/en/'
-        return f"/en{url}"
+        if url_part == '/' or url_part == '/index.html':
+            return '/en/' + hash_fragment
+        return f"/en{url_part}" + hash_fragment
 
-    # Relative path pointing to essays/ inside markdown or html
-    if url.startswith('essays/'):
-        return f"/en/{url}"
+    # Relative path resolution against current_rel_path
+    dir_name = os.path.dirname(current_rel_path) if current_rel_path else ""
+    joined = os.path.normpath(os.path.join(dir_name, url_part))
 
-    return url
+    if joined in ['.', '', 'index.html']:
+        target_root = '/en/'
+    else:
+        target_root = '/en/' + joined.lstrip('/')
+        if url_part.endswith('/') and not target_root.endswith('/'):
+            target_root += '/'
+
+    return target_root + hash_fragment
 
 def translate_js_strings(js_code, current_rel_path=""):
     def repl_double(match):
@@ -179,16 +202,22 @@ def translate_html_content(html_content, current_rel_path=""):
     # Language switcher button fix
     for a in soup.find_all('a'):
         href = a.get('href', '')
-        text = a.get_text()
-        if href in ['en/', 'en', 'en/index.html'] or 'English' in text:
+        text = a.get_text().strip()
+        is_switcher = (
+            href in ['en', 'en/', 'en/index.html', '/en', '/en/', '/en/index.html'] or
+            href.startswith(('en/', '../en/', '/en/')) or
+            text in ['🌐 English', 'English'] or
+            ('English' in text and 'nav-item' in a.get('class', []))
+        )
+        if is_switcher:
             if current_rel_path in ['', 'index.html']:
-                a['href'] = '/'
-            elif current_rel_path == 'essays/index.html' or current_rel_path.startswith('essays'):
-                a['href'] = '/essays/'
+                ja_url = '/'
+            elif current_rel_path.endswith('/index.html'):
+                ja_url = '/' + current_rel_path[:-len('index.html')]
             else:
-                depth = len(current_rel_path.split(os.sep)) - 1
-                a['href'] = '../' * depth if depth > 0 else '/'
-            a.string = '🌐 Japanese'
+                ja_url = '/' + current_rel_path
+            a['href'] = ja_url
+            a.string = '🌐 日本語'
             a['data-lang-switched'] = 'true'
 
     # General a[href] link fix
