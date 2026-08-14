@@ -7,7 +7,9 @@ import json
 import time
 from bs4 import BeautifulSoup, Comment
 
-SRC_DIR = "/home/kusa/ドキュメント/homepage/amekusa"
+# Root directory of the repository
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+SRC_DIR = BASE_DIR
 DEST_DIR = os.path.join(SRC_DIR, "en")
 
 # Pre-populated cache for critical UI terms to ensure top quality
@@ -35,7 +37,8 @@ translation_cache = {
     "しふとべる": "ShiftVet",
     "雨月": "Ugetsu",
     "過去の記事をもっと見る →": "See more past articles →",
-    "該当する記事がありません。": "No matching articles found."
+    "該当する記事がありません。": "No matching articles found.",
+    "記事一覧を見る →": "View Article List →"
 }
 
 def has_japanese(text):
@@ -49,7 +52,6 @@ def translate_text(text):
     
     text_stripped = text.strip()
     if text_stripped in translation_cache:
-        # Restore leading and trailing whitespace
         lead_ws = text[:len(text) - len(text.lstrip())]
         trail_ws = text[len(text.rstrip()):] if len(text.rstrip()) < len(text) else ""
         return lead_ws + translation_cache[text_stripped] + trail_ws
@@ -63,9 +65,8 @@ def translate_text(text):
         
         translated = "".join([segment[0] for segment in data[0] if segment[0]])
         
-        # Save to cache
         translation_cache[text_stripped] = translated
-        time.sleep(0.3)  # Rate limiting to be polite
+        time.sleep(0.2)  # Rate limiting
         
         lead_ws = text[:len(text) - len(text.lstrip())]
         trail_ws = text[len(text.rstrip()):] if len(text.rstrip()) < len(text) else ""
@@ -74,8 +75,42 @@ def translate_text(text):
         print(f"Error translating '{text_stripped[:30]}': {e}")
         return text
 
-def translate_js_strings(js_code):
-    # Match double quoted string literals
+def fix_url_for_en(url, current_rel_path=""):
+    if not url:
+        return url
+
+    if url.startswith(('mailto:', 'tel:', 'javascript:', '#')):
+        return url
+
+    domain = "https://amekusa.vercel.app"
+    if url.startswith(domain):
+        path = url[len(domain):]
+        if not any(path.startswith(ext) for ext in ['/ogp.png', '/Favicon.png', '/amenoniwa.png', '/_vercel']):
+            if not path.startswith('/en/') and path != '/en':
+                if path == '' or path == '/':
+                    return f"{domain}/en/"
+                else:
+                    return f"{domain}/en{path}"
+        return url
+
+    if url.startswith(('http://', 'https://')):
+        return url
+
+    # Root-relative path
+    if url.startswith('/'):
+        if any(url.startswith(p) for p in ['/_vercel', '/Favicon.png', '/amenoniwa.png', '/ogp.png', '/css/', '/js/', '/en/']):
+            return url
+        if url == '/' or url == '/index.html':
+            return '/en/'
+        return f"/en{url}"
+
+    # Relative path pointing to essays/ inside markdown or html
+    if url.startswith('essays/'):
+        return f"/en/{url}"
+
+    return url
+
+def translate_js_strings(js_code, current_rel_path=""):
     def repl_double(match):
         content = match.group(1)
         if has_japanese(content):
@@ -84,7 +119,6 @@ def translate_js_strings(js_code):
             return f'"{translated}"'
         return match.group(0)
 
-    # Match single quoted string literals
     def repl_single(match):
         content = match.group(1)
         if has_japanese(content):
@@ -93,13 +127,11 @@ def translate_js_strings(js_code):
             return f"'{translated}'"
         return match.group(0)
 
-    # Match backtick template literals (with placeholder protection)
     def repl_backtick(match):
         content = match.group(1)
         if has_japanese(content):
             placeholders = {}
             idx = 0
-            # Extract ${...} placeholders
             def repl_placeholder(m):
                 nonlocal idx
                 ph = f"__JS_PH_{idx}__"
@@ -108,7 +140,6 @@ def translate_js_strings(js_code):
                 return ph
             temp_content = re.sub(r'\$\{[^}]+\}', repl_placeholder, content)
             translated = translate_text(temp_content)
-            # Restore placeholders
             for ph, original in placeholders.items():
                 parts = ph.split('_')
                 pattern = re.compile(r'__\s*' + re.escape(parts[2]) + r'\s*_\s*' + re.escape(parts[3]) + r'\s*_\s*' + re.escape(parts[4]) + r'\s*__', re.IGNORECASE)
@@ -117,22 +148,57 @@ def translate_js_strings(js_code):
             return f"`{translated}`"
         return match.group(0)
 
-    # Replace double quotes strings
     js_code = re.sub(r'"([^"\\]*(?:\\.[^"\\]*)*)"', repl_double, js_code)
-    # Replace single quotes strings
     js_code = re.sub(r"'([^'\\]*(?:\\.[^'\\]*)*)'", repl_single, js_code)
-    # Replace backticks
     js_code = re.sub(r'`([^`\\]*(?:\\.[^`\\]*)*)`', repl_backtick, js_code)
     return js_code
 
-def translate_html_content(html_content):
+def translate_html_content(html_content, current_rel_path=""):
     soup = BeautifulSoup(html_content, 'html.parser')
     
-    # Change lang="ja" to lang="en"
     html_tag = soup.find('html')
     if html_tag and html_tag.has_attr('lang'):
         html_tag['lang'] = 'en'
     
+    # Fix canonical & alternate link URLs
+    for link in soup.find_all('link'):
+        if link.has_attr('href'):
+            href = link['href']
+            rel = link.get('rel', [])
+            if isinstance(rel, str):
+                rel = [rel]
+            if 'canonical' in rel:
+                link['href'] = fix_url_for_en(href, current_rel_path)
+
+    # Fix meta tags (og:url, twitter:url, etc.)
+    for meta in soup.find_all('meta'):
+        if meta.has_attr('property') and meta['property'] in ['og:url', 'twitter:url']:
+            if meta.has_attr('content'):
+                meta['content'] = fix_url_for_en(meta['content'], current_rel_path)
+
+    # Language switcher button fix
+    for a in soup.find_all('a'):
+        href = a.get('href', '')
+        text = a.get_text()
+        if href in ['en/', 'en', 'en/index.html'] or 'English' in text:
+            if current_rel_path in ['', 'index.html']:
+                a['href'] = '/'
+            elif current_rel_path == 'essays/index.html' or current_rel_path.startswith('essays'):
+                a['href'] = '/essays/'
+            else:
+                depth = len(current_rel_path.split(os.sep)) - 1
+                a['href'] = '../' * depth if depth > 0 else '/'
+            a.string = '🌐 Japanese'
+            a['data-lang-switched'] = 'true'
+
+    # General a[href] link fix
+    for a in soup.find_all('a'):
+        if a.has_attr('data-lang-switched'):
+            del a['data-lang-switched']
+            continue
+        if a.has_attr('href'):
+            a['href'] = fix_url_for_en(a['href'], current_rel_path)
+
     # Translate text nodes and script blocks
     for text_node in soup.find_all(string=True):
         if isinstance(text_node, Comment):
@@ -141,7 +207,7 @@ def translate_html_content(html_content):
         if parent and parent.name == 'style':
             continue
         if parent and parent.name == 'script':
-            new_js = translate_js_strings(text_node)
+            new_js = translate_js_strings(text_node, current_rel_path)
             text_node.replace_with(new_js)
             continue
         
@@ -157,10 +223,7 @@ def translate_html_content(html_content):
                 
     return str(soup)
 
-def translate_markdown_text(text):
-    if not has_japanese(text):
-        return text
-
+def translate_markdown_text(text, current_rel_path=""):
     placeholders = {}
     idx = 0
 
@@ -182,26 +245,28 @@ def translate_markdown_text(text):
         return ph
     text = re.sub(r'`[^`]+`', repl_code, text)
 
-    # 3. Protect Image links, translating alt text
+    # 3. Protect Image links, translating alt text & fixing URL
     def repl_img(match):
         nonlocal idx
         ph = f"__IMG_PH_{idx}__"
         alt_text = match.group(1)
         url = match.group(2)
         translated_alt = translate_text(alt_text)
-        placeholders[ph] = f"![{translated_alt}]({url})"
+        fixed_url = fix_url_for_en(url, current_rel_path)
+        placeholders[ph] = f"![{translated_alt}]({fixed_url})"
         idx += 1
         return ph
     text = re.sub(r'!\[([^\]]*)\]\(([^)]+)\)', repl_img, text)
 
-    # 4. Protect Regular Markdown links, translating link text
+    # 4. Protect Regular Markdown links, translating link text & fixing URL
     def repl_link(match):
         nonlocal idx
         ph = f"__LINK_PH_{idx}__"
         link_text = match.group(1)
         url = match.group(2)
         translated_link_text = translate_text(link_text)
-        placeholders[ph] = f"[{translated_link_text}]({url})"
+        fixed_url = fix_url_for_en(url, current_rel_path)
+        placeholders[ph] = f"[{translated_link_text}]({fixed_url})"
         idx += 1
         return ph
     text = re.sub(r'\[([^\]]*)\]\(([^)]+)\)', repl_link, text)
@@ -211,24 +276,23 @@ def translate_markdown_text(text):
 
     # Restore placeholders
     for ph, original in placeholders.items():
-        parts = ph.strip('_').split('_')  # e.g., ['HTML', 'PH', '0']
+        parts = ph.strip('_').split('_')
         regex_pattern = r'_\s*_\s*' + r'\s*_\s*'.join(re.escape(p) for p in parts) + r'\s*_\s*_'
         pattern = re.compile(regex_pattern, re.IGNORECASE)
         translated_text = pattern.sub(original, translated_text)
 
     return translated_text
 
-def translate_markdown_content(md_content):
+def translate_markdown_content(md_content, current_rel_path=""):
     lines = md_content.split('\n')
     blocks = []
     current_block = []
-    current_type = None  # 'code', 'list', 'header', 'paragraph'
+    current_type = None
     
     i = 0
     while i < len(lines):
         line = lines[i]
         
-        # Code block check
         if line.strip().startswith('```'):
             if current_block:
                 blocks.append((current_type, '\n'.join(current_block)))
@@ -246,7 +310,6 @@ def translate_markdown_content(md_content):
             i += 1
             continue
         
-        # Header check
         if line.strip().startswith('#'):
             if current_block:
                 blocks.append((current_type, '\n'.join(current_block)))
@@ -256,7 +319,6 @@ def translate_markdown_content(md_content):
             i += 1
             continue
             
-        # Blank line check
         if not line.strip():
             if current_block:
                 blocks.append((current_type, '\n'.join(current_block)))
@@ -266,7 +328,6 @@ def translate_markdown_content(md_content):
             i += 1
             continue
             
-        # List item check
         list_match = re.match(r'^(\s*[-*+]\s+|\s*\d+\.\s+)(.*)', line)
         if list_match:
             if current_block:
@@ -279,7 +340,6 @@ def translate_markdown_content(md_content):
             i += 1
             continue
             
-        # Paragraph block
         if current_type != 'paragraph':
             if current_block:
                 blocks.append((current_type, '\n'.join(current_block)))
@@ -292,7 +352,6 @@ def translate_markdown_content(md_content):
     if current_block:
         blocks.append((current_type, '\n'.join(current_block)))
         
-    # Translate blocks and assemble
     translated_parts = []
     for btype, bval in blocks:
         if btype == 'code' or btype == 'blank':
@@ -301,23 +360,21 @@ def translate_markdown_content(md_content):
             header_match = re.match(r'^(#+\s+)(.*)', bval)
             if header_match:
                 prefix, text = header_match.groups()
-                translated_parts.append(prefix + translate_markdown_text(text))
+                translated_parts.append(prefix + translate_markdown_text(text, current_rel_path))
             else:
-                translated_parts.append(translate_markdown_text(bval))
+                translated_parts.append(translate_markdown_text(bval, current_rel_path))
         elif btype == 'list':
             prefix, text = bval
-            translated_parts.append(prefix + translate_markdown_text(text))
+            translated_parts.append(prefix + translate_markdown_text(text, current_rel_path))
         elif btype == 'paragraph':
-            translated_parts.append(translate_markdown_text(bval))
+            translated_parts.append(translate_markdown_text(bval, current_rel_path))
             
     return '\n'.join(translated_parts)
 
 def process_file(src_file_path):
-    # Compute output path
     rel_path = os.path.relpath(src_file_path, SRC_DIR)
     dest_file_path = os.path.join(DEST_DIR, rel_path)
     
-    # Create parent folder if not exists
     dest_dir = os.path.dirname(dest_file_path)
     os.makedirs(dest_dir, exist_ok=True)
     
@@ -327,7 +384,7 @@ def process_file(src_file_path):
         print(f"Translating HTML: {rel_path}")
         with open(src_file_path, 'r', encoding='utf-8') as f:
             content = f.read()
-        translated = translate_html_content(content)
+        translated = translate_html_content(content, rel_path)
         with open(dest_file_path, 'w', encoding='utf-8') as f:
             f.write(translated)
             
@@ -335,12 +392,11 @@ def process_file(src_file_path):
         print(f"Translating Markdown: {rel_path}")
         with open(src_file_path, 'r', encoding='utf-8') as f:
             content = f.read()
-        translated = translate_markdown_content(content)
+        translated = translate_markdown_content(content, rel_path)
         with open(dest_file_path, 'w', encoding='utf-8') as f:
             f.write(translated)
             
     else:
-        # Create relative symbolic link for other static files
         if os.path.lexists(dest_file_path):
             os.remove(dest_file_path)
         
@@ -351,7 +407,7 @@ def process_file(src_file_path):
 def main():
     print("Starting translation process...")
     
-    cache_file = "translation_cache.json"
+    cache_file = os.path.join(BASE_DIR, "translation_cache.json")
     if os.path.exists(cache_file):
         try:
             with open(cache_file, 'r', encoding='utf-8') as f:
@@ -361,10 +417,8 @@ def main():
         except Exception as e:
             print(f"Failed to load translation cache: {e}")
             
-    # Ensure destination directory exists
     os.makedirs(DEST_DIR, exist_ok=True)
     
-    # Exclude list for scanning
     exclude_dirs = {
         'en', 
         'node_modules', 
@@ -376,17 +430,14 @@ def main():
     }
     
     for root, dirs, files in os.walk(SRC_DIR):
-        # Exclude directories in-place to prevent os.walk from entering them
         dirs[:] = [d for d in dirs if d not in exclude_dirs]
         
         for file in files:
             file_path = os.path.join(root, file)
-            # Skip hidden files
             if file.startswith('.'):
                 continue
             process_file(file_path)
             
-    # Save the cache back
     try:
         with open(cache_file, 'w', encoding='utf-8') as f:
             json.dump(translation_cache, f, ensure_ascii=False, indent=2)

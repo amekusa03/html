@@ -12,13 +12,13 @@ Adjusted to maximize favorites with current resources.
 * Filter type: Linkwitz-Riley
 * Equalizer adjustment: 2 kHz to 4 kHz +2.4 dB
 * Leaves the bass to the woofer and mainly plays the mid and high tones.
-![front setup](essays/2026-07-19-soundreset-fr.png)
+![front setup](/en/essays/2026-07-19-soundreset-fr.png)
 
 ## Rear speaker (Gathers GS-5060DL)
 
 * Equalizer adjustment: 100 Hz to 4 kHz +10 dB, others -10 dB
 * The sound pressure is low, and the sound is auxiliary to create a surround sound effect.
-![rear setup](essays/2026-07-19-soundreset-re.png)
+![rear setup](/en/essays/2026-07-19-soundreset-re.png)
 
 ## Woofer (TS-WX22A)
 
@@ -30,7 +30,7 @@ Adjusted to maximize favorites with current resources.
 * The woofer is for bass only, so it cuts out unnecessary mid and high frequencies.
 * Adjust with limiter to give a sense of bass volume
 * -20 dB in balance with front
-![sub setup](essays/2026-07-19-soundreset-sb.png)
+![sub setup](/en/essays/2026-07-19-soundreset-sb.png)
 (It shows Center and Sub on the screen, but it is actually Sub LR)
 
 ## summary

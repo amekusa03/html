@@ -6,7 +6,7 @@
 
 A Qt application for Linux that detects idleness and automatically shuts down the system. It resides in the background of the system and automatically turns off the power to prevent unnecessary power consumption.
 
-![Main Window](essays/2026-08-12-qt6autoshutdown.png)
+![Main Window](/en/essays/2026-08-12-qt6autoshutdown.png)
 
 ## background
 

@@ -6,7 +6,7 @@
 
 Developed a frequency sweep sound source app.
 
-![main](essays/2026-08-04-soundtune.png)
+![main](/en/essays/2026-08-04-soundtune.png)
 
 ## background
 
