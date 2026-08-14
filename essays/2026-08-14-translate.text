@@ -7,7 +7,7 @@ import json
 import time
 from bs4 import BeautifulSoup, Comment
 
-SRC_DIR = "/home/kusa/ドキュメント/python/toEnglish/work"
+SRC_DIR = "/home/python/toEnglish/work"
 DEST_DIR = os.path.join(SRC_DIR, "en")
 
 # Pre-populated cache for critical UI terms to ensure top quality

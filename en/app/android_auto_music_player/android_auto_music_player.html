@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+<script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-SRGF2MMYGD');
+    </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://amekusa.vercel.app/app/android_auto_music_player/android_auto_music_player" rel="canonical"/>
+<meta content="This is a local music player app for Android devices. MP3 folder playback/Android Auto compatible." name="description"/>
+<title>Android Auto Music Player | Raingrass Garden</title>
+<script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+<script defer="" src="/_vercel/speed-insights/script.js"></script>
+<script defer="" src="/_vercel/insights/script.js"></script>
+<link href="../../style.css" rel="stylesheet"/>
+</head>
+<body class="app-page">
+<canvas id="rain-canvas"></canvas>
+<div class="container">
+<nav aria-label="ページナビゲーション">
+<a href="../../index.html">← Back to Garden</a>
+</nav>
+<header>
+<div class="header-tags u-margin-b-1">
+<span class="tag">Kotlin</span>
+<span class="tag">Android</span>
+</div>
+<h1>Android Auto Music Player</h1>
+<p class="u-opacity-8">This is a local music player for Android developed to reuse old smartphones as music players.</p>
+</header>
+<main>
+<section>
+<h2>About this Project</h2>
+<p>
+                    It was developed with the aim of reusing a smartphone that is no longer in use as a music player.
+                    You can play MP3 files by specifying a folder, and it also supports Android Auto.
+                </p>
+<p>
+                    Almost all processes from design to code generation to debugging<a href="https://claude.ai/code" rel="noopener noreferrer" target="_blank">Claude Code</a>We proceeded through dialogue with
+                    AI also takes the lead in deep root cause investigations and fixes, such as issues with Android Auto's artwork display and shuffle button.
+                    The generated code is reviewed by humans and its operation is confirmed on actual machines.
+                </p>
+</section>
+<section>
+<h2>Video</h2>
+<div class="video-container">
+<iframe allowfullscreen="" loading="lazy" src="https://www.youtube.com/embed/AvIeaj8VLis" title="android auto musik player"></iframe>
+</div>
+</section>
+<section>
+<h2>Development Environment</h2>
+<ul class="tech-stack">
+<li>Kotlin</li>
+<li>Kotlin Coroutines</li>
+<li>AndroidX Media3 (ExoPlayer)</li>
+<li>Media3 MediaLibraryService</li>
+<li>androidx.car.app (Android Auto)</li>
+<li>Android SDK (API 26+)</li>
+</ul>
+</section>
+<section>
+<h2>Key Features</h2>
+<ul>
+<li><strong>Folder selection playback:</strong> You can play MP3 files at once by specifying a folder.</li>
+<li><strong>Album art display:</strong> Displays the album art embedded in the song on the screen.</li>
+<li><strong>Shuffle Playback:</strong> You can play songs in random order.</li>
+<li><strong>Search function:</strong> You can narrow down your search by song title, artist name, or album name.</li>
+<li><strong>Background play:</strong> It continues playing in the foreground service even if the app is closed.</li>
+<li><strong>Android Auto compatible:</strong> You can control the songs from the in-vehicle display.</li>
+<li><strong>Caching scan results:</strong> Keeps startup quick and updates automatically when changing folders.</li>
+</ul>
+</section>
+<section>
+<h2>Known Issues / Out of Scope</h2>
+<ul>
+<li>
+<strong>Google Assistant voice control (“Call 〇〇”):</strong>
+                        Although the intent filter addition and reception processing have been implemented, it is up to the OS to decide which app the assistant will delegate playback to.
+                        Substantive verification has not been possible as YouTube Music and Spotify may take priority and we cannot guarantee that users will be directed to this app.
+                    </li>
+</ul>
+</section>
+<section>
+<h2>Setup</h2>
+<p>Please follow the steps below to set up your project.</p>
+<ol>
+<li>Download and install Android Studio.</li>
+<li>Clone this repository.</li>
+<li>Open the project in Android Studio.</li>
+<li>Install the required dependencies.</li>
+</ol>
+</section>
+<section>
+<h2>Update</h2>
+<p>7.Icon change</p>
+<p>6. Added playback by genre</p>
+<p>5.Supports music condition extraction and heat generation countermeasures</p>
+<p>4. Added development log</p>
+<p>3. Supports shuffle playback</p>
+<p>2. Bug fixes</p>
+<p>1.First edition</p>
+</section>
+<section>
+<h2>Resource</h2>
+<p>The materials are published on GitHub. You are welcome to reuse it for personal study or small projects.</p>
+<a class="link-button" href="https://github.com/amekusa03/MusicPlayer" rel="noopener noreferrer" target="_blank">View on GitHub</a>
+</section>
+</main>
+<nav aria-label="ページナビゲーション">
+<a href="../../index.html">← Back to Garden</a>
+</nav>
+<div class="like-section">
+<button aria-label="いいね" class="like-btn" id="like-btn">
+<span class="like-icon">♡</span>
+<span class="like-count" id="like-count">…</span>
+</button>
+<p class="like-label">Did you see it?</p>
+</div>
+<footer>
+<p>Copyright © amekusa All Rights Reserved.</p>
+</footer>
+</div>
+<script src="../../rain.js"></script>
+<script src="../like.js" type="module"></script>
+</body>
+</html>

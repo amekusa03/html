@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+<script defer="" src="/_vercel/insights/script.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-SRGF2MMYGD');
+  </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://amekusa.vercel.app/app/software_plc/software_plc" rel="canonical"/>
+<meta content="This is a technical report regarding the development and simulation of soft PLC using CODESYS." name="description"/>
+<title>Software PLC (CODESYS) | Rainweed Garden</title>
+<script defer="" src="/_vercel/speed-insights/script.js"></script>
+<link href="../../style.css" rel="stylesheet"/>
+</head>
+<body class="app-page">
+<div class="container">
+<nav>
+<a href="../../index.html">← Back to Garden</a>
+</nav>
+<header>
+<div class="header-tags u-margin-b-1">
+<span class="tag">PLC</span>
+<span class="tag">CODESYS</span>
+<span class="tag">IEC 61131-3</span>
+</div>
+<h1>Software PLC : CODESYS</h1>
+<p class="u-opacity-8">Control simulation and learning record using CODESYS</p>
+</header>
+<main>
+<section>
+<h2>About this Project</h2>
+<p>
+                    We created and simulated a simple program using the software PLC development environment "CODESYS" that complies with the international standard IEC 61131-3.
+                </p>
+<ul>
+<li>Simulation execution of simple program</li>
+<li>Software PLC operation check</li>
+</ul>
+</section>
+<section>
+<h2>Video</h2>
+<div class="video-container">
+<iframe allowfullscreen="" src="https://www.youtube.com/embed/S_0lev74dqg" style="border:0;" title="Software PLC (CODESYS)"></iframe>
+</div>
+</section>
+<section>
+<h2>Definition: Soft PLC</h2>
+<p>
+<strong>Software PLC:</strong>
+                    A control system in which the control logic is separated from dedicated hardware and can be executed on general-purpose hardware or a virtualized environment (hypervisor, etc.).
+                </p>
+<p>
+                    On the other hand, Mitsubishi Electric Q series and Omron NJ have unique specifications for both hardware and software.<strong>hardware plc</strong>It is called.
+                </p>
+</section>
+<section>
+<h2>What is CODESYS?</h2>
+<p>
+                    This software is compliant with IEC 61131-3 and allows you to integrate and develop PLC/Motion/HMI.
+                    It has been used by over 400 OEM customers and thousands of end users around the world.
+                </p>
+<ul>
+<li><strong>Integrated development environment:</strong> PLC, Motion, and HMI settings can be performed all-in-one.</li>
+<li><strong>Asset reuse:</strong> Because it complies with international standards, the portability of software assets is high.</li>
+<li><strong>Free use:</strong> The development environment is available free of charge to users all over the world.</li>
+</ul>
+</section>
+<section>
+<h2>Programming Languages</h2>
+<p>Programming is possible using major languages ​​defined by IEC 61131-3.</p>
+<div class="project-grid">
+<article class="project-card">
+<h3 class="project-card__title">LD (Ladder Diagram)</h3>
+<img alt="ladder diagram" class="project-card__image" loading="lazy" src="type_ladder.png"/>
+</article>
+<article class="project-card">
+<h3 class="project-card__title">FBD (Function Block Diagram)</h3>
+<img alt="Function block diagram" class="project-card__image" loading="lazy" src="type_fbd.png"/>
+</article>
+<article class="project-card">
+<h3 class="project-card__title">ST (Structured Text)</h3>
+<img alt="structured text" class="project-card__image" loading="lazy" src="type_st.png"/>
+</article>
+<article class="project-card">
+<h3 class="project-card__title">IL (Instruction List)</h3>
+<img alt="instruction list" class="project-card__image" loading="lazy" src="type_il.png"/>
+</article>
+</div>
+</section>
+<section>
+<h2>Workflow &amp; Simulation</h2>
+<div class="image-container">
+<!-- 全体画面を表示 -->
+<img alt="CODESYS entire screen" class="image-back" src="0start.png">
+<div class="text-content">
+                        Select standard project
+                    </div>
+</img></div>
+<h3>1. Project creation and settings</h3>
+<div class="image-container">
+<!-- 全体画面を表示 -->
+<img alt="CODESYS entire screen" class="image-back" src="1new_proj.png">
+<div class="image-front">
+<!-- 重要な箇所をクローズアップ表示 -->
+<img alt="Important points in project settings" src="1-1new_proj.png">
+<div class="text-content">
+                            Select "New Project"
+                        </div>
+</img></div>
+</img></div>
+<h3>2. Template settings</h3>
+                Select standard project
+                <div class="image-container">
+<!-- 全体画面を表示 -->
+<img alt="CODESYS entire screen" class="image-back" src="2select_Temp.png">
+<div class="text-content">
+                        Select standard project
+                    </div>
+</img></div>
+<h3>3. Device settings</h3>
+                ControlWinV3 is selected for this operation check.
+                <div class="image-container">
+<!-- 全体画面を表示 -->
+<img alt="CODESYS entire screen" class="image-back" src="3select_dev.png"/>
+<div class="text-content">
+                        Select ControlWinV3
+                    </div>
+</div>
+<h3>4. Select language</h3>
+                For this operation check, select Sequential Function Chart (SFC)
+                <div class="image-container">
+<!-- 全体画面を表示 -->
+<img alt="CODESYS entire screen" class="image-back" src="4select_lang.png"/>
+<div class="text-content">
+                        Select sequential function chart (SFC)
+                    </div>
+</div>
+<h3>5. Creation of SFC (Sequential Function Chart) and HMI (GUI)</h3>
+<p>SFC: Visually arranges the processing flow and transition conditions and describes the contents of each processing block.</p>
+<p>HMI: Create a touch panel-like operation screen within the development environment and associate it with variables.</p>
+<div class="image-container">
+<img alt="CODESYS entire screen" class="image-back" src="5sfc_gui.png"/>
+<div class="text-content">
+<p>SFC: Select sequential function chart (SFC)</p>
+<p>HMI: Create a touch panel-like operation screen within the development environment and associate it with variables.</p>
+</div>
+</div>
+<h3>6. Create a processing block with IL (ladder)</h3>
+<p>IL: Describe processing blocks in ladder language.</p>
+<div class="image-container">
+<img alt="CODESYS entire screen" class="image-back" src="6process_blk.png"/>
+<div class="text-content">
+<p>IL: Write processing blocks in ladder language so that the lamp lights up.</p>
+</div>
+</div>
+<h3>7. Simulation execution</h3>
+<p>By logging in, you can check the linkage between the logic and the screen on your PC even if you do not have the actual machine. It is possible to debug basic operations such as turning on a lamp when a button is pressed.</p>
+<div class="image-container">
+<img alt="CODESYS entire screen" class="image-back" src="7simulation_on_lamp.png"/>
+<div class="text-content">
+<p>execution</p>
+</div>
+</div>
+<h3>8. Operation results</h3>
+<p>When you press the start button, process 2 is executed and the lamp lights up.</p>
+<div class="image-container">
+<img alt="CODESYS entire screen" class="image-back" src="8sim_lamp.png"/>
+<div class="text-content">
+<p>the lamp shines</p>
+</div>
+</div>
+<h3>Others</h3>
+<p>You can also check various other actions.</p>
+<div class="image-container">
+<img alt="CODESYS entire screen" class="image-back" src="etc_run_rader.png"/>
+<div class="text-content">
+<img alt="CODESYS entire screen" class="image-back" src="etc_run_rader_on_lamp.png"/>
+</div>
+</div>
+</section>
+<section>
+<h2>Summary &amp; Notes</h2>
+<div class="info-box">
+<ul>
+<li><strong>Compatibility note:</strong> If the development environment version (service pack) changes, the project may become incompatible.</li>
+<li><strong>license:</strong> User registration is required for execution. We have confirmed that the simulation itself works even after uninstalling Code Meter.
+                        </li>
+<li><strong>Learning use:</strong> It is a very useful environment because you can start learning ladders and the latest ST languages ​​without having to prepare an actual machine.</li>
+</ul>
+</div>
+</section>
+</main>
+<nav>
+<a href="../../index.html">← Back to Garden</a>
+</nav>
+<div class="like-section">
+<button aria-label="いいね" class="like-btn" id="like-btn">
+<span class="like-icon">♡</span>
+<span class="like-count" id="like-count">…</span>
+</button>
+<p class="like-label">Did you see it?</p>
+</div>
+<footer>
+<p>Copyright © amekusa All Rights Reserved.</p>
+</footer>
+</div>
+<script src="../like.js" type="module"></script>
+</body>
+</html>

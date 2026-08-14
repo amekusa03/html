@@ -22,7 +22,7 @@ The batch conversion itself worked easily, but when I reviewed it, I found some 
 
 **Missing the conversion in "". ** In several cases, the part enclosed in square brackets was left intact. Apparently this is a specification of Google Translate. It would be a good idea to be aware of how to use parentheses when writing the material.
 
-**Unnatural literal translation. ** If you translate subject omission, which is unique to Japanese, into English, you will end up with a sentence in which it is difficult to tell who is speaking. "think..." is sometimes written as `We think...`, but depending on the context, `I think...` is more natural. If you want to properly convey the nuances, you need to correct this with a human eye.
+**Unnatural literal translation. ** If you translate subject omission, which is unique to Japanese, into English, you will end up with a sentence in which it is difficult to tell who is speaking. "I think..." is sometimes written as `We think...`, but depending on the context, `I think...` is more natural. If you want to properly convey the nuances, you need to correct this with a human eye.
 
 **sitemap.xml. ** To tell search engines that your site is multilingual, you need to write the Japanese and English versions as a pair in `xhtml:link`.
 
@@ -34,3 +34,5 @@ The batch conversion itself worked easily, but when I reviewed it, I found some 
 ## Release for now
 
 Although it is rough cut, it will be released in this condition. There is no point in waiting for perfection.
+
+![English site top page](essays/2026-08-14-translate.png)

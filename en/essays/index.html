@@ -18,14 +18,46 @@
 <link href="../amenoniwa.png" rel="apple-touch-icon"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link href="https://amekusa.vercel.app/en/essays/" rel="canonical"/>
-<meta content="Amekusa's Garden — Full article archive. Technical essays, daily memos, cars, music, and more." name="description"/>
+<link href="https://amekusa.vercel.app/essays/" rel="canonical"/>
+<link href="https://amekusa.vercel.app/essays/" hreflang="ja" rel="alternate"/>
+<link href="https://amekusa.vercel.app/en/essays/" hreflang="en" rel="alternate"/>
+<link href="https://amekusa.vercel.app/essays/" hreflang="x-default" rel="alternate"/>
+<meta content="Amekusa" name="author"/>
+<meta content="Rainweed Garden — Full article archive. Technical essays, daily memos, cars, etc." name="description"/>
 <meta content="website" property="og:type"/>
-<meta content="https://amekusa.vercel.app/en/essays/" property="og:url"/>
-<meta content="Notes Archive | Amekusa's Garden" property="og:title"/>
-<meta content="Amekusa's Garden — Full article archive. Technical essays, daily memos, cars, music, and more." property="og:description"/>
+<meta content="https://amekusa.vercel.app/essays/" property="og:url"/>
+<meta content="Notes Archive | Raingrass Garden" property="og:title"/>
+<meta content="Rainweed Garden — Full article archive. Technical essays, daily memos, cars, etc." property="og:description"/>
 <meta content="https://amekusa.vercel.app/ogp.png" property="og:image"/>
-<title>Notes Archive | Amekusa's Garden</title>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="ja_JP" property="og:locale"/>
+<meta content="Amekusa's Garden" property="og:site_name"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Notes Archive | Raingrass Garden" name="twitter:title"/>
+<meta content="Rainweed Garden — Full article archive. Technical essays, daily memos, cars, etc." name="twitter:description"/>
+<meta content="https://amekusa.vercel.app/ogp.png" name="twitter:image"/>
+<title>Notes Archive | Raingrass Garden</title>
+<!-- JSON-LD 構造化データ -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": "https://amekusa.vercel.app/essays/",
+    "url": "https://amekusa.vercel.app/essays/",
+    "name": "Notes Archive | Raingrass Garden",
+    "description": "Full article archive. Technical essays, daily memos, cars, etc.",
+    "inLanguage": "ja",
+    "isPartOf": {
+      "@id": "https://amekusa.vercel.app/#website"
+    },
+    "author": {
+      "@type": "Person",
+      "@id": "https://amekusa.vercel.app/#person",
+      "name": "Amekusa"
+    }
+  }
+  </script>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&amp;family=Noto+Serif+JP:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
@@ -649,7 +681,8 @@
       { slug: "2026-08-10-imagefornet", date: "2026.08.10", title: "Face mosaic processing added to Android image processing app", categories: ["Development"] },
       { slug: "2026-08-12-qt6autoshutdown", date: "2026.08.12", title: "Qt6(C++) AutoShutdown reimplementation", categories: ["Development"] },
       { slug: "2026-08-13-smartswichbot", date: "2026.08.13", title: "I made my own Android SwitchBot app.", categories: ["Development"] },
-      { slug: "2026-08-14-translate", date: "2026.08.14", title: "I made an English version of the site.", categories: ["Development"] },
+      { slug: "2026-08-14-gpslogger", date: "2026.08.14", title: "I turned my old smartphone into a GPS logger for mountain climbing.", categories: ["Development"] },
+      { slug: "2026-08-14-translate", date: "2026.08.14", title: "I made an English site for the time being.", categories: ["Development"] }, 
     ];
 
     const CATEGORY_ORDER = ["Development", "Car", "Music", "Daily Life", "Others"];
@@ -711,7 +744,7 @@
                 ${cats.map(c => `<span class="essay-category-badge">${CATEGORY_ICONS[c] || ''} ${c}</span>`).join('')}
                 ${essay.date}
               </span>
-              <a href="/en/#essay=${essay.slug}" class="essay-title">${essay.title}</a>
+              <a href="${essay.slug}.html" class="essay-title">${essay.title}</a>
             </li>
           `;
         });

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+<script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-SRGF2MMYGD');
+    </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://amekusa.vercel.app/app/auto_shutdown/auto_shutdown" rel="canonical"/>
+<meta content="How to use and install a tool for Ubuntu that automatically shuts down when there is no operation. Runs as a systemd service." name="description"/>
+<title>AutoShutdown | Raingrass Garden</title>
+<script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+<script defer="" src="/_vercel/insights/script.js"></script>
+<link href="../../style.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+</head>
+<body class="app-page">
+<div class="container">
+<nav>
+<a href="../../index.html">← Back to Garden</a>
+</nav>
+<header>
+<div class="header-tags u-margin-b-1">
+<span class="tag">AutoShutdown</span>
+<span class="tag">Ubuntu</span>
+<span class="tag">systemd</span>
+<span class="tag">Wayland</span>
+</div>
+<h1>AutoShutdown — automatic shutdown during inactivity</h1>
+<p class="u-opacity-8">A small utility that detects inactivity in X11/Wayland environments and shuts down after a specified time.</p>
+</header>
+<main>
+<section>
+<h2>overview</h2>
+<p>This is a program on Ubuntu that automatically shuts down if there is no mouse or keyboard operation for a certain period of time. Prioritizes X11 idle detection and also does fallback via `gdbus` on GNOME/Wayland.</p>
+</section>
+<section>
+<h2>Video</h2>
+<div class="video-container">
+<iframe allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/NWzfF0Hg9_k" title="AutoShutdown - automatic shutdown tool"></iframe>
+</div>
+</section>
+<section>
+<h2>function</h2>
+<ul>
+<li>Accurate inactivity detection using X11's idle detection</li>
+<li>`gdbus` fallback in GNOME/Wayland environment</li>
+<li>Configurable inactivity time (default 5 minutes)</li>
+<li>Automatic start as systemd user service</li>
+<li>Operation can be monitored with log files</li>
+<li>1 minute notice time before shutdown</li>
+</ul>
+</section>
+<section>
+<h2>install</h2>
+<pre><code>cd /home/kusa/documents/AutoShutdown
+bash install.sh</code></pre>
+<p>Running the installation script installs dependencies and registers the systemd service. Please check the contents of the script in advance.</p>
+</section>
+<section>
+<h2>setting</h2>
+<p>The settings are <code>config.ini</code> Do this (example):</p>
+<pre><code>[general]
+idle_timeout = 300 # Inactive time (seconds)
+check_interval = 10 # Check interval (seconds)
+enabled = true</code></pre>
+<p>Please restart the service after changing the settings:</p>
+<pre><code>systemctl --user restart auto-shutdown</code></pre>
+</section>
+<section>
+<h2>How to use</h2>
+<p>Example of service operation:</p>
+<pre><code># start
+systemctl --user start auto-shutdown
+
+# stop
+systemctl --user stop auto-shutdown
+
+# Check status
+systemctl --user status auto-shutdown
+
+# Log (real time)
+journalctl --user -u auto-shutdown -f</code></pre>
+<p>Manual execution:</p>
+<pre><code>python3 /home/kusa/documents/AutoShutdown/auto_shutdown.py</code></pre>
+</section>
+<section>
+<h2>troubleshooting</h2>
+<h3>xprintidle not found</h3>
+<pre><code>sudo apt install xprintidle libglib2.0-bin</code></pre>
+<p>Idle detection in Wayland environment is done via gdbus. Operation confirmation command:</p>
+<pre><code>gdbus call --session --dest org.gnome.Mutter.IdleMonitor \
+  --object-path /org/gnome/Mutter/IdleMonitor/Core \
+  --method org.gnome.Mutter.IdleMonitor.GetIdletime</code></pre>
+</section>
+<section>
+<h2>uninstall</h2>
+<pre><code>systemctl --user stop auto-shutdown
+systemctl --user disable auto-shutdown
+sudo rm /etc/sudoers.d/autoshutdown</code></pre>
+</section>
+<section>
+<h2>license</h2>
+<p>MIT License</p>
+</section>
+</main>
+<nav>
+<a href="../../index.html">← Back to Garden</a>
+</nav>
+<div class="like-section">
+<button aria-label="いいね" class="like-btn" id="like-btn">
+<span class="like-icon">♡</span>
+<span class="like-count" id="like-count">…</span>
+</button>
+<p class="like-label">Did you see it?</p>
+</div>
+<footer>
+<p>Copyright © amekusa All Rights Reserved.</p>
+</footer>
+</div>
+<script src="../like.js" type="module"></script>
+</body>
+</html>

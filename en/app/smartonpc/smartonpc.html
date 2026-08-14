@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+<script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-SRGF2MMYGD');
+    </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://amekusa.vercel.app/app/smartonpc/smartonpc" rel="canonical"/>
+<meta content="Introducing a project to make your Ubuntu PC compatible with smart home using Matter and ESP32-C3. You can control the power supply and monitor the status of your PC from Google Nest Hub, etc." name="description"/>
+<title>SmartOn PC | Raingrass Garden</title>
+<script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+<script defer="" src="/_vercel/insights/script.js"></script>
+<link href="../../style.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        .step-table th,
+        .step-table td {
+            padding: 0.75rem 1rem;
+        }
+
+        .status-ok {
+            color: #2a9d2a;
+            font-weight: bold;
+        }
+
+        .circuit-block {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            font-family: monospace;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin: 0.5rem 0 1.5rem;
+            white-space: pre;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body class="app-page">
+<div class="container">
+<nav>
+<a href="../../index.html">← Back to Garden</a>
+</nav>
+<header>
+<div class="header-tags u-margin-b-1">
+<span class="tag">Matter</span>
+<span class="tag">ESP32-C3</span>
+<span class="tag">Ubuntu</span>
+</div>
+<h1>SmartOn PC</h1>
+<p class="header-subtitle u-opacity-8">PC power management system with Matter over Wi-Fi</p>
+</header>
+<main>
+<section>
+<h2>About this Project</h2>
+<p>
+                    Integrate Generic ESP32-C3 into your Ubuntu PC to meet smart home standards<strong>Matter</strong>This is a project that corresponds to ``.
+                    You can turn your PC on and off using voice commands and automation from Google Home/Nest Hub.
+                    This is a revenge for a previous project.
+                    We aim to seamlessly manage and operate the power status of PCs just like other home appliances.
+                </p>
+</section>
+<section>
+<h2>Video</h2>
+<div class="video-container">
+<iframe allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/f5ny7iTi6pg" title="SmartOn PC"></iframe>
+</div>
+</section>
+<section>
+<h2>Implementation steps</h2>
+<table class="step-table">
+<thead>
+<tr>
+<th>step</th>
+<th>Content</th>
+<th>situation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Step 1</td>
+<td>Matter ON/OFF control (press power button)</td>
+<td><span class="status-ok">✅ Implemented</span></td>
+</tr>
+<tr>
+<td>Step 2</td>
+<td>PC power status monitoring + Matter attribute synchronization</td>
+<td><span class="status-ok">✅ Implemented</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section>
+<h2>function</h2>
+<h3>Step 1 — Power control</h3>
+<table>
+<thead>
+<tr>
+<th>function</th>
+<th>means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Power on</td>
+<td>Mechanical relay → Short press of power button (500ms)</td>
+</tr>
+<tr>
+<td>Power OFF</td>
+<td>Mechanical relay → Short press power button (500ms) + Shutdown with Ubuntu ACPI settings</td>
+</tr>
+<tr>
+<td>Factory reset</td>
+<td>GPIO9 long press (3 seconds)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>WoL (Wake on LAN) is not adopted</strong> — I tried to set up this PC, but it didn't work.</li>
+<li><strong>ESP32 - ○○ command → power off on PC</strong> — Not considered because it is no different from operating a PC in the first place</li>
+<li><strong>Power OFF</strong>: Short press the power button on the relay and activate Ubuntu's ACPI
+                        Settings (<code>HandlePowerKey=poweroff</code>) initiates a graceful shutdown</li>
+</ul>
+<h3>Step 2 — Power status monitoring</h3>
+<table>
+<thead>
+<tr>
+<th>function</th>
+<th>means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Power status detection</td>
+<td>GPIO input for power LED via PC817 (active LOW)</td>
+</tr>
+<tr>
+<td>Deviation detection</td>
+<td>2 seconds polling, confirmed 3 times in a row</td>
+</tr>
+<tr>
+<td>Matter Attribute Sync</td>
+<td>When the deviation is confirmed <code>attribute::update()</code> Adjust the OnOff attribute to reality with</td>
+</tr>
+<tr>
+<td>User notification</td>
+<td>Via Matter subscription (automatically received by Google Home, etc.)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>fail-safe principle</strong>: Even if a deviation is detected, the system does not perform automatic ON/OFF operation. The actual situation is reflected in the Matter attribute and left to the user.</p>
+</section>
+<section>
+<h2>Hardware configuration</h2>
+<h3>Main parts</h3>
+<ul>
+<li><strong>Microcomputer</strong>: Generic ESP32-C3</li>
+<li><strong>host PC</strong>: Ubuntu</li>
+<li><strong>power control</strong>: Short circuit PWR SW pin of motherboard with single channel relay module (ASIN: B0G4C9GMVH)</li>
+<li><strong>Power status detection</strong>: Read power LED via PC817 optocoupler</li>
+<li><strong>controller</strong>: Google Nest Hub / Android smartphone</li>
+<li><strong>Power supply</strong>: Constant power supply from PC USB port</li>
+</ul>
+<h3>GPIO allocation</h3>
+<table>
+<thead>
+<tr>
+<th>GPIO</th>
+<th>role</th>
+<th>circuit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPIO 20</td>
+<td>OUTPUT: PWR SW control</td>
+<td>Via mechanical relay</td>
+</tr>
+<tr>
+<td>GPIO 4</td>
+<td>INPUT: PWR LED detection</td>
+<td>Via PC817 photocoupler (active LOW)</td>
+</tr>
+<tr>
+<td>GPIO 9</td>
+<td>INPUT: Factory reset</td>
+<td>Internal pull-up, LOW=press</td>
+</tr>
+</tbody>
+</table>
+<h3>circuit diagram</h3>
+<p><strong>PWR SW (GPIO 20 → mechanical relay → motherboard)</strong></p>
+<div class="circuit-block">GPIO 20 → Relay control input
+                    Relay contact → Motherboard PWR SW header short circuit</div>
+<p><strong>PWR LED (Motherboard → PC817 → GPIO 4)</strong></p>
+<div class="circuit-block">PWR_LED+ → 470Ω → PC817 Anode(pin1)
+                    PC817 Cathode(pin2) → PWR_LED- (GND)
+                    3.3V → 10kΩ → PC817 Collector(pin4) → GPIO 4
+                    PC817 Emitter(pin3) → GND
+
+                    PC ON: LED lit → PC817 continuity → GPIO = LOW
+                    PC OFF: LED off → PC817 shut off → GPIO = HIGH (pullup)</div>
+<p>The polarity is <code>pc_control.c</code> of <code>PWR_SW_ACTIVE_HIGH</code> Can be switched using source code.</p>
+<h3>Main material costs</h3>
+<table>
+<thead>
+<tr>
+<th>parts</th>
+<th>price</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Generic ESP32-C3</td>
+<td>539 yen</td>
+</tr>
+<tr>
+<td>relay module</td>
+<td>464 yen</td>
+</tr>
+<tr>
+<td>PC817 Photocoupler</td>
+<td>388 yen</td>
+</tr>
+<tr>
+<td><strong>total</strong></td>
+<td><strong>1,391 yen</strong></td>
+</tr>
+</tbody>
+</table>
+<h3>Standby power (estimated value)</h3>
+<table>
+<thead>
+<tr>
+<th>device</th>
+<th>situation</th>
+<th>Estimated power consumption</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Generic ESP32-C3</td>
+<td>Wi-Fi always connected/standby</td>
+<td>Approximately 0.3~0.5W</td>
+</tr>
+<tr>
+<td>relay module</td>
+<td>When not operating (coil OFF)</td>
+<td>Approximately 0.01W or less</td>
+</tr>
+<tr>
+<td>photo coupler</td>
+<td>When not operating</td>
+<td>Approximately 0.01W or less</td>
+</tr>
+<tr>
+<td>usb adapter loss</td>
+<td>Conversion efficiency assumed to be 80%</td>
+<td>+10〜20%</td>
+</tr>
+<tr>
+<td><strong>total</strong></td>
+<td></td>
+<td><strong>Approximately 0.4~0.6W</strong></td>
+</tr>
+</tbody>
+</table>
+<p class="u-opacity-8" style="font-size: 0.9em;">The above values ​​are estimated values. This is about the same as the standby power of a smartphone charger (0.1 to 0.3W), which is a safe level for practical use.
+                </p>
+</section>
+<section>
+<h2>software stack</h2>
+<table>
+<thead>
+<tr>
+<th>layer</th>
+<th>name</th>
+<th>version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OS / SDK</td>
+<td>ESP-IDF</td>
+<td>5.4.1</td>
+</tr>
+<tr>
+<td>Matter rapper</td>
+<td>esp-matter</td>
+<td><code>$ESP_MATTER_PATH</code> specified by</td>
+</tr>
+<tr>
+<td>Matter body</td>
+<td>ConnectedHomeIP (CHIP)</td>
+<td>esp-matter submodule</td>
+</tr>
+</tbody>
+</table>
+<p>Matter device type: <strong>On/Off Plug-in Unit</strong></p>
+</section>
+<section>
+<h2>build</h2>
+<h3>Configuring WiFi credentials</h3>
+<p><code>main/wifi_creds.h</code> Create and enter the SSID and password (<code>.gitignore</code> completed):</p>
+<pre><code>#define WIFI_SSID     "your-ssid"
+#define WIFI_PASSWORD "your-password"</code></pre>
+<h3>Build &amp; Flash</h3>
+<pre><code>. $IDF_PATH/export.sh
+. $ESP_MATTER_PATH/export.sh
+export _PW_ACTUAL_ENVIRONMENT_ROOT
+
+idf.py set-target esp32c3
+idf.py build
+idf.py -p /dev/ttyACM0 flash</code></pre>
+<h3>Matter commissioning</h3>
+<p>After flashing, a QR code and setup PIN will be output on the serial monitor. Please scan and register your device using the Google Home app.</p>
+<p>A test DAC (Device Attestation Certificate) is used during the development and testing stages.</p>
+<table>
+<thead>
+<tr>
+<th>item</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Manual Pairing Code</td>
+<td><code>34970112332</code></td>
+</tr>
+<tr>
+<td>Setup PIN</td>
+<td><code>20202021</code></td>
+</tr>
+<tr>
+<td>Discriminator</td>
+<td><code>3840</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section>
+<h2>design decisions</h2>
+<h3>BLE disable/WiFi only commissioning</h3>
+<p>
+<code>sdkconfig.defaults</code> BLE is completely disabled (<code>CONFIG_BT_ENABLED=n</code>,
+                    <code>CONFIG_ENABLE_CHIPOBLE=n</code>）。
+                </p>
+<p>
+<strong>reason</strong>: <code>store_wifi_credentials()</code>
+                    Because we hardcode the WiFi credentials in , the device attempts to connect to WiFi as soon as it boots.
+                    If CHIPoBLE (Matter's BLE advertisement) operates in this state, WiFi connection may be inhibited due to BLE/WiFi radio conflict.
+                    In designs that pre-embed WiFi credentials, disabling BLE and commissioning via IP network (<code>kOnNetwork</code>) are unified.
+                </p>
+<h3>Fail-safe principle (operation when deviation is detected)</h3>
+<p>The premise of the Matter specification is that ``the actual situation can be determined definitively.'' Automatic ON/OFF in the event of deviation creates a risk of malfunction.</p>
+<blockquote>Safe direction = no operation. The decision is left to the user.</blockquote>
+<p>Behavior when the discrepancy is confirmed (no discrepancy after 3 consecutive polls):</p>
+<ol>
+<li><code>attribute::update()</code> Sync the OnOff attribute to reality with</li>
+<li>Notify controllers (Google Home, etc.) via Matter subscription</li>
+<li>This system does not operate the power supply even with the information obtained.</li>
+</ol>
+</section>
+<section>
+<h2>Known issues/issues</h2>
+<h3>mDNS conflict (resolved)</h3>
+<p>
+                    In the old implementation (Ping-based aliveness monitoring), ESP-IDF <code>mdns_init()</code> and Matter internal mDNS were conflicting on port 5353.
+                    Currently, mDNS is not used as it has been replaced with power LED polling using GPIO. The problem has been resolved.
+                </p>
+<h3>Freeze automatic recovery (not implemented)</h3>
+<p>
+                    Currently, we have not detected cases where the power LED remains on and the PC does not respond (freezes).
+                    Manual action required. Users need to understand the system and take appropriate actions.
+                </p>
+</section>
+<section>
+<h2>Restrictions</h2>
+<ul>
+<li>This project assumes a typical home router environment at home.</li>
+<li>In networks that are strictly managed by authentication servers or networks that do not have sufficient security management,
+                        Your use of Matter may be restricted.</li>
+</ul>
+</section>
+<section>
+<h2>license</h2>
+<p>Application code for this project (<code>main/</code>) is Apache License 2.0. The dependent components used are also under the same license (partly MIT).</p>
+</section>
+<section>
+<h2>Actual machine</h2>
+<p>I forgot to take a photo of wiring the photocoupler on the input side.</p>
+<img alt="Actual machine photo" class="u-margin-b-1" height="451" loading="lazy" src="photo.JPG" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #ddd;" width="800"/>
+</section>
+<section>
+<h2>Resources</h2>
+<p>Source files and documents are available on GitHub. You are welcome to reuse it for personal study or small projects.</p>
+<a class="link-button" href="https://github.com/amekusa03/smarton-pc-c3">View on GitHub</a>
+</section>
+</main>
+<nav>
+<a href="../../index.html">← Back to Garden</a>
+</nav>
+<div class="like-section">
+<button aria-label="いいね" class="like-btn" id="like-btn">
+<span class="like-icon">♡</span>
+<span class="like-count" id="like-count">…</span>
+</button>
+<p class="like-label">Did you see it?</p>
+</div>
+<footer>
+<p>Copyright © amekusa All Rights Reserved.</p>
+</footer>
+</div>
+<script src="../like.js" type="module"></script>
+</body>
+</html>

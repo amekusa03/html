@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+<script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-SRGF2MMYGD');
+    </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://amekusa.vercel.app/app/unlockpdf/unlockpdf" rel="canonical"/>
+<meta content="Explanation of a project that runs Python stably 24 hours a day, 365 days a year on Google Compute Engine (GCE) and automatically processes Gmail attachment PDFs." name="description"/>
+<title>Google Compute Engine python | Rainweed garden</title>
+<script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+<script defer="" src="/_vercel/speed-insights/script.js"></script>
+<script defer="" src="/_vercel/insights/script.js"></script>
+<link href="../../style.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+</head>
+<body class="app-page">
+<div class="container">
+<nav>
+<a href="../../index.html">← Back to Garden</a>
+</nav>
+<header>
+<div class="header-tags u-margin-b-1">
+<span class="tag">Google Cloud</span>
+<span class="tag">Python</span>
+</div>
+<h1>Gmail PDF Unlocker</h1>
+<p class="u-opacity-8">Automatic email processing using virtual machines</p>
+</header>
+<main>
+<section>
+<h2>About this Project</h2>
+<p>
+                    This is a project that sends an email, and if the email meets the set conditions, the attached PDF file is saved in Google Drive with the password removed.
+                </p>
+</section>
+<section>
+<h2>System Configuration &amp; Workflow</h2>
+<div class="u-margin-t-1">
+<p>
+                        By using Python instead of Google Apps Script (GAS), we are able to respond flexibly to changes in specifications.
+                    </p>
+<ul class="u-margin-t-1" style="list-style: none; padding-left: 0;">
+<li><strong><i class="fas fa-server"></i> iaas:</strong> Google Compute Engine (GCE)
+                            Free tier (e2-micro)</li>
+<li><strong><i class="fas fa-code"></i> language:</strong> Python</li>
+<li><strong><i class="fas fa-envelope"></i> Target email:</strong> Unread emails from specific senders</li>
+<li><strong><i class="fas fa-unlock-alt"></i> Processing details:</strong> Automatically remove password protection for attached PDFs</li>
+<li><strong><i class="fas fa-hdd"></i> Save to:</strong> Specified folder in Google Drive</li>
+<li><strong><i class="fas fa-check-double"></i> Post-processing:</strong> Add processed label and mark as read</li>
+</ul>
+</div>
+<p>GCE's <code>e2-micro</code> By using an instance, you can always operate it for free. *1</p>
+<ul>
+<li><strong>Gmail API:</strong> Search and retrieve unread emails from a specific sender.</li>
+<li><strong>Python (pypdf):</strong> Securely remove PDF passwords in memory.</li>
+<li><strong>Google Drive API:</strong> Automatically save to the specified folder.</li>
+</ul>
+<div class="note">
+<p><small>*1 Please be careful not to confuse it with f1-micro, which was previously eligible for the free tier. e2-micro is currently eligible for the free tier.</small></p>
+</div>
+</section>
+<section>
+<h2>Setup</h2>
+<h3>1. Setting up your GCP project</h3>
+<ol>
+<li>Enable Gmail API and Google Drive API.</li>
+<li>Set up the OAuth consent screen and create an "OAuth client ID" as a desktop app.</li>
+<li><code>credentials.json</code> Get.</li>
+</ol>
+<h3>2. Installation and deployment</h3>
+<pre><code>git clone &lt;your-repo-url&gt;
+cd unlockpdf
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt</code></pre>
+</section>
+<section>
+<h2>Usage</h2>
+<h3>First execution (authentication)</h3>
+<p>The first time you run it, your browser will start and you will be asked to log in to your Google account. Once the authentication is complete, the working directory will be <code>token.json</code> will be generated.</p>
+<pre><code>python unlock_and_save.py</code></pre>
+<h3>Service (systemd)</h3>
+<p>Linux for continuous operation 24 hours a day, 365 days a year <code>systemd</code>
+                    Register it as a background process using This allows the program to automatically recover when the program terminates abnormally or when the server is restarted.</p>
+<pre><code># /etc/systemd/system/unlockpdf.service
+[Service]
+ExecStart=/path/to/venv/bin/python /path/to/unlock_and_save.py
+Restart=always
+User=your-user-name</code></pre>
+</section>
+<section>
+<h2>Deployment (Google Compute Engine)</h2>
+<p>In order to optimize (minimize) costs, we will operate on GCE's free tier (e2-micro).</p>
+<ol>
+<li><strong>Instance creation:</strong> In regions eligible for the free tier (us-west1, us-central1, etc.) <code>e2-micro</code> Create.</li>
+                    (⚠️I created it using f1-micro and was charged. Fee calculation is delayed for several hours, so the fee will increase for a while even after it is stopped.)
+                    <li><strong>Transfer files:</strong> <code>unlock_and_save.py</code>, <code>credentials.json</code>,
+                        <code>token.json</code> Upload.
+                        <div class="note">
+<p><small>*Since the server does not have a GUI, it was generated in the local environment. <code>token.json</code> must be transferred.</small></p>
+</div>
+</li>
+<li><strong>Always-on configuration:</strong> <code>systemd</code> Create a unit file and enable/start the service.</li>
+</ol>
+</section>
+<section>
+<h2>Security Considerations</h2>
+<div class="warning-box" style="background-color: #fff3f3; border-left: 5px solid #d9534f; padding: 15px; margin: 20px 0;">
+<p><strong><i class="fas fa-exclamation-triangle"></i> Important: Protecting your credentials</strong></p>
+<p>Please never include the following confidential information in public repositories such as GitHub. We strongly recommend using environment variables.</p>
+<ul>
+<li><code>credentials.json</code>(app key)</li>
+<li><code>token.json</code>(Account access rights)</li>
+<li><code>PDF_PASSWORD</code>(raw password)</li>
+</ul>
+<p>If you have accidentally made your credentials public, please immediately disable the relevant credentials and issue new ones.</p>
+</div>
+</section>
+<section>
+<h2>Video Demo</h2>
+<div class="video-container">
+<iframe allowfullscreen="" frameborder="0" loading="lazy" src="https://www.youtube.com/embed/F5ah5UK3LFw" title="Unlock PDF Demo"></iframe>
+</div>
+</section>
+<section>
+<h2>Development Environment</h2>
+<ul class="tech-stack">
+<li>Google Compute Engine</li>
+<li>Python 3.x</li>
+<li>Gmail &amp; Drive API</li>
+<li>pypdf</li>
+</ul>
+</section>
+<section>
+<h2>Precautions &amp; Resources </h2>
+<p><strong>Google Cloud Platform pricing</strong>Please be careful. If you operate outside of the free tier (e2-micro), you will be charged.</p>
+<p>The materials are published on GitHub. You are welcome to reuse it for personal study or small projects.</p>
+<a class="link-button" href="https://github.com/amekusa03/AskGeminibyemail" rel="noopener noreferrer" target="_blank">View on GitHub</a>
+</section>
+<section>
+<h2>Best Practices for 24/7 Operation</h2>
+<div class="tech-stack">
+<div class="u-margin-b-1">
+<h3>1. Process management (systemd)</h3>
+<p>To automatically restart when the OS starts or crashes,<code>systemd</code> It is most robust to turn it into a service.</p>
+<pre><code>[Service]
+Restart=always
+RestartSec=5
+ExecStart=/path/to/venv/bin/python main.py</code></pre>
+</div>
+<div class="u-margin-b-1">
+<h3>2. Robust Python code</h3>
+<ul>
+<li><strong>Exception handling:</strong> main loop <code>try-except</code> to avoid stopping on temporary errors.</li>
+<li><strong>Logging:</strong> <code>logging</code> Use the library and Google Cloud Logging
+                                allows you to check the status remotely.</li>
+</ul>
+</div>
+<div class="u-margin-b-1">
+<h3>3. Infrastructure stabilization</h3>
+<ul>
+<li><strong>Memory monitoring:</strong> Since e2-micro has a small amount of memory (1GB), you need to be careful about stopping it due to OOM Killer.</li>
+<li><strong>Static IP:</strong> To ensure stable communication, we recommend reserving a static external IP address.</li>
+<li><strong>Automatic updates:</strong> Automate security patch application with GCE's OS configuration management function.</li>
+</ul>
+</div>
+<div class="u-margin-b-1">
+<h3>4. Considering containerization</h3>
+<p>With an eye toward future environment migration and scaling, you can minimize problems with dependencies by deploying Docker containers.</p>
+</div>
+</div>
+</section>
+</main>
+<nav>
+<a href="../../index.html">← Back to Garden</a>
+</nav>
+<div class="like-section">
+<button aria-label="いいね" class="like-btn" id="like-btn">
+<span class="like-icon">♡</span>
+<span class="like-count" id="like-count">…</span>
+</button>
+<p class="like-label">Did you see it?</p>
+</div>
+<footer>
+<p>Copyright © amekusa All Rights Reserved.</p>
+</footer>
+</div>
+<script src="../like.js" type="module"></script>
+</body>
+</html>

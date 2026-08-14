@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+<script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-SRGF2MMYGD');
+    </script>
+<link href="../../Favicon.png" rel="icon" type="image/png"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://amekusa.vercel.app/app/android_clean_guide/android_crean_guide" rel="canonical"/>
+<meta content="We will explain how to delete unnecessary Android apps and manage logs using PowerShell scripts." name="description"/>
+<meta content="How to organize unnecessary apps on Android (script version) | Amegusa no Niwa" property="og:title"/>
+<meta content="We will explain how to delete unnecessary Android apps and manage logs using PowerShell scripts." property="og:description"/>
+<title>How to organize unnecessary apps on Android (script version) | Amegusa no Niwa</title>
+<script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+<script defer="" src="/_vercel/speed-insights/script.js"></script>
+<script defer="" src="/_vercel/insights/script.js"></script>
+<link href="../../style.css" rel="stylesheet"/>
+</head>
+<body class="app-page">
+<canvas id="rain-canvas"></canvas>
+<div class="container">
+<nav aria-label="ページナビゲーション">
+<a href="../../index.html">← Back to Garden</a>
+</nav>
+<header>
+<div class="header-tags u-margin-b-1">
+<span class="tag">PowerShell</span>
+<span class="tag">ADB</span>
+<span class="tag">Android</span>
+</div>
+<h1>How to organize Android unnecessary apps (script edition)</h1>
+<p class="u-opacity-8">Rather than manually entering ADB commands one by one, we will explain how to use a PowerShell script to organize while leaving a deletion log.</p>
+</header>
+<main>
+<section>
+<h2>About this guide</h2>
+<p>
+                    Many sites introduce how to delete preinstalled Android apps using ADB.
+                    This guide does not explain basic ADB operations.<strong>"PowerShell script that organizes deleted apps while recording them in a text file"</strong>I will focus on how to use it.
+                </p>
+<p>
+                    Using scripts has the following advantages:
+                </p>
+<ul>
+<li>A record of what was deleted remains</li>
+<li>You can delete multiple apps in succession</li>
+<li>You can also perform restore operations while viewing the logs.</li>
+</ul>
+</section>
+<section>
+<h2>Prerequisites</h2>
+<p>Before proceeding with this guide, you must have:</p>
+<ul>
+<li>to PC<strong>ADB（SDK Platform-Tools）</strong>is installed</li>
+<li>smartphone's<strong>developer options</strong>and<strong>usb debugging</strong>is enabled</li>
+<li>The PC and smartphone are connected with a USB cable,<code>adb devices</code> The smartphone is recognized by</li>
+</ul>
+<p>
+                    If you haven't done the above yet,
+                    <a href="https://developer.android.com/tools/releases/platform-tools?hl=ja#downloads" rel="noopener noreferrer" target="_blank">SDK Platform-Tools official page</a>
+                    Please prepare by referring to the following.
+                </p>
+</section>
+<section>
+<h2>Step 1: Prepare the script</h2>
+<p>
+                    The folder where you unzipped ADB (<code>adb.exe</code> in the folder with<code>uninstall.ps1</code>
+                    Create a text file with the name , paste the following content, and save it.
+                </p>
+<pre><code>while ($true) {
+    $pkg = Read-Host "Enter the package name (just enter to finish)"
+    if ($pkg -eq "") { break }
+
+    $result = adb shell pm uninstall -k --user 0 $pkg
+    if ($result -match "Success") {
+        $log = "$(Get-Date -Format 'yyyy/MM/dd HH:mm') $pkg"
+        Add-Content -Path "uninstalled_apps.txt" -Value $log
+        Write-Host "Delete completed: $pkg" -ForegroundColor Green
+    } else {
+        Write-Host "Delete failed: $result" -ForegroundColor Red
+    }
+}</code></pre>
+<h3>Script behavior</h3>
+<ul>
+<li>Prompts repeatedly for package name</li>
+<li>If the deletion was successful, enter the date, time and package name. <code>uninstalled_apps.txt</code> I will add it to</li>
+<li>If deletion fails, the error details will be displayed (not recorded in the log)</li>
+<li>Press Enter without entering anything to exit.</li>
+</ul>
+</section>
+<section>
+<h2>Step 2: Run the script</h2>
+<ol>
+<li>``Shift + right-click'' an empty space in the ADB folder and select ``Open PowerShell window here.''</li>
+<li>Type the command below and press Enter:</li>
+</ol>
+<pre><code>.\uninstall.ps1</code></pre>
+<p>
+                    If you receive an error related to "execution policy", please do the following first and then try again.
+                </p>
+<pre><code>Set-ExecutionPolicy -Scope CurrentUser RemoteSigned</code></pre>
+</section>
+<section>
+<h2>Step 3: Enter package name and delete</h2>
+<p>
+                    When the script starts, it will ask you to enter the package name.
+                    Package name of the app you want to remove (e.g.<code>com.example.app</code>) and press Enter.
+                </p>
+<p>How to find the package name:</p>
+<ul>
+<li><strong>Android 8.0 and above:</strong>"Settings" → "Apps" → "All apps" → Tap the target app to confirm</li>
+<li><strong>Android 7.x and below:</strong>Install Aplin from Google Play and check</li>
+</ul>
+<p>
+                    「<strong style="color: green;">Deletion completed:〇〇</strong>” is displayed, it is successful. Continue to remove another app or just press Enter to exit.
+                </p>
+</section>
+<section>
+<h2>Step 4: Check the log file</h2>
+<p>
+                    After every successful deletion, inside the ADB folder <code>uninstalled_apps.txt</code> will be created automatically.
+                    The contents are recorded in the following format.
+                </p>
+<pre><code>2026/05/17 14:32  com.example.bloatware
+2026/05/17 14:33  com.carrier.app</code></pre>
+<p>By saving this file, you can always check what you deleted later.</p>
+</section>
+<section>
+<h2>Reference: Removal candidate package for AQUOS</h2>
+<p>This is reference information when using AQUOS (Sharp Android). Some packages may not exist depending on the model or Android version.</p>
+<h3>Sharp's unique features (candidates for disabling if not used)</h3>
+<p>This is a feature unique to AQUOS. If you are not using it, it will be a candidate for deletion.</p>
+<table>
+<thead>
+<tr>
+<th>package name</th>
+<th>function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>jp.co.sharp.android.emopar</code></td>
+<td rowspan="2">Emopa (AI assistant)</td>
+</tr>
+<tr>
+<td><code>jp.co.sharp.android.emopa.systemservice</code></td>
+</tr>
+<tr>
+<td><code>jp.co.sharp.android.launcherguide</code></td>
+<td>Operation guide</td>
+</tr>
+<tr>
+<td><code>jp.co.sharp.android.shtutorialapp</code></td>
+<td>tutorial</td>
+</tr>
+<tr>
+<td><code>jp.co.sharp.android.pedometer.framework.server</code></td>
+<td rowspan="2">pedometer</td>
+</tr>
+<tr>
+<td><code>jp.co.sharp.android.pedometersettingapp</code></td>
+</tr>
+<tr>
+<td><code>jp.co.sharp.android.karadamate</code></td>
+<td>body mate</td>
+</tr>
+<tr>
+<td><code>jp.co.sharp.android.scrollauto</code></td>
+<td>scroll auto</td>
+</tr>
+<tr>
+<td><code>jp.co.sharp.android.paytriggerw</code></td>
+<td>Pay trigger (launch payment app using fingerprint sensor)</td>
+</tr>
+</tbody>
+</table>
+<h3>Google apps (if there are alternative apps)</h3>
+<table>
+<thead>
+<tr>
+<th>package name</th>
+<th>function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>com.google.android.apps.fitness</code></td>
+<td>Google Fit</td>
+</tr>
+<tr>
+<td><code>com.google.android.apps.magazines</code></td>
+<td>Google News</td>
+</tr>
+<tr>
+<td><code>com.google.android.apps.books</code></td>
+<td>Google Play Books</td>
+</tr>
+<tr>
+<td><code>com.google.android.apps.bard</code></td>
+<td>Google Gemini / Bard</td>
+</tr>
+<tr>
+<td><code>com.google.chromeremotedesktop</code></td>
+<td>remote desktop</td>
+</tr>
+</tbody>
+</table>
+<h3>⚠️ Packages that should not be touched</h3>
+<p>If you delete the following, your smartphone may not work properly (or in the worst case, it may not start up). Please never delete it.</p>
+<table>
+<thead>
+<tr>
+<th>package name</th>
+<th>role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>android</code></td>
+<td>system core</td>
+</tr>
+<tr>
+<td><code>jp.co.sharp.android.launcher3</code></td>
+<td>home screen</td>
+</tr>
+<tr>
+<td><code>com.android.systemui</code></td>
+<td>通知・画面表示</td>
+</tr>
+<tr>
+<td><code>com.felicanetworks.*</code></td>
+<td>Osaifu-Keitai function</td>
+</tr>
+<tr>
+<td><code>com.mediatek.*</code></td>
+<td>Control of CPU/communication chip</td>
+</tr>
+<tr>
+<td><code>jp.co.sharp.overlay.*</code></td>
+<td>Data for adjusting screen display</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section>
+<h2>(Supplement) How to restore deleted apps</h2>
+<p>
+                    You can restore deleted apps using the package name recorded in the log file (Android 7.0 and above).
+                    Execute the following command in PowerShell.
+                </p>
+<pre><code>adb shell cmd package install-existing package name</code></pre>
+<p>If "Success" is displayed, the restoration is complete.</p>
+<p class="u-opacity-8">*Restore is not possible on Android versions lower than 7.0. Please think carefully before deleting.</p>
+</section>
+<section>
+<h2>summary</h2>
+<p>
+                    By using a script, you can save yourself the trouble of entering commands manually each time, and you can also automatically keep a record of deleted apps.
+                    If you have a log file, you won't have to worry about "Did I delete that app?"
+                </p>
+<p>I hope this helps you organize your smartphone.</p>
+</section>
+</main>
+<nav aria-label="ページナビゲーション">
+<a href="../../index.html">← Back to Garden</a>
+</nav>
+<div class="like-section">
+<button aria-label="いいね" class="like-btn" id="like-btn">
+<span class="like-icon">♡</span>
+<span class="like-count" id="like-count">…</span>
+</button>
+<p class="like-label">Did you see it?</p>
+</div>
+<footer>
+<p>Copyright © amekusa All Rights Reserved.</p>
+</footer>
+</div>
+<script src="../../rain.js"></script>
+<script src="../like.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+<script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-SRGF2MMYGD');
+    </script>
+<link href="../../Favicon.png" rel="icon" type="image/png"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://amekusa.vercel.app/app/android_install_guide/android_install_guide" rel="canonical"/>
+<meta content="For beginners: We will explain how to install the source code of an Android application on GitHub onto your smartphone using Android Studio." name="description"/>
+<meta content="How to install Android apps (from GitHub to smartphone) | Amegusa no Niwa" property="og:title"/>
+<meta content="For beginners: We will explain how to install the source code of an Android application on GitHub onto your smartphone using Android Studio." property="og:description"/>
+<title>How to install Android apps (from GitHub to smartphone) | Amegusa no Niwa</title>
+<script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+<script defer="" src="/_vercel/speed-insights/script.js"></script>
+<script defer="" src="/_vercel/insights/script.js"></script>
+<link href="../../style.css" rel="stylesheet"/>
+</head>
+<body class="app-page">
+<canvas id="rain-canvas"></canvas>
+<div class="container">
+<nav aria-label="ページナビゲーション">
+<a href="../../index.html">← Back to Garden</a>
+</nav>
+<header>
+<div class="header-tags u-margin-b-1">
+<span class="tag">Android Studio</span>
+<span class="tag">GitHub</span>
+<span class="tag">For beginners</span>
+</div>
+<h1>How to install Android apps</h1>
+<p class="u-opacity-8">Steps to run GitHub source code on a smartphone</p>
+</header>
+<main>
+<section>
+<h2>Introduction</h2>
+<p>
+                    Have you ever wanted to use an Android app published on GitHub on your smartphone?
+                    Even if you have no experience developing apps, you can install it on your smartphone using Android Studio by following the steps.
+                    This guide provides easy-to-understand explanations from environment construction to transfer to the actual device.
+                </p>
+</section>
+<section>
+<h2>Video</h2>
+<div class="video-container">
+<iframe allowfullscreen="" loading="lazy" src="https://www.youtube.com/embed/LCtJxWLGkkY" title="android auto musik player"></iframe>
+</div>
+</section>
+<section>
+<h2>Step 1: Install Android Studio</h2>
+<p>First, install the development tool "Android Studio" on your computer.</p>
+<ol>
+<li><a href="https://developer.android.com/studio" rel="noopener noreferrer" target="_blank">Android
+                            Studio official website</a>access.</li>
+<li>Click the "Download Android Studio" button, agree to the terms and download the installer.</li>
+<li>Run the downloaded file and basically click "Next" to complete the installation.</li>
+<li>Several components are downloaded on first launch. Please wait as it will take some time.</li>
+</ol>
+</section>
+<section>
+<h2>Step 2: Get the code from GitHub</h2>
+<p>Next, download the program (source code) of the app you want to run.</p>
+<ol>
+<li>GitHub project page (e.g.<a href="https://github.com/amekusa03/WebLauncher2" rel="noopener noreferrer" target="_blank">WebLauncher2</a>).</li>
+<li>Click the green "&lt;&gt; Code" button and select "Download ZIP".</li>
+<li>Extract (unzip) the downloaded ZIP file to a location of your choice (desktop, etc.) on your computer.</li>
+</ol>
+</section>
+<section>
+<h2>Step 3: Open the project in Android Studio</h2>
+<ol>
+<li>Launch Android Studio and select "Open".</li>
+<li>Select and open the folder you just extracted (look for the folder with the Android icon).</li>
+<li>"Gradle Sync" will start at the bottom right. It will automatically collect the necessary libraries, etc., so wait a few minutes until it finishes (until the bar disappears).</li>
+</ol>
+</section>
+<section>
+<h2>Step 4: Preparing the smartphone side (developer option)</h2>
+<p>To send the app to your smartphone, you need to enable "debug mode" on your smartphone.</p>
+<ol>
+<li>Open your smartphone's "Settings" → "Device information".</li>
+<li>Tap "Build number" 7 times in a row. "You are now a developer" will be displayed.</li>
+<li>Open "Settings" → "System" → "Developer options"<strong>Turn on "USB debugging"</strong>I'll make it.</li>
+<li>Connect your smartphone and computer with a USB cable. When asked "Do you want to allow USB debugging?", press OK.</li>
+</ol>
+</section>
+<section>
+<h2>Step 5: Install on smartphone</h2>
+<ol>
+<li>Make sure that the name of your smartphone is displayed in the device selection field at the top of Android Studio.</li>
+<li>It's on the right side of it<strong>Green play button (Run 'app')</strong>Click.</li>
+<li>The program will begin to build, and if successful, the app will automatically launch on your smartphone.</li>
+</ol>
+<div class="note-box">
+<strong>Note:</strong> If an error occurs during the build, the version of Android Studio may be old or the OS version of your smartphone may not be compatible.
+                </div>
+</section>
+<section>
+<h2>summary</h2>
+<p>
+                    Once you create an environment, you can try out other GitHub projects using the same steps.
+                    Even just looking at the source code and slightly changing the numbers and colors can be the first step in app development. Please enjoy it!
+                </p>
+</section>
+</main>
+<nav aria-label="ページナビゲーション">
+<a href="../../index.html">← Back to Garden</a>
+</nav>
+<div class="like-section">
+<button aria-label="いいね" class="like-btn" id="like-btn">
+<span class="like-icon">♡</span>
+<span class="like-count" id="like-count">…</span>
+</button>
+<p class="like-label">Did you see it?</p>
+</div>
+<footer>
+<p>Copyright © amekusa All Rights Reserved.</p>
+</footer>
+</div>
+<script src="../../rain.js"></script>
+<script src="../like.js" type="module"></script>
+</body>
+</html>

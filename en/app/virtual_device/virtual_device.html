@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+<script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-SRGF2MMYGD');
+    </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://amekusa.vercel.app/app/virtual_device/virtual_device" rel="canonical"/>
+<meta content="ESP32-C6-GEEK Virtual Smart Device Control System" name="description"/>
+<title>Virtual Smart Device Control System | Raingrass Garden</title>
+<script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+<script defer="" src="/_vercel/insights/script.js"></script>
+<link href="../../style.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+
+        .tech-stack li {
+            background: #ffffff;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .tech-stack li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .tech-stack i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #444;
+        }
+
+        .tech-stack strong {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body class="app-page">
+<div class="container">
+<nav>
+<a href="../../index.html">← Back to Garden</a>
+</nav>
+<header>
+<div class="header-tags u-margin-b-1">
+<span class="tag">Matter</span>
+<span class="tag">ESP32-C6</span>
+<span class="tag">Ubuntu</span>
+</div>
+<h1>Virtual Smart Device Control System</h1>
+<p class="header-subtitle u-opacity-8">Matter compatible virtual smart device development detailed report</p>
+</header>
+<main>
+<section>
+<h2>Video</h2>
+<div class="video-container">
+<iframe allowfullscreen="" frameborder="0" loading="lazy" src="https://www.youtube.com/embed/K-S2Lh78OMA" title="Virtual Smart Device Control System Demo"></iframe>
+</div>
+</section>
+<section>
+<h2>1. Project overview</h2>
+<h3>Purpose and concept</h3>
+<p>
+                    This project uses Waveshare's ``ESP32-C6-GEEK'' as a platform and aims to implement a ``virtual smart device'' via the Matter protocol. The biggest feature is that ON/OFF state animation and operation verification can be completed on the built-in LCD without involving the actual PC hardware. This allows Apple
+                    Interoperability with major smart home ecosystems such as Home, Google Home, and Amazon Alexa can be safely and precisely verified using a single device.
+                </p>
+<h3>Summary of key features</h3>
+<ol>
+<li><strong>Multi-platform operation with Matter protocol:</strong> Achieve seamless operation from a diverse ecosystem without relying on a specific vendor.</li>
+<li><strong>Real-time status animation on LCD:</strong> Draw device dynamics with 20fps low-latency graphics and provide visual feedback.</li>
+<li><strong>Intelligent backlight dimming:</strong> Event-driven automatic dimming logic for efficient power management and panel protection.</li>
+<li><strong>Seamless switching between virtual and physical mode:</strong> Software-defined changes allow instant transition from a simulation environment to physical PC power control.</li>
+</ol>
+</section>
+<section>
+<h2>2. 5-layer system hierarchy structure</h2>
+<p>This system consists of the following five-layer architecture for the purpose of hardware abstraction and protocol stack separation.</p>
+<ol>
+<li>
+<strong>Physical layer</strong>
+<p>An ESP32-C6-GEEK is used as the main microcontroller, and an ST7789 built-in LCD with a resolution of 135 x 240 px is used as the output interface. Note that when operating in real machine mode (physical control), a separate photocoupler circuit must be connected to the outside of the board.
+                        </p>
+</li>
+<li>
+<strong>Driver/Abstraction Layer</strong>
+<p>The high-speed drawing library "LovyanGFX" has been introduced, and communication with the ST7789 uses an SPI bus and DMA (Direct Memory
+                            Access) is applied. This ensures the 20fps drawing performance required by the application layer. Also, in actual machine mode, GPIO
+                            Provides physical switch control interface via 20.</p>
+</li>
+<li>
+<strong>Communication/Protocol Layer</strong>
+<p>The layer in which the Matter protocol stack functions based on WiFi connectivity. Top smart home apps (Apple Home, Google
+                            Control secure pairing and command communication with other devices (such as Home, etc.).</p>
+</li>
+<li>
+<strong>System Service Layer</strong>
+<p>It provides an OTA (Over-the-Air) update function that enables wireless functionality expansion, and dimming logic that dynamically manages backlight brightness. The 32-second dimming timeline described below is managed in this layer.
+                        </p>
+</li>
+<li>
+<strong>Application Layer</strong>
+<p>As the top layer, it is responsible for driving the 20fps animation drawing engine, synchronizing device ON/OFF states, and switching logic between virtual and real devices.</p>
+</li>
+</ol>
+</section>
+<section>
+<h2>3. Technical specifications</h2>
+<h3>Hardware specification table</h3>
+<table>
+<thead>
+<tr>
+<th>parts</th>
+<th>Model number</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Microcomputer</td>
+<td>Waveshare ESP32-C6-GEEK</td>
+</tr>
+<tr>
+<td>LCD</td>
+<td>ST7789 (Built-in board 135×240px)</td>
+</tr>
+</tbody>
+</table>
+<h3>Software requirements table</h3>
+<table>
+<thead>
+<tr>
+<th>tool</th>
+<th>version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ESP-IDF</td>
+<td>v5.4.1</td>
+</tr>
+<tr>
+<td>ESP-Matter</td>
+<td>Latest (GN required)</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>3.12.3 or higher</td>
+</tr>
+<tr>
+<td>LovyanGFX</td>
+<td>Included in components/</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section>
+<h2>4. Development points</h2>
+<h3>1.Matter operation and pairing</h3>
+<p>This device performs initial setup and operation based on the Matter standard.</p>
+<ul>
+<li><strong>Manual pairing code:</strong> Assuming an environment where QR codes cannot be used, use the 11-digit code "06242023267" for manual entry.</li>
+<li><strong>Ready identification:</strong>
+                        After startup, the IP address will be displayed in the LCD footer area. When this appears, it is a signal that Matter is ready for commissioning (pairing). For detailed logs, see "Manual" on the serial monitor.
+                        This can be confirmed in the "pairing code:" line.</li>
+</ul>
+<h3>2. LCD animation display</h3>
+<p>In order to improve the user experience, 20fps drawing is realized using DMA drive.</p>
+<ul>
+<li><strong>Displayed items:</strong> Device ON/OFF status, WiFi connection status, and acquired IP address are always displayed in the footer.</li>
+<li><strong>Visibility:</strong> Adopts an interface design that allows you to understand communication status and device status at a glance.</li>
+</ul>
+<h3>3. Backlight automatic dimming logic</h3>
+<p>In order to extend the lifespan of the LCD and optimize power consumption, we have implemented dimming control based on the 32-second timeline below.</p>
+<ul>
+<li><strong>Full brightness maintenance phase (0–10s):</strong> 100% brightness is maintained for 10 seconds after an event such as an operation input occurs.</li>
+<li><strong>Dimming phase (10–32s):</strong> The brightness decreases linearly over the next 22 seconds, and finally turns off (dimming).</li>
+</ul>
+<h3>4. Function to switch between virtual mode and real machine mode</h3>
+<p><code>main/pc_control.h</code> The compile switch within defines the operating mode.</p>
+<ul>
+<li><strong>Virtual mode:</strong> <code>#define PC_VIRTUAL_MODE 1</code> —
+                        Only simulation is performed on the software, and the operation is completed with LCD animation.</li>
+<li><strong>Actual mode:</strong> <code>#define PC_VIRTUAL_MODE 0</code> — Linked with LCD display, GPIO
+                        20 to physically control the actual PC power button via an optocoupler circuit. *This mode requires separate construction of an external circuit.</li>
+</ul>
+</section>
+<section>
+<h2>5. Architecture considerations</h2>
+<h3>Main configuration file</h3>
+<p>Developers should refer to and edit the following files as necessary.</p>
+<ul>
+<li><code>main/wifi_creds.h</code>: Define the SSID and password of the connected WiFi.</li>
+<li><code>main/pc_control.h</code>: Selection of operation mode (PC_VIRTUAL_MODE).</li>
+<li><code>main/lcd_display.cpp</code>: Control of dimming timing and animation parameters.</li>
+</ul>
+<h3>License form</h3>
+<ul>
+<li><strong>Project body:</strong> Apache License 2.0 (including ESP-IDF, ESP-Matter).</li>
+<li><strong>LovyanGFX:</strong> MIT License。</li>
+</ul>
+<h3>Build/deployment flow</h3>
+<ol>
+<li><strong>Environment construction:</strong> Set up the environment for ESP-IDF and ESP-Matter. GN is required to build ESP-Matter.</li>
+<li><strong>Settings reflected:</strong> <code>wifi_creds.h</code> Describe network information in .</li>
+<li><strong>Build execution:</strong> <code>idf.py build</code> Execute. Ensure that dependencies including GN are resolved correctly.</li>
+<li><strong>flash:</strong> <code>idf.py flash</code>
+                        Write to the device using , and confirm that the operation has started by seeing the IP address displayed in the LCD footer.</li>
+</ol>
+</section>
+</main>
+<nav>
+<a href="../../index.html">← Back to Garden</a>
+</nav>
+<div class="like-section">
+<button aria-label="いいね" class="like-btn" id="like-btn">
+<span class="like-icon">♡</span>
+<span class="like-count" id="like-count">…</span>
+</button>
+<p class="like-label">Did you see it?</p>
+</div>
+<footer>
+<p>Copyright © amekusa All Rights Reserved.</p>
+</footer>
+</div>
+<script src="../like.js" type="module"></script>
+</body>
+</html>

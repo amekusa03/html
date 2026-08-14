@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+<script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-SRGF2MMYGD');
+    </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://amekusa.vercel.app/app/field_logger/field_logger" rel="canonical"/>
+<meta content="Specifications for a self-contained data logger that automatically records environmental data over a long period of time in mountain fields (without power or internet) and collects the data using a smartphone on-site." name="description"/>
+<title>Temperature and humidity data logger for mountain fields | Rainweed garden</title>
+<script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+<script defer="" src="/_vercel/insights/script.js"></script>
+<link href="../../style.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+</head>
+<body class="app-page">
+<div class="container">
+<nav>
+<a href="../../index.html">← Back to Garden</a>
+</nav>
+<header>
+<div class="header-tags u-margin-b-1">
+<span class="tag">ESP32-C3</span>
+<span class="tag">Data Logger</span>
+<span class="tag">SHT31</span>
+<span class="tag">LittleFS</span>
+</div>
+<h1>Temperature and humidity data logger for mountain fields (Hata logger)</h1>
+<p class="u-opacity-8">Specifications for a self-contained data logger that automatically records environmental data over a long period of time in mountain fields (without power or internet) and collects the data using a smartphone on-site.</p>
+</header>
+<main>
+<section>
+<h2>1. System overview</h2>
+<ul>
+<li><strong>Usage:</strong> Fixed-point observation of temperature and humidity in mountain fields</li>
+<li><strong>Measurement interval:</strong> Every hour (power saving operation using deep sleep)</li>
+<li><strong>Data storage:</strong> Save in CSV format to the internal flash memory (LittleFS) of ESP32-C3</li>
+<li><strong>Data collection:</strong> Download from your smartphone browser via Wi-Fi (access point mode) on-site.</li>
+<li><strong>power supply:</strong> Powered by installed solar charge controller (USB 5V)</li>
+</ul>
+</section>
+<section>
+<h2>Video</h2>
+<div class="video-container">
+<iframe allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/iu3dErolxqQ" title="ESP32 logger"></iframe>
+</div>
+</section>
+<section>
+<h2>2. Hardware configuration (parts list)</h2>
+<h3>① Microcomputer board</h3>
+<ul>
+<li><strong>Model number:</strong> ESP32-C3 development board (recommended: Seeed Studio XIAO ESP32C3 or other power-saving design)</li>
+<li><strong>Features:</strong> Low power consumption (approximately 50μA or less during sleep), Wi-Fi installed, small size</li>
+</ul>
+<h3>② Temperature and humidity sensor</h3>
+<ul>
+<li><strong>Model number:</strong> GY-SHT31-D (module with Sensirion SHT31)</li>
+<li><strong>Features:</strong> High accuracy (temperature ±0.2℃ / humidity ±2%), high durability against condensation</li>
+</ul>
+<h3>③ Other parts</h3>
+<ul>
+<li><strong>Data collection switch:</strong> Tact switch x 1 (for switching modes at hand)</li>
+<li><strong>case:</strong> Waterproof/dustproof plastic box (manufactured by Takachi Electric Industry, etc.)</li>
+<li><strong>Wiring material:</strong> 4-core cable, solder, and heat shrink tubing for sensor extension</li>
+<li><strong>Rust/waterproofing measures:</strong> Self-adhesive tape, putty (or silicone sealant), moisture-proof coating agent (Hayacoat)</li>
+</ul>
+</section>
+<section>
+<h2>3. Pin wiring diagram (connection table)</h2>
+<table>
+<thead>
+<tr>
+<th>Connection source (ESP32-C3 side)</th>
+<th>Connection destination (sensor/switch)</th>
+<th>role</th>
+<th>remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>3.3V</td><td>GY-SHT31-D: VIN</td><td>sensor power supply</td><td>Supply 3.3V</td></tr>
+<tr><td>GND</td><td>GY-SHT31-D: GND</td><td>ground</td><td>power supply negative</td></tr>
+<tr><td>GPIO 5 (SCL)</td><td>GY-SHT31-D: SCL</td><td>I2C clock signal</td><td>For communication timing</td></tr>
+<tr><td>GPIO 4 (SDA)</td><td>GY-SHT31-D: SDA</td><td>I2C data signal</td><td>For sending and receiving temperature and humidity data</td></tr>
+<tr><td>GPIO 9</td><td>Tact switch foot ①</td><td>Collection mode detection</td><td>Check status at startup</td></tr>
+<tr><td>GND</td><td>Tact switch foot ②</td><td>ground</td><td>Set to LOW when the switch is pressed</td></tr>
+</tbody>
+</table>
+<p>*Note: Connect the USB cable from the solar controller to the USB Type-C port of ESP32-C3.</p>
+</section>
+<section>
+<h2>4. Operation specifications (software processing flow)</h2>
+<h3>[Normal: Logger mode]</h3>
+<ol>
+<li><strong>Wake:</strong> Built-in timer automatically starts every hour.</li>
+<li><strong>Initialization:</strong> Initializing LittleFS and SHT31 sensors.</li>
+<li><strong>Data measurement:</strong> Measures temperature and humidity.</li>
+<li><strong>Data storage:</strong> <code>log.csv</code> Add data to the end of (format: serial number, temperature, humidity).</li>
+<li><strong>Bedtime:</strong> Set a timer for 1 hour (3,600 seconds) and immediately go into deep sleep.</li>
+</ol>
+<h3>[When collecting: Wi-Fi mode]</h3>
+<ol>
+<li><strong>Launch trigger:</strong> While pressing the switch connected to GPIO 9, press the "EN (reset) button" on the main unit.</li>
+<li><strong>Mode branch:</strong> Immediately after startup, it detects that GPIO 9 is LOW and starts up as a Wi-Fi base unit.</li>
+<li><strong>Wi-Fi activation:</strong> SSID: <code>Hata_Logger</code> / PASS: <code>12345678</code> Expand the access point.</li>
+<li><strong>Start web server:</strong> <code>http://192.168.4.1</code> Start up a web server.</li>
+<li><strong>Smartphone connection/collection:</strong>
+<ul>
+<li>Smartphone Wi-Fi <code>Hata_Logger</code> Connect to.</li>
+<li>in browser <code>http://192.168.4.1</code> Access.</li>
+<li>Execute "CSV download" and "data deletion" from the buttons on the screen.</li>
+</ul>
+</li>
+<li><strong>How to exit:</strong> After collection is complete, press the EN button again without pressing the switch (return to normal mode).</li>
+</ol>
+</section>
+<section>
+<h2>5. Special notes/long-term operational measures</h2>
+<ul>
+<li><strong>Time accuracy:</strong> Since an external RTC (clock module) is omitted, the system is operated on the assumption that there will be a cumulative error (deviation) of about one hour per week due to the temperature characteristics of the built-in timer (count back against the actual time at the time of collection).</li>
+<li><strong>Sensor protection:</strong> When soldering, protect the sensor with masking tape to prevent solder smoke (flux gas) from entering the hole in the center of the sensor.</li>
+<li><strong>Moisture proof/insect proof:</strong> To prevent condensation, apply a moisture-proofing agent such as Hayacoat to the board (other than the sensor). Completely fill the hole for the wire that runs from the case to the sensor with putty to prevent insects from entering.</li>
+<li><strong>Rust prevention:</strong> The USB connection between the solar controller and ESP32-C3 is sealed with self-adhesive tape to prevent corrosion due to moisture.</li>
+</ul>
+</section>
+</main>
+<nav>
+<a href="../../index.html">← Back to Garden</a>
+</nav>
+<div class="like-section">
+<button aria-label="いいね" class="like-btn" id="like-btn">
+<span class="like-icon">♡</span>
+<span class="like-count" id="like-count">…</span>
+</button>
+<p class="like-label">Did you see it?</p>
+</div>
+<footer>
+<p>Copyright © amekusa All Rights Reserved.</p>
+</footer>
+</div>
+<script src="../like.js" type="module"></script>
+</body>
+</html>

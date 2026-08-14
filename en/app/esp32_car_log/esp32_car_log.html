@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+<script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-SRGF2MMYGD');
+    </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://amekusa.vercel.app/app/esp32_car_log/esp32_car_log" rel="canonical"/>
+<meta content="Overview and procedure of the Carlogger project to acquire, display, and save driving logs from ELM327 to SD with ESP32-C6-GEEK." name="description"/>
+<title>ESP32 Carlogger | Raingrass Garden</title>
+<script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+<script defer="" src="/_vercel/insights/script.js"></script>
+<link href="../../style.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+</head>
+<body class="app-page">
+<div class="container">
+<nav>
+<a href="../../index.html">← Back to Garden</a>
+</nav>
+<header>
+<div class="header-tags u-margin-b-1">
+<span class="tag">ESP32</span>
+<span class="tag">BLE</span>
+<span class="tag">ELM327</span>
+<span class="tag">SD</span>
+</div>
+<h1>ESP32-C6-GEEK Carlogger</h1>
+<p class="u-opacity-8">A project to acquire, display, and save driving logs to SD via ELM327 using ESP32-C6-GEEK.</p>
+</header>
+<main>
+<section>
+<h2>overview</h2>
+<p>This is a project that uses ESP32-C6-GEEK (Waveshare) to connect to ELM327 via BLE (NimBLE) or Bluetooth Classic to acquire, display, and save driving logs to SD.</p>
+</section>
+<section>
+<h2>Explanatory video</h2>
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/GqM3mngYtn0" title="YouTube video player" width="560"></iframe>
+</section>
+<section>
+<h2>Features</h2>
+<ul>
+<li><strong>LCD real-time display</strong> — Display driving data</li>
+<li><strong>File save</strong> — Save logs every second to SD card (CSV)</li>
+</ul>
+</section>
+<section>
+<h2>hardware</h2>
+<table>
+<thead>
+<tr><th>parts</th><th>Model number/remarks</th></tr>
+</thead>
+<tbody>
+<tr><td>Microcomputer</td><td><a href="https://www.waveshare.com/esp32-c6-geek.htm">Waveshare ESP32-C6-GEEK</a></td></tr>
+<tr><td>LCD</td><td>ST7789 (Built-in board 135×240px)</td></tr>
+<tr><td>I/F</td><td>ELM327（Bluetooth Classic）</td></tr>
+</tbody>
+</table>
+<p>Simple connection example (please refer to board documentation for actual pin assignment):</p>
+<ul>
+<li>LCD (ST7789): On-board SPI (MOSI/MISO/SCLK/CS/DC/RESET)</li>
+<li>SD card: VSPI / SDMMC (this project assumes via SPI)</li>
+<li>ELM327: Bluetooth Classic connection (when using ESP32 standard)</li>
+</ul>
+</section>
+<section>
+<h2>Software requirements</h2>
+<table>
+<thead>
+<tr><th>tool</th><th>version</th></tr>
+</thead>
+<tbody>
+<tr><td>ESP-IDF</td><td>v5.4.1</td></tr>
+</tbody>
+</table>
+</section>
+<section>
+<h2>set up</h2>
+<p>The following steps (example) assume that this repository is placed in the project root. Please change the path depending on your environment.</p>
+<h3>1. Prepare your Bluetooth credentials</h3>
+<p>The MAC address and PIN required to connect the ELM327 are currently <code>main.cpp</code> It's hardcoded inside. Please change the value according to the actual machine. In the future, we recommend externalizing it with a configuration file.</p>
+<pre><code>[ELM327]
+mac=AA:BB:CC:DD:EE:FF
+pin=1234
+</code></pre>
+<h3>2. Preparing and building the development environment</h3>
+<pre><code># Load ESP-IDF environment script
+source /home/kusa/esp/esp-idf/export.sh
+
+# Move to project root (example)
+cd ~/documents/eSp32/carlog
+
+# set target (if required)
+idf.py set-target esp32c6
+
+# build
+idf.py build
+</code></pre>
+<p>Tip: If you have dependent packages (such as Python requirements),<code>python -m pip install -r requirements.txt</code> Please execute.</p>
+<h3>3. Flash to device</h3>
+<pre><code># Serial device name is environment dependent (e.g. /dev/ttyACM0, /dev/ttyUSB0).
+idf.py -p /dev/ttyACM0 flash
+</code></pre>
+</section>
+<section>
+<h2>Log storage format (SD card)</h2>
+<p>Saving is assumed to be CSV. Outputs the elapsed time since the power was turned on instead of the date and time. Example header:</p>
+<pre><code>elapsed_ms,latitude,longitude,speed_kmh,rpm,engine_load,throttle_pos,voltage
+</code></pre>
+<p>Sample line:</p>
+<pre><code>123456,35.6895,139.6917,48.2,2200,12.3,8.1,12.6
+</code></pre>
+</section>
+<section>
+<h2>Precautions/Troubleshooting</h2>
+<ul>
+<li>If you cannot pair with the ELM327, check the power supply and serial settings (baud rate) on the ELM327 side.</li>
+<li>If your SD card is not recognized, please make sure the file system is formatted as FAT32.</li>
+</ul>
+</section>
+<section>
+<h2>license</h2>
+<p>MIT License (in the repository) <code>LICENSE</code> (recommended to add files)</p>
+</section>
+<section>
+<h2>Acknowledgment</h2>
+<p><a href="https://github.com/lovyan03/LovyanGFX">LovyanGFX</a> — Fast graphics library</p>
+</section>
+<section>
+<h2>Resource</h2>
+<p>The materials are published on GitHub. You are welcome to reuse it for personal study or small projects.</p>
+<a class="link-button" href="https://github.com/amekusa03/ESP32-carlog" rel="noopener noreferrer" target="_blank">View on GitHub</a>
+</section>
+</main>
+<nav>
+<a href="../../index.html">← Back to Garden</a>
+</nav>
+<div class="like-section">
+<button aria-label="いいね" class="like-btn" id="like-btn">
+<span class="like-icon">♡</span>
+<span class="like-count" id="like-count">…</span>
+</button>
+<p class="like-label">Did you see it?</p>
+</div>
+<footer>
+<p>Copyright © amekusa All Rights Reserved.</p>
+</footer>
+</div>
+<script src="../like.js" type="module"></script>
+</body>
+</html>

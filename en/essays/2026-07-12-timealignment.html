@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+<script defer="" src="/_vercel/insights/script.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-SRGF2MMYGD');
+  </script>
+<link href="../Favicon.png" rel="icon" type="image/png"/>
+<link href="../amenoniwa.png" rel="apple-touch-icon"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://amekusa.vercel.app/essays/2026-07-12-timealignment" rel="canonical"/>
+<meta content="Amekusa" name="author"/>
+<meta content="I tried making a time alignment setting app and it failed — Cars, Development, Music. Rainweed Garden Technical Essay." name="description"/>
+<meta content="article" property="og:type"/>
+<meta content="https://amekusa.vercel.app/essays/2026-07-12-timealignment" property="og:url"/>
+<meta content="I tried making a time alignment setting app and failed | Raingrass Garden" property="og:title"/>
+<meta content="I tried making a time alignment setting app and it failed — Cars, Development, Music. Rainweed Garden Technical Essay." property="og:description"/>
+<meta content="https://amekusa.vercel.app/ogp.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="ja_JP" property="og:locale"/>
+<meta content="Amekusa's Garden" property="og:site_name"/>
+<meta content="2026-07-12" property="article:published_time"/>
+<meta content="Amekusa" property="article:author"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="I tried making a time alignment setting app and failed | Raingrass Garden" name="twitter:title"/>
+<meta content="I tried making a time alignment setting app and it failed — Cars, Development, Music. Rainweed Garden Technical Essay." name="twitter:description"/>
+<meta content="https://amekusa.vercel.app/ogp.png" name="twitter:image"/>
+<title>I tried making a time alignment setting app and failed | Raingrass Garden</title>
+<!-- JSON-LD 構造化データ -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": "https://amekusa.vercel.app/essays/2026-07-12-timealignment",
+    "url": "https://amekusa.vercel.app/essays/2026-07-12-timealignment",
+    "headline": "I tried creating a time alignment setting app and it failed.",
+    "description": "I tried making a time alignment setting app and it failed — Cars, Development, Music. Rainweed Garden Technical Essay.",
+    "datePublished": "2026-07-12",
+    "dateModified": "2026-07-12",
+    "inLanguage": "ja",
+    "author": {
+      "@type": "Person",
+      "@id": "https://amekusa.vercel.app/#person",
+      "name": "Amekusa",
+      "url": "https://amekusa.vercel.app/"
+    },
+    "publisher": {
+      "@type": "Person",
+      "@id": "https://amekusa.vercel.app/#person",
+      "name": "Amekusa"
+    },
+    "isPartOf": {
+      "@type": "Blog",
+      "@id": "https://amekusa.vercel.app/#blog",
+      "name": "Notes — Rainweed Garden"
+    },
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://amekusa.vercel.app/ogp.png"
+    }
+  }
+  </script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&amp;family=Noto+Serif+JP:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<!-- Markdown Parser -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<link href="../style.css" rel="stylesheet"/>
+</head>
+<body>
+<canvas id="rain-canvas"></canvas>
+<div class="container">
+<div class="sidebar">
+<header>
+<a href="../"><img alt="Character animation" class="hero-gif" src="../amenoniwa.png"/></a>
+<h1>Amekusa's Garden</h1>
+<p class="subtitle">Engineering &amp; Nature Notes</p>
+</header>
+<nav class="global-nav">
+<a class="nav-item active" href="../#notes">Notes</a>
+<a class="nav-item" href="../#photography">Photography</a>
+<a class="nav-item" href="../#profile">Profile</a>
+<a class="nav-item" href="../#links">Links</a>
+<a class="nav-item" href="../en/">🌐 English</a>
+</nav>
+</div>
+<div class="main-content">
+<main id="essay-content">
+<div class="loading">Loading...</div>
+</main>
+</div>
+</div>
+<script src="../rain.js"></script>
+<script>
+    // Markdownを読み込んで表示
+    async function loadEssay() {
+      const contentArea = document.getElementById('essay-content');
+      try {
+        const response = await fetch('2026-07-12-timealignment.md');
+        if (!response.ok) throw new Error('File not found');
+        const markdownText = await response.text();
+        const parsedHtml = marked.parse(markdownText);
+
+        contentArea.innerHTML = `
+          <section class="essay-detail-section">
+            <a href="../essays/" class="back-btn">← Return to list</a>
+            <div class="essay-content">
+              ${parsedHtml}
+            </div>
+          </section>
+        `;
+        // 画像パスを修正（essays/相対パスがある場合）
+        contentArea.querySelectorAll('img').forEach(img => {
+          const src = img.getAttribute('src');
+          if (src && src.startsWith('essays/')) {
+            img.setAttribute('src', '../' + src);
+          }
+        });
+      } catch (error) {
+        contentArea.innerHTML = `
+          <div style="text-align: center; padding: 3rem 0;">
+            <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">No articles were found. </p>
+            <a href="../essays/" class="back-btn" style="margin-bottom: 0;">← Return to list</a>
+          </div>
+        `;
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadEssay();
+      if (typeof initRain === 'function') initRain();
+    });
+  </script>
+</body>
+</html>

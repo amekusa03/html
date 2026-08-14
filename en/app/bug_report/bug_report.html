@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+<script defer="" src="/_vercel/insights/script.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-SRGF2MMYGD');
+  </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://amekusa.vercel.app/app/bug_report/bug_report" rel="canonical"/>
+<meta content="This is a technical report on failure cases due to property implementation errors in C# and understanding of object references." name="description"/>
+<title>C# Bug Report | Rainweed Garden</title>
+<script defer="" src="/_vercel/speed-insights/script.js"></script>
+<link href="../../style.css" rel="stylesheet"/>
+</head>
+<body class="app-page">
+<div class="container">
+<nav>
+<a href="../../index.html">← Back to Garden</a>
+</nav>
+<header>
+<div class="header-tags u-margin-b-1">
+<span class="tag">Windows</span>
+<span class="tag">C#</span>
+</div>
+<h1>Bug Report</h1>
+<p class="u-opacity-8">C# Bug Report</p>
+</header>
+<main>
+<section>
+<h2>About this Project</h2>
+<p>
+                    When an engineer with extensive C++ experience implemented C# properties, he misunderstood object reference control, resulting in a problem in which events were not notified (communications could not be received).
+                </p>
+</section>
+<section>
+<h2>Patterns that occurred</h2>
+<h3>Appearance class</h3>
+<ul>
+<li><strong>FromMain:</strong>GUI main screen. Maintains a communication management instance.</li>
+<li><strong>FromEnv:</strong>GUI settings and communication test screen.</li>
+<li><strong>FromCommText:</strong>GUI text communication screen.</li>
+<li><strong>CommWifi:</strong>Wifi communication management. Sending is done by an asynchronous thread, and reception and abnormal occurrences are notified by events.</li>
+</ul>
+</section>
+<section>
+<h2>Workflow</h2>
+<ul>
+<li>1. User starts FromMain</li>
+<li>2. FromMain generates CommWifi</li>
+<li>3. FromMain generates FromEnv</li>
+<li>4. FromMain passes CommWifi as constructor of FromEnv</li>
+<li>5. FromEnv subscribes to CommWifi reception/abnormal events</li>
+<li>6. User performs a communication test using FromEnv and confirms successful completion</li>
+<li>7. User closes FromEnv</li>
+<li>8. User opens FromCommText</li>
+<li>9. FromMain generates FromCommText</li>
+<li>10. FromMain passes CommWifi as constructor of FromCommText</li>
+<li>11. FromCommText subscribes to CommWifi reception/abnormal events</li>
+<li>12. User starts communicating with FromCommText</li>
+<li>13. <strong>Problem occurs</strong>: Sending is successful, but no event (reception notification) is received.</li>
+</ul>
+</section>
+<section>
+<h2>Root Cause: Incorrect Property Implementation</h2>
+<p>
+                    The code that caused the problem (simplified) is as follows.
+                </p>
+<pre><code class="language-csharp">public CommWifi CommWifi
+{
+    get =&gt; new CommWifi(); // Generate a new instance on each access
+}
+</code></pre>
+</section>
+<section>
+<h2>Technical Background</h2>
+<p>
+                    The implementer may have written it with an image similar to C++'s "return entity (copy)", but
+                    In C# this is<strong>"Generate and return a new independent instance each time it is accessed"</strong>It becomes an action.
+                </p>
+<ul>
+<li>The `CommWifi` instance received by `FromEnv` and the instance received by `FromCommText` are different (different references).</li>
+<li>It is also different from the source instance where `FromMain` actually performs communication processing.</li>
+<li>As a result, even if you subscribe to events, you will be monitoring a location different from the instance that is actually running, and you will not receive notifications.</li>
+</ul>
+</section>
+<section>
+<h2>Conclusion</h2>
+<p>
+                    Although C# does not specify pointers, `class` always deals with references (like pointers).
+                    It is important for C++ engineers to understand that the class keyword is always synonymous with smart pointers.
+                </p>
+</section>
+<section>
+<h2>Prevention and Review Guidelines</h2>
+<h3>1. Implementing correct properties (using backing fields)</h3>
+<p>
+                    Return the same initialized instance to avoid unintentionally creating a new instance.
+                </p>
+<pre><code class="language-csharp">private readonly CommWifi _commWifi = new CommWifi();
+/// &lt;summary&gt;
+/// Always return the same instance (reference)
+/// &lt;/summary&gt;
+public CommWifi CommWifi =&gt; _commWifi;
+</code></pre>
+<h3>2. Clearing events (memory leak prevention)</h3>
+<p>
+                    If old screen subscriptions remain after the screen is closed, it can cause unexpected behavior and memory leaks.
+                </p>
+<pre><code class="language-csharp">
+// Example of cancellation in FromEnv
+protected override void OnFormClosing(FormClosingEventArgs e)
+{
+    _commWifi.OnDataReceived -= HandleDataReceived; // Unsubscribe
+    base.OnFormClosing(e);
+}
+</code></pre>
+<h3>3. Add to review checklist</h3>
+<ul>
+<li><strong>Check property side effects</strong>Are you using new in the :get accessor? (Avoid generating anything other than calculated properties)</li>
+<li><strong>Confirm identity</strong>:Do objects shared by multiple classes point to the same reference (`object.ReferenceEquals`) as intended?</li>
+<li><strong>life cycle management</strong>: Is the event registered with `+=` canceled with `-=` when the object is disposed (Dispose or Closing)?</li>
+</ul>
+</section>
+<section>
+<h2>Notes</h2>
+<p>
+                    If you feel that the app is running "somehow slow",
+                    If the behavior becomes unstable every time you open a particular screen,
+                    <strong>Careless instantiation (copy)</strong>Is it not being done?
+                    Or<strong>Multiple registration of events</strong>If you suspect that something is occurring,
+                    This may also lead to early detection of defects.
+                </p>
+</section>
+<section>
+<h2>Analysis</h2>
+<ul>
+<li>
+<h3>About the behavior when using C#'s automatically implemented property `public CommWifi CommWifi { get; } = new();`</h3>
+<h4>If the property implementation is "always new"</h4>
+<p>In the code example of the problem, it is `get =&gt; new CommWifi();`, but if the implementation was as follows, a new instance would be generated every time it is accessed.</p>
+<p>A new instance is created each time it is accessed (an example that often causes bugs)</p>
+<pre><code class="language-csharp">
+public CommWifi CommWifi =&gt; new CommWifi();
+                    </code></pre>
+<p>This means that FromEnv and FromCommText are each operating on separate instances.</p>
+<h4>Code improvement suggestions</h4>
+<p>Prevent the recurrence of defects and create a safe C#-like design.</p>
+<pre><code class="language-csharp">
+private readonly CommWifi _commWifi = new CommWifi();
+
+// Always return the same instance (reference)
+public CommWifi CommWifi =&gt; _commWifi;
+                    </code></pre>
+</li>
+<li>
+<h3>About the IDisposable pattern and Weak Event pattern to prevent event handler release from being leaked</h3>
+<h4>Clearing events (preventing memory leaks and unexpected behavior)</h4>
+<p>In the flow, after closing FromEnv, FromCommText
+                            is open. If you forget to release C# events, the instance will not be garbage collected (GC), causing memory leaks and unexpected behavior.</p>
+<pre><code class="language-csharp">
+// Proper release in FromEnv
+protected override void OnFormClosing(FormClosingEventArgs e)
+{
+    // FormEnv may remain in memory if you do not unsubscribe from the event
+    _commWifi.OnDataReceived -= HandleDataReceived;
+    base.OnFormClosing(e);
+}
+                    </code></pre>
+</li>
+<li>
+<h4>Code review checkpoints (additional proposal)</h4>
+<p>In addition to "understanding copy," we recommend adding the following points to your checklist.</p>
+<h5>Side effects on properties:</h5>
+<p>Are you doing new inside the get accessor? (Avoid creating instances using other than calculated properties)</p>
+<h5>Event lifecycle:</h5>
+<p>Is the event registered with += canceled with -= when the object is disposed (Dispose or Closing)?</p>
+<h5>Verifying identity:</h5>
+<p>Do you have a habit of using object.ReferenceEquals(obj1, obj2) when debugging to make sure they are pointing to the same instance as you intended?</p>
+</li>
+</ul>
+<h4>conclusion</h4>
+<p>C# hides pointers, but internally it handles "references (like pointers)". For C++ engineers:
+                    <strong>"The class keyword is always synonymous with pointers (smart pointers)"</strong>If you explain this, understanding often goes smoothly.
+                </p>
+<p>This case is a good example of how differences in language specifications distorted the design intent, and knowledge sharing is extremely valuable.</p>
+</section>
+<section>
+<h2>Video</h2>
+<div class="video-container">
+<iframe allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/V43PmeQKoSA" title="Bug Report"></iframe>
+</div>
+</section>
+</main>
+<nav>
+<a href="../../index.html">← Back to Garden</a>
+</nav>
+<div class="like-section">
+<button aria-label="いいね" class="like-btn" id="like-btn">
+<span class="like-icon">♡</span>
+<span class="like-count" id="like-count">…</span>
+</button>
+<p class="like-label">Did you see it?</p>
+</div>
+<footer>
+<p>Copyright © amekusa All Rights Reserved.</p>
+</footer>
+</div>
+<script src="../like.js" type="module"></script>
+</body>
+</html>

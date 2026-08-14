@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+<script defer="" src="/_vercel/insights/script.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-SRGF2MMYGD');
+  </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://amekusa.vercel.app/app/like_button/like_button" rel="canonical"/>
+<meta content='This is a technical report on the design and implementation of a "like button" for static sites, combining Firebase Cloud Firestore and client JavaScript.' name="description"/>
+<title>Introduction of like button (Firebase) | Rainweed garden</title>
+<script defer="" src="/_vercel/speed-insights/script.js"></script>
+<link href="../../style.css" rel="stylesheet"/>
+</head>
+<body class="app-page">
+<div class="container">
+<nav>
+<a href="../../index.html">← Back to Garden</a>
+</nav>
+<header>
+<div class="header-tags u-margin-b-1">
+<span class="tag">Firebase</span>
+<span class="tag">Google Cloud</span>
+<span class="tag">JavaScript</span>
+</div>
+<h1>Introduction of like button</h1>
+<p class="u-opacity-8">Firebase Like Button Integration</p>
+</header>
+<main>
+<section>
+<h2>About this Project</h2>
+<p>
+                    Static portfolio sites hosted on Vercel etc. can be operated quickly and at low cost, but when implementing dynamic interactions (e.g. ratings, comments, etc.), server-side functionality is required.
+                </p>
+<p>
+                    In this project, we will use Google's BaaS.<strong>Firebase Cloud
+                        Firestore</strong>and client side<strong>JavaScript</strong>By combining these, we implemented a secure and lightweight "like button (incremental rating)" function in a completely serverless configuration.
+                </p>
+</section>
+<section>
+<h2>Video</h2>
+<div class="video-container">
+<iframe allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/GMRHpnpdwL8" title="Introducing the Like button (Firebase)"></iframe>
+</div>
+</section>
+<section>
+<h2>Technical Stack</h2>
+<ul>
+<li><strong>Database:</strong> Cloud Firestore (NoSQL document-based database)</li>
+<li><strong>Frontend Logic:</strong> Vanilla JavaScript (ES Modules, Firebase Web SDK v10)</li>
+<li><strong>State Persistence:</strong> LocalStorage (preventing duplication by temporarily saving in the browser)</li>
+</ul>
+</section>
+<section>
+<h2>System Architecture</h2>
+<h3>1. Firestore data structure</h3>
+<p>
+                    The number of likes is managed using an identifier for each page (generated from the path name) as a document ID, and is incremented atomically.
+                </p>
+<ul>
+<li><strong>Collection name:</strong> <code>likes</code></li>
+<li><strong>Document ID:</strong> <code>pageId</code>(example: <code>android_auto_music_player</code>）</li>
+<li><strong>field:</strong> <code>{ count: number }</code></li>
+</ul>
+<h3>2. Duplication prevention flow</h3>
+<ul>
+<li>1. When loading a page, local storage (<code>liked__pageId</code>) has a value.</li>
+<li>2. If the value exists, add it to the button. <code>liked</code> Add a class and change the icon to "♥" (guard it so that it cannot be clicked again).</li>
+<li>3. When clicked, if it has not been liked yet, writes a flag to local storage and sends an increment (+1) request to the Firestore server.</li>
+</ul>
+</section>
+<section>
+<h2>Core Implementation</h2>
+<h3>Synchronous processing using JavaScript (`like.js` excerpt)</h3>
+<p>
+                    Firestore <code>increment</code> By using operators, the design allows the count to be updated accurately (atomic operation) even if multiple users click at the same time.
+                </p>
+<pre><code class="language-javascript">import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+import { getFirestore, doc, getDoc, setDoc, increment } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+
+// Firebase initialization settings
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  projectId: "YOUR_PROJECT_ID",
+  // ...Other setting items
+};
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// Execute like processing
+async function initLikeButton() {
+  const btn = document.getElementById('like-btn');
+  const countEl = document.getElementById('like-count');
+  // ... (DOM acquisition and existence check)
+
+  // Generate page identifier (pageId)
+  const path = location.pathname;
+  const pageId = path
+    .replace(/\/index\.html$/, '/')
+    .replace(/\.html$/, '')
+    .replace(/^\/|\/$/g, '')
+    .replace(/\//g, '__') || 'home';
+
+  const storageKey = 'liked__' + pageId;
+  const docRef = doc(db, 'likes', pageId);
+
+  // first time load
+  const snap = await getDoc(docRef);
+  countEl.textContent = snap.exists() ? (snap.data().count ?? 0) : 0;
+
+  // click event
+  btn.addEventListener('click', async () =&gt; {
+    if (localStorage.getItem(storageKey)) return;
+    localStorage.setItem(storageKey, '1');
+    
+    // Update the UI immediately (optimistic UI update)
+    btn.classList.add('liked');
+    countEl.textContent = parseInt(countEl.textContent || '0') + 1;
+
+    // Send to server (atomic increment processing)
+    await setDoc(docRef, { count: increment(1) }, { merge: true });
+  });
+}</code></pre>
+</section>
+<section>
+<h2>Security Design &amp; Best Practices</h2>
+<p>
+                    Since API keys are exposed on the front end, Firestore's security and resource protection consists of two main layers:
+                </p>
+<h3>1. Firestore Security Rules</h3>
+<p>
+                    We have written strong access restrictions on the Firebase console to prevent someone from arbitrarily deleting other people's documents or significantly tampering with counts.
+                </p>
+<pre><code class="language-javascript">rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /likes/{pageId} {
+      // Anyone can view the number of likes
+      allow read: if true;
+      // Allow likes (writes)
+      allow write: if true;
+    }
+  }
+}</code></pre>
+<h3>2. API key HTTP referrer restrictions</h3>
+<p>
+                    In the settings on the Google Cloud console side, specify the domain (HTTP referrer) of the website where the API key can be used.
+                    <code>https://amekusa.vercel.app/*</code>
+                    A restriction is applied to limit the This technically prevents a third party from copying the API key and reusing it on another domain.
+                </p>
+</section>
+<section>
+<h2>Conclusion</h2>
+<p>
+                    By using serverless technology (BaaS) and client JS, we were able to confirm that dynamic communication functions can be introduced safely and at low cost even on static sites such as personal portfolios.
+                </p>
+<p>
+                    Currently, this feature is implemented as standard on all articles and explanation pages in "Rain Grass Garden" and is used as a useful feedback from visitors.
+                </p>
+</section>
+</main>
+<nav>
+<a href="../../index.html">← Back to Garden</a>
+</nav>
+<div class="like-section">
+<button aria-label="いいね" class="like-btn" id="like-btn">
+<span class="like-icon">♡</span>
+<span class="like-count" id="like-count">…</span>
+</button>
+<p class="like-label">Did you see it?</p>
+</div>
+<footer>
+<p>Copyright © amekusa All Rights Reserved.</p>
+</footer>
+</div>
+<script src="../like.js" type="module"></script>
+</body>
+</html>

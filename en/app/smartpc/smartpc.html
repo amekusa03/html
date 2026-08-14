@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+<script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-SRGF2MMYGD');
+    </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://amekusa.vercel.app/app/smartpc/smartpc" rel="canonical"/>
+<meta content="Introducing a project to make your Ubuntu PC compatible with smart home using Matter and ESP32-C6. You can control the power supply and monitor the status of your PC from Google Nest Hub, etc." name="description"/>
+<title>smart PC | Amegusa no Niwa</title>
+<script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+<script defer="" src="/_vercel/insights/script.js"></script>
+<link href="../../style.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+
+        .tech-stack li {
+            background: #ffffff;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .tech-stack li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .tech-stack i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #444;
+        }
+
+        .tech-stack strong {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body class="app-page">
+<div class="container">
+<nav>
+<a href="../../index.html">← Back to Garden</a>
+</nav>
+<header>
+<div class="header-tags u-margin-b-1">
+<span class="tag">Matter</span>
+<span class="tag">ESP32-C6</span>
+<span class="tag">Ubuntu</span>
+</div>
+<h1>[Canceled] Smart PC Project</h1>
+<p class="header-subtitle u-opacity-8">Integrating PC power management systems with Matter over Wi-Fi</p>
+</header>
+<main>
+<section>
+<h2>Video</h2>
+<div class="video-container">
+<iframe allowfullscreen="" frameborder="0" loading="lazy" src="https://www.youtube.com/embed/SRRmwL01tHY" title="smart PC Demo"></iframe>
+</div>
+</section>
+<section>
+<h2>About this Project</h2>
+<p>
+                    This project integrates ESP32-C6 into Ubuntu PC and supports the latest smart home standard.<strong>Matter</strong>This is an attempt to make it compatible with ``.
+                    Our goal is to make it possible to seamlessly manage and operate the power status of PCs just like other home appliances.
+                </p>
+<img alt="System Architecture" class="u-margin-b-1" height="450" loading="lazy" src="sysosi.png" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #ddd;" width="800"/>
+</section>
+<section>
+<h2>Specification</h2>
+<h3>1. Project overview</h3>
+<p>A project that aims to remotely control the power of a PC from a smart home using the ESP32-C6 microcontroller and Matter protocol. A configuration that controls the motherboard's PWR_SW pin with a photocoupler (optical isolation element).
+                </p>
+<h4>Technology/parts used</h4>
+<ul>
+<li>ESP32-C6-GEEK (Waveshare) / ESP32-C6 (THARED, with 1.47" LCD)</li>
+<li>Matter Protocol (ESP-IDF + esp-matter SDK)</li>
+<li>chip-tool (Matter command line tool)</li>
+<li>Hailege PC817 2ch photocoupler board (electrical isolation with motherboard)</li>
+<li>mDNS/IPv6 (Matter over IP connection)</li>
+<li>NVS (Non-Volatile Storage, saving WiFi credentials)</li>
+<li>FreeRTOS (long button press detection task)</li>
+</ul>
+<h4>background</h4>
+<p>
+                    ① Basic design and initial implementation
+                    The power supply of the PC is controlled by shorting PWR_SW using a push button. This control will be performed by driving a photocoupler using the ESP32's GPIO and controlling it in the same way as a push button.
+                    Create an OnOffPlugInUnit endpoint for Matter and onoff toggle from chip-tool
+                    Implement configurations that can be controlled with commands. Save WiFi credentials in NVS and connect automatically at startup. The LCD displays the connection status, IP status, and PC power status.
+                </p>
+<p>
+                    ② Handling of photocoupler active HIGH/LOW
+                    Hailege PC817 board is active LOW design (GPIO LOW → LED on →
+                    (Switch short circuit), but the firmware was initially based on the assumption that it was active HIGH. Verify and correct this. Matter callback PRE_UPDATE
+                    I checked the log (3 seconds blocking delay) to see that it was firing correctly.
+                </p>
+<p>
+                    ③ GPIO defect on GEEK board discovered
+                    GPIO 10/11 (H2 connector) was found to be always 0V with no change using a tester. The cause was unknown, so I gave up on using it.
+                </p>
+<p>
+                    ④ Switch to THARED board
+                    Obtained another ESP32-C6 board (manufactured by THARED, equipped with LCD/SD card). Performed a blink test on GPIO 3 and confirmed normal output of 0V↔3.3V. GPIO_PWR_SW GPIO
+                    3. Change GPIO_PWR_LED to GPIO 4.
+                </p>
+<p>
+                    ⑤ Photocoupler LED constant lighting problem
+                    Although the firmware and Matter callbacks were working (logs show Pressing power button
+                    (Confirmed), the photocoupler LED is always on even during standby. Due to a combination of guessing the use of GPIO in the LCD, mismatched resistors, and wiring errors, we found it difficult to resolve the issue. At the same time, we thought that the board itself might be damaged by repeated soldering, so we decided to abandon photocoupler control.
+                </p>
+<h4>Decision to cancel</h4>
+<ul>
+<li>Large electrical risk (false signal to motherboard)</li>
+<li>Solving problems requires electronic circuit skills</li>
+<li>Lack of materials and equipment</li>
+</ul>
+<h4>Summary/obtained knowledge</h4>
+<table>
+<tr>
+<th>item</th>
+<th>result</th>
+</tr>
+<tr>
+<td>Matter commissioning</td>
+<td>✅ Success</td>
+</tr>
+<tr>
+<td>Receiving commands from chip-tool</td>
+<td>✅ Success</td>
+</tr>
+<tr>
+<td>GPIO output (THARED GPIO 3)</td>
+<td>✅ Operation confirmation</td>
+</tr>
+<tr>
+<td>LCD display</td>
+<td>✅ Operation confirmation</td>
+</tr>
+<tr>
+<td>Optocoupler control</td>
+<td>❌ Incomplete (VCC voltage mismatch)</td>
+</tr>
+<tr>
+<td>PC power control</td>
+<td>❌ Not achieved</td>
+</tr>
+</table>
+<p>Matter commissioning was an important point for the firmware, and I expected that other simple functions would be sufficient.
+                    In reality, there were hardware-related issues such as the electrical characteristics of photocouplers and physical connection issues with GPIO, and we judged it difficult (and risky) to deal with.
+                </p>
+<h3>2. Housing/installation specifications</h3>
+<img alt="Installation Method" class="u-margin-b-1" height="600" loading="lazy" src="sys.png" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #ddd;" width="800"/>
+<a class="link-button" href="https://www.amazon.jp/hz/wishlist/ls/216P92T92SPG9?ref_=wl_share_link" rel="noopener noreferrer" target="_blank">Parts list</a>
+<h3>3. Architecture confirmation items</h3>
+<img alt="Development Setup" class="u-margin-b-1" loading="lazy" src="unit.png" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #ddd;"/>
+<ul>
+<li><strong>BIOS/UEFI settings:</strong>
+                        In order for the ESP32-C6 to wait for signals even when the PC is shut down, the power supply settings (BIOS/UEFI) of the motherboard are required. Especially “ErP
+                        It is necessary to set "Ready" to Disabled and maintain USB power supply even during shutdown.
+                    </li>
+<li><strong>USB power:</strong> The USB port must remain powered even when the PC is turned off. In addition to the ErP settings mentioned above, the “USB Standby
+                        Please make sure that items such as "Power" are enabled.
+                    </li>
+<li><strong>Physical connector compatibility (important):</strong> Looking at the image of ESP32-C6-GEEK, you can see that the GPIO (GP0,
+                        GP10, etc.) is not a general pin header, but a **small JST standard connector (probably SH 1.0mm pitch, etc.)**
+                        .
+                        General DuPont cables (breadboard wires) will not be inserted directly. You will need the dedicated "cable with connector" that comes with GEEK, or you will need to prepare to convert the connector to regular wiring.
+                    </li>
+<li><strong>Definition of "press time" of the power button:</strong>
+                        The source says "power ON/OFF trigger", but the program needs logic for "how many seconds to short-circuit the switch"
+                    </li>
+</ul>
+</section></main>
+<nav>
+<a href="../../index.html">← Back to Garden</a>
+</nav>
+<div class="like-section">
+<button aria-label="いいね" class="like-btn" id="like-btn">
+<span class="like-icon">♡</span>
+<span class="like-count" id="like-count">…</span>
+</button>
+<p class="like-label">Did you see it?</p>
+</div>
+<footer>
+<p>Copyright © amekusa All Rights Reserved.</p>
+</footer>
+</div>
+<script src="../like.js" type="module"></script>
+</body>
+</html>

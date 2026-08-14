@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+<script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-SRGF2MMYGD');
+    </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://amekusa.vercel.app/app/android_cockpit_scope/android_cockpit_scope" rel="canonical"/>
+<meta content="Cockpit Scope — This is an introduction page for an Android app that displays vehicle telemetry using the ELM327 OBD-II adapter and smartphone sensor." name="description"/>
+<title>Cockpit Scope | Raingrass Garden</title>
+<script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+<script defer="" src="/_vercel/insights/script.js"></script>
+<link href="../../style.css" rel="stylesheet"/>
+</head>
+<body class="app-page">
+<div class="container">
+<nav>
+<a href="../../index.html">← Back to Garden</a>
+</nav>
+<header>
+<div class="header-tags u-margin-b-1">
+<span class="tag">Android</span>
+<span class="tag">OBD</span>
+</div>
+<h1>Cockpit Scope</h1>
+<p class="header-subtitle u-opacity-8">ELM327 / Real-time telemetry display application using smartphone sensors</p>
+</header>
+<main>
+<section>
+<h2>overview</h2>
+<p>Acquires vehicle OBD-II data (ELM327) via Bluetooth Classic and displays it as a time series graph. It also supports G-Force measurement using the smartphone's built-in acceleration sensor. We aim to create a telemetry display that specializes in "visualizing driving."</p>
+</section>
+<section>
+<h2>Explanatory video</h2>
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/IuevvaZ0d3A" title="YouTube video player" width="560"></iframe>
+</section>
+<section>
+<h2>Main features</h2>
+<ul>
+<li>Real-time multi-graph display (display multiple data on the same time axis)</li>
+<li>Get RPM, speed, throttle opening, water temperature, etc. via ELM327 adapter</li>
+<li>G-Force measurement using smartphone acceleration sensor (0.1G unit)</li>
+<li>Customization of display items and colors</li>
+<li>Telemetry log storage function (placeholder)</li>
+</ul>
+</section>
+<section>
+<h2>Operating requirements</h2>
+<ul>
+<li>Android 6.0 (API 23) or higher</li>
+<li>Bluetooth Classic compatible</li>
+<li>ELM327 OBD-II adapter (v1.5/v2.1 recommended)</li>
+</ul>
+<p>*If the adapter is not connected, it will operate in demo mode (Mock data).</p>
+</section>
+<section>
+<h2>How to use</h2>
+<ol>
+<li>Pair with the ELM327 adapter from Android settings.</li>
+<li>Launch the app and open "Display settings" from the toolbar settings.</li>
+<li>Select the adapter to connect from "Select Bluetooth device".</li>
+<li>Check the items you want to display and set colors as necessary.</li>
+<li>When you return to the main screen, a connection will be attempted and real-time display will begin.</li>
+</ol>
+</section>
+<section>
+<h2>Display item list</h2>
+<ul>
+<li>Engine speed (RPM)</li>
+<li>Vehicle speed (Speed) [km/h]</li>
+<li>Accelerator opening (Throttle) [%]</li>
+<li>Engine water temperature (Water Temp) [°C]</li>
+<li>Voltage (Voltage) [V] (0.1V unit)</li>
+<li>Acceleration (G-Force) [G] (0.1G unit)</li>
+<li>Engine load (Load) [%]</li>
+<li>Intake manifold pressure (MAP) [kPa]</li>
+<li>Intake air amount (MAF) [g/s]</li>
+</ul>
+</section>
+<section>
+<h2>Development roadmap</h2>
+<ul>
+<li>Building the base system (OBD communication/basic waveform drawing) ✅</li>
+<li>Integration of smartphone built-in sensor (acceleration) ✅</li>
+<li>Implementation of settings screen ✅</li>
+<li>Strengthening visual presentation (under consideration)</li>
+<li>Local data storage/replay function (not implemented)</li>
+<li>Consideration of Android Auto compatibility (not implemented)</li>
+</ul>
+</section>
+<section>
+<h2>license</h2>
+<p>This project is <a href="../../LICENSE">MIT License</a> Published under.</p>
+</section>
+<section>
+<h2>Disclaimer</h2>
+<p>This app is intended as an auxiliary display while driving, and does not guarantee the accuracy of diagnosis or maintenance. It is dangerous to operate while driving, so be sure to operate in a safe place.</p>
+</section>
+<section>
+<h2>Update history</h2>
+<ul>
+<li>First release</li>
+</ul>
+</section>
+<section>
+<h2>Resource</h2>
+<p>The materials are published on GitHub. You are welcome to reuse it for personal study or small projects.</p>
+<a class="link-button" href="https://github.com/amekusa03/cockpitScope" rel="noopener noreferrer" target="_blank">View on GitHub</a>
+</section>
+</main>
+<nav>
+<a href="../../index.html">← Back to Garden</a>
+</nav>
+<div class="like-section">
+<button aria-label="いいね" class="like-btn" id="like-btn">
+<span class="like-icon">♡</span>
+<span class="like-count" id="like-count">…</span>
+</button>
+<p class="like-label">Did you see it?</p>
+</div>
+<footer>
+<p>Copyright © amekusa All Rights Reserved.</p>
+</footer>
+</div>
+<script src="../like.js" type="module"></script>
+</body>
+</html>

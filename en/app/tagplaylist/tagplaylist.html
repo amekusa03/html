@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+<script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-SRGF2MMYGD');
+    </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://amekusa.vercel.app/app/tagplaylist/tagplaylist" rel="canonical"/>
+<meta content="Introducing a Python tool that reads ID3 tags in MP3 files and automatically generates playlists by genre." name="description"/>
+<title>TagPlaylist Generator | Raingrass Garden</title>
+<script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+<script defer="" src="/_vercel/speed-insights/script.js"></script>
+<script defer="" src="/_vercel/insights/script.js"></script>
+<link href="../../style.css" rel="stylesheet"/>
+</head>
+<body class="app-page">
+<canvas id="rain-canvas"></canvas>
+<div class="container">
+<nav aria-label="ページナビゲーション">
+<a href="../../index.html">← Back to Garden</a>
+</nav>
+<header>
+<div class="header-tags u-margin-b-1">
+<span class="tag">Python</span>
+<span class="tag">Music</span>
+</div>
+<h1>TagPlaylist Generator</h1>
+<p class="u-opacity-8">Automatically generate genre-specific playlists from MP3 tag information.</p>
+</header>
+<main>
+<section>
+<h2>About this Project</h2>
+<p>
+                    This is a tool developed to streamline the organization of your music library.
+                    Scans ID3 tags (genres) from a large number of MP3 files and categorizes them by genre. <code>.m3u</code> Create playlists automatically.
+                    It supports both GUI and CLI, and exports playlists with relative paths for portability.
+                </p>
+</section>
+<section>
+<h2>Video</h2>
+<div class="video-container">
+<iframe allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/9AKDtL4bqXM" title="SekkaTi"></iframe>
+</div>
+</section>
+<section>
+<h2>Development Environment</h2>
+<ul class="tech-stack">
+<li>Python 3.10+</li>
+<li>Mutagen (ID3 metadata library)</li>
+<li>Tkinter (GUI)</li>
+</ul>
+</section>
+<section>
+<h2>Key Features</h2>
+<ul>
+<li><strong>Automatic genre classification:</strong> Classify based on TCON frame with ID3v2 tag.</li>
+<li><strong>Relative path generation:</strong> Since it is written as a relative path from the playlist, it will not be corrupted even if you move the entire folder.</li>
+<li><strong>Compatible with both GUI/CLI:</strong> It has a drag-and-drop GUI and a CLI that is convenient for automation.</li>
+<li><strong>Recursive scan:</strong> All subfolders under the specified folder will also be searched.</li>
+</ul>
+</section>
+<section>
+<h2>Resource</h2>
+<p>The source code is published on GitHub.</p>
+<a class="link-button" href="https://github.com/amekusa03/tagplaylist" rel="noopener noreferrer" target="_blank">View on GitHub</a>
+</section>
+</main>
+<nav aria-label="ページナビゲーション">
+<a href="../../index.html">← Back to Garden</a>
+</nav>
+<div class="like-section">
+<button aria-label="いいね" class="like-btn" id="like-btn">
+<span class="like-icon">♡</span>
+<span class="like-count" id="like-count">…</span>
+</button>
+<p class="like-label">Did you see it?</p>
+</div>
+<footer>
+<p>Copyright © amekusa All Rights Reserved.</p>
+</footer>
+</div>
+<script src="../../rain.js"></script>
+<script src="../like.js" type="module"></script>
+</body>
+</html>
