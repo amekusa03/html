@@ -20,6 +20,10 @@
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <link href="https://amekusa.vercel.app/en/" rel="canonical" />
+  <link rel="alternate" hreflang="en" href="https://amekusa.vercel.app/en/">
+  <link rel="alternate" hreflang="ja" href="https://amekusa.vercel.app/">
+  <link rel="alternate" hreflang="x-default" href="https://amekusa.vercel.app/">
+  <meta name="author" content="Amekusa">
   <meta content="Amekusa's Garden — A record of engineering and nature. Technical essays, photos, and links."
     name="description" />
   <meta content="website" property="og:type" />
@@ -28,7 +32,44 @@
   <meta content="Amekusa's Garden — A record of engineering and nature. Technical essays, photos, and links."
     property="og:description" />
   <meta content="https://amekusa.vercel.app/ogp.png" property="og:image" />
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Amekusa's Garden">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Amekusa's Garden">
+  <meta name="twitter:description" content="Amekusa's Garden — A record of engineering and nature. Technical essays, photos, and links.">
+  <meta name="twitter:image" content="https://amekusa.vercel.app/ogp.png">
   <title>Amekusa's Garden | Notes</title>
+
+  <!-- JSON-LD structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://amekusa.vercel.app/en/#website",
+        "url": "https://amekusa.vercel.app/en/",
+        "name": "Amekusa's Garden",
+        "description": "A record of engineering and nature. Technical essays, photos, and links.",
+        "inLanguage": "en",
+        "publisher": {
+          "@id": "https://amekusa.vercel.app/#person"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://amekusa.vercel.app/#person",
+        "name": "Amekusa",
+        "url": "https://amekusa.vercel.app/",
+        "sameAs": [
+          "https://www.linkedin.com/in/amekusa-k-a925233b7/"
+        ]
+      }
+    ]
+  }
+  </script>
   <!-- Google Fonts: Noto Serif JP と Noto Sans JP -->
   <link href="https://fonts.googleapis.com" rel="preconnect" />
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
@@ -55,6 +96,7 @@
         <a class="nav-item" href="#profile">Profile</a>
         <a class="nav-item" href="#links">Links</a>
         <a class="nav-item" href="../index.html">🌐 日本語</a>
+        <a href="https://www.amazon.jp/hz/wishlist/ls/2MDMPEI311UNX?ref_=wl_share" class="nav-item">Amazon wishlist</a>
       </nav>
     </div>
     <div class="main-content">

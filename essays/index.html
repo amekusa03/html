@@ -21,13 +21,46 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="canonical" href="https://amekusa.vercel.app/essays/">
+  <link rel="alternate" hreflang="ja" href="https://amekusa.vercel.app/essays/">
+  <link rel="alternate" hreflang="en" href="https://amekusa.vercel.app/en/essays/">
+  <link rel="alternate" hreflang="x-default" href="https://amekusa.vercel.app/essays/">
+  <meta name="author" content="雨草 (Amekusa)">
   <meta name="description" content="雨草の庭 — 全記事アーカイブ。技術随筆・日常メモ・車・その他。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://amekusa.vercel.app/essays/">
   <meta property="og:title" content="Notes Archive | 雨草の庭">
   <meta property="og:description" content="雨草の庭 — 全記事アーカイブ。技術随筆・日常メモ・車・その他。">
   <meta property="og:image" content="https://amekusa.vercel.app/ogp.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="雨草の庭">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Notes Archive | 雨草の庭">
+  <meta name="twitter:description" content="雨草の庭 — 全記事アーカイブ。技術随筆・日常メモ・車・その他。">
+  <meta name="twitter:image" content="https://amekusa.vercel.app/ogp.png">
   <title>Notes Archive | 雨草の庭</title>
+
+  <!-- JSON-LD 構造化データ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": "https://amekusa.vercel.app/essays/",
+    "url": "https://amekusa.vercel.app/essays/",
+    "name": "Notes Archive | 雨草の庭",
+    "description": "全記事アーカイブ。技術随筆・日常メモ・車・その他。",
+    "inLanguage": "ja",
+    "isPartOf": {
+      "@id": "https://amekusa.vercel.app/#website"
+    },
+    "author": {
+      "@type": "Person",
+      "@id": "https://amekusa.vercel.app/#person",
+      "name": "雨草 (Amekusa)"
+    }
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -723,7 +756,7 @@
                 ${cats.map(c => `<span class="essay-category-badge">${CATEGORY_ICONS[c] || ''} ${c}</span>`).join('')}
                 ${essay.date}
               </span>
-              <a href="/#essay=${essay.slug}" class="essay-title">${essay.title}</a>
+              <a href="${essay.slug}.html" class="essay-title">${essay.title}</a>
             </li>
           `;
         });
