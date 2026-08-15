@@ -387,9 +387,11 @@
       html += `</ul>`;
 
       if (hasMore) {
+        const basePath = window.location.pathname.replace(/\/index\.html$/, '').replace(/\/$/, '');
+        const essaysUrl = `${basePath}/essays/`;
         html += `
           <div class="archive-link-wrap">
-            <a href="essays/" class="archive-link">過去の記事をもっと見る →</a>
+            <a href="${essaysUrl}" class="archive-link">過去の記事をもっと見る →</a>
           </div>
         `;
       }

@@ -745,7 +745,7 @@
                 ${cats.map(c => `<span class="essay-category-badge">${CATEGORY_ICONS[c] || ''} ${c}</span>`).join('')}
                 ${essay.date}
               </span>
-              <a href="${essay.slug}.html" class="essay-title">${essay.title}</a>
+              <a href="#essay=${essay.slug}" class="essay-title">${essay.title}</a>
             </li>
           `;
         });
@@ -768,7 +768,8 @@
       mainEl.innerHTML = '<div class="loading">読み込み中...</div>';
 
       try {
-        const response = await fetch(`${slug}.md`);
+        const dirPath = window.location.pathname.replace(/\/index\.html$/, '').replace(/\/$/, '');
+        const response = await fetch(`${dirPath}/${slug}.md`);
         if (!response.ok) throw new Error('File not found');
         const markdownText = await response.text();
         const parsedHtml = marked.parse(markdownText);
@@ -782,6 +783,13 @@
             <div class="essay-content">${parsedHtml}</div>
           </section>
         `;
+
+        mainEl.querySelectorAll('img').forEach(img => {
+          const src = img.getAttribute('src');
+          if (src && src.startsWith('essays/')) {
+            img.setAttribute('src', src.replace(/^essays\//, `${dirPath}/`));
+          }
+        });
 
         document.getElementById('back-to-list').addEventListener('click', e => {
           e.preventDefault();
