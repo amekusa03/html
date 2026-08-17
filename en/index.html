@@ -294,15 +294,17 @@
       { slug: "2026-08-14-gpslogger", date: "2026.08.14", title: "Use your old smartphone as a climbing GPS logger", categories: ["Development"] },
       { slug: "2026-08-14-translate", date: "2026.08.14", title: "I made an English site for the time being.", categories: ["Development"] },
       { slug: "2026-08-15-costarica", date: "2026.08.15", title: "There was a log from Costa Rica.", categories: ["Others"] },
+      { slug: "2026-08-17-backup", date: "2026.08.17", title: "I created this story because the backup didn't finish.", categories: ["Development"] },
+      { slug: "2026-08-17-mri", date: "2026.08.17", title: "MRI", categories: ["Others"] }
     ];
 
-    // Category display order
+    // カテゴリの表示順序
     const CATEGORY_ORDER = ["Development", "Car", "Music", "Daily Life", "Others"];
     const CATEGORY_ICONS = { "Development": "🛠️", "Car": "🏎️", "Music": "🎧", "Daily Life": "☕", "Others": "🌿" };
 
     const contentArea = document.getElementById('notes');
 
-    // Screen routing process
+    // 画面ルーティング処理
     function router() {
       const hash = window.location.hash;
 
@@ -323,7 +325,7 @@
       updateActiveNav();
     }
 
-    // Switch section display on top page
+    // トップページのセクション表示切り替え
     function toggleHomeSections(show) {
       const displayValue = show ? 'block' : 'none';
       const sections = ['photography', 'profile', 'links'];
@@ -335,14 +337,14 @@
       });
     }
 
-    // Drawing a list of essays (latest 10, in descending date order)
+    // エッセイ一覧の描画（最新10件、日付降順）
     const RECENT_COUNT = 10;
 
     function renderEssayList() {
-      // Reset title when returning to top
+      // トップに戻ったらタイトルをリセット
       document.title = "Raingrass garden | Notes";
 
-      // Sort by date in descending order and get the latest 20 results
+      // 日付降順にソートして最新20件を取得
       const sorted = [...ESSAYS].sort((a, b) => b.slug.localeCompare(a.slug));
       const recent = sorted.slice(0, RECENT_COUNT);
       const hasMore = sorted.length > RECENT_COUNT;
@@ -354,7 +356,7 @@
       `;
 
       recent.forEach(essay => {
-        const cats = essay.categories && essay.categories.length ? essay.categories : (essay.category ? [essay.category] : ['その他']);
+        const cats = essay.categories && essay.categories.length ? essay.categories : (essay.category ? [essay.category] : ['Others']);
         html += `
           <li class="essay-item">
             <span class="essay-date">
@@ -384,13 +386,13 @@
       window.scrollTo(0, 0);
     }
 
-    // Load and draw essay details
+    // エッセイ詳細のロードと描画
     async function loadEssay(slug) {
-      contentArea.innerHTML = '<div class="loading">読み込み中...</div>';
+      contentArea.innerHTML = '<div class="loading">Loading...</div>';
 
       try {
-        // Essays/ can now be retrieved correctly even if pathname ends with /en or /en/
-        // fetch with absolute path from root
+        // pathname が /en や /en/ で終わる場合でも正しく essays/ を取得できるよう
+        // ルートからの絶対パスで fetch する
         const basePath = window.location.pathname.replace(/\/index\.html$/, '').replace(/\/$/, '');
         const response = await fetch(`${basePath}/essays/${slug}.md`);
         if (!response.ok) {
@@ -398,12 +400,12 @@
         }
         const markdownText = await response.text();
 
-        // Parse using marked.js
+        // marked.js を使ってパース
         const parsedHtml = marked.parse(markdownText);
 
         const essay = ESSAYS.find(e => e.slug === slug);
         if (essay) {
-          document.title = `${essay.title} | Rainweed Garden`;
+          document.title = `${essay.title} | Rainweed garden`;
         }
 
         contentArea.innerHTML = `
@@ -421,7 +423,7 @@
       window.scrollTo(0, 0);
     }
 
-    // Drawing on error
+    // エラー時の描画
     function render404() {
       contentArea.innerHTML = `
         <div style="text-align: center; padding: 3rem 0;">
@@ -431,7 +433,7 @@
       `;
     }
 
-    // Update navigation active state
+    // ナビゲーションのアクティブ状態更新
     function updateActiveNav() {
       const hash = window.location.hash;
       const navItems = document.querySelectorAll('.nav-item');
@@ -451,7 +453,7 @@
       }
     }
 
-    // Scroll spy (Intersection Observer) settings
+    // スクロールスパイ（Intersection Observer）の設定
     let observer;
     function initScrollSpy() {
       const observerOptions = {
@@ -461,7 +463,7 @@
       };
 
       observer = new IntersectionObserver((entries) => {
-        //Disable scroll spy when viewing essay details
+        // エッセイ詳細表示時はスクロールスパイを無効化
         if (window.location.hash.startsWith('#essay=')) return;
 
         entries.forEach(entry => {
@@ -488,7 +490,7 @@
       });
     }
 
-    // Get and update number of visitors (Vercel KV API)
+    // 訪問者数の取得と更新（Vercel KV API）
     async function updateVisitorCounter() {
       const countEl = document.getElementById('visitor-count');
       if (!countEl) return;
@@ -518,7 +520,7 @@
       }
     }
 
-    // Monitoring hash changes and first read
+    // ハッシュ変更と初回読み込み時の監視
     window.addEventListener('hashchange', router);
     window.addEventListener('DOMContentLoaded', () => {
       router();

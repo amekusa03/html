@@ -684,6 +684,8 @@
       { slug: "2026-08-14-gpslogger", date: "2026.08.14", title: "Use your old smartphone as a climbing GPS logger", categories: ["Development"] },
       { slug: "2026-08-14-translate", date: "2026.08.14", title: "I made an English site for the time being.", categories: ["Development"] },
       { slug: "2026-08-15-costarica", date: "2026.08.15", title: "There was a disgusting log", categories: ["Development"] },
+      { slug: "2026-08-17-backup", date: "2026.08.17", title: "I created this story because the backup didn't finish.", categories: ["Development"] },
+      { slug: "2026-08-17-mri", date: "2026.08.17", title: "MRI", categories: ["Others"] }
     ];
 
     const CATEGORY_ORDER = ["Development", "Car", "Music", "Daily Life", "Others"];
@@ -731,14 +733,14 @@
             const countInYear = filtered.filter(e => (e.date ? e.date.substring(0, 4) : e.slug.substring(0, 4)) === year).length;
             html += `
               <h3 class="year-heading">
-                <span>${year}year</span>
+                <span>${year} year</span>
                 <span class="year-count">${countInYear} cases</span>
               </h3>
               <ul class="essay-list">
             `;
           }
 
-          const cats = essay.categories && essay.categories.length ? essay.categories : ['その他'];
+          const cats = essay.categories && essay.categories.length ? essay.categories : ['Others'];
           html += `
             <li class="essay-item" data-cat="${cats.join(' ')}">
               <span class="essay-date">
@@ -765,7 +767,7 @@
     }
 
     async function loadEssay(slug) {
-      mainEl.innerHTML = '<div class="loading">読み込み中...</div>';
+      mainEl.innerHTML = '<div class="loading">Loading...</div>';
 
       try {
         const dirPath = window.location.pathname.replace(/\/index\.html$/, '').replace(/\/$/, '');
@@ -775,7 +777,7 @@
         const parsedHtml = marked.parse(markdownText);
 
         const essay = ESSAYS.find(e => e.slug === slug);
-        if (essay) document.title = `${essay.title} | Rainweed Garden`;
+        if (essay) document.title = `${essay.title} | Rainweed garden`;
 
         mainEl.innerHTML = `
           <section class="essay-detail-section">
