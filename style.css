@@ -664,3 +664,117 @@ html {
     display: block;
     max-width: 750px;
 }
+
+/* Lightbox Modal */
+.photo-lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.photo-lightbox.active {
+    display: flex;
+}
+
+.photo-lightbox-img {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 6px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+    user-select: none;
+}
+
+.photo-lightbox-close,
+.photo-lightbox-prev,
+.photo-lightbox-next {
+    position: absolute;
+    background: rgba(30, 30, 30, 0.6);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    line-height: 1;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    z-index: 10001;
+    user-select: none;
+}
+
+.photo-lightbox-close:hover,
+.photo-lightbox-prev:hover,
+.photo-lightbox-next:hover {
+    background: rgba(60, 60, 60, 0.8);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.photo-lightbox-close {
+    top: 24px;
+    right: 24px;
+    font-size: 22px;
+}
+
+.photo-lightbox-prev {
+    left: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.photo-lightbox-prev:hover {
+    transform: translateY(-50%) scale(1.08);
+}
+
+.photo-lightbox-next {
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.photo-lightbox-next:hover {
+    transform: translateY(-50%) scale(1.08);
+}
+
+@media (max-width: 600px) {
+    .photo-lightbox {
+        padding: 10px;
+    }
+    .photo-lightbox-img {
+        max-width: 95vw;
+        max-height: 80vh;
+    }
+    .photo-lightbox-close {
+        top: 16px;
+        right: 16px;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+    .photo-lightbox-prev,
+    .photo-lightbox-next {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+    .photo-lightbox-prev {
+        left: 12px;
+    }
+    .photo-lightbox-next {
+        right: 12px;
+    }
+}
