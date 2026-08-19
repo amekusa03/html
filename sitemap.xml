@@ -600,12 +600,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://amekusa.vercel.app/essays/2026-04-28-unlockpdf</loc>
-    <lastmod>2026-07-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://amekusa.vercel.app/essays/2026-04-30-racinggame</loc>
     <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
@@ -1044,8 +1038,14 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://amekusa.vercel.app/essays/2026-08-17-mri</loc>
-    <lastmod>2026-08-17</lastmod>
+    <loc>https://amekusa.vercel.app/essays/2026-08-19-except</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://amekusa.vercel.app/essays/2026-08-19-git</loc>
+    <lastmod>2026-08-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
