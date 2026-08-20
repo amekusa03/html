@@ -4112,5 +4112,22 @@
   "Ubuntu導入ガイド — 開発・Linux。雨草の庭 技術随筆。": "Ubuntu introduction guide — Development/Linux. Rainweed Garden Technical Essay.",
   "SwitchBot Smart Home — 開発・ESP32。雨草の庭 技術随筆。": "SwitchBot Smart Home — Development/ESP32. Rainweed Garden Technical Essay.",
   "Lunch Memo — 開発・Android。雨草の庭 技術随筆。": "Lunch Memo — Development/Android. Rainweed Garden Technical Essay.",
-  "ESP32-C6-GEEKに通知を表示してみた — 開発・ESP32。雨草の庭 技術随筆。": "I tried displaying a notification on ESP32-C6-GEEK — Development/ESP32. Rainweed Garden Technical Essay."
+  "ESP32-C6-GEEKに通知を表示してみた — 開発・ESP32。雨草の庭 技術随筆。": "I tried displaying a notification on ESP32-C6-GEEK — Development/ESP32. Rainweed Garden Technical Essay.",
+  "音の沼にハマった話 〜Ubuntuで「原音」を追いかけて〜 [前編]": "The story of being addicted to the sound swamp - Chasing the \"original sound\" with Ubuntu - [Part 1]",
+  "音の沼にハマった話 〜Ubuntuで「原音」を追いかけて〜 [後編]": "The story of being addicted to the sound swamp - Chasing the \"original sound\" with Ubuntu - [Part 2]",
+  "音の沼にハマった話 〜Ubuntuで「原音」を追いかけて〜　[後編]": "The story of being addicted to the sound swamp - Chasing the \"original sound\" with Ubuntu - [Part 2]",
+  "前編": "First part",
+  "沼にハマると、様々な事をしたくなり、ミスも多くなる\nついては、GUIアプリで設定を管理できるようにすることで、ミスを少なくする。\n最近の流行りに則り、GUIはAIで作成することにした。\nPyQt5のGUI作成はこれで本当に楽になった。": "When you get stuck in a swamp, you want to do various things and make many mistakes.\nIn this case, making it possible to manage settings with a GUI app will reduce mistakes.\nIn line with recent trends, we decided to create the GUI using AI.\nCreating a PyQt5 GUI has become really easy.",
+  "クロック & サンプリングレート設定": "Clock & sampling rate settings",
+  "バッファサイズ (Quantum) & リサンプル設定": "Buffer size (Quantum) & resample settings",
+  "ワンクリック・プリセット機能": "One-click preset function",
+  "手動設定が不要な用途別プリセットを用意": "Presets for each purpose are available that do not require manual settings.",
+  "リアルタイム再生監視 & ログ": "Real-time playback monitoring & logs",
+  "設定ファイル直接編集": "Edit configuration file directly",
+  "評価": "evaluation",
+  "レートを変えたり、 Quantumサイズを変えたり、音源やDSPによる変化を確認。": "Change the rate, change the Quantum size, and check the changes due to sound source and DSP.",
+  "当方はPCゲームはやらず、CD音源をMP3に変換したものを、Rhythmboxで再生がメインであり、Rhythmboxで44100Hzで再生されると満足感が高い。": "I don't play PC games, but I mainly play CD sound sources converted to MP3 on Rhythmbox, and I feel very satisfied when they are played at 44100Hz on Rhythmbox.",
+  "githubリポジトリ": "github repository",
+  "音の沼にハマった話 〜Ubuntuで「原音」を追いかけて〜　[前編]": "The story of being addicted to the sound swamp - Chasing the \"original sound\" with Ubuntu - [Part 1]",
+  "後編": "Part 2"
 }
