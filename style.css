@@ -115,6 +115,32 @@ html {
       opacity: 0.8;
     }
 
+/* ==============================
+   トップページ導入文（.intro-text）
+   header 内、subtitle の下に配置
+   ============================== */
+.intro-text {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  font-family: "Noto Serif JP", serif;
+  font-size: 0.92rem;
+  line-height: 2;
+  letter-spacing: 0.02em;
+  color: #4a4640; /* 墨に近い、少し柔らかいグレーブラウン */
+  text-align: left;
+}
+ 
+/* サイドバーが狭い画面では行間・余白を少し詰める */
+@media (max-width: 768px) {
+  .intro-text {
+    font-size: 0.88rem;
+    line-height: 1.85;
+    margin-top: 1rem;
+    padding-top: 0.85rem;
+  }
+}
+
     /* セクションタイトル表示 */
     .essay-list-section h2,
     #photography h2,

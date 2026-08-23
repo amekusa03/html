@@ -6,7 +6,6 @@
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
-
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
   <script>
@@ -15,7 +14,6 @@
     gtag('js', new Date());
     gtag('config', 'G-SRGF2MMYGD');
   </script>
-
   <link rel="icon" href="Favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="amenoniwa.png">
   <meta charset="UTF-8">
@@ -40,71 +38,70 @@
   <meta name="twitter:description" content="雨草の庭 — エンジニアリングと自然の記録。技術随筆・写真・リンク集。">
   <meta name="twitter:image" content="https://amekusa.vercel.app/ogp.png">
   <title>雨草の庭 | Notes</title>
-
   <!-- JSON-LD 構造化データ -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://amekusa.vercel.app/#website",
-        "url": "https://amekusa.vercel.app/",
-        "name": "雨草の庭",
-        "description": "エンジニアリングと自然の記録。技術随筆・写真・リンク集。",
-        "inLanguage": "ja",
-        "publisher": {
-          "@id": "https://amekusa.vercel.app/#person"
-        }
-      },
-      {
-        "@type": "Person",
-        "@id": "https://amekusa.vercel.app/#person",
-        "name": "雨草 (Amekusa)",
-        "url": "https://amekusa.vercel.app/",
-        "sameAs": [
-          "https://www.linkedin.com/in/amekusa-k-a925233b7/"
-        ]
-      },
-      {
-        "@type": "Blog",
-        "@id": "https://amekusa.vercel.app/#blog",
-        "url": "https://amekusa.vercel.app/essays/",
-        "name": "Notes — 雨草の庭",
-        "description": "技術随筆・日常・車・音楽など",
-        "inLanguage": "ja",
-        "author": {
-          "@id": "https://amekusa.vercel.app/#person"
-        }
-      }
-    ]
-  }
-  </script>
-
+{
+"@context": "https://schema.org",
+"@graph": [
+{
+"@type": "WebSite",
+"@id": "https://amekusa.vercel.app/#website",
+"url": "https://amekusa.vercel.app/",
+"name": "雨草の庭",
+"description": "エンジニアリングと自然の記録。技術随筆・写真・リンク集。",
+"inLanguage": "ja",
+"publisher": {
+"@id": "https://amekusa.vercel.app/#person"
+}
+},
+{
+"@type": "Person",
+"@id": "https://amekusa.vercel.app/#person",
+"name": "雨草 (Amekusa)",
+"url": "https://amekusa.vercel.app/",
+"sameAs": [
+"https://www.linkedin.com/in/amekusa-k-a925233b7/"
+]
+},
+{
+"@type": "Blog",
+"@id": "https://amekusa.vercel.app/#blog",
+"url": "https://amekusa.vercel.app/essays/",
+"name": "Notes — 雨草の庭",
+"description": "技術随筆・日常・車・音楽など",
+"inLanguage": "ja",
+"author": {
+"@id": "https://amekusa.vercel.app/#person"
+}
+}
+]
+}
+</script>
   <!-- Google Fonts: Noto Serif JP と Noto Sans JP -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;600&display=swap"
     rel="stylesheet">
-
   <!-- Markdown Parser (marked.js) -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   <canvas id="rain-canvas"></canvas>
-
   <div class="container">
     <div class="sidebar">
       <header>
         <a href="#"><img src="amenoniwa.png" alt="Character animation" class="hero-gif"></a>
         <h1>雨草の庭</h1>
         <p class="subtitle">Engineering & Nature Notes</p>
+        <p class="intro-text">
+          ようこそ、雨草の庭へ。<br>
+          ESP32やAndroidをいじったり、小さな農園で野菜や土と向き合ったりしています。COBOLから始まって、今はPythonやC#、Webまで手を広げる雑食系エンジニアです。<br><br>
+          ここでは、仕事や趣味の中で出会った技術的な課題と思考、そして少しだけ日常を、随筆のような形で書き残しています。写真は東南アジアで撮ったものを中心に載せています。
+        </p>
       </header>
-
       <nav class="global-nav">
         <a href="#notes" class="nav-item">Notes</a>
         <a href="#photography" class="nav-item">Photography</a>
@@ -114,7 +111,6 @@
         <a href="https://www.amazon.jp/hz/wishlist/ls/2MDMPEI311UNX?ref_=wl_share" class="nav-item">Amazon wishlist</a>
       </nav>
     </div>
-
     <div class="main-content">
       <main id="notes">
         <!-- ここに動的に一覧または詳細が読み込まれます -->
@@ -125,7 +121,6 @@
           </section>
         </noscript>
       </main>
-
       <section id="photography">
         <h2 data-num="○四">Photography</h2>
         <div class="photo-grid">
@@ -141,7 +136,6 @@
         </div>
         <p class="section-description" style="margin-top:1.5rem;"><a href="Photo1/index.html">全ての写真を見る →</a></p>
       </section>
-
       <section id="profile">
         <h2 data-num="○五">Profile</h2>
         <ul class="links-list" style="margin-bottom: 1.5rem;">
@@ -154,7 +148,6 @@
           </div>
         </div>
       </section>
-
       <section id="links">
         <h2 data-num="○六">Links</h2>
         <ul class="links-list">
@@ -184,7 +177,6 @@
       </footer>
     </div>
   </div>
-
   <script defer src="rain.js"></script>
   <script>
     // =====================================================================
@@ -314,7 +306,7 @@
       { slug: "2026-08-17-backup", date: "2026.08.17", title: "バックアップが終わらないので、作ってしまった話", categories: ["開発", "Linux"] },
       { slug: "2026-08-19-except", date: "2026.08.19", title: "C++, C#, Python の例外処理", categories: ["開発", "Python"] },
       { slug: "2026-08-19-git", date: "2026.08.19", title: "ソース管理し忘れ", categories: ["開発", "Python", "Linux"] },
-      { slug: "2026-08-20-pipewire", date: "2026.08.20", title: "音の沼にハマった話 〜Ubuntuで「原音」を追いかけて〜 [前編]", categories: ["音楽", "Linux", "Python"] },
+      { slug: "2026-08-20-pipewire", date: "2026.08.20", title: "音の沼にハマった話 〜Ubuntuで「原音」を追いかけて〜 [後編]", categories: ["音楽", "Linux", "Python"] },
       { slug: "2026-08-21-pomodoro", date: "2026.08.21", title: "ポモドーロ・テクニック〜集中と休憩を自分仕様に仕立てる〜", categories: ["開発", "Linux"] },
     ];
 
@@ -327,7 +319,6 @@
     // 画面ルーティング処理
     function router() {
       const hash = window.location.hash;
-
       if (hash.startsWith('#essay=')) {
         const slug = hash.replace('#essay=', '');
         const essay = ESSAYS.find(e => e.slug === slug);
@@ -359,7 +350,6 @@
 
     // エッセイ一覧の描画（最新10件、日付降順）
     const RECENT_COUNT = 10;
-
     function renderEssayList() {
       // トップに戻ったらタイトルをリセット
       document.title = "雨草の庭 | Notes";
@@ -370,22 +360,22 @@
       const hasMore = sorted.length > RECENT_COUNT;
 
       let html = `
-        <section class="essay-list-section">
-          <h2>Notes</h2>
-          <ul class="essay-list">
-      `;
+<section class="essay-list-section">
+<h2>Notes</h2>
+<ul class="essay-list">
+`;
 
       recent.forEach(essay => {
         const cats = essay.categories && essay.categories.length ? essay.categories : (essay.category ? [essay.category] : ['その他']);
         html += `
-          <li class="essay-item">
-            <span class="essay-date">
-              ${cats.map(c => `<span class="essay-category-badge">${CATEGORY_ICONS[c] || ''} ${c}</span>`).join('')}
-              ${essay.date}
-            </span>
-            <a href="#essay=${essay.slug}" class="essay-title">${essay.title}</a>
-          </li>
-        `;
+<li class="essay-item">
+<span class="essay-date">
+${cats.map(c => `<span class="essay-category-badge">${CATEGORY_ICONS[c] || ''} ${c}</span>`).join('')}
+${essay.date}
+</span>
+<a href="#essay=${essay.slug}" class="essay-title">${essay.title}</a>
+</li>
+`;
       });
 
       html += `</ul>`;
@@ -394,14 +384,13 @@
         const basePath = window.location.pathname.replace(/\/index\.html$/, '').replace(/\/$/, '');
         const essaysUrl = `${basePath}/essays/`;
         html += `
-          <div class="archive-link-wrap">
-            <a href="${essaysUrl}" class="archive-link">過去の記事をもっと見る →</a>
-          </div>
-        `;
+<div class="archive-link-wrap">
+<a href="${essaysUrl}" class="archive-link">過去の記事をもっと見る →</a>
+</div>
+`;
       }
 
       html += `</section>`;
-
       contentArea.innerHTML = html;
       window.scrollTo(0, 0);
     }
@@ -429,13 +418,13 @@
         }
 
         contentArea.innerHTML = `
-          <section class="essay-detail-section">
-            <a href="#notes" class="back-btn">← 一覧に戻る</a>
-            <div class="essay-content">
-              ${parsedHtml}
-            </div>
-          </section>
-        `;
+<section class="essay-detail-section">
+<a href="#notes" class="back-btn">← 一覧に戻る</a>
+<div class="essay-content">
+${parsedHtml}
+</div>
+</section>
+`;
       } catch (error) {
         console.error(error);
         render404();
@@ -446,11 +435,11 @@
     // エラー時の描画
     function render404() {
       contentArea.innerHTML = `
-        <div style="text-align: center; padding: 3rem 0;">
-          <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">エッセイが見つかりませんでした。</p>
-          <a href="#notes" class="back-btn" style="margin-bottom: 0;">← 一覧に戻る</a>
-        </div>
-      `;
+<div style="text-align: center; padding: 3rem 0;">
+<p style="font-size: 1.2rem; margin-bottom: 1.5rem;">エッセイが見つかりませんでした。</p>
+<a href="#notes" class="back-btn" style="margin-bottom: 0;">← 一覧に戻る</a>
+</div>
+`;
     }
 
     // ナビゲーションのアクティブ状態更新
@@ -505,6 +494,7 @@
         document.getElementById('profile'),
         document.getElementById('links')
       ];
+
       targets.forEach(t => {
         if (t) observer.observe(t);
       });
@@ -548,8 +538,6 @@
       updateVisitorCounter();
     });
   </script>
-
-
 </body>
 
 </html>
