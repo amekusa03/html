@@ -7,7 +7,7 @@ const dpr = window.devicePixelRatio || 1;
 
 // 雨粒の最大数（パフォーマンス調整）
 // const MAX_DROPS = 200;
-const MAX_DROPS = 120; // ノートPC等の画面で雨が多く感じるのを防ぐため、最大数を抑えて上品に調整
+const MAX_DROPS = 12; // 雨の量を10%に調整
 
 function init() {
     if (!canvas) return; // キャンバス要素が存在しない場合のチェック
@@ -31,7 +31,7 @@ function init() {
     raindrops = [];
     // const count = Math.min(Math.floor(w / 4), MAX_DROPS);
     // 画面幅あたりの雨粒密度が極端に高くならないよう、分母を8に増やして調整
-    const count = Math.min(Math.floor(w / 8), MAX_DROPS);
+    const count = Math.min(Math.floor(w / 80), MAX_DROPS);
     for (let i = 0; i < count; i++) {
         raindrops.push({
             x: Math.random() * w,
