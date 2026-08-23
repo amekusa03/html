@@ -40,43 +40,43 @@
 <title>Raingrass garden | Notes</title>
 <!-- JSON-LD 構造化データ -->
 <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://amekusa.vercel.app/#website",
-        "url": "https://amekusa.vercel.app/",
-        "name": "Amekusa's Garden",
-        "description": "Records of engineering and nature. A collection of technical essays, photos, and links.",
-        "inLanguage": "ja",
-        "publisher": {
-          "@id": "https://amekusa.vercel.app/#person"
-        }
-      },
-      {
-        "@type": "Person",
-        "@id": "https://amekusa.vercel.app/#person",
-        "name": "Amekusa",
-        "url": "https://amekusa.vercel.app/",
-        "sameAs": [
-          "https://www.linkedin.com/in/amekusa-k-a925233b7/"
-        ]
-      },
-      {
-        "@type": "Blog",
-        "@id": "https://amekusa.vercel.app/#blog",
-        "url": "https://amekusa.vercel.app/essays/",
-        "name": "Notes — Rainweed Garden",
-        "description": "Technical essays, daily life, cars, music, etc.",
-        "inLanguage": "ja",
-        "author": {
-          "@id": "https://amekusa.vercel.app/#person"
-        }
-      }
-    ]
-  }
-  </script>
+{
+"@context": "https://schema.org",
+"@graph": [
+{
+"@type": "WebSite",
+"@id": "https://amekusa.vercel.app/#website",
+"url": "https://amekusa.vercel.app/",
+"name": "Amekusa's Garden",
+"description": "Records of engineering and nature. A collection of technical essays, photos, and links.",
+"inLanguage": "ja",
+"publisher": {
+"@id": "https://amekusa.vercel.app/#person"
+}
+},
+{
+"@type": "Person",
+"@id": "https://amekusa.vercel.app/#person",
+"name": "Amekusa",
+"url": "https://amekusa.vercel.app/",
+"sameAs": [
+"https://www.linkedin.com/in/amekusa-k-a925233b7/"
+]
+},
+{
+"@type": "Blog",
+"@id": "https://amekusa.vercel.app/#blog",
+"url": "https://amekusa.vercel.app/essays/",
+"name": "Notes — Rainweed Garden",
+"description": "Technical essays, daily life, cars, music, etc.",
+"inLanguage": "ja",
+"author": {
+"@id": "https://amekusa.vercel.app/#person"
+}
+}
+]
+}
+</script>
 <!-- Google Fonts: Noto Serif JP と Noto Sans JP -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -93,6 +93,11 @@
 <a href="#"><img alt="Character animation" class="hero-gif" src="amenoniwa.png"/></a>
 <h1>Amekusa's Garden</h1>
 <p class="subtitle">Engineering &amp; Nature Notes</p>
+<p class="intro-text">
+          Welcome to Amekusa's Garden.<br/>
+          I'm an engineer who loves hacking on ESP32s and Android devices, and I also enjoy gardening in my small urban farm. My programming journey started with COBOL and has evolved to include Python, C#, and web development. I'm a bit of a tech generalist.<br/><br/>
+          In this space, I share my thoughts on technical challenges and discoveries from my work and hobbies, as well as snippets of my daily life, written in an essay style. The photos here are mainly from my travels in Southeast Asia.
+        </p>
 </header>
 <nav class="global-nav">
 <a class="nav-item" href="#notes">Notes</a>
@@ -296,7 +301,7 @@
       { slug: "2026-08-17-backup", date: "2026.08.17", title: "I created this story because the backup didn't finish.", categories: ["Development", "Linux"] },
       { slug: "2026-08-19-except", date: "2026.08.19", title: "Exception handling in C++, C#, and Python", categories: ["Development", "Python"] },
       { slug: "2026-08-19-git", date: "2026.08.19", title: "Forget about source control", categories: ["Development", "Python", "Linux"] },
-      { slug: "2026-08-20-pipewire", date: "2026.08.20", title: "The story of being addicted to the sound swamp - Chasing the \"original sound\" with Ubuntu - [Part 1]", categories: ["Music", "Linux", "Python"] },
+      { slug: "2026-08-20-pipewire", date: "2026.08.20", title: "The story of being addicted to the sound swamp - Chasing the \"original sound\" with Ubuntu - [Part 2]", categories: ["Music", "Linux", "Python"] },
       { slug: "2026-08-21-pomodoro", date: "2026.08.21", title: "Pomodoro Technique: Tailor your concentration and breaks to your own specifications", categories: ["Development", "Linux"] },
     ];
 
@@ -309,7 +314,6 @@
     // 画面ルーティング処理
     function router() {
       const hash = window.location.hash;
-
       if (hash.startsWith('#essay=')) {
         const slug = hash.replace('#essay=', '');
         const essay = ESSAYS.find(e => e.slug === slug);
@@ -341,7 +345,6 @@
 
     // エッセイ一覧の描画（最新10件、日付降順）
     const RECENT_COUNT = 10;
-
     function renderEssayList() {
       // トップに戻ったらタイトルをリセット
       document.title = "Raingrass garden | Notes";
@@ -352,22 +355,22 @@
       const hasMore = sorted.length > RECENT_COUNT;
 
       let html = `
-        <section class="essay-list-section">
-          <h2>Notes</h2>
-          <ul class="essay-list">
-      `;
+<section class="essay-list-section">
+<h2>Notes</h2>
+<ul class="essay-list">
+`;
 
       recent.forEach(essay => {
         const cats = essay.categories && essay.categories.length ? essay.categories : (essay.category ? [essay.category] : ['Others']);
         html += `
-          <li class="essay-item">
-            <span class="essay-date">
-              ${cats.map(c => `<span class="essay-category-badge">${CATEGORY_ICONS[c] || ''} ${c}</span>`).join('')}
-              ${essay.date}
-            </span>
-            <a href="#essay=${essay.slug}" class="essay-title">${essay.title}</a>
-          </li>
-        `;
+<li class="essay-item">
+<span class="essay-date">
+${cats.map(c => `<span class="essay-category-badge">${CATEGORY_ICONS[c] || ''} ${c}</span>`).join('')}
+${essay.date}
+</span>
+<a href="#essay=${essay.slug}" class="essay-title">${essay.title}</a>
+</li>
+`;
       });
 
       html += `</ul>`;
@@ -376,14 +379,13 @@
         const basePath = window.location.pathname.replace(/\/index\.html$/, '').replace(/\/$/, '');
         const essaysUrl = `${basePath}/essays/`;
         html += `
-          <div class="archive-link-wrap">
-            <a href="${essaysUrl}" class="archive-link">See more past articles →</a>
-          </div>
-        `;
+<div class="archive-link-wrap">
+<a href="${essaysUrl}" class="archive-link">過去の記事をもっと見る →</a>
+</div>
+`;
       }
 
       html += `</section>`;
-
       contentArea.innerHTML = html;
       window.scrollTo(0, 0);
     }
@@ -411,13 +413,13 @@
         }
 
         contentArea.innerHTML = `
-          <section class="essay-detail-section">
-            <a href="#notes" class="back-btn">← Return to list</a>
-            <div class="essay-content">
-              ${parsedHtml}
-            </div>
-          </section>
-        `;
+<section class="essay-detail-section">
+<a href="#notes" class="back-btn">← 一覧に戻る</a>
+<div class="essay-content">
+${parsedHtml}
+</div>
+</section>
+`;
       } catch (error) {
         console.error(error);
         render404();
@@ -428,11 +430,11 @@
     // エラー時の描画
     function render404() {
       contentArea.innerHTML = `
-        <div style="text-align: center; padding: 3rem 0;">
-          <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">No essays found. </p>
-          <a href="#notes" class="back-btn" style="margin-bottom: 0;">← Return to list</a>
-        </div>
-      `;
+<div style="text-align: center; padding: 3rem 0;">
+<p style="font-size: 1.2rem; margin-bottom: 1.5rem;">エッセイが見つかりませんでした。</p>
+<a href="#notes" class="back-btn" style="margin-bottom: 0;">← 一覧に戻る</a>
+</div>
+`;
     }
 
     // ナビゲーションのアクティブ状態更新
@@ -487,6 +489,7 @@
         document.getElementById('profile'),
         document.getElementById('links')
       ];
+
       targets.forEach(t => {
         if (t) observer.observe(t);
       });

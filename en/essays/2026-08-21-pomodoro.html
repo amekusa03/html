@@ -18,36 +18,36 @@
 <link href="../amenoniwa.png" rel="apple-touch-icon"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link href="https://amekusa.vercel.app/en/essays/2026-08-20-pipewire" rel="canonical"/>
+<link href="https://amekusa.vercel.app/en/essays/2026-08-21-pomodoro" rel="canonical"/>
 <meta content="Amekusa" name="author"/>
-<meta content="音の沼にハマった話 〜Ubuntuで「原音」を追いかけて〜 [前編] — 音楽・Linux・Python。雨草の庭 技術随筆。" name="description"/>
+<meta content="ポモドーロ・テクニック〜集中と休憩を自分仕様に仕立てる〜 — 開発・Linux。雨草の庭 技術随筆。" name="description"/>
 <meta content="article" property="og:type"/>
-<meta content="https://amekusa.vercel.app/en/essays/2026-08-20-pipewire" property="og:url"/>
-<meta content='The story of being addicted to the sound swamp - Chasing the "original sound" with Ubuntu - [Part 1] | Raingrass Garden' property="og:title"/>
-<meta content="音の沼にハマった話 〜Ubuntuで「原音」を追いかけて〜 [前編] — 音楽・Linux・Python。雨草の庭 技術随筆。" property="og:description"/>
-<meta content="https://amekusa.vercel.app/essays/2026-08-20-pipewire.png" property="og:image"/>
+<meta content="https://amekusa.vercel.app/en/essays/2026-08-21-pomodoro" property="og:url"/>
+<meta content="ポモドーロ・テクニック〜集中と休憩を自分仕様に仕立てる〜 | 雨草の庭" property="og:title"/>
+<meta content="ポモドーロ・テクニック〜集中と休憩を自分仕様に仕立てる〜 — 開発・Linux。雨草の庭 技術随筆。" property="og:description"/>
+<meta content="https://amekusa.vercel.app/essays/2026-08-21-pomodoro.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
 <meta content="ja_JP" property="og:locale"/>
 <meta content="Amekusa's Garden" property="og:site_name"/>
-<meta content="2026-08-20" property="article:published_time"/>
+<meta content="2026-08-21" property="article:published_time"/>
 <meta content="Amekusa" property="article:author"/>
 <meta content="summary_large_image" name="twitter:card"/>
-<meta content='The story of being addicted to the sound swamp - Chasing the "original sound" with Ubuntu - [Part 1] | Raingrass Garden' name="twitter:title"/>
-<meta content="音の沼にハマった話 〜Ubuntuで「原音」を追いかけて〜 [前編] — 音楽・Linux・Python。雨草の庭 技術随筆。" name="twitter:description"/>
-<meta content="https://amekusa.vercel.app/essays/2026-08-20-pipewire.png" name="twitter:image"/>
-<title>The story of being addicted to the sound swamp - Chasing the "original sound" with Ubuntu - [Part 1] | Raingrass Garden</title>
+<meta content="ポモドーロ・テクニック〜集中と休憩を自分仕様に仕立てる〜 | 雨草の庭" name="twitter:title"/>
+<meta content="ポモドーロ・テクニック〜集中と休憩を自分仕様に仕立てる〜 — 開発・Linux。雨草の庭 技術随筆。" name="twitter:description"/>
+<meta content="https://amekusa.vercel.app/essays/2026-08-21-pomodoro.png" name="twitter:image"/>
+<title>ポモドーロ・テクニック〜集中と休憩を自分仕様に仕立てる〜 | 雨草の庭</title>
 <!-- JSON-LD 構造化データ -->
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "@id": "https://amekusa.vercel.app/essays/2026-08-20-pipewire",
-    "url": "https://amekusa.vercel.app/essays/2026-08-20-pipewire",
-    "headline": "The story of being addicted to the sound swamp - Chasing the \"original sound\" with Ubuntu - [Part 1]",
-    "description": "音の沼にハマった話 〜Ubuntuで「原音」を追いかけて〜 [前編] — 音楽・Linux・Python。雨草の庭 技術随筆。",
-    "datePublished": "2026-08-20",
-    "dateModified": "2026-08-20",
+    "@id": "https://amekusa.vercel.app/essays/2026-08-21-pomodoro",
+    "url": "https://amekusa.vercel.app/essays/2026-08-21-pomodoro",
+    "headline": "Pomodoro Technique: Tailor your concentration and breaks to your own specifications",
+    "description": "ポモドーロ・テクニック〜集中と休憩を自分仕様に仕立てる〜 — 開発・Linux。雨草の庭 技術随筆。",
+    "datePublished": "2026-08-21",
+    "dateModified": "2026-08-21",
     "inLanguage": "ja",
     "author": {
       "@type": "Person",
@@ -67,7 +67,7 @@
     },
     "image": {
       "@type": "ImageObject",
-      "url": "https://amekusa.vercel.app/essays/2026-08-20-pipewire.png"
+      "url": "https://amekusa.vercel.app/essays/2026-08-21-pomodoro.png"
     }
   }
   </script>
@@ -93,7 +93,7 @@
 <a class="nav-item" href="/en/#photography">Photography</a>
 <a class="nav-item" href="/en/#profile">Profile</a>
 <a class="nav-item" href="/en/#links">Links</a>
-<a class="nav-item" href="/essays/2026-08-20-pipewire.html">🌐 日本語</a>
+<a class="nav-item" href="/essays/2026-08-21-pomodoro.html">🌐 日本語</a>
 </nav>
 </div>
 <div class="main-content">
@@ -108,7 +108,7 @@
     async function loadEssay() {
       const contentArea = document.getElementById('essay-content');
       try {
-        const response = await fetch('2026-08-20-pipewire.md');
+        const response = await fetch('2026-08-21-pomodoro.md');
         if (!response.ok) throw new Error('File not found');
         const markdownText = await response.text();
         const parsedHtml = marked.parse(markdownText);
