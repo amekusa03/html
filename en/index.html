@@ -94,9 +94,9 @@
 <h1>Amekusa's Garden</h1>
 <p class="subtitle">Engineering &amp; Nature Notes</p>
 <p class="intro-text">
-          ようこそ、雨草の庭へ。<br/>
-          ESP32やAndroidをいじったり、小さな農園で野菜や土と向き合ったりしています。COBOLから始まって、今はPythonやC#、Webまで手を広げる雑食系エンジニアです。<br/><br/>
-          ここでは、仕事や趣味の中で出会った技術的な課題と思考、そして少しだけ日常を、随筆のような形で書き残しています。写真は東南アジアで撮ったものを中心に載せています。
+          Welcome to the raingrass garden.<br/>
+          I play around with ESP32 and Android, and work with vegetables and soil on a small farm. I'm an omnivorous engineer who started with COBOL and has now branched out to include Python, C#, and the Web.<br/><br/>
+          Here, I write down the technical issues and thoughts I encountered in my work and hobbies, as well as a little bit of my daily life, in an essay-like format. The photos are mainly taken in Southeast Asia.
         </p>
 </header>
 <nav class="global-nav">
@@ -303,7 +303,8 @@
       { slug: "2026-08-19-git", date: "2026.08.19", title: "Forget about source control", categories: ["Development", "Python", "Linux"] },
       { slug: "2026-08-20-pipewire", date: "2026.08.20", title: "The story of being addicted to the sound swamp - Chasing the \"original sound\" with Ubuntu - [Part 2]", categories: ["Music", "Linux", "Python"] },
       { slug: "2026-08-21-pomodoro", date: "2026.08.21", title: "Pomodoro Technique: Tailor your concentration and breaks to your own specifications", categories: ["Development", "Linux"] },
-      { slug: "2026-08-24-mp3", date: "2026.08.24", title: "音楽ファイルの見えないノイズを追いかけて 〜MP3検査アプリを作った話〜", categories: ["Development", "Python"] },
+      { slug: "2026-08-24-mp3", date: "2026.08.24", title: "Chasing invisible noise in music files ~The story of creating an MP3 inspection app~", categories: ["Development", "Python", "Music"] },
+      { slug: "2026-08-25-mp3", date: "2026.08.25", title: "A story about creating a music grouping app", categories: ["Development", "Python", "Music"] },
     ];
 
     // カテゴリの表示順序
@@ -381,7 +382,7 @@ ${essay.date}
         const essaysUrl = `${basePath}/essays/`;
         html += `
 <div class="archive-link-wrap">
-<a href="${essaysUrl}" class="archive-link">過去の記事をもっと見る →</a>
+<a href="${essaysUrl}" class="archive-link">See more past articles →</a>
 </div>
 `;
       }
@@ -415,7 +416,7 @@ ${essay.date}
 
         contentArea.innerHTML = `
 <section class="essay-detail-section">
-<a href="#notes" class="back-btn">← 一覧に戻る</a>
+<a href="#notes" class="back-btn">← Return to list</a>
 <div class="essay-content">
 ${parsedHtml}
 </div>
@@ -432,8 +433,8 @@ ${parsedHtml}
     function render404() {
       contentArea.innerHTML = `
 <div style="text-align: center; padding: 3rem 0;">
-<p style="font-size: 1.2rem; margin-bottom: 1.5rem;">エッセイが見つかりませんでした。</p>
-<a href="#notes" class="back-btn" style="margin-bottom: 0;">← 一覧に戻る</a>
+<p style="font-size: 1.2rem; margin-bottom: 1.5rem;">No essays found. </p>
+<a href="#notes" class="back-btn" style="margin-bottom: 0;">← Return to list</a>
 </div>
 `;
     }

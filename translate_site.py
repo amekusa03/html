@@ -2,6 +2,7 @@
 import os
 import re
 import urllib.request
+import urllib.error
 import urllib.parse
 import json
 import time
@@ -41,6 +42,14 @@ translation_cache = {
     "記事一覧を見る →": "View Article List →"
 }
 
+def save_cache():
+    cache_file = os.path.join(BASE_DIR, "translation_cache.json")
+    try:
+        with open(cache_file, 'w', encoding='utf-8') as f:
+            json.dump(translation_cache, f, ensure_ascii=False, indent=2)
+    except Exception as e:
+        print(f"Failed to save translation cache: {e}")
+
 def has_japanese(text):
     if not text:
         return False
@@ -56,24 +65,57 @@ def translate_text(text):
         trail_ws = text[len(text.rstrip()):] if len(text.rstrip()) < len(text) else ""
         return lead_ws + translation_cache[text_stripped] + trail_ws
 
-    try:
-        print(f"Translating: {text_stripped[:50]}")
-        url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=ja&tl=en&dt=t&q=" + urllib.parse.quote(text_stripped)
-        req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-        response = urllib.request.urlopen(req, timeout=15)
-        data = json.loads(response.read().decode('utf-8'))
-        
-        translated = "".join([segment[0] for segment in data[0] if segment[0]])
-        
-        translation_cache[text_stripped] = translated
-        time.sleep(0.2)  # Rate limiting
-        
-        lead_ws = text[:len(text) - len(text.lstrip())]
-        trail_ws = text[len(text.rstrip()):] if len(text.rstrip()) < len(text) else ""
-        return lead_ws + translated + trail_ws
-    except Exception as e:
-        print(f"Error translating '{text_stripped[:30]}': {e}")
-        return text
+    max_retries = 5
+    base_backoff = 2.0
+
+    for attempt in range(max_retries):
+        if attempt == 0:
+            print(f"Translating: {text_stripped[:50]}")
+        else:
+            print(f"Retrying translation (attempt {attempt+1}/{max_retries}): {text_stripped[:50]}")
+
+        # Method 1: GTX endpoint
+        try:
+            url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=ja&tl=en&dt=t&q=" + urllib.parse.quote(text_stripped)
+            req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'})
+            with urllib.request.urlopen(req, timeout=15) as response:
+                data = json.loads(response.read().decode('utf-8'))
+                translated = "".join([segment[0] for segment in data[0] if segment[0]])
+                if translated:
+                    translation_cache[text_stripped] = translated
+                    save_cache()
+                    time.sleep(0.2)
+                    lead_ws = text[:len(text) - len(text.lstrip())]
+                    trail_ws = text[len(text.rstrip()):] if len(text.rstrip()) < len(text) else ""
+                    return lead_ws + translated + trail_ws
+        except Exception:
+            pass
+
+        # Method 2: google.com/m web endpoint
+        try:
+            url = "https://translate.google.com/m?sl=ja&tl=en&q=" + urllib.parse.quote(text_stripped)
+            req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'})
+            with urllib.request.urlopen(req, timeout=15) as response:
+                html = response.read().decode('utf-8')
+                soup = BeautifulSoup(html, 'html.parser')
+                container = soup.find('div', class_='result-container')
+                if container and container.text.strip():
+                    translated = container.text.strip()
+                    translation_cache[text_stripped] = translated
+                    save_cache()
+                    time.sleep(0.2)
+                    lead_ws = text[:len(text) - len(text.lstrip())]
+                    trail_ws = text[len(text.rstrip()):] if len(text.rstrip()) < len(text) else ""
+                    return lead_ws + translated + trail_ws
+        except Exception:
+            pass
+
+        sleep_time = base_backoff * (2 ** attempt)
+        print(f"Rate-limited on both methods. Waiting {sleep_time:.1f}s before retry (attempt {attempt+1}/{max_retries})...")
+        time.sleep(sleep_time)
+
+    print(f"Failed to translate '{text_stripped[:30]}' after {max_retries} attempts.")
+    return text
 
 def fix_url_for_en(url, current_rel_path=""):
     if not url:
