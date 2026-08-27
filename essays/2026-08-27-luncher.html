@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-SRGF2MMYGD');
+  </script>
+
+  <link rel="icon" href="../Favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="../amenoniwa.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://amekusa.vercel.app/essays/2026-08-27-luncher">
+  <meta name="author" content="雨草 (Amekusa)">
+  <meta name="description" content="LinuxてCLIが多いのでGUIランチャー作った — 開発・Python・Linux。雨草の庭 技術随筆。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://amekusa.vercel.app/essays/2026-08-27-luncher">
+  <meta property="og:title" content="LinuxてCLIが多いのでGUIランチャー作った | 雨草の庭">
+  <meta property="og:description" content="LinuxてCLIが多いのでGUIランチャー作った — 開発・Python・Linux。雨草の庭 技術随筆。">
+  <meta property="og:image" content="https://amekusa.vercel.app/ogp.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="雨草の庭">
+  <meta property="article:published_time" content="2026-08-27">
+  <meta property="article:author" content="雨草 (Amekusa)">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="LinuxてCLIが多いのでGUIランチャー作った | 雨草の庭">
+  <meta name="twitter:description" content="LinuxてCLIが多いのでGUIランチャー作った — 開発・Python・Linux。雨草の庭 技術随筆。">
+  <meta name="twitter:image" content="https://amekusa.vercel.app/ogp.png">
+  <title>LinuxてCLIが多いのでGUIランチャー作った | 雨草の庭</title>
+
+  <!-- JSON-LD 構造化データ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": "https://amekusa.vercel.app/essays/2026-08-27-luncher",
+    "url": "https://amekusa.vercel.app/essays/2026-08-27-luncher",
+    "headline": "LinuxてCLIが多いのでGUIランチャー作った",
+    "description": "LinuxてCLIが多いのでGUIランチャー作った — 開発・Python・Linux。雨草の庭 技術随筆。",
+    "datePublished": "2026-08-27",
+    "dateModified": "2026-08-27",
+    "inLanguage": "ja",
+    "author": {
+      "@type": "Person",
+      "@id": "https://amekusa.vercel.app/#person",
+      "name": "雨草 (Amekusa)",
+      "url": "https://amekusa.vercel.app/"
+    },
+    "publisher": {
+      "@type": "Person",
+      "@id": "https://amekusa.vercel.app/#person",
+      "name": "雨草 (Amekusa)"
+    },
+    "isPartOf": {
+      "@type": "Blog",
+      "@id": "https://amekusa.vercel.app/#blog",
+      "name": "Notes — 雨草の庭"
+    },
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://amekusa.vercel.app/ogp.png"
+    }
+  }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Markdown Parser -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+  <canvas id="rain-canvas"></canvas>
+
+  <div class="container">
+    <div class="sidebar">
+      <header>
+        <a href="../"><img src="../amenoniwa.png" alt="Character animation" class="hero-gif"></a>
+        <h1>雨草の庭</h1>
+        <p class="subtitle">Engineering &amp; Nature Notes</p>
+      </header>
+
+      <nav class="global-nav">
+        <a href="../#notes" class="nav-item active">Notes</a>
+        <a href="../#photography" class="nav-item">Photography</a>
+        <a href="../#profile" class="nav-item">Profile</a>
+        <a href="../#links" class="nav-item">Links</a>
+        <a href="../en/" class="nav-item">🌐 English</a>
+      </nav>
+    </div>
+
+    <div class="main-content">
+      <main id="essay-content">
+        <div class="loading">読み込み中...</div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../rain.js"></script>
+  <script>
+    // Markdownを読み込んで表示
+    async function loadEssay() {
+      const contentArea = document.getElementById('essay-content');
+      try {
+        const response = await fetch('2026-08-27-luncher.md');
+        if (!response.ok) throw new Error('File not found');
+        const markdownText = await response.text();
+        const parsedHtml = marked.parse(markdownText);
+
+        contentArea.innerHTML = `
+          <section class="essay-detail-section">
+            <a href="../essays/" class="back-btn">← 一覧に戻る</a>
+            <div class="essay-content">
+              ${parsedHtml}
+            </div>
+          </section>
+        `;
+        // 画像パスを修正（essays/相対パスがある場合）
+        contentArea.querySelectorAll('img').forEach(img => {
+          const src = img.getAttribute('src');
+          if (src && src.startsWith('essays/')) {
+            img.setAttribute('src', '../' + src);
+          }
+        });
+      } catch (error) {
+        contentArea.innerHTML = `
+          <div style="text-align: center; padding: 3rem 0;">
+            <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">記事が見つかりませんでした。</p>
+            <a href="../essays/" class="back-btn" style="margin-bottom: 0;">← 一覧に戻る</a>
+          </div>
+        `;
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadEssay();
+      if (typeof initRain === 'function') initRain();
+    });
+  </script>
+</body>
+
+</html>
