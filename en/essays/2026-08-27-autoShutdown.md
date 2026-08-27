@@ -4,7 +4,7 @@
 
 ## chance
 
-When I tried using [Auto-shutdown tool I made previously](/en/essays/essays/2026-05-28-autoshutdown.md) to encode a video, I encountered a problem. It even shuts down in the middle of batch processing. I would like to wait until the process is finished, but it will be considered as no operation and will be dropped.
+When I tried using [Auto-shutdown tool I made previously](https://amekusa.vercel.app/en/essays#essay=2026-05-28-autoshutdown) to encode a video, I encountered a problem. It even shuts down in the middle of batch processing. I would like to wait until the process is finished, but it will be considered as no operation and will be dropped.
 
 ## correspondence
 

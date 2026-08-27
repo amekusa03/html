@@ -4417,5 +4417,6 @@
   "以前はバックアップや変換処理が終わるまで、アプリを手動で終了させる必要があった。それがなくなった。放っておけば、処理が終わり次第シャットダウンしてくれる。地味だが、じわじわ便利になっている。": "Previously, you had to manually close the app until the backup or conversion process was completed. That's gone. If you leave it alone, it will shut down as soon as it finishes processing. It's unassuming, but it's slowly becoming more convenient.",
   "LinuxてCLIが多いのでGUIランチャー作った | 雨草の庭": "Linux has a lot of CLI, so I made a GUI launcher | Amegusa no Niwa",
   "LinuxてCLIが多いのでGUIランチャー作った — 開発・Python・Linux。雨草の庭 技術随筆。": "Linux has a lot of CLI, so I made a GUI launcher — Development/Python/Linux. Rainweed Garden Technical Essay.",
-  "音楽ファイルの\"見えないノイズ\"を追いかけて 〜　MP3検査アプリを作った話　〜": "Chasing the \"invisible noise\" in music files ~ The story of creating an MP3 inspection app ~"
+  "音楽ファイルの\"見えないノイズ\"を追いかけて 〜　MP3検査アプリを作った話　〜": "Chasing the \"invisible noise\" in music files ~ The story of creating an MP3 inspection app ~",
+  "AutoShutdown — 開発・Linux。雨草の庭 技術随筆。": "AutoShutdown — Development/Linux. Rainweed Garden Technical Essay."
 }
