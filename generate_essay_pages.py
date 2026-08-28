@@ -85,7 +85,7 @@ def generate_essay_html(essay):
   <meta name="description" content="{description}">
   <meta property="og:type" content="article">
   <meta property="og:url" content="{BASE_URL}/essays/{slug}">
-  <meta property="og:title" content="{title} | 雨草の庭">
+  <meta property="og:title" content="{title}｜{cats_label} - 雨草の庭 技術随筆">
   <meta property="og:description" content="{description}">
   <meta property="og:image" content="{ogp_image}">
   <meta property="og:image:width" content="1200">
@@ -95,10 +95,10 @@ def generate_essay_html(essay):
   <meta property="article:published_time" content="{iso_date}">
   <meta property="article:author" content="雨草 (Amekusa)">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{title} | 雨草の庭">
+  <meta name="twitter:title" content="{title}｜{cats_label} - 雨草の庭 技術随筆">
   <meta name="twitter:description" content="{description}">
   <meta name="twitter:image" content="{ogp_image}">
-  <title>{title} | 雨草の庭</title>
+  <title>{title}｜{cats_label} - 雨草の庭 技術随筆</title>
 
   <!-- JSON-LD 構造化データ -->
   <script type="application/ld+json">
