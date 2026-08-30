@@ -4572,5 +4572,18 @@
   "カーオーディオ全Chから音が出ない｜車・音楽 - 雨草の庭 技術随筆": "No sound from all car audio channels | Cars/Music - Amegusa no Niwa Technical Essay",
   "カーオーディオ全Chから音が出ない — 車・音楽。雨草の庭 技術随筆。": "No sound from all car audio channels — Cars/Music. Rainweed Garden Technical Essay.",
   "ESP32-C3に温度センサーを追加｜開発・ESP32 - 雨草の庭 技術随筆": "Adding temperature sensor to ESP32-C3 | Development/ESP32 - Rain Garden Technical Essay",
-  "ESP32-C3に温度センサーを追加 — 開発・ESP32。雨草の庭 技術随筆。": "Added temperature sensor to ESP32-C3 — Development/ESP32. Rainweed Garden Technical Essay."
+  "ESP32-C3に温度センサーを追加 — 開発・ESP32。雨草の庭 技術随筆。": "Added temperature sensor to ESP32-C3 — Development/ESP32. Rainweed Garden Technical Essay.",
+  "Androidスマホ用 不要写真の削除アプリ": "Unwanted photo deletion app for Android smartphones",
+  "先日、Pythonで写真を選別・削除するデスクトップアプリを作った。今度はAndroidスマホ用を作ってみることにした。ロジックはPython版と同じアルゴリズムをベースに、GUIをスマホ向けに作り直し、Kotlinで実装した。": "The other day, I created a desktop app that uses Python to sort and delete photos. This time I decided to try making one for Android smartphones. The logic is based on the same algorithm as the Python version, the GUI was rewritten for smartphones, and implemented in Kotlin.",
+  "**ピンぼけ検出**: ラプラシアン分散による鮮鋭度スコア算出。ML Kit Face Detectionと連携し、人物写真では顔領域のフォーカスを優先評価。背景ボケの誤判定を防ぐグリッド評価ロジックを搭載。": "**Bokeh detection**: Calculate sharpness score using Laplacian variance. In cooperation with ML Kit Face Detection, it prioritizes focus on facial areas in portraits. Equipped with grid evaluation logic that prevents misjudgment of background blur.",
+  "**連続写真整理**: EXIFの撮影日時を秒単位以下の精度で解析し、連写グループを自動検出。グループ内でピントが最も合っている1枚を保持推奨として残す。": "**Continuous photo organization**: Analyzes EXIF ​​shooting date and time with sub-second accuracy and automatically detects continuous shooting groups. The one image in the group with the best focus is retained as the recommended image.",
+  "**類似写真整理**: 64-bit dHashとハミング距離クラスタリングにより、撮影日時に依存せず視覚的に似た写真群をグループ化。": "**Similar photo sorting**: Using 64-bit dhash and Hamming distance clustering, visually similar photos are grouped together regardless of the date and time they were taken.",
+  "**キャッシュ**: 解析済みのハッシュ値やスコアはRoom (SQLite) に永続キャッシュ。2回目以降のスキャンは高速。": "**Cache**: Parsed hash values ​​and scores are permanently cached in Room (SQLite). Subsequent scans are faster.",
+  "**フォルダ選択**: カメラロール・LINE・ダウンロードなど任意のフォルダを個別選択してスキャン可能。": "**Folder selection**: You can individually select and scan any folder such as camera roll, LINE, downloads, etc.",
+  "技術スタック": "technology stack",
+  "致命的な欠陥はないが、スレッショルドを固定値にしているためチューニングが難しく、検出精度にはまだ改善の余地がある。": "Although there are no fatal flaws, tuning is difficult because the threshold is set to a fixed value, and there is still room for improvement in detection accuracy.",
+  "不要写真の削除アプリ（Android）": "Unwanted photo deletion app (Android)",
+  "Androidのピンぼけ写真削除アプリ": "Android blurred photo removal app",
+  "Androidのピンぼけ写真削除アプリ｜開発・Android - 雨草の庭 技術随筆": "Android blurred photo deletion app | Development/Android - Rainweed Garden Technical Essay",
+  "Androidのピンぼけ写真削除アプリ — 開発・Android。雨草の庭 技術随筆。": "Android blurred photo removal app — Developed by Android. Rainweed Garden Technical Essay."
 }
