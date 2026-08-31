@@ -4585,5 +4585,17 @@
   "不要写真の削除アプリ（Android）": "Unwanted photo deletion app (Android)",
   "Androidのピンぼけ写真削除アプリ": "Android blurred photo removal app",
   "Androidのピンぼけ写真削除アプリ｜開発・Android - 雨草の庭 技術随筆": "Android blurred photo deletion app | Development/Android - Rainweed Garden Technical Essay",
-  "Androidのピンぼけ写真削除アプリ — 開発・Android。雨草の庭 技術随筆。": "Android blurred photo removal app — Developed by Android. Rainweed Garden Technical Essay."
+  "Androidのピンぼけ写真削除アプリ — 開発・Android。雨草の庭 技術随筆。": "Android blurred photo removal app — Developed by Android. Rainweed Garden Technical Essay.",
+  "LinuxてCLIが多いのでGUIインストーラを作った": "Since Linux has a lot of CLI, I created a GUI installer.",
+  "LinuxてCLIが多いのでGUIインストーラを作った｜開発・Qt・Linux - 雨草の庭 技術随筆": "Linux has a lot of CLI, so I created a GUI installer | Development/Qt/Linux - Amegusa no Niwa Technical Essay",
+  "LinuxてCLIが多いのでGUIインストーラを作った — 開発・Qt・Linux。雨草の庭 技術随筆。": "Since Linux has a lot of CLI, I created a GUI installer — Development/Qt/Linux. Rainweed Garden Technical Essay.",
+  "LinuxてCLIが多いので GUI シリーズ、第３弾だ。": "Since Linux has a lot of CLI, this is the third installment of the GUI series.",
+  "Linuxのアプリセンターは便利そうに見えて、実際に使うと少し困る。どれが一般的なアプリなのかわからないし、説明は英語だし、アンインストールしていいのかどうかも判断に迷う。そこで、よく使われるアプリだけを厳選して表示するGUIインストーラを自分で作ってみた。": "Linux's App Center may seem convenient, but it's a bit of a problem when you actually use it. I don't know which apps are common, the instructions are in English, and I'm not sure if I should uninstall them or not. Therefore, I created a GUI installer that carefully selects and displays only frequently used applications.",
+  "**キュレーション済みリスト**: LibreOffice・VLC・GIMP・VS Code・Firefox など、使われやすいアプリのみを表示する。__CODE_PH_0__ / __CODE_PH_1__ / __CODE_PH_2__ といったシステムパッケージは一切出さない。": "**Curated list**: Display only commonly used apps such as LibreOffice, VLC, GIMP, VS Code, Firefox, etc. System packages such as __CODE_PH_0__ / __CODE_PH_1__ / __CODE_PH_2__ are not released at all.",
+  "**検索**: アプリ名や説明文でリアルタイムに絞り込める。": "**Search**: You can narrow down your search by app name or description in real time.",
+  "**インストール / アンインストール**: ボタン1クリックで __CODE_PH_0__ または削除を実行。": "**Install/Uninstall**: Execute __CODE_PH_0__ or remove with one button click.",
+  "**進捗表示**: apt のリアルタイム出力をダイアログに表示する。": "**Progress display**: Display apt's real-time output in a dialog.",
+  "**ダークテーマ**: カスタム QSS によるモダンなダーク UI。": "**Dark Theme**: Modern dark UI with custom QSS.",
+  "収録アプリ (35アプリ)": "Recorded apps (35 apps)",
+  "| カテゴリ | アプリ |\n|----------|--------|\n| 📄 オフィス | LibreOffice Writer, Calc, Impress, Draw |\n| 🌐 インターネット | Firefox, Chromium, Thunderbird, FileZilla |\n| 💻 開発 | VS Code, Meld, Python 3, Git, GCC, Build Essential, Node.js, Java (OpenJDK) |\n| 🎵 マルチメディア | VLC, GIMP, Inkscape, Audacity, Audacious, Puddletag, Kdenlive, OBS Studio, HandBrake |\n| 🎮 ゲーム | Steam, Lutris |\n| 🔧 ユーティリティ | DBeaver Community, Stacer, 7-Zip, htop, Timeshift, Flameshot, GParted, BleachBit, curl, wget |": "| Categories | Apps |\n|----------|---------|\n| 📄 Office | LibreOffice Writer, Calc, Impress, Draw |\n| 🌐 Internet | Firefox, Chromium, Thunderbird, FileZilla |\n| 💻 Development | VS Code, Meld, Python 3, Git, GCC, Build Essential, Node.js, Java (OpenJDK) |\n| 🎵 Multimedia | VLC, GIMP, Inkscape, Audacity, Audacious, Puddletag, Kdenlive, OBS Studio, HandBrake |\n| 🎮 Games | Steam, Lutris |\n| 🔧 Utilities | DBeaver Community, Stacer, 7-Zip, htop, Timeshift, Flameshot, GParted, BleachBit, curl, wget |"
 }
