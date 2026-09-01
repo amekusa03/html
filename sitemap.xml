@@ -1069,7 +1069,7 @@
   </url>
   <url>
     <loc>https://amekusa.vercel.app/essays/2026-08-25-mp3</loc>
-    <lastmod>2026-08-25</lastmod>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1124,6 +1124,12 @@
   <url>
     <loc>https://amekusa.vercel.app/essays/2026-08-31-luncher</loc>
     <lastmod>2026-08-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://amekusa.vercel.app/essays/2026-09-01-ac3</loc>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
