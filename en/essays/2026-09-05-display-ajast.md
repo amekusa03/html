@@ -8,6 +8,8 @@ One thing that Windows has that Ubuntu doesn't is display adjustment.
 So I created an app.
 This time, I created it using Qt (C++) and making full use of AI.
 
+![UI](essays/2026-09-05-display-ajast.png)
+
 ## Main features
 
 ### Multi-display detection & screen identification
