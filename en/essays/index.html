@@ -703,7 +703,9 @@
       { slug: "2026-09-01-ac3", date: "2026.09.01", title: "I created a GUI app that converts stereo sound sources to 5.1ch surround.", categories: ["Development", "Python", "Music"] },
       { slug: "2026-09-02-upmix", date: "2026.09.02", title: "I created a tool to easily switch PipeWire upmix.", categories: ["Development", "Python", "Linux"] },
       { slug: "2026-09-03-finance", date: "2026.09.03", title: "Created a predictive model for stock prices and investment trusts", categories: ["Development", "Python"] },
-      { slug: "2026-09-04-PipeWire", date: "2026.09.04", title: "Added PipeWire settings", categories: ["Development", "Python", "Linux"] }
+      { slug: "2026-09-04-PipeWire", date: "2026.09.04", title: "Added PipeWire settings", categories: ["Development", "Python", "Linux"] },
+      { slug: "2026-09-05-display-ajast", date: "2026.09.05", title: "Display adjustment GUI app", categories: ["Development", "Linux"] },
+      { slug: "2026-09-06-esp32", date: "2026.09.06", title: "I was told that I don't bother looking at the web, so I tried attaching a screen to the ESP32.", categories: ["Development", "ESP32"] }
     ];
 
     const CATEGORY_ORDER = ["Development", "Android", "Linux", "Python", "ESP32", "Car", "Music", "Daily Life", "Others"];
@@ -751,14 +753,14 @@
             const countInYear = filtered.filter(e => (e.date ? e.date.substring(0, 4) : e.slug.substring(0, 4)) === year).length;
             html += `
               <h3 class="year-heading">
-                <span>${year} year</span>
+                <span>${year}year</span>
                 <span class="year-count">${countInYear} cases</span>
               </h3>
               <ul class="essay-list">
             `;
           }
 
-          const cats = essay.categories && essay.categories.length ? essay.categories : ['Others'];
+          const cats = essay.categories && essay.categories.length ? essay.categories : ['その他'];
           html += `
             <li class="essay-item" data-cat="${cats.join(' ')}">
               <span class="essay-date">
@@ -785,7 +787,7 @@
     }
 
     async function loadEssay(slug) {
-      mainEl.innerHTML = '<div class="loading">Loading...</div>';
+      mainEl.innerHTML = '<div class="loading">読み込み中...</div>';
 
       try {
         const dirPath = window.location.pathname.replace(/\/index\.html$/, '').replace(/\/$/, '');
@@ -795,7 +797,7 @@
         const parsedHtml = marked.parse(markdownText);
 
         const essay = ESSAYS.find(e => e.slug === slug);
-        if (essay) document.title = `${essay.title} | Rainweed garden`;
+        if (essay) document.title = `${essay.title} | Rainweed Garden`;
 
         mainEl.innerHTML = `
           <section class="essay-detail-section">

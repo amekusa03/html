@@ -312,16 +312,18 @@
       { slug: "2026-09-01-ac3", date: "2026.09.01", title: "I created a GUI app that converts stereo sound sources to 5.1ch surround.", categories: ["Development", "Python", "Music"] },
       { slug: "2026-09-02-upmix", date: "2026.09.02", title: "I created a tool to easily switch PipeWire upmix.", categories: ["Development", "Python", "Linux"] },
       { slug: "2026-09-03-finance", date: "2026.09.03", title: "Created a predictive model for stock prices and investment trusts", categories: ["Development", "Python"] },
-      { slug: "2026-09-04-PipeWire", date: "2026.09.04", title: "Added PipeWire settings", categories: ["Development", "Python", "Linux"] }
+      { slug: "2026-09-04-PipeWire", date: "2026.09.04", title: "Added PipeWire settings", categories: ["Development", "Python", "Linux"] },
+      { slug: "2026-09-05-display-ajast", date: "2026.09.05", title: "Display adjustment GUI app", categories: ["Development", "Linux"] },
+      { slug: "2026-09-06-esp32", date: "2026.09.06", title: "I was told that I don't bother looking at the web, so I tried attaching a screen to the ESP32.", categories: ["Development", "ESP32"] }
     ];
 
-    // カテゴリの表示順序
+    // Category display order
     const CATEGORY_ORDER = ["Development", "Android", "Linux", "Python", "ESP32", "Car", "Music", "Daily Life", "Others"];
     const CATEGORY_ICONS = { "Development": "🛠️", "Android": "🤖", "Linux": "🐧", "Python": "🐍", "ESP32": "⚡", "Car": "🚗", "Music": "🎧", "Daily Life": "☕", "Others": "🌿" };
 
     const contentArea = document.getElementById('notes');
 
-    // 画面ルーティング処理
+    // Screen routing process
     function router() {
       const hash = window.location.hash;
       if (hash.startsWith('#essay=')) {
@@ -341,7 +343,7 @@
       updateActiveNav();
     }
 
-    // トップページのセクション表示切り替え
+    // Switch section display on top page
     function toggleHomeSections(show) {
       const displayValue = show ? 'block' : 'none';
       const sections = ['photography', 'profile', 'links'];
@@ -353,13 +355,13 @@
       });
     }
 
-    // エッセイ一覧の描画（最新10件、日付降順）
+    // Drawing a list of essays (latest 10, in descending date order)
     const RECENT_COUNT = 10;
     function renderEssayList() {
-      // トップに戻ったらタイトルをリセット
+      //Reset title when returning to top
       document.title = "Raingrass garden | Notes";
 
-      // 日付降順にソートして最新20件を取得
+      // Sort by date in descending order and get the latest 20 results
       const sorted = [...ESSAYS].sort((a, b) => b.slug.localeCompare(a.slug));
       const recent = sorted.slice(0, RECENT_COUNT);
       const hasMore = sorted.length > RECENT_COUNT;
@@ -371,7 +373,7 @@
 `;
 
       recent.forEach(essay => {
-        const cats = essay.categories && essay.categories.length ? essay.categories : (essay.category ? [essay.category] : ['Others']);
+        const cats = essay.categories && essay.categories.length ? essay.categories : (essay.category ? [essay.category] : ['その他']);
         html += `
 <li class="essay-item">
 <span class="essay-date">
@@ -400,13 +402,13 @@ ${essay.date}
       window.scrollTo(0, 0);
     }
 
-    // エッセイ詳細のロードと描画
+    // Load and draw essay details
     async function loadEssay(slug) {
-      contentArea.innerHTML = '<div class="loading">Loading...</div>';
+      contentArea.innerHTML = '<div class="loading">読み込み中...</div>';
 
       try {
-        // pathname が /en や /en/ で終わる場合でも正しく essays/ を取得できるよう
-        // ルートからの絶対パスで fetch する
+        // Essays/ can now be retrieved correctly even if pathname ends with /en or /en/
+        // fetch with absolute path from root
         const basePath = window.location.pathname.replace(/\/index\.html$/, '').replace(/\/$/, '');
         const response = await fetch(`${basePath}/essays/${slug}.md`);
         if (!response.ok) {
@@ -414,12 +416,12 @@ ${essay.date}
         }
         const markdownText = await response.text();
 
-        // marked.js を使ってパース
+        // Parse using marked.js
         const parsedHtml = marked.parse(markdownText);
 
         const essay = ESSAYS.find(e => e.slug === slug);
         if (essay) {
-          document.title = `${essay.title} | Rainweed garden`;
+          document.title = `${essay.title} | Rainweed Garden`;
         }
 
         contentArea.innerHTML = `
@@ -437,7 +439,7 @@ ${parsedHtml}
       window.scrollTo(0, 0);
     }
 
-    // エラー時の描画
+    // Drawing on error
     function render404() {
       contentArea.innerHTML = `
 <div style="text-align: center; padding: 3rem 0;">
@@ -447,7 +449,7 @@ ${parsedHtml}
 `;
     }
 
-    // ナビゲーションのアクティブ状態更新
+    // Update navigation active state
     function updateActiveNav() {
       const hash = window.location.hash;
       const navItems = document.querySelectorAll('.nav-item');
@@ -467,7 +469,7 @@ ${parsedHtml}
       }
     }
 
-    // スクロールスパイ（Intersection Observer）の設定
+    // Scroll spy (Intersection Observer) settings
     let observer;
     function initScrollSpy() {
       const observerOptions = {
@@ -477,7 +479,7 @@ ${parsedHtml}
       };
 
       observer = new IntersectionObserver((entries) => {
-        // エッセイ詳細表示時はスクロールスパイを無効化
+        //Disable scroll spy when viewing essay details
         if (window.location.hash.startsWith('#essay=')) return;
 
         entries.forEach(entry => {
@@ -505,7 +507,7 @@ ${parsedHtml}
       });
     }
 
-    // 訪問者数の取得と更新（Vercel KV API）
+    // Get and update number of visitors (Vercel KV API)
     async function updateVisitorCounter() {
       const countEl = document.getElementById('visitor-count');
       if (!countEl) return;
@@ -535,7 +537,7 @@ ${parsedHtml}
       }
     }
 
-    // ハッシュ変更と初回読み込み時の監視
+    // Monitoring hash changes and first read
     window.addEventListener('hashchange', router);
     window.addEventListener('DOMContentLoaded', () => {
       router();
