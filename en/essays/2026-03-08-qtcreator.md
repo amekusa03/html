@@ -10,4 +10,4 @@ I installed Qt Creator, a highly functional integrated development environment (
 
 ## Resource
 
-[View on GitHub](https://github.com/amekusa03/qt-creator-intro)
+[View on GitHub](https://github.com/amekusa03/Qt6-HelloWorld)

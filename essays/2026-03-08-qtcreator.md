@@ -10,4 +10,4 @@ C++向けの高機能な統合開発環境（IDE）であるQt Creatorのイン�
 
 ## Resource
 
-[View on GitHub](https://github.com/amekusa03/qt-creator-intro)
+[View on GitHub](https://github.com/amekusa03/Qt6-HelloWorld)

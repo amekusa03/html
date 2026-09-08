@@ -41,6 +41,14 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://amekusa.vercel.app/Photo4</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://amekusa.vercel.app/Photo4"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amekusa.vercel.app/en/Photo4"/>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://amekusa.vercel.app/app/android_auto_music_player/android_auto_music_player</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
@@ -517,7 +525,7 @@
   </url>
   <url>
     <loc>https://amekusa.vercel.app/essays/2026-03-08-qtcreator</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1160,6 +1168,18 @@
   <url>
     <loc>https://amekusa.vercel.app/essays/2026-09-06-esp32</loc>
     <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://amekusa.vercel.app/essays/2026-09-07-imagefornet</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://amekusa.vercel.app/essays/2026-09-07-rakuten</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
