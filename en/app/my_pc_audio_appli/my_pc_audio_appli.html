@@ -75,14 +75,14 @@
 </ul>
 <p>We will run a PC as a Music Player Daemon (MPD) server and create an environment where you can select and operate songs from the M.A.L.P. app on your smartphone (Android) via Wi-Fi.</p>
 <pre><code class="language-text">
-Android - Select and operate songs with M.A.L.P.
-        | WiFi Cantata (PC GUI)
-        ↓ ↓
-MPD (High Quality Playback Engine) Port: 6600
+Android - M.A.L.P.で選曲・操作
+        | WiFi  Cantata（PCのGUI）
+        ↓         ↓
+MPD（高音質再生エンジン） ポート: 6600
         ↓ PipeWire
-ALC892 S/PDIF output (card 1, device 1)
+ALC892 S/PDIF出力（カード1、デバイス1）
         ↓
-TSS-1 amplifier → speaker</code></pre>
+TSS-1アンプ → スピーカー</code></pre>
 </section>
 <section>
 <h2>Comparison of Components</h2>
@@ -120,8 +120,8 @@ TSS-1 amplifier → speaker</code></pre>
 <pre><code class="language-bash">sudo apt update &amp;&amp; sudo apt install ffmpeg -y</code></pre>
 <p>Adjust the permissions so that MPD can access the music files in your user directory.</p>
 <pre><code class="language-bash">chmod o+x /home/[username]
-chmod o+rx "/home/[username]/music"
-chmod o+rx "/home/[username]/Music/Publish"</code></pre>
+chmod o+rx "/home/[username]/ミュージック"
+chmod o+rx "/home/[username]/ミュージック/公開"</code></pre>
 <h3>2. Installing and configuring MPD</h3>
 <pre><code class="language-bash">sudo apt install mpd mpc -y</code></pre>
 <h4>Setting points</h4>
@@ -131,10 +131,10 @@ chmod o+rx "/home/[username]/Music/Publish"</code></pre>
     name        "PipeWire Output"
 }</code></pre>
 <h4>Automatic startup settings</h4>
-<pre><code class="language-bash"># enable as user service
+<pre><code class="language-bash"># ユーザーサービスとして有効化
 systemctl --user enable mpd
 systemctl --user start mpd
-# Allow automatic startup before login
+# ログイン前からの自動起動を許可
 sudo loginctl enable-linger [username]</code></pre>
 <h3>3. Android app (M.A.L.P.) settings</h3>
 <ul>
@@ -181,11 +181,11 @@ sudo apt install ffmpeg -y</code></pre>
 sudo apt install ./navidrome_0.61.0_linux_amd64.deb</code></pre>
 <h4>Editing the configuration file</h4>
 <pre><code class="language-toml"># /etc/navidrome/navidrome.toml
-MusicFolder = "/home/[username]/Music/Publish"</code></pre>
+MusicFolder = "/home/[username]/ミュージック/公開"</code></pre>
 <h4>Music folder access rights settings</h4>
 <pre><code class="language-bash">chmod o+x /home/[username]
-chmod o+rx "/home/[username]/music"
-chmod o+rx "/home/[username]/Music/Publish"</code></pre>
+chmod o+rx "/home/[username]/ミュージック"
+chmod o+rx "/home/[username]/ミュージック/公開"</code></pre>
 <h4>Starting the service</h4>
 <pre><code class="language-bash">sudo systemctl enable navidrome
 sudo systemctl start navidrome</code></pre>

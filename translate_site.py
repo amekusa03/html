@@ -13,9 +13,30 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 SRC_DIR = BASE_DIR
 DEST_DIR = os.path.join(SRC_DIR, "en")
 
+# DeepL API Key (Check env var first, then optional key file)
+DEEPL_API_KEY = os.environ.get("DEEPL_API_KEY", "").strip()
+if not DEEPL_API_KEY:
+    key_file = os.path.join(BASE_DIR, "deepl_api_key.txt")
+    if os.path.exists(key_file):
+        try:
+            with open(key_file, "r", encoding="utf-8") as f:
+                DEEPL_API_KEY = f.read().strip()
+        except Exception:
+            pass
+
+if DEEPL_API_KEY:
+    print(f"DeepL API configured ({'Free' if DEEPL_API_KEY.endswith(':fx') else 'Pro'} plan)")
+else:
+    print("No DeepL API key found. Using Google Translate (Free endpoint).")
+
+
 # Pre-populated cache for critical UI terms to ensure top quality
 translation_cache = {
     "雨草の庭": "Amekusa's Garden",
+    "雨草の庭 技術エッセイ": "Amekusa's Garden Technical Essay",
+    "雨草の庭 技術エッセイ・開発ログ": "Amekusa's Garden Technical Essays & Dev Logs",
+    "随想 — 雨草の庭": "Notes — Amekusa's Garden",
+    "開発 — 雨草の庭 技術エッセイ": "Development — Amekusa's Garden Technical Essay",
     "雨宿の庭": "Ameyado no Niwa - Engineering Portfolio",
     "雨草": "Amekusa",
     "訪問者数": "Visitor Count",
@@ -55,6 +76,34 @@ def has_japanese(text):
         return False
     return bool(re.search(r'[\u3040-\u309f\u30a0-\u30ff\u4e00-\u9faf]', text))
 
+def translate_with_deepl(text_stripped):
+    if not DEEPL_API_KEY:
+        return None
+    try:
+        endpoint = "https://api-free.deepl.com/v2/translate" if DEEPL_API_KEY.endswith(":fx") else "https://api.deepl.com/v2/translate"
+        params = {
+            "text": [text_stripped],
+            "target_lang": "EN",
+            "source_lang": "JA"
+        }
+        data = json.dumps(params).encode("utf-8")
+        req = urllib.request.Request(
+            endpoint,
+            data=data,
+            headers={
+                "Authorization": f"DeepL-Auth-Key {DEEPL_API_KEY}",
+                "Content-Type": "application/json"
+            }
+        )
+        with urllib.request.urlopen(req, timeout=15) as response:
+            res_data = json.loads(response.read().decode("utf-8"))
+            translations = res_data.get("translations", [])
+            if translations and "text" in translations[0]:
+                return translations[0]["text"]
+    except Exception as e:
+        print(f"DeepL API call failed: {e}")
+    return None
+
 def translate_text(text):
     if not text or not has_japanese(text):
         return text
@@ -64,6 +113,17 @@ def translate_text(text):
         lead_ws = text[:len(text) - len(text.lstrip())]
         trail_ws = text[len(text.rstrip()):] if len(text.rstrip()) < len(text) else ""
         return lead_ws + translation_cache[text_stripped] + trail_ws
+
+    # Try DeepL if key exists
+    if DEEPL_API_KEY:
+        print(f"Translating (DeepL): {text_stripped[:50]}")
+        translated = translate_with_deepl(text_stripped)
+        if translated:
+            translation_cache[text_stripped] = translated
+            save_cache()
+            lead_ws = text[:len(text) - len(text.lstrip())]
+            trail_ws = text[len(text.rstrip()):] if len(text.rstrip()) < len(text) else ""
+            return lead_ws + translated + trail_ws
 
     max_retries = 5
     base_backoff = 2.0
@@ -175,48 +235,82 @@ def fix_url_for_en(url, current_rel_path=""):
 
     return target_root + hash_fragment
 
+JS_TOKEN_REGEX = re.compile(
+    r'(?P<comment>//.*?$|/\*[\s\S]*?\*/)|'
+    r'(?P<double>"(?:\\.|[^"\\\n])*")|'
+    r"(?P<single>'(?:\\.|[^'\\\n])*')|"
+    r'(?P<backtick>`(?:\\.|[^`\\])*`)',
+    re.MULTILINE
+)
+
 def translate_js_strings(js_code, current_rel_path=""):
-    def repl_double(match):
-        content = match.group(1)
-        if has_japanese(content):
-            translated = translate_text(content)
-            translated = translated.replace('"', '\\"')
-            return f'"{translated}"'
-        return match.group(0)
+    def repl_token(match):
+        kind = match.lastgroup
+        raw_val = match.group(0)
 
-    def repl_single(match):
-        content = match.group(1)
-        if has_japanese(content):
-            translated = translate_text(content)
-            translated = translated.replace("'", "\\'")
-            return f"'{translated}'"
-        return match.group(0)
+        if kind == 'comment':
+            return raw_val
 
-    def repl_backtick(match):
-        content = match.group(1)
-        if has_japanese(content):
-            placeholders = {}
-            idx = 0
-            def repl_placeholder(m):
-                nonlocal idx
-                ph = f"__JS_PH_{idx}__"
-                placeholders[ph] = m.group(0)
-                idx += 1
-                return ph
-            temp_content = re.sub(r'\$\{[^}]+\}', repl_placeholder, content)
-            translated = translate_text(temp_content)
-            for ph, original in placeholders.items():
-                parts = ph.split('_')
-                pattern = re.compile(r'__\s*' + re.escape(parts[2]) + r'\s*_\s*' + re.escape(parts[3]) + r'\s*_\s*' + re.escape(parts[4]) + r'\s*__', re.IGNORECASE)
-                translated = pattern.sub(original, translated)
-            translated = translated.replace('`', '\\`')
-            return f"`{translated}`"
-        return match.group(0)
+        elif kind == 'double':
+            content = raw_val[1:-1]
+            if has_japanese(content):
+                unescaped = content.replace('\\"', '"')
+                translated = translate_text(unescaped)
+                escaped = json.dumps(translated)[1:-1]
+                return f'"{escaped}"'
+            return raw_val
 
-    js_code = re.sub(r'"([^"\\]*(?:\\.[^"\\]*)*)"', repl_double, js_code)
-    js_code = re.sub(r"'([^'\\]*(?:\\.[^'\\]*)*)'", repl_single, js_code)
-    js_code = re.sub(r'`([^`\\]*(?:\\.[^`\\]*)*)`', repl_backtick, js_code)
-    return js_code
+        elif kind == 'single':
+            content = raw_val[1:-1]
+            if has_japanese(content):
+                unescaped = content.replace("\\'", "'")
+                translated = translate_text(unescaped)
+                escaped = json.dumps(translated)[1:-1].replace("'", "\\'")
+                return f"'{escaped}'"
+            return raw_val
+
+        elif kind == 'backtick':
+            content = raw_val[1:-1]
+            if has_japanese(content):
+                placeholders = {}
+                idx = 0
+                def repl_placeholder(m):
+                    nonlocal idx
+                    ph = f"__JS_PH_{idx}__"
+                    placeholders[ph] = m.group(0)
+                    idx += 1
+                    return ph
+                temp_content = re.sub(r'\$\{[^}]+\}', repl_placeholder, content)
+                translated = translate_text(temp_content)
+                for ph, original in placeholders.items():
+                    translated = translated.replace(ph, original)
+                escaped = json.dumps(translated)[1:-1].replace('`', '\\`')
+                return f"`{escaped}`"
+            return raw_val
+
+        return raw_val
+
+    return JS_TOKEN_REGEX.sub(repl_token, js_code)
+
+def translate_json_ld(obj, current_rel_path=""):
+    if isinstance(obj, dict):
+        new_obj = {}
+        for k, v in obj.items():
+            if k == 'inLanguage':
+                new_obj[k] = 'en'
+            elif k in ['url', '@id', 'image', 'logo'] and isinstance(v, str):
+                new_obj[k] = fix_url_for_en(v, current_rel_path)
+            elif isinstance(v, str):
+                if has_japanese(v):
+                    new_obj[k] = translate_text(v)
+                else:
+                    new_obj[k] = v
+            else:
+                new_obj[k] = translate_json_ld(v, current_rel_path)
+        return new_obj
+    elif isinstance(obj, list):
+        return [translate_json_ld(item, current_rel_path) for item in obj]
+    return obj
 
 def translate_html_content(html_content, current_rel_path=""):
     soup = BeautifulSoup(html_content, 'html.parser')
@@ -240,6 +334,8 @@ def translate_html_content(html_content, current_rel_path=""):
         if meta.has_attr('property') and meta['property'] in ['og:url', 'twitter:url']:
             if meta.has_attr('content'):
                 meta['content'] = fix_url_for_en(meta['content'], current_rel_path)
+        if meta.has_attr('property') and meta['property'] == 'og:locale':
+            meta['content'] = 'en_US'
 
     # Language switcher button fix
     for a in soup.find_all('a'):
@@ -262,6 +358,17 @@ def translate_html_content(html_content, current_rel_path=""):
             a.string = '🌐 日本語'
             a['data-lang-switched'] = 'true'
 
+    # Process and translate JSON-LD scripts
+    for script in soup.find_all('script', type='application/ld+json'):
+        if script.string:
+            try:
+                data = json.loads(script.string)
+                translated_data = translate_json_ld(data, current_rel_path)
+                script.string = "\n" + json.dumps(translated_data, ensure_ascii=False, indent=2) + "\n"
+                script['data-jsonld-processed'] = 'true'
+            except Exception as e:
+                print(f"JSON-LD parse error in {current_rel_path}: {e}")
+
     # General a[href] link fix
     for a in soup.find_all('a'):
         if a.has_attr('data-lang-switched'):
@@ -277,7 +384,12 @@ def translate_html_content(html_content, current_rel_path=""):
         parent = text_node.parent
         if parent and parent.name == 'style':
             continue
+        # Skip translation inside pre, code, kbd, samp tags
+        if any(p.name in ['pre', 'code', 'kbd', 'samp'] for p in text_node.parents):
+            continue
         if parent and parent.name == 'script':
+            if parent.has_attr('data-jsonld-processed'):
+                continue
             new_js = translate_js_strings(text_node, current_rel_path)
             text_node.replace_with(new_js)
             continue
@@ -288,6 +400,8 @@ def translate_html_content(html_content, current_rel_path=""):
             
     # Translate attributes
     for tag in soup.find_all(True):
+        if tag.has_attr('data-jsonld-processed'):
+            del tag['data-jsonld-processed']
         for attr in ['alt', 'placeholder', 'title', 'content']:
             if tag.has_attr(attr) and has_japanese(tag[attr]):
                 tag[attr] = translate_text(tag[attr])

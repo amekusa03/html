@@ -15,9 +15,9 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="https://amekusa.vercel.app/en/app/android_clean_guide/android_crean_guide" rel="canonical"/>
 <meta content="We will explain how to delete unnecessary Android apps and manage logs using PowerShell scripts." name="description"/>
-<meta content="How to organize unnecessary apps on Android (script version) | Amegusa no Niwa" property="og:title"/>
+<meta content="How to organize unnecessary apps on Android (script version) | Amekusa's Garden" property="og:title"/>
 <meta content="We will explain how to delete unnecessary Android apps and manage logs using PowerShell scripts." property="og:description"/>
-<title>How to organize unnecessary apps on Android (script version) | Amegusa no Niwa</title>
+<title>How to organize unnecessary apps on Android (script version) | Amekusa's Garden</title>
 <script>
         window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
@@ -77,16 +77,16 @@
                     Create a text file with the name , paste the following content, and save it.
                 </p>
 <pre><code>while ($true) {
-    $pkg = Read-Host "Enter the package name (just enter to finish)"
+    $pkg = Read-Host "パッケージ名を入力（終了はEnterのみ）"
     if ($pkg -eq "") { break }
 
     $result = adb shell pm uninstall -k --user 0 $pkg
     if ($result -match "Success") {
-        $log = "$(Get-Date -Format 'yyyy/MM/dd HH:mm') $pkg"
+        $log = "$(Get-Date -Format 'yyyy/MM/dd HH:mm')  $pkg"
         Add-Content -Path "uninstalled_apps.txt" -Value $log
-        Write-Host "Delete completed: $pkg" -ForegroundColor Green
+        Write-Host "削除完了：$pkg" -ForegroundColor Green
     } else {
-        Write-Host "Delete failed: $result" -ForegroundColor Red
+        Write-Host "削除失敗：$result" -ForegroundColor Red
     }
 }</code></pre>
 <h3>Script behavior</h3>
@@ -257,7 +257,7 @@
                     You can restore deleted apps using the package name recorded in the log file (Android 7.0 and above).
                     Execute the following command in PowerShell.
                 </p>
-<pre><code>adb shell cmd package install-existing package name</code></pre>
+<pre><code>adb shell cmd package install-existing パッケージ名</code></pre>
 <p>If "Success" is displayed, the restoration is complete.</p>
 <p class="u-opacity-8">*Restore is not possible on Android versions lower than 7.0. Please think carefully before deleting.</p>
 </section>

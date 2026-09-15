@@ -109,4 +109,4 @@ In the settings on the Google Cloud console side, a restriction is applied that 
 
 By using serverless technology (BaaS) and client JS, we were able to confirm that dynamic communication functions can be introduced safely and at low cost even on static sites such as personal portfolios.
 
-Currently, this feature is implemented as standard on all articles and explanation pages in "Rain Grass Garden" and is used as a useful feedback from visitors.
+Currently, this feature is implemented as standard on all articles and explanation pages in "Amekusa's Garden" and is used as a useful feedback from visitors.

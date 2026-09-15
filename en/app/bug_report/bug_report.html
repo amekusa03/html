@@ -18,7 +18,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="https://amekusa.vercel.app/en/app/bug_report/bug_report" rel="canonical"/>
 <meta content="This is a technical report on failure cases due to property implementation errors in C# and understanding of object references." name="description"/>
-<title>C# Bug Report | Rainweed Garden</title>
+<title>C# Bug Report | Amekusa's Garden</title>
 <script defer="" src="/_vercel/speed-insights/script.js"></script>
 <link href="../../style.css" rel="stylesheet"/>
 </head>
@@ -77,7 +77,7 @@
                 </p>
 <pre><code class="language-csharp">public CommWifi CommWifi
 {
-    get =&gt; new CommWifi(); // Generate a new instance on each access
+    get =&gt; new CommWifi(); // アクセスのたびに新しいインスタンスを生成
 }
 </code></pre>
 </section>
@@ -108,7 +108,7 @@
                 </p>
 <pre><code class="language-csharp">private readonly CommWifi _commWifi = new CommWifi();
 /// &lt;summary&gt;
-/// Always return the same instance (reference)
+/// 常に同一のインスタンス（参照）を返す
 /// &lt;/summary&gt;
 public CommWifi CommWifi =&gt; _commWifi;
 </code></pre>
@@ -117,10 +117,10 @@ public CommWifi CommWifi =&gt; _commWifi;
                     If old screen subscriptions remain after the screen is closed, it can cause unexpected behavior and memory leaks.
                 </p>
 <pre><code class="language-csharp">
-// Example of cancellation in FromEnv
+// FromEnv 内での解除例
 protected override void OnFormClosing(FormClosingEventArgs e)
 {
-    _commWifi.OnDataReceived -= HandleDataReceived; // Unsubscribe
+    _commWifi.OnDataReceived -= HandleDataReceived; // 購読解除
     base.OnFormClosing(e);
 }
 </code></pre>
@@ -158,7 +158,7 @@ public CommWifi CommWifi =&gt; new CommWifi();
 <pre><code class="language-csharp">
 private readonly CommWifi _commWifi = new CommWifi();
 
-// Always return the same instance (reference)
+// 常に同じインスタンス（参照）を返す
 public CommWifi CommWifi =&gt; _commWifi;
                     </code></pre>
 </li>
@@ -168,10 +168,10 @@ public CommWifi CommWifi =&gt; _commWifi;
 <p>In the flow, after closing FromEnv, FromCommText
                             is open. If you forget to release C# events, the instance will not be garbage collected (GC), causing memory leaks and unexpected behavior.</p>
 <pre><code class="language-csharp">
-// Proper release in FromEnv
+// FromEnv 内での適切な解除
 protected override void OnFormClosing(FormClosingEventArgs e)
 {
-    // FormEnv may remain in memory if you do not unsubscribe from the event
+    // イベント購読を解除しないと、FormEnvがメモリに残り続ける可能性がある
     _commWifi.OnDataReceived -= HandleDataReceived;
     base.OnFormClosing(e);
 }

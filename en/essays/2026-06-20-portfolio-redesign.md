@@ -1,6 +1,6 @@
 # Portfolio redesign
 
-2026.06.20 ・ Rainweed Garden Portfolio
+2026.06.20 ・ Amekusa's Garden Portfolio
 
 ## 1. What I started
 

@@ -14,7 +14,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="https://amekusa.vercel.app/en/app/google_nest_script/google_nest_script" rel="canonical"/>
 <meta content="Learn how to create custom automations using YAML in Google Nest Hub's Script Editor, with code examples and explanations." name="description"/>
-<title>Google Nest Script | Rainweed Garden</title>
+<title>Google Nest Script | Amekusa's Garden</title>
 <script>
         window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
@@ -59,23 +59,23 @@
                 </p>
 <pre><code class="language-yaml">
 metadata:
-  name: Nest Hub Script Introduction
-  description: Self-introduction
+  name: ネストハブ スクリプト紹介
+  description: 自己紹介
 automations:
   - starters:
       - type: assistant.event.OkGoogle
         eventData: query
-        is: "Introducing nest hub scripts"
+        is: "ネストハブ スクリプトを紹介して"
     condition:
       type: device.state.Online
-      device: Nest Hub - Living Room
+      device: ネストハブ - リビングルーム
       state: online
       is: true
     actions:
       - type: assistant.command.OkGoogle
         devices:
-          - Nest Hub - Living Room
-        okGoogle: Play video "Nest Hub Script Introduction"
+          - ネストハブ - リビングルーム
+        okGoogle: 動画を再生 "ネストハブ スクリプト紹介"
             </code></pre>
 <h3>Explanation</h3>
 <ul>

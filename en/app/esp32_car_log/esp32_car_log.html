@@ -93,21 +93,21 @@ mac=AA:BB:CC:DD:EE:FF
 pin=1234
 </code></pre>
 <h3>2. Preparing and building the development environment</h3>
-<pre><code># Load ESP-IDF environment script
+<pre><code># ESP-IDF の環境スクリプトを読み込む
 source /home/kusa/esp/esp-idf/export.sh
 
-# Move to project root (example)
-cd ~/documents/eSp32/carlog
+# プロジェクトルートへ移動（例）
+cd ~/ドキュメント/eSp32/carlog
 
-# set target (if required)
+# ターゲットを設定（必要な場合）
 idf.py set-target esp32c6
 
-# build
+# ビルド
 idf.py build
 </code></pre>
 <p>Tip: If you have dependent packages (such as Python requirements),<code>python -m pip install -r requirements.txt</code> Please execute.</p>
 <h3>3. Flash to device</h3>
-<pre><code># Serial device name is environment dependent (e.g. /dev/ttyACM0, /dev/ttyUSB0).
+<pre><code># シリアルデバイス名は環境依存です（例: /dev/ttyACM0, /dev/ttyUSB0）。
 idf.py -p /dev/ttyACM0 flash
 </code></pre>
 </section>

@@ -18,7 +18,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="https://amekusa.vercel.app/en/app/like_button/like_button" rel="canonical"/>
 <meta content='This is a technical report on the design and implementation of a "like button" for static sites, combining Firebase Cloud Firestore and client JavaScript.' name="description"/>
-<title>Introduction of like button (Firebase) | Rainweed garden</title>
+<title>Introduction of like button (Firebase) | Amekusa's Garden</title>
 <script defer="" src="/_vercel/speed-insights/script.js"></script>
 <link href="../../style.css" rel="stylesheet"/>
 </head>
@@ -88,22 +88,22 @@
 <pre><code class="language-javascript">import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
 import { getFirestore, doc, getDoc, setDoc, increment } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
-// Firebase initialization settings
+// Firebase初期化設定
 const firebaseConfig = {
   apiKey: "YOUR_API_KEY",
   projectId: "YOUR_PROJECT_ID",
-  // ...Other setting items
+  // ...その他の設定項目
 };
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Execute like processing
+// いいね処理の実行
 async function initLikeButton() {
   const btn = document.getElementById('like-btn');
   const countEl = document.getElementById('like-count');
-  // ... (DOM acquisition and existence check)
+  // ...（DOM取得と存在確認）
 
-  // Generate page identifier (pageId)
+  // ページ識別子 (pageId) の生成
   const path = location.pathname;
   const pageId = path
     .replace(/\/index\.html$/, '/')
@@ -114,20 +114,20 @@ async function initLikeButton() {
   const storageKey = 'liked__' + pageId;
   const docRef = doc(db, 'likes', pageId);
 
-  // first time load
+  // 初回読み込み
   const snap = await getDoc(docRef);
   countEl.textContent = snap.exists() ? (snap.data().count ?? 0) : 0;
 
-  // click event
+  // クリックイベント
   btn.addEventListener('click', async () =&gt; {
     if (localStorage.getItem(storageKey)) return;
     localStorage.setItem(storageKey, '1');
     
-    // Update the UI immediately (optimistic UI update)
+    // UIを先行して即時更新（楽観的UI更新）
     btn.classList.add('liked');
     countEl.textContent = parseInt(countEl.textContent || '0') + 1;
 
-    // Send to server (atomic increment processing)
+    // サーバーへの送信（アトミックなインクリメント処理）
     await setDoc(docRef, { count: increment(1) }, { merge: true });
   });
 }</code></pre>
@@ -145,9 +145,9 @@ async function initLikeButton() {
 service cloud.firestore {
   match /databases/{database}/documents {
     match /likes/{pageId} {
-      // Anyone can view the number of likes
+      // 誰でもいいね数の閲覧が可能
       allow read: if true;
-      // Allow likes (writes)
+      // いいね（書き込み）を許可
       allow write: if true;
     }
   }
@@ -165,7 +165,7 @@ service cloud.firestore {
                     By using serverless technology (BaaS) and client JS, we were able to confirm that dynamic communication functions can be introduced safely and at low cost even on static sites such as personal portfolios.
                 </p>
 <p>
-                    Currently, this feature is implemented as standard on all articles and explanation pages in "Rain Grass Garden" and is used as a useful feedback from visitors.
+                    Currently, this feature is implemented as standard on all articles and explanation pages in "Amekusa's Garden" and is used as a useful feedback from visitors.
                 </p>
 </section>
 </main>

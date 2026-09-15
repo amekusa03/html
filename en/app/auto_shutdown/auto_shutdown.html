@@ -61,7 +61,7 @@
 </section>
 <section>
 <h2>install</h2>
-<pre><code>cd /home/kusa/documents/AutoShutdown
+<pre><code>cd /home/kusa/ドキュメント/AutoShutdown
 bash install.sh</code></pre>
 <p>Running the installation script installs dependencies and registers the systemd service. Please check the contents of the script in advance.</p>
 </section>
@@ -69,8 +69,8 @@ bash install.sh</code></pre>
 <h2>setting</h2>
 <p>The settings are <code>config.ini</code> Do this (example):</p>
 <pre><code>[general]
-idle_timeout = 300 # Inactive time (seconds)
-check_interval = 10 # Check interval (seconds)
+idle_timeout = 300      # 無操作時間（秒）
+check_interval = 10     # チェック間隔（秒）
 enabled = true</code></pre>
 <p>Please restart the service after changing the settings:</p>
 <pre><code>systemctl --user restart auto-shutdown</code></pre>
@@ -78,19 +78,19 @@ enabled = true</code></pre>
 <section>
 <h2>How to use</h2>
 <p>Example of service operation:</p>
-<pre><code># start
+<pre><code># 起動
 systemctl --user start auto-shutdown
 
-# stop
+# 停止
 systemctl --user stop auto-shutdown
 
-# Check status
+# ステータス確認
 systemctl --user status auto-shutdown
 
-# Log (real time)
+# ログ（リアルタイム）
 journalctl --user -u auto-shutdown -f</code></pre>
 <p>Manual execution:</p>
-<pre><code>python3 /home/kusa/documents/AutoShutdown/auto_shutdown.py</code></pre>
+<pre><code>python3 /home/kusa/ドキュメント/AutoShutdown/auto_shutdown.py</code></pre>
 </section>
 <section>
 <h2>troubleshooting</h2>

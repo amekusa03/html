@@ -52,13 +52,13 @@
 <section>
 <h2>2. System configuration/role division</h2>
 <p>This system performs local standalone control via the cloud (SwitchBot Web API).</p>
-<pre><code>[Indoor environment] ➔ (I2C) ➔ [ESP32-C3 + SHT30] (Single unit operation without base unit)
+<pre><code>[室内環境] ➔ (I2C) ➔ [ESP32-C3 ＋ SHT30] (親機なしで単体動作)
        │ (Wi-Fi / HTTPS)
        ▼
 [SwitchBot Web API]
-       │ (via cloud)
+       │ (クラウド経由)
        ▼
-[SwitchBot Hub Mini] ➔ (Infrared) ➔ [Air Conditioner]</code></pre>
+[SwitchBot ハブミニ] ➔ (赤外線) ➔ [エアコン]</code></pre>
 <h3>2.1 Components and roles</h3>
 <ul>
 <li><strong>Slave unit and control unit: ESP32-C3 development board</strong>(Power supply: 5V USB power supply only)
@@ -191,9 +191,9 @@
                         <ul>
 <li><code>Content-Type: application/json</code></li>
 <li><code>Authorization: {Token}</code></li>
-<li><code>sign: {HMAC-SHA256 signature string}</code>(The combined characters of Secret, millisecond timestamp, and Nonce are HMAC-SHA256 hashed, and after Base64 encoding,<strong>All uppercase</strong>(converted to)</li>
-<li><code>t: {millisecond timestamp}</code></li>
-<li><code>nonce: {random string/UUID}</code></li>
+<li><code>sign: {HMAC-SHA256署名文字列}</code>(The combined characters of Secret, millisecond timestamp, and Nonce are HMAC-SHA256 hashed, and after Base64 encoding,<strong>All uppercase</strong>(converted to)</li>
+<li><code>t: {ミリ秒タイムスタンプ}</code></li>
+<li><code>nonce: {ランダムな文字列/UUID}</code></li>
 </ul>
 </li>
 <li><strong>Send payload (JSON example)</strong>:

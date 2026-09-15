@@ -351,7 +351,7 @@
         a.href = project.href;
         if (cardClass === 'project-card') a.className = 'project-card__link';
         a.setAttribute('aria-label', `View details of ${project.title}`);
-        a.textContent = 'Details →';
+        a.textContent = 'Details \u2192';
         p.appendChild(a);
         article.appendChild(p);
       } else if (project.category === 'plan') {
