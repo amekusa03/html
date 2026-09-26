@@ -5034,5 +5034,7 @@
   "触ってみて": "Give it a try",
   "一番印象的だったのは **__CODE_PH_0__ というエコシステムの完成度** だ。プロジェクト生成からビルド・実行（__CODE_PH_1__）、エラーチェック（__CODE_PH_2__）、フォーマット（__CODE_PH_3__）、静的解析（__CODE_PH_4__）まで、すべてが1つのツールで完結する統一感がある。C/C++のような速度を持ちながら、Pythonのような手軽さでライブラリを扱える。": "What impressed me the most was **the level of polish in the **__CODE_PH_0__** ecosystem**. From project creation to building and execution (__CODE_PH_1__), error checking (__CODE_PH_2__), formatting (__CODE_PH_3__), and static analysis (__CODE_PH_4__), everything is handled within a single tool, creating a sense of cohesion. It allows you to work with libraries with the speed of C/C++ and the ease of Python.",
   "言語仕様のディープな部分──所有権、ライフタイム、トレイト、非同期処理──はこれから腰を据えて学んでいくことになるが、「最初の一歩」のハードルは想像より格段に低かった。": "I’ll be taking the time to thoroughly study the deeper aspects of the language specification—ownership, lifetimes, traits, and asynchronous processing—but the hurdle for taking that “first step” was significantly lower than I had imagined.",
-  "次はボタンや入力フォームを組み込んで、何か実用的なツールを作ってみようと思う。": "Next, I'm thinking of incorporating buttons and input forms to try making a practical tool."
+  "次はボタンや入力フォームを組み込んで、何か実用的なツールを作ってみようと思う。": "Next, I'm thinking of incorporating buttons and input forms to try making a practical tool.",
+  "初めてのRust — 開発。雨草の庭 技術随筆。": "First Steps in Rust — Development. Amekusa's Garden: Technical Essays.",
+  "初めてのRust｜開発 - 雨草の庭 技術随筆": "Getting Started with Rust | Development - Amekusa's Garden: Technical Essays"
 }
