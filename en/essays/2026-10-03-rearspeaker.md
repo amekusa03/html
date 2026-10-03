@@ -10,9 +10,9 @@ Just then, I came across a set of front speakers for the N-WGN on Yahoo! Auction
 
 ## Installation
 
-![Speaker Comparison](2026-10-03-rearspeaker1.JPG)
+![Speaker Comparison](essays/2026-10-03-rearspeaker1.JPG)
 
-![Speaker Comparison](2026-10-03-rearspeaker2.JPG)
+![Speaker Comparison](essays/2026-10-03-rearspeaker2.JPG)
 
 I installed them right away and gave them a listen. First, I routed the audio signal to the rear speakers.
 
