@@ -5080,5 +5080,22 @@
   "電源設計（ソーラー→乾電池）の引き算は前回書いた。今回はソフトウェア側の引き算だ。Wi-Fi スタック、Webサーバー、フラッシュ内蔵HTML──これらをまるごと捨て、BLE と GitHub Pages に役割を委ねることで、ファームウェアは本来のセンシング・制御・省電力スリープだけに集中できるようになった。": "I wrote about streamlining the power supply design (from solar to dry-cell batteries) in my previous post. This time, I’ll discuss streamlining the software side. By completely eliminating the Wi-Fi stack, web server, and HTML stored in flash memory—and delegating those roles to BLE and GitHub Pages—the firmware can now focus solely on its core functions: sensing, control, and low-power sleep mode.",
   "削れば削るほど、強くなる。引き算の哲学は、ハードウェアだけじゃなかったようだ。": "The more you strip it down, the stronger it becomes. It seems the philosophy of subtraction isn't limited to hardware after all.",
   "畑の自動散水機、Wi-FiからBLEへ — 開発・ESP32。雨草の庭 技術随筆。": "Automatic Irrigation System for the Garden: Switching from Wi-Fi to BLE — Developed with ESP32. Amekusa's Garden: Technical Essays.",
-  "畑の自動散水機、Wi-FiからBLEへ｜開発・ESP32 - 雨草の庭 技術随筆": "Automatic Irrigation System for the Garden: Switching from Wi-Fi to BLE | Development with ESP32 - Amekusa's Garden: Technical Essays"
+  "畑の自動散水機、Wi-FiからBLEへ｜開発・ESP32 - 雨草の庭 技術随筆": "Automatic Irrigation System for the Garden: Switching from Wi-Fi to BLE | Development with ESP32 - Amekusa's Garden: Technical Essays",
+  "ホンダ純正流用リアスピーカー追加": "Addition of Honda Genuine Aftermarket Rear Speakers",
+  "ホンダ純正流用リアスピーカー追加 — 車。雨草の庭 技術随筆。": "Adding Honda Genuine Aftermarket Rear Speakers — Cars. Amekusa's Garden: Technical Essays.",
+  "ホンダ純正流用リアスピーカー追加｜車 - 雨草の庭 技術随筆": "Adding Honda Genuine Aftermarket Rear Speakers | Cars - Amekusa's Garden: Technical Essays",
+  "しばらく前に、リアスピーカー（Gathers GS-5060DL）がプツリと鳴らなくなった。純正スピーカーに戻してはみたものの、ネットであれこれ調べれば調べるほど、いいものを挙げればキリがない。どうしたものかと考えあぐねていた。": "A while back, my rear speakers (Gathers GS-5060DL) suddenly stopped working. I tried switching back to the stock speakers, but the more I looked into it online, the more I realized there’s no end to the list of great options. I was at a loss as to what to do.",
+  "そんな折、ヤフオクでN-WGNのフロントスピーカーが目に留まった。前から見た目はフィット純正と変わらないのに、マグネットのサイズが全然違う。これ、絶対いける。確信とほぼ同時に、ポチッと落札。送料込みでも1500円弱。これなら失敗しても悔やまずに済む価格だ。": "Just then, I came across a set of front speakers for the N-WGN on Yahoo! Auctions. From the front, they looked exactly like the stock Fit speakers, but the magnet size was completely different. “This is definitely going to work,” I thought. Almost as soon as I was convinced, I clicked to win the auction. Even with shipping included, it was just under 1,500 yen. At that price, I wouldn’t regret it even if it didn’t work out.",
+  "取り付け": "Installation",
+  "フロントスピーカーの比較": "Comparison of Front Speakers",
+  "早速取り付けて鳴らしてみる。まずはソースをリアスピーカーに振ってみた。": "I installed them right away and gave them a listen. First, I routed the audio signal to the rear speakers.",
+  "あれ？純正なのに今までとは明らかに違う。": "Huh? It's an OEM part, but it's clearly different from what I've had before.",
+  "低音が増し、こもった感じの音がなくなった。あっけなく大成功だ。カロッツェリアのスピーカーには到底敵わないだろうが、リアで聴く分にはこれで十分すぎる。というか、今まであのスピーカーが雑音を出していたのか。スピーカー全体で音質が上がったように感じる。": "The bass has been boosted, and the muffled sound is gone. It was a resounding success. While it probably can’t hold a candle to Carrozzeria speakers, it’s more than enough for listening in the back seat. Come to think of it, were those speakers actually producing noise all along? It feels like the sound quality has improved across the entire speaker system.",
+  "フィットユーザーにはおすすめだ。ほぼリスクゼロでリアの音質が底上げできる。": "I recommend this to Fit owners. It lets you improve the sound quality in the rear with virtually no risk.",
+  "ホンダ純正流用リアスピーカー": "Honda Genuine Aftermarket Rear Speakers",
+  "ホンダ純正流用リアスピーカー — 車。雨草の庭 技術随筆。": "Honda Genuine Aftermarket Rear Speakers — Cars. Amekusa's Garden: Technical Essays.",
+  "ホンダ純正流用リアスピーカー｜車 - 雨草の庭 技術随筆": "Honda Genuine Aftermarket Rear Speakers | Cars - Amekusa's Garden: Technical Essays",
+  "スピーカーの比較": "Speaker Comparison",
+  "あれ？今までと音が明らかに違う。": "Huh? The sound is clearly different from before.",
+  "低音が増し、こもった感じの音がなくなった。あっけなく大成功だ。カロッツェリアのスピーカーには到底敵わないが、リアで聴く分にはこれで十分すぎる。というか、今まであのスピーカーが雑音を出していたのか。スピーカー全体で音質が上がったように感じる。": "The bass has improved, and the muffled sound is gone. It was a resounding success. While they’re nowhere near as good as Carrozzeria speakers, they’re more than enough for listening in the back seat. Actually, I wonder if those speakers were the ones causing the noise all along. It feels like the sound quality has improved across the entire speaker system."
 }
