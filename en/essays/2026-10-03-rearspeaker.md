@@ -8,11 +8,15 @@ A while back, my rear speakers (Gathers GS-5060DL) suddenly stopped working. I t
 
 Just then, I came across a set of front speakers for the N-WGN on Yahoo! Auctions. From the front, they looked exactly like the stock Fit speakers, but the magnet size was completely different. “This is definitely going to work,” I thought. Almost as soon as I was convinced, I clicked to win the auction. Even with shipping included, it was just under 1,500 yen. At that price, I wouldn’t regret it even if it didn’t work out.
 
-## Installation
+## Comparison
+
+On the left is the genuine Fit speaker; on the right is the N-WGN front speaker.
 
 ![Speaker Comparison](essays/2026-10-03-rearspeaker1.JPG)
 
 ![Speaker Comparison](essays/2026-10-03-rearspeaker2.JPG)
+
+## Installation
 
 I installed them right away and gave them a listen. First, I routed the audio signal to the rear speakers.
 
