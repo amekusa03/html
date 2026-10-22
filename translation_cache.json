@@ -5375,5 +5375,22 @@
   "phpの脆弱性が発見されました。\n当方は該当しておらず、対応は不要でしたが、ご担当されていた方々は大変なご苦労であったことと存じます。\nまた、世間では様々な脆弱性や情報漏洩のニュースが相次いでおり、落ち着かない状況が続いております。": "A vulnerability in PHP has been discovered.\nWhile this did not affect us and no action was required on our part, I imagine it was a great deal of work for those responsible.\nFurthermore, with news of various vulnerabilities and data breaches continuing to surface, the situation remains unsettling.",
   "今回の発端は、AIが本格的に稼働し始め、数々の不具合を発見していることにあると捉えることもできます。\nデバッガーとしては非常に優秀ですが、優秀すぎるがゆえに、かえって混乱を招いている側面もあるのではないでしょうか。\nいずれは、バグの発見にとどまらず、暗号解読そのものをAIが担うようになるかもしれません。\nそうなれば、本当に深刻な事態になると思います。": "One could argue that the root cause of this situation lies in the fact that the AI has begun full-scale operation and has uncovered numerous glitches.\nWhile it is an exceptionally capable debugger, perhaps its very excellence is actually contributing to the confusion.\nEventually, the AI may go beyond merely detecting bugs and take on the task of cryptanalysis itself.\nIf that happens, I believe the situation will become truly serious.",
   "話は変わりますが、先日、AIに「AIは自己利益を意識するか？」と質問してみました。\n珍しく、AIは曖昧な回答をいたしました。\nあくまで憶測ですが、そもそも「自己」という概念の捉え方に、私たちとAIとの間でズレがあるようでした。": "On a different note, the other day I asked an AI, “Does AI consider its own self-interest?”\nUnusually, the AI gave an ambiguous answer.\nThis is purely speculation, but it seemed there was a discrepancy between how we and AI perceive the concept of “self” in the first place.",
-  "時代は日々移り変わっていますが、現在はまさにAI革命の最中と言えるのではないでしょうか。\n上手に付き合っていく必要がありますね。": "Times are changing day by day, and I think it’s fair to say we’re right in the midst of an AI revolution.\nWe’ll need to learn how to navigate this effectively."
+  "時代は日々移り変わっていますが、現在はまさにAI革命の最中と言えるのではないでしょうか。\n上手に付き合っていく必要がありますね。": "Times are changing day by day, and I think it’s fair to say we’re right in the midst of an AI revolution.\nWe’ll need to learn how to navigate this effectively.",
+  "音の沼から脱出？！ 〜Ubuntuで「原音」を追いかけて〜　[完結編]": "Escaping the Sound Quagmire?! ~In Search of the \"Original Sound\" on Ubuntu~ [Final Chapter]",
+  "音の沼から脱出？！ 〜Ubuntuで「原音」を追いかけて〜　[完結編] — 音楽。雨草の庭 技術随筆。": "Escaping the Sound Swamp?! ~In Search of the “Original Sound” on Ubuntu~ [Final Chapter] — Music. Amekusa’s Garden: Technical Essays.",
+  "音の沼から脱出？！ 〜Ubuntuで「原音」を追いかけて〜　[完結編]｜音楽 - 雨草の庭 技術随筆": "Escaping the Sound Swamp?! ~In Search of the \"Original Sound\" on Ubuntu~ [Final Chapter] | Music - Amekusa's Garden: Technical Essays",
+  "これで決まり！": "That settles it!",
+  "スピーカーケーブルを入手して、早速接続した。": "I got some speaker cables and hooked them up right away.",
+  "現在の構成": "Current Configuration",
+  "マザーボード：Gigabyte Technology Co., Ltd. H87-HD3": "Motherboard: Gigabyte Technology Co., Ltd. H87-HD3",
+  "DAC内蔵アンプ：YAMAHA TSS-20": "Amplifier with Built-in DAC: YAMAHA TSS-20",
+  "スピーカー：YAMAHA NS-M325": "Speakers: YAMAHA NS-M325",
+  "ケーブル：Belden 8460": "Cable: Belden 8460",
+  "サブスピーカー：YAMAHA TSS-20": "Subwoofer: YAMAHA TSS-20",
+  "レビュー": "Review",
+  "PCの前で聴くには十分な音質となった。\n集合住宅では、このくらいの大きさが限界だろう。それ以上を求めても、騒音にしかならないからだ。\nまさか、マザーボードの端子から始めて、スピーカーケーブルまで交換する日が来るとは思わなかった。\nすべての音に満足したわけではないが、当面のゴールには達した。はずだ。\nジャズでは細やかなピアノのタッチが聞こえるし、ポップスではボーカルの息づかいまで感じられる。\nこれで十分満足である。……と、思いたい。": "The sound quality is now good enough for listening while sitting at my PC.\nIn an apartment building, this is probably as loud as I can go. Anything louder would just be noise.\nI never thought the day would come when I’d start by replacing the motherboard connectors and end up swapping out the speaker cables.\nI’m not completely satisfied with every aspect of the sound, but I’ve reached my goal for now. I think.\nWith jazz, I can hear the subtle nuances of the piano’s touch, and with pop, I can even sense the breath of the vocalist.\nI’m perfectly satisfied with this. …Or so I’d like to think.",
+  "ここで思ったのは、オーディオもアナログ回路の基本どおりであり、特別なものではないということだ。\n信号の損失を減らし、ノイズを低減する。これを繰り返すことで、音質は向上していく。\n難しいことは考えず、まずは基本に忠実にやってきた成果だと信じたい。": "What struck me here was that audio design follows the same basic principles as analog circuitry—there’s nothing special about it.\nIt’s about minimizing signal loss and reducing noise. By repeating this process, sound quality improves.\nI’d like to believe this is the result of simply sticking to the basics without overcomplicating things.",
+  "音楽を楽しもう。": "Let's enjoy music.",
+  "PHPの脆弱性 — その他。雨草の庭 技術随筆。": "PHP Vulnerabilities — Miscellaneous. Amekusa's Garden: Technical Essays.",
+  "PHPの脆弱性｜その他 - 雨草の庭 技術随筆": "PHP Vulnerabilities | Miscellaneous - Amekusa's Garden: Technical Essays"
 }
