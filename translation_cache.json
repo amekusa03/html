@@ -5431,5 +5431,15 @@
   "パスワードだけで入れるSSOやVPNは、もはや鍵のかかっていないドアと変わりません。利用しているWebサービスやクラウド、社内ツールで設定できるものがあれば、今すぐMFAを有効にしてください。": "SSO and VPN systems that rely solely on a password are no different from an unlocked door. If your web services, cloud platforms, or internal tools allow you to configure it, enable MFA right away.",
   "数秒の手間を惜しまないこと。それが、あなた自身と会社の資産を守る、いちばん確実な防犯対策です。": "Don't be afraid to take a few seconds to do this. It's the surest way to protect both yourself and your company's assets.",
   "便利の裏に潜む落とし穴：シングルサインオンとVPNのリスク — IT・その他。雨草の庭 技術随筆。": "The Pitfalls Hidden Behind Convenience: The Risks of Single Sign-On and VPNs — IT & Other Topics. Amekusa's Garden: Technical Essays.",
-  "便利の裏に潜む落とし穴：シングルサインオンとVPNのリスク｜IT・その他 - 雨草の庭 技術随筆": "The Pitfalls Hidden Behind Convenience: The Risks of Single Sign-On and VPNs | IT & Other Topics - Amekusa's Garden: Technical Essays"
+  "便利の裏に潜む落とし穴：シングルサインオンとVPNのリスク｜IT・その他 - 雨草の庭 技術随筆": "The Pitfalls Hidden Behind Convenience: The Risks of Single Sign-On and VPNs | IT & Other Topics - Amekusa's Garden: Technical Essays",
+  "手も足も出ない 〜新品ESP32が沈黙した夜〜": "At a Complete Loss: The Night the Brand-New ESP32 Went Silent",
+  "今日も思いつくままにコードを書き散らし、できたてホヤホヤのプログラムを新品のESP32へフラッシュしようとした。\n……のだが、PCがうんともすんとも言わない。デバイスとしてまったく認識してくれないのだ。": "Today, I once again wrote some code as ideas came to me, and tried to flash my brand-new program onto a brand-new ESP32.\n...But my PC wouldn't respond at all. It simply wouldn't recognize the device.",
+  "悪戦苦闘": "A tough battle",
+  "ケーブルの不良を疑って別の通信ケーブルに変えてみても駄目。\nUSBポートを変えても無反応。\nBOOTボタンを押しながらの起動はもちろん、ESP32おなじみのGPIO9ピンを直接GNDへ落として強制ブートモードに放り込もうとしても、ピクリとも反応しない。": "I suspected a faulty cable, so I tried switching to a different communication cable, but that didn't work either.\nIt didn't respond even when I tried a different USB port.\nIt didn't react at all—not even when I tried booting while holding down the BOOT button, or when I tried forcing it into boot mode by connecting the ESP32's familiar GPIO9 pin directly to GND.",
+  "手も足も出ないとは、まさにこのことである。": "This is exactly what it means to be completely helpless.",
+  "ひとまず撤退": "Withdraw for now",
+  "どうやら今夜はここまでらしい。これ以上深追いしても泥沼にハマるだけだ。\n手元にESP32の予備ストックも切らしていたので、とりあえずAmazonで追加をポチっておいた。": "Looks like that's it for tonight. If I push any further, I'll just get bogged down.\nSince I'd run out of spare ESP32s, I went ahead and ordered some more on Amazon.",
+  "勝負はまた明日に持ち越しとしよう。\nさて、ぽっかり空いてしまった今夜の時間、次は何をして遊ぼうかな。": "Let's put the decision off until tomorrow.\nWell, now that I have some free time tonight, I wonder what I should do next.",
+  "手も足も出ない 〜新品ESP32が沈黙した夜〜 — 開発・ESP32。雨草の庭 技術随筆。": "At a Loss — The Night the Brand-New ESP32 Went Silent — Development: ESP32. Amekusa's Garden: Technical Essays.",
+  "手も足も出ない 〜新品ESP32が沈黙した夜〜｜開発・ESP32 - 雨草の庭 技術随筆": "At a Loss ~The Night the Brand-New ESP32 Went Silent~ | Development · ESP32 - Amekusa's Garden: Technical Essays"
 }
