@@ -1,4 +1,4 @@
-# Can't Settle on a Car Sound ~Getting Sucked into the Car Audio Rabbit Hole~
+# Can't Decide on a Car Sound System — Getting Sucked Into the Car Audio Rabbit Hole —
 
 October 31, 2026 / Cars
 
