@@ -94,7 +94,7 @@
 <h1>Amekusa's Garden</h1>
 <p class="subtitle">Engineering &amp; Nature Notes</p>
 <p class="tagline">
-          An Omnivorous Engineer Walking the Line Between Technology and Nature
+          Coding, electronics, and the occasional bit of gardening. A personal blog by an eclectic engineer chronicling the intersection of technology and nature.
         </p>
 <p class="intro-text">
           Welcome to the raingrass garden.<br/>
@@ -112,21 +112,63 @@ The photos featured here are mainly ones I took in Southeast Asia.
 <a class="nav-item" href="#profile">Profile</a>
 <a class="nav-item" href="#links">Links</a>
 <a class="nav-item" href="/">🌐 日本語</a>
-<a class="nav-item" href="https://www.amazon.jp/hz/wishlist/ls/2MDMPEI311UNX?ref_=wl_share">Amazon wishlist</a>
 </nav>
 </div>
 <div class="main-content">
 <main id="notes">
-<!-- ここに動的に一覧または詳細が読み込まれます -->
-<noscript>
+<!-- 初期表示・クローラー向けに最新記事と一行要約を静的に配置（JS実行時に最新リストへ更新） -->
 <section class="essay-list-section">
 <h2>Notes</h2>
-<p><a href="/en/essays/">View article list →</a></p>
+<ul class="essay-list">
+<li class="essay-item">
+<span class="essay-date">
+<span class="essay-category-badge">🚗 Car</span><span class="essay-category-badge">🤖 Android</span><span class="essay-category-badge">🛠️ Development</span>
+                2026.11.09
+              </span>
+<a class="essay-title" href="/en/essays/2026-11-09-caraudio.html">After Failing to Create a Car Time Alignment App: Rebuilding AndroidSoundTune</a>
+<p class="essay-summary">A record of how I rebuilt my homemade Android app from scratch, focusing specifically on comparing frequency responses using a logarithmic sweep and measuring reverberation inside a car.</p>
+</li>
+<li class="essay-item">
+<span class="essay-date">
+<span class="essay-category-badge">☕ Everyday Life</span>
+                2026.11.07
+              </span>
+<a class="essay-title" href="/en/essays/2026-11-07-Lens.html">The Morning Sun Shines on the Reading Glasses on the Desk — The Hidden Dangers of Focal Fires in Everyday Life —</a>
+<p class="essay-summary">A close call one late-autumn morning, when the low morning sun shone through my reading glasses on the desk and focused on the black frame of my computer monitor.</p>
+</li>
+<li class="essay-item">
+<span class="essay-date">
+<span class="essay-category-badge">🚗 Car</span><span class="essay-category-badge">🎧 Music</span>
+                2026.11.04
+              </span>
+<a class="essay-title" href="/en/essays/2026-11-04-speaker.html">A 1,000-Yen Tweeter and Electrolytic Capacitors — The Car Audio Rabbit Hole: The Next Move —</a>
+<p class="essay-summary">A plan to verify the circuitry of the tweeter I purchased on Yahoo! Auctions, replace its capacitors with film capacitors, and repurpose the rear wiring.</p>
+</li>
+<li class="essay-item">
+<span class="essay-date">
+<span class="essay-category-badge">🛠️ Development</span><span class="essay-category-badge">⚡ ESP32</span><span class="essay-category-badge">🐧 Linux</span>
+                2026.11.03
+              </span>
+<a class="essay-title" href="/en/essays/2026-11-03-smartpc.html">Smart Just by Plugging It In? — My Attempt to Control a PC Power Supply Without Soldering Using the ESP32-S3 —</a>
+<p class="essay-summary">An experiment in which the ESP32-S3 is configured to act as a standard USB keyboard, allowing voice control of a PC's sleep and wake-up functions without any additional components or soldering.</p>
+</li>
+<li class="essay-item">
+<span class="essay-date">
+<span class="essay-category-badge">🛠️ Development</span><span class="essay-category-badge">⚡ ESP32</span><span class="essay-category-badge">🐧 Linux</span>
+                2026.11.03
+              </span>
+<a class="essay-title" href="/en/essays/2026-11-03-usb.html">A Glowing LED, a Silent PC: The Pitfalls of the ESP32-S3 and USB Cable</a>
+<p class="essay-summary">An ESP32-S3 that lights up but isn't recognized at all by the PC. After constantly suspecting the OS settings, I stumbled upon an unexpected pitfall at the physical layer.</p>
+</li>
+</ul>
+<div class="archive-link-wrap">
+<a class="archive-link" href="/en/essays/">See more past articles →</a>
+</div>
 </section>
-</noscript>
 </main>
 <section id="photography">
 <h2 data-num="○四">Photography</h2>
+<p class="section-caption">It captures scenes from both my travels and everyday life—from the bustling energy of Southeast Asian street corners to Japan’s four seasons and mountain ranges.</p>
 <div class="photo-grid">
 <div class="photo-item">
 <img alt="Blue sky and colorful autumn leaves" height="2880" loading="lazy" src="Photo4/photo53.jpg" width="4320"/>
@@ -138,31 +180,66 @@ The photos featured here are mainly ones I took in Southeast Asia.
 <img alt="Mt. Fuji floating in the mountain range and clear autumn sky" height="2432" loading="lazy" src="Photo4/photo55.jpg" width="4320"/>
 </div>
 </div>
-<p class="section-description" style="margin-top:1.5rem;"><a href="/en/Photo4/index.html">View all photos →</a></p>
+<p class="section-description" style="margin-top:1.5rem;">
+<a href="/en/Photo4/index.html">View All Photos (Japanese Landscapes and Mountain Ranges) →</a><br/>
+<a href="/en/Photo1/index.html" style="display:inline-block; margin-top:0.4rem;">View "Snapshots of Southeast Asia" (Photo 1) →</a>
+</p>
 </section>
 <section id="profile">
 <h2 data-num="○五">Profile</h2>
+<div class="profile-summary">
+<p>I began my career working with mainframe computers (COBOL) and am now a software engineer who works on everything from business systems to desktop, web, and mobile applications.</p>
+<dl class="profile-dl">
+<div><dt>Areas of Experience</dt><dd>Business application design and development, Windows/Linux tool development, Android app development, microcontroller (ESP32) electronics projects</dd></div>
+<div><dt>Technologies Used</dt><dd>Python, C# (.NET / WinForms / Avalonia UI), C++ (Qt / ESP-IDF), Kotlin (Android), Linux (Ubuntu), SQL, COBOL</dd></div>
+<div><dt>Hobbies &amp; Daily Life</dt><dd>Growing vegetables on a small farm (including building my own automatic sprinkler system), DIY car audio projects, listening to music (Van Halen / jazz), and traveling in Southeast Asia</dd></div>
+</dl>
+</div>
 <ul class="links-list" style="margin-bottom: 1.5rem;">
-<li><strong>Favorite Hobbies</strong> <a href="/en/hobbies/">To My Hobbies →</a></li>
+<li>
+<strong>Favorite Hobbies</strong> <a href="/en/hobbies/">To My Hobbies →</a>
+<p>I've compiled a collection of posts about my hobbies, including cars, hiking, music, and my favorite books.</p>
+</li>
+<li>
+<strong>Works Archive</strong> <a href="/en/index_archive.html">Go to the old portfolio (list of works) →</a>
+<p>This is a video catalog of the apps and electronics projects I've created so far.</p>
+</li>
 </ul>
 </section>
 <section id="links">
 <h2 data-num="○六">Links</h2>
 <ul class="links-list">
-<li><strong>Favorite Web Links</strong> <a href="/en/link/">To Favorite Links →</a></li>
+<li>
+<strong>Favorite Web Links</strong> <a href="/en/link/">To Favorite Links →</a>
+<p>This is a collection of links to websites I frequently visit for technical research, daily information gathering, and my hobbies.</p>
+</li>
 </ul>
 </section>
 <section id="youtube">
 <h2 data-num="○七">YouTube</h2>
 <ul class="links-list">
-<li><strong><a href="https://www.youtube.com/channel/UCYLSOnZ_maDJ7grPjXqVt2w" rel="noopener noreferrer" target="_blank">Go to YouTube →</a></strong></li>
+<li>
+<strong><a href="https://www.youtube.com/channel/UCYLSOnZ_maDJ7grPjXqVt2w" rel="noopener noreferrer" target="_blank">Go to the YouTube channel →</a></strong>
+<p>This site provides guidance for middle-aged and older men, as well as engineers of the same generation, on topics such as creating your own software, ESP32 electronics projects, tips for using Ubuntu, and repurposing old devices.</p>
+</li>
 </ul>
 </section>
 <section id="bbs">
 <h2 data-num="○八">BBS by blogger.com</h2>
 <ul class="links-list">
-<li><strong><a href="https://amekusa03.blogspot.com/" rel="noopener noreferrer" target="_blank">To BBS
-                →</a></strong></li>
+<li>
+<strong><a href="https://amekusa03.blogspot.com/" rel="noopener noreferrer" target="_blank">To BBS →</a></strong>
+<p>This is a Blogger-based message board and journal where you can feel free to leave comments—whether they're your thoughts on articles or just casual technical discussions.</p>
+</li>
+</ul>
+</section>
+<section id="github">
+<h2 data-num="○九">GitHub</h2>
+<ul class="links-list">
+<li>
+<strong><a href="https://github.com/amekusa03" rel="noopener noreferrer" target="_blank">Go to GitHub →</a></strong>
+<p>We are making the source code for the Python and C# tools, Android apps, ESP32 firmware, and other items mentioned in our essays available to the public.</p>
+</li>
 </ul>
 </section>
 <footer>
@@ -170,6 +247,9 @@ The photos featured here are mainly ones I took in Southeast Asia.
 <span class="counter-label">Visitor Count</span>
 <span class="counter-value" id="visitor-count">—</span>
 </div>
+<p class="footer-sub-links">
+<a href="https://www.amazon.jp/hz/wishlist/ls/2MDMPEI311UNX?ref_=wl_share" rel="noopener noreferrer" target="_blank">Amazon Wishlist</a>
+</p>
 <p>Copyright © amekusa All Rights Reserved.</p>
 </footer>
 </div>
@@ -357,9 +437,23 @@ The photos featured here are mainly ones I took in Southeast Asia.
       { slug: "2026-11-03-usb", date: "2026.11.03", title: "A Glowing LED, a Silent PC: The Pitfalls of the ESP32-S3 and USB Cable", categories: ["Development", "ESP32", "Linux"] },
       { slug: "2026-11-03-smartpc", date: "2026.11.03", title: "Smart Just by Plugging It In? \u2014 My Attempt to Control a PC Power Supply Without Soldering Using the ESP32-S3 \u2014", categories: ["Development", "ESP32", "Linux"] },
       { slug: "2026-11-04-speaker",date: "2026.11.04", title: "A 1,000-Yen Tweeter and Electrolytic Capacitors \u2014 The Car Audio Rabbit Hole: The Next Move \u2014", categories: ["Car", "Music"]},
-      { slug: "2026-11-07-Lens", date: "2026.11.07", title: "The morning sun shone on the reading glasses on the desk,", categories: ["Daily Life"] },
-      { slug: "2026-11-09-caraudio", date: "2026.11.09", title: "After I tried making a car time-alignment setup app and failed...", categories: ["Car", "Android",  "Development"] }
-   ]; 
+      { slug: "2026-11-07-Lens", date: "2026.11.07", title: "The Morning Sun Shines on the Reading Glasses on the Desk \u2014 The Hidden Dangers of Focal Fires in Everyday Life \u2014", categories: ["Daily Life"] },
+      { slug: "2026-11-09-caraudio", date: "2026.11.09", title: "After Failing to Create a Car Time Alignment App: Rebuilding AndroidSoundTune", categories: ["Car", "Android",  "Development"] }
+   ];
+
+    // 最新記事の一行要約（トップページでの一覧性・滞在率向上用）
+    const ESSAY_SUMMARIES = {
+      "2026-11-09-caraudio": "A record of how I rebuilt my homemade Android app from scratch, focusing specifically on comparing frequency responses using a logarithmic sweep and measuring reverberation inside a car.",
+      "2026-11-07-Lens": "A close call one late-autumn morning, when the low morning sun shone through my reading glasses on the desk and focused on the black frame of my computer monitor.",
+      "2026-11-04-speaker": "A plan to verify the circuitry of the tweeter I purchased on Yahoo! Auctions, replace its capacitors with film capacitors, and repurpose the rear wiring.",
+      "2026-11-03-smartpc": "An experiment in which the ESP32-S3 is configured to act as a standard USB keyboard, allowing voice control of a PC's sleep and wake-up functions without any additional components or soldering.",
+      "2026-11-03-usb": "An ESP32-S3 that lights up but isn't recognized at all by the PC. After constantly suspecting the OS settings, I stumbled upon an unexpected pitfall at the physical layer.",
+      "2026-10-31-carspeaker": "The sound inside the car just won\u2019t settle down, even after swapping out the DSP and speakers. Notes on my ongoing trial and error in pursuit of clear high frequencies and resolution.",
+      "2026-10-28-cs": "A summary of memory leak prevention techniques in C# Windows Forms, including interface design, unsubscribing from events, and the `Dispose` method.",
+      "2026-10-27-esp32": "A Night When I Couldn't Program a Brand-New ESP32 Board: A Record of the Manufacturing Defect I Discovered While Troubleshooting and How I Fixed It.",
+      "2026-10-26-security": "A discussion of the single points of failure and intrusion risks inherent in highly convenient single sign-on (SSO) and VPN systems, along with practical countermeasures.",
+      "2026-10-25-security": "A basic overview of identifying and managing security risks\u2014key considerations for daily development and operations."
+    };
 
     const CATEGORY_ORDER = ["Development", "Android", "Linux", "Python", "ESP32", "Car", "Music", "Daily Life", "Others"];
     const CATEGORY_ICONS = { "Development": "🛠️", "Android": "🤖", "Linux": "🐧", "Python": "🐍", "ESP32": "⚡", "Car": "🚗", "Music": "🎧", "Daily Life": "☕", "Others": "🌿" };
@@ -389,7 +483,7 @@ The photos featured here are mainly ones I took in Southeast Asia.
     // トップページのセクション表示切り替え
     function toggleHomeSections(show) {
       const displayValue = show ? 'block' : 'none';
-      const sections = ['photography', 'profile', 'links'];
+      const sections = ['photography', 'profile', 'links', 'youtube', 'bbs', 'github'];
       sections.forEach(id => {
         const el = document.getElementById(id);
         if (el) {
@@ -404,7 +498,7 @@ The photos featured here are mainly ones I took in Southeast Asia.
       // トップに戻ったらタイトルをリセット
       document.title = "Raingrass garden | Notes";
 
-      // 日付降順にソートして最新20件を取得
+      // 日付降順にソートして最新10件を取得
       const sorted = [...ESSAYS].sort((a, b) => b.slug.localeCompare(a.slug));
       const recent = sorted.slice(0, RECENT_COUNT);
       const hasMore = sorted.length > RECENT_COUNT;
@@ -417,6 +511,7 @@ The photos featured here are mainly ones I took in Southeast Asia.
 
       recent.forEach(essay => {
         const cats = essay.categories && essay.categories.length ? essay.categories : (essay.category ? [essay.category] : ['Others']);
+        const summary = ESSAY_SUMMARIES[essay.slug] ? `<p class="essay-summary">${ESSAY_SUMMARIES[essay.slug]}</p>` : '';
         html += `
 <li class="essay-item">
 <span class="essay-date">
@@ -424,6 +519,7 @@ ${cats.map(c => `<span class="essay-category-badge">${CATEGORY_ICONS[c] || ''} $
 ${essay.date}
 </span>
 <a href="#essay=${essay.slug}" class="essay-title">${essay.title}</a>
+${summary}
 </li>
 `;
       });
