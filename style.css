@@ -10,8 +10,8 @@ html {
       --accent-green: #3a5a2e;
       --accent-hover: #4e753f;
       --card-bg: rgba(255, 255, 255, 0.55);
-      --font-serif: 'Noto Serif JP', "Hiragino Mincho ProN", "Yu Mincho", serif;
-      --font-sans: 'Noto Sans JP', "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+      --font-serif: 'Noto Serif JP', "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "MS PMincho", "Noto Serif CJK JP", serif;
+      --font-sans: 'Noto Sans JP', "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", "Noto Sans CJK JP", sans-serif;
       --washi-line: rgba(58, 90, 46, 0.05);
     }
 
@@ -133,7 +133,7 @@ html {
   margin-top: 1.25rem;
   padding-top: 1rem;
   border-top: 1px solid rgba(0, 0, 0, 0.08);
-  font-family: "Noto Serif JP", serif;
+  font-family: var(--font-serif);
   font-size: 0.92rem;
   line-height: 2;
   letter-spacing: 0.02em;
@@ -155,7 +155,10 @@ html {
     .essay-list-section h2,
     #photography h2,
     #profile h2,
-    #links h2 {
+    #links h2,
+    #youtube h2,
+    #bbs h2,
+    #github h2 {
       font-family: var(--font-serif);
       font-size: 1.4rem;
       font-weight: 400;
@@ -163,6 +166,53 @@ html {
       padding-bottom: 0.5rem;
       border-bottom: 1px solid rgba(58, 90, 46, 0.15);
       letter-spacing: 0.1em;
+    }
+
+    .section-caption {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin-top: -1rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+
+    .profile-summary {
+      font-size: 0.92rem;
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
+    }
+
+    .profile-summary > p {
+      margin-bottom: 0.9rem;
+    }
+
+    .profile-dl {
+      display: grid;
+      gap: 0.5rem;
+      padding: 0.9rem 1.1rem;
+      background: rgba(58, 90, 46, 0.04);
+      border-left: 2px solid var(--accent-green);
+      border-radius: 0 6px 6px 0;
+    }
+
+    .profile-dl div {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 0.8rem;
+      font-size: 0.88rem;
+    }
+
+    .profile-dl dt {
+      font-family: var(--font-serif);
+      font-weight: 600;
+      color: var(--accent-green);
+      min-width: 5.5em;
+    }
+
+    .profile-dl dd {
+      flex: 1;
+      min-width: 200px;
+      opacity: 0.9;
     }
 
     .essay-list {
@@ -215,6 +265,13 @@ html {
 
     .essay-title:hover {
       color: var(--accent-green);
+    }
+
+    .essay-summary {
+      font-size: 0.86rem;
+      line-height: 1.65;
+      opacity: 0.72;
+      margin-top: 0.25rem;
     }
 
     /* エッセイ詳細表示 */
@@ -327,6 +384,22 @@ html {
 
     footer p {
       opacity: 0.5;
+    }
+
+    footer .footer-sub-links {
+      opacity: 0.7;
+      margin-bottom: 0.5rem;
+    }
+
+    footer .footer-sub-links a {
+      color: var(--text-color);
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(58, 90, 46, 0.35);
+      transition: color 0.2s;
+    }
+
+    footer .footer-sub-links a:hover {
+      color: var(--accent-green);
     }
 
     .visitor-counter {
@@ -558,7 +631,10 @@ html {
 
       #photography,
       #profile,
-      #links {
+      #links,
+      #youtube,
+      #bbs,
+      #github {
         margin-top: 3rem;
       }
     }
@@ -673,7 +749,10 @@ html {
       /* 右側コンテンツの調整 */
       #photography,
       #profile,
-      #links {
+      #links,
+      #youtube,
+      #bbs,
+      #github {
         margin-top: 4rem;
       }
 
