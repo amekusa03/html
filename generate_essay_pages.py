@@ -231,6 +231,21 @@ def update_sitemap(essays):
 
     # 新しいエッセイURLエントリを生成
     today = date.today().isoformat()
+
+    # トップページとエッセイ一覧ページの lastmod も最新日付に更新
+    sitemap_content = re.sub(
+        r'(<loc>https://amekusa\.vercel\.app/</loc>.*?<lastmod>)\d{4}-\d{2}-\d{2}(</lastmod>)',
+        rf'\g<1>{today}\2',
+        sitemap_content,
+        flags=re.DOTALL
+    )
+    sitemap_content = re.sub(
+        r'(<loc>https://amekusa\.vercel\.app/essays/</loc>.*?<lastmod>)\d{4}-\d{2}-\d{2}(</lastmod>)',
+        rf'\g<1>{today}\2',
+        sitemap_content,
+        flags=re.DOTALL
+    )
+
     essay_entries = []
     for essay in essays:
         slug = essay['slug']
