@@ -122,6 +122,14 @@ The photos featured here are mainly ones I took in Southeast Asia.
 <ul class="essay-list">
 <li class="essay-item">
 <span class="essay-date">
+<span class="essay-category-badge">🛠️ Development</span><span class="essay-category-badge">🤖 Android</span>
+                2026.11.14
+              </span>
+<a class="essay-title" href="/en/essays/2026-11-14-lunchmemo.html">Packaging LunchMemo and Upgrading to Version 2.0</a>
+<p class="essay-summary">I created the v2.0 APK package for "LunchMemo," a homemade lunch planner app that I use every single day, and published it on GitHub Releases.</p>
+</li>
+<li class="essay-item">
+<span class="essay-date">
 <span class="essay-category-badge">🚗 Car</span><span class="essay-category-badge">🤖 Android</span><span class="essay-category-badge">🛠️ Development</span>
                 2026.11.09
               </span>
@@ -151,14 +159,6 @@ The photos featured here are mainly ones I took in Southeast Asia.
               </span>
 <a class="essay-title" href="/en/essays/2026-11-03-smartpc.html">Smart Just by Plugging It In? — My Attempt to Control a PC Power Supply Without Soldering Using the ESP32-S3 —</a>
 <p class="essay-summary">An experiment in which the ESP32-S3 is configured to act as a standard USB keyboard, allowing voice control of a PC's sleep and wake-up functions without any additional components or soldering.</p>
-</li>
-<li class="essay-item">
-<span class="essay-date">
-<span class="essay-category-badge">🛠️ Development</span><span class="essay-category-badge">⚡ ESP32</span><span class="essay-category-badge">🐧 Linux</span>
-                2026.11.03
-              </span>
-<a class="essay-title" href="/en/essays/2026-11-03-usb.html">A Glowing LED, a Silent PC: The Pitfalls of the ESP32-S3 and USB Cable</a>
-<p class="essay-summary">An ESP32-S3 that lights up but isn't recognized at all by the PC. After constantly suspecting the OS settings, I stumbled upon an unexpected pitfall at the physical layer.</p>
 </li>
 </ul>
 <div class="archive-link-wrap">
@@ -438,11 +438,13 @@ The photos featured here are mainly ones I took in Southeast Asia.
       { slug: "2026-11-03-smartpc", date: "2026.11.03", title: "Smart Just by Plugging It In? \u2014 My Attempt to Control a PC Power Supply Without Soldering Using the ESP32-S3 \u2014", categories: ["Development", "ESP32", "Linux"] },
       { slug: "2026-11-04-speaker",date: "2026.11.04", title: "A 1,000-Yen Tweeter and Electrolytic Capacitors \u2014 The Car Audio Rabbit Hole: The Next Move \u2014", categories: ["Car", "Music"]},
       { slug: "2026-11-07-Lens", date: "2026.11.07", title: "The Morning Sun Shines on the Reading Glasses on the Desk \u2014 The Hidden Dangers of Focal Fires in Everyday Life \u2014", categories: ["Daily Life"] },
-      { slug: "2026-11-09-caraudio", date: "2026.11.09", title: "After Failing to Create a Car Time Alignment App: Rebuilding AndroidSoundTune", categories: ["Car", "Android",  "Development"] }
+      { slug: "2026-11-09-caraudio", date: "2026.11.09", title: "After Failing to Create a Car Time Alignment App: Rebuilding AndroidSoundTune", categories: ["Car", "Android",  "Development"] },
+      { slug: "2026-11-14-lunchmemo", date: "2026.11.14", title: "Packaging LunchMemo and Upgrading to Version 2.0", categories: ["Development", "Android"] }
    ];
 
     // 最新記事の一行要約（トップページでの一覧性・滞在率向上用）
     const ESSAY_SUMMARIES = {
+      "2026-11-14-lunchmemo": "I created the v2.0 APK package for \"LunchMemo,\" a homemade lunch planner app that I use every single day, and published it on GitHub Releases.",
       "2026-11-09-caraudio": "A record of how I rebuilt my homemade Android app from scratch, focusing specifically on comparing frequency responses using a logarithmic sweep and measuring reverberation inside a car.",
       "2026-11-07-Lens": "A close call one late-autumn morning, when the low morning sun shone through my reading glasses on the desk and focused on the black frame of my computer monitor.",
       "2026-11-04-speaker": "A plan to verify the circuitry of the tweeter I purchased on Yahoo! Auctions, replace its capacitors with film capacitors, and repurpose the rear wiring.",

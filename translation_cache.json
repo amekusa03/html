@@ -5650,5 +5650,17 @@
   "机の上の老眼鏡に朝日が当たって 〜日常に潜む収れん火災の罠〜 — 日常。雨草の庭 技術随筆。": "The Morning Sun Shines on the Reading Glasses on the Desk ~ The Hidden Dangers of Spontaneous Combustion in Everyday Life ~ — Everyday Life. Amekusa's Garden: Technical Essays.",
   "机の上の老眼鏡に朝日が当たって 〜日常に潜む収れん火災の罠〜｜日常 - 雨草の庭 技術随筆": "The Morning Sun Shines on the Reading Glasses on the Desk ~ The Hidden Dangers of Spontaneous Combustion in Everyday Life ~ | Everyday Life - Amekusa's Garden: Technical Essays",
   "車のタイムアライメント設定アプリを作ってみて失敗してから 〜AndroidSoundTuneの作り直し〜 — 車・Android・開発。雨草の庭 技術随筆。": "After Failing to Create a Car Time Alignment App: Rebuilding AndroidSoundTune — Cars, Android, Development. Amekusa's Garden: Technical Essays.",
-  "車のタイムアライメント設定アプリを作ってみて失敗してから 〜AndroidSoundTuneの作り直し〜｜車・Android・開発 - 雨草の庭 技術随筆": "After Failing to Create a Car Timing Alignment App: Rebuilding AndroidSoundTune | Cars, Android, Development - Amekusa's Garden: Technical Essays"
+  "車のタイムアライメント設定アプリを作ってみて失敗してから 〜AndroidSoundTuneの作り直し〜｜車・Android・開発 - 雨草の庭 技術随筆": "After Failing to Create a Car Timing Alignment App: Rebuilding AndroidSoundTune | Cars, Android, Development - Amekusa's Garden: Technical Essays",
+  "LunchMemoをパッケージ化してversion 2.0へ": "Packaging LunchMemo and Upgrading to Version 2.0",
+  "毎日欠かさず使っている自作ランチ管理アプリ「LunchMemo」のv2.0 APKパッケージを作成し、GitHubリリースに公開。": "I created the v2.0 APK package for \"LunchMemo,\" a homemade lunch planner app that I use every single day, and published it on GitHub Releases.",
+  "LunchMemoをパッケージ化してversion 2.0へ — 開発・Android。雨草の庭 技術随筆。": "Packaging LunchMemo and Moving to Version 2.0 — Development · Android. Amekusa's Garden: Technical Essays.",
+  "LunchMemoをパッケージ化してversion 2.0へ｜開発・Android - 雨草の庭 技術随筆": "Packaging LunchMemo and Moving to Version 2.0 | Development & Android - Amekusa's Garden: Technical Essays",
+  "いつのまにか日常に馴染んだアプリ": "An app that has become a natural part of my daily life without me even noticing",
+  "自分がこれまで開発したアプリの中で、日々もっとも頻繁に使っているのは「LunchMemo」だ。\nすっかり生活の一部になっており、ごく稀にLunchMemoへ書き込むこと自体を忘れてしまうことがあるのだが、そんな翌日は予定が分からなくなって本気で困惑してしまうほど頼り切っている。": "Of all the apps I’ve developed so far, the one I use most frequently every day is “LunchMemo.”\nIt’s become such an integral part of my life that, on the rare occasion I forget to make an entry in LunchMemo, I rely on it so heavily that I’m genuinely confused the next day because I can’t remember my schedule.",
+  "APKパッケージでのインストール": "Installation via APK Package",
+  "今回はふと思い立って、バージョン2.0のAPKファイルを作成してみた。\n以前は野良アプリの制限などでうまくインストールできなかった記憶があるのだが、改めて試してみると、セキュリティの警告こそ出るものの拍子抜けするほどあっさりとインストールすることができた。": "On a whim, I decided to try creating an APK file for version 2.0.\nI remember having trouble installing it before due to restrictions on third-party apps, but when I tried again, although a security warning popped up, the installation went through surprisingly smoothly—almost too easily.",
+  "これならわざわざ開発環境を繋がなくても手軽に導入できる。せっかくなのでGitHubのリリースページにパッケージを公開しておいた。": "This way, you can easily set it up without having to go through the trouble of connecting to a development environment. Since I went to the trouble, I went ahead and published the package on the GitHub release page.",
+  "リンク": "Links",
+  "**パッケージ (APK)**: __LINK_PH_0__": "**Package (APK)**: __LINK_PH_0__",
+  "**ソース**: __LINK_PH_0__": "**Source**: __LINK_PH_0__"
 }

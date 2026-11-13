@@ -4,7 +4,7 @@
     <loc>https://amekusa.vercel.app/</loc>
     <xhtml:link rel="alternate" hreflang="ja" href="https://amekusa.vercel.app/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://amekusa.vercel.app/en/"/>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -12,7 +12,7 @@
     <loc>https://amekusa.vercel.app/essays/</loc>
     <xhtml:link rel="alternate" hreflang="ja" href="https://amekusa.vercel.app/essays"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://amekusa.vercel.app/en/essays/"/>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1390,6 +1390,12 @@
   <url>
     <loc>https://amekusa.vercel.app/essays/2026-11-09-caraudio</loc>
     <lastmod>2026-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://amekusa.vercel.app/essays/2026-11-14-lunchmemo</loc>
+    <lastmod>2026-11-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
