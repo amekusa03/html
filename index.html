@@ -125,6 +125,14 @@
           <ul class="essay-list">
             <li class="essay-item">
               <span class="essay-date">
+                <span class="essay-category-badge">🚗 車</span><span class="essay-category-badge">🎧 音楽</span>
+                2026.11.15
+              </span>
+              <a href="essays/2026-11-15-caraudio.html" class="essay-title">2way 2.1ch化 〜カーオーディオの沼からの一歩〜</a>
+              <p class="essay-summary">リアスピーカーを廃止してフロントにツイーターを増設し、フィルムコンデンサと組み合わせた2.1ch構成へ移行。</p>
+            </li>
+            <li class="essay-item">
+              <span class="essay-date">
                 <span class="essay-category-badge">🛠️ 開発</span><span class="essay-category-badge">🤖 Android</span>
                 2026.11.14
               </span>
@@ -154,14 +162,6 @@
               </span>
               <a href="essays/2026-11-04-speaker.html" class="essay-title">1,000円のツイーターと電解コンデンサ 〜カーオーディオの沼、次の一手〜</a>
               <p class="essay-summary">ヤフオクで入手したツイーターの回路確認とフィルムコンデンサへの交換、リア配線を転用するシステム計画。</p>
-            </li>
-            <li class="essay-item">
-              <span class="essay-date">
-                <span class="essay-category-badge">🛠️ 開発</span><span class="essay-category-badge">⚡ ESP32</span><span class="essay-category-badge">🐧 Linux</span>
-                2026.11.03
-              </span>
-              <a href="essays/2026-11-03-smartpc.html" class="essay-title">挿すだけでスマート化？ 〜ESP32-S3ではんだ付けなしのPC電源制御に挑んだ話〜</a>
-              <p class="essay-summary">ESP32-S3を標準USBキーボードとして振る舞わせ、追加部品・はんだ付けゼロでPCのスリープと復帰を音声操作する実験。</p>
             </li>
           </ul>
           <div class="archive-link-wrap">
@@ -443,11 +443,13 @@
       { slug: "2026-11-04-speaker",date: "2026.11.04", title: "1,000円のツイーターと電解コンデンサ 〜カーオーディオの沼、次の一手〜", categories: ["車", "音楽"]},
       { slug: "2026-11-07-Lens", date: "2026.11.07", title: "机の上の老眼鏡に朝日が当たって 〜日常に潜む収れん火災の罠〜", categories: ["日常"] },
       { slug: "2026-11-09-caraudio", date: "2026.11.09", title: "車のタイムアライメント設定アプリを作ってみて失敗してから 〜AndroidSoundTuneの作り直し〜", categories: ["車", "Android",  "開発"] },
-      { slug: "2026-11-14-lunchmemo", date: "2026.11.14", title: "LunchMemoをパッケージ化してversion 2.0へ", categories: ["開発", "Android"] }
+      { slug: "2026-11-14-lunchmemo", date: "2026.11.14", title: "LunchMemoをパッケージ化してversion 2.0へ", categories: ["開発", "Android"] },
+      { slug: "2026-11-15-caraudio", date: "2026.11.15", title: "2way 2.1ch化 〜カーオーディオの沼からの一歩〜", categories: ["車", "音楽"] }
    ];
 
     // 最新記事の一行要約（トップページでの一覧性・滞在率向上用）
     const ESSAY_SUMMARIES = {
+      "2026-11-15-caraudio": "リアスピーカーを廃止してフロントにツイーターを増設し、フィルムコンデンサと組み合わせた2.1ch構成へ移行。",
       "2026-11-14-lunchmemo": "毎日欠かさず使っている自作ランチ管理アプリ「LunchMemo」のv2.0 APKパッケージを作成し、GitHubリリースに公開。",
       "2026-11-09-caraudio": "対数スイープによる周波数特性の比較と車内の残響計測に絞り、自作Androidアプリを一から作り直した記録。",
       "2026-11-07-Lens": "晩秋の低い朝日がスタンドの老眼鏡を通り、PCディスプレイの黒いフレームに焦点を結んでいた朝のヒヤリハット。",

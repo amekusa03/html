@@ -5662,5 +5662,21 @@
   "これならわざわざ開発環境を繋がなくても手軽に導入できる。せっかくなのでGitHubのリリースページにパッケージを公開しておいた。": "This way, you can easily set it up without having to go through the trouble of connecting to a development environment. Since I went to the trouble, I went ahead and published the package on the GitHub release page.",
   "リンク": "Links",
   "**パッケージ (APK)**: __LINK_PH_0__": "**Package (APK)**: __LINK_PH_0__",
-  "**ソース**: __LINK_PH_0__": "**Source**: __LINK_PH_0__"
+  "**ソース**: __LINK_PH_0__": "**Source**: __LINK_PH_0__",
+  "2way 2.1ch化 〜カーオーディオの沼からの一歩〜": "Upgrading to a 2-Way 2.1-Channel System: A Step Out of the Car Audio Rabbit Hole",
+  "リアスピーカーを廃止してフロントにツイーターを増設し、フィルムコンデンサと組み合わせた2.1ch構成へ移行。": "We eliminated the rear speakers, added tweeters to the front, and transitioned to a 2.1-channel configuration that incorporates film capacitors.",
+  "沼からの脱出？！": "Escape from the Swamp?!",
+  "前回の記事で計画していたとおり、とうとうリアスピーカーを廃止し、そのチャンネルを転用してフロントにツイーターを増設した。フロント2way＋サブウーファーという「2.1ch」構成への移行である。": "As planned in my previous post, I finally removed the rear speakers and repurposed those channels to add tweeters to the front. This marks the transition to a “2.1-channel” setup consisting of a 2-way front system plus a subwoofer.",
+  "システム構成": "System Configuration",
+  "今回の作業を経て、現在の車内オーディオ環境は以下の構成になった。": "Following this work, my car's audio system now consists of the following components.",
+  "**ヘッドユニット**：ホンダ純正DOPナビ": "**Head Unit**: Honda Genuine DOP Navigation System",
+  "**フロントスピーカー**：カロッツェリア TS-F1740II": "**Front Speakers**: Carrozzeria TS-F1740II",
+  "**ツイーター**：クラリオン SRH217": "**Tweeter**: Clarion SRH217",
+  "**ツイーター用フィルタ**：ニチコン メタライズドフィルムコンデンサー（2.2μF 100V）": "**Tweeter Filter**: Nichicon Metallized Film Capacitor (2.2 μF, 100 V)",
+  "**サブウーファー**：カロッツェリア TS-WX22A": "**Subwoofer**: Carrozzeria TS-WX22A",
+  "感想：音よりもまずは達成感": "Thoughts: A sense of accomplishment comes before the sound",
+  "すべてを繋ぎ終えて最初に湧き上がってきたのは、「感無量」の一言だった。\nもっとも、それは鳴り出した音に対してではなく、ツイーターの配線引き回し作業を無事にやり切ったことに対してなのだが。": "Once I had finished connecting everything, the first thought that came to mind was simply, “I’m overwhelmed.”\nMind you, that wasn’t in response to the sound that began to play, but rather to the fact that I had successfully completed the task of routing the tweeter wires.",
+  "肝心の音については、確かに良い音で鳴ってはいるものの、作業直後の達成感と疲労が勝っており、まだ冷静に評価できていないのが正直なところだ。\n耳と気持ちが落ち着くまで、しばらくはこのセッティングでじっくり様子を見ていこうと思う。": "As for the sound—which is the most important thing—it does sound good, but to be honest, the sense of accomplishment and exhaustion right after setting it up are still overwhelming, so I haven’t been able to evaluate it objectively yet.\nI think I’ll stick with this setup for a while and see how it goes until my ears and mind have had a chance to settle down.",
+  "2way 2.1ch化 〜カーオーディオの沼からの一歩〜 — 車・音楽。雨草の庭 技術随筆。": "Upgrading to a 2-Way 2.1-Channel System: A Step Out of the Car Audio Rabbit Hole — Cars & Music. Amekusa's Garden: Technical Essays.",
+  "2way 2.1ch化 〜カーオーディオの沼からの一歩〜｜車・音楽 - 雨草の庭 技術随筆": "Upgrading to a 2-Way 2.1-Channel System: A Step Out of the Car Audio Rabbit Hole | Cars & Music - Amekusa's Garden: Technical Essays"
 }
