@@ -338,10 +338,19 @@
 
     .essay-date {
       font-size: 0.85rem;
-      opacity: 0.6;
+      opacity: 0.78;
       margin-bottom: 0.2rem;
-      display: block;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.25em;
       letter-spacing: 0.05em;
+    }
+
+    .essay-date-text {
+      font-weight: 500;
+      order: -1;
+      margin-right: 0.1em;
     }
 
     .essay-title {
@@ -351,7 +360,10 @@
       color: var(--text-color);
       text-decoration: none;
       transition: color 0.2s;
-      line-height: 1.5;
+      line-height: 1.55;
+      display: block;
+      text-wrap: balance;
+      word-break: auto-phrase;
     }
 
     .essay-title:hover {
@@ -363,12 +375,14 @@
       font-size: 0.7rem;
       padding: 0.1em 0.55em;
       border-radius: 3px;
-      border: 1px solid rgba(58, 90, 46, 0.25);
+      border: 1px solid rgba(58, 90, 46, 0.3);
       color: var(--accent-green);
       letter-spacing: 0.06em;
-      margin-left: 0.5em;
+      margin-left: 0;
+      margin-right: 0.3em;
       vertical-align: middle;
-      opacity: 0.85;
+      opacity: 0.9;
+      filter: saturate(0.7);
     }
 
     /* 詳細表示 */
@@ -817,8 +831,8 @@
           html += `
             <li class="essay-item" data-cat="${cats.join(' ')}">
               <span class="essay-date">
+                <span class="essay-date-text">${essay.date}</span>
                 ${cats.map(c => `<span class="essay-category-badge">${CATEGORY_ICONS[c] || ''} ${c}</span>`).join('')}
-                ${essay.date}
               </span>
               <a href="#essay=${essay.slug}" class="essay-title">${essay.title}</a>
             </li>

@@ -125,44 +125,42 @@
           <ul class="essay-list">
             <li class="essay-item">
               <span class="essay-date">
+                <span class="essay-date-text">2026.11.16</span>
                 <span class="essay-category-badge">🛠️ 開発</span><span class="essay-category-badge">🤖 Android</span>
-                2026.11.16
               </span>
               <a href="essays/2026-11-16-android.html" class="essay-title">Androidアプリの配布 〜 APKがインストールできるようになっていた話 〜</a>
               <p class="essay-summary">野良APKのインストール制限緩和を受け、GitHub CLIを活用した高速リリースと自作アプリのAPK配布を再開した話。</p>
             </li>
             <li class="essay-item">
               <span class="essay-date">
+                <span class="essay-date-text">2026.11.16</span>
                 <span class="essay-category-badge">🛠️ 開発</span><span class="essay-category-badge">⚡ ESP32</span>
-                2026.11.16
               </span>
               <a href="essays/2026-11-16-esp32.html" class="essay-title">ESP-IDFの潮目をみる 〜v6への進化と、あえて今とどまる選択〜</a>
               <p class="essay-summary">ESP-IDF v6系のモダンな再設計を調べたうえで、稼働中のエアコン制御はLTSのv5.5系を維持することにした記録。</p>
             </li>
             <li class="essay-item">
               <span class="essay-date">
+                <span class="essay-date-text">2026.11.15</span>
                 <span class="essay-category-badge">🚗 車</span><span class="essay-category-badge">🎧 音楽</span>
-                2026.11.15
               </span>
               <a href="essays/2026-11-15-caraudio.html" class="essay-title">2way 2.1ch化 〜カーオーディオの沼からの一歩〜</a>
               <p class="essay-summary">リアスピーカーを廃止してフロントにツイーターを増設し、フィルムコンデンサと組み合わせた2.1ch構成へ移行。</p>
             </li>
             <li class="essay-item">
               <span class="essay-date">
+                <span class="essay-date-text">2026.11.14</span>
                 <span class="essay-category-badge">🛠️ 開発</span><span class="essay-category-badge">🤖 Android</span>
-                2026.11.14
               </span>
               <a href="essays/2026-11-14-lunchmemo.html" class="essay-title">LunchMemoをパッケージ化してversion 2.0へ</a>
               <p class="essay-summary">毎日欠かさず使っている自作ランチ管理アプリ「LunchMemo」のv2.0 APKパッケージを作成し、GitHubリリースに公開。</p>
             </li>
             <li class="essay-item">
               <span class="essay-date">
-                <span class="essay-category-badge">🚗 車</span><span class="essay-category-badge">🤖 Android</span><span
-                  class="essay-category-badge">🛠️ 開発</span>
-                2026.11.09
+                <span class="essay-date-text">2026.11.09</span>
+                <span class="essay-category-badge">🚗 車</span><span class="essay-category-badge">🤖 Android</span><span class="essay-category-badge">🛠️ 開発</span>
               </span>
-              <a href="essays/2026-11-09-caraudio.html" class="essay-title">車のタイムアライメント設定アプリを作ってみて失敗してから
-                〜AndroidSoundTuneの作り直し〜</a>
+              <a href="essays/2026-11-09-caraudio.html" class="essay-title">車のタイムアライメント設定アプリを作ってみて失敗してから 〜AndroidSoundTuneの作り直し〜</a>
               <p class="essay-summary">対数スイープによる周波数特性の比較と車内の残響計測に絞り、自作Androidアプリを一から作り直した記録。</p>
             </li>
           </ul>
@@ -542,8 +540,8 @@
         html += `
 <li class="essay-item">
 <span class="essay-date">
+<span class="essay-date-text">${essay.date}</span>
 ${cats.map(c => `<span class="essay-category-badge">${CATEGORY_ICONS[c] || ''} ${c}</span>`).join('')}
-${essay.date}
 </span>
 <a href="#essay=${essay.slug}" class="essay-title">${essay.title}</a>
 ${summary}
