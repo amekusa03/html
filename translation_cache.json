@@ -5749,5 +5749,11 @@
   "インストール時の警告画面": "Warning Screen During Installation",
   "Linuxターミナルから一発でビルド＆リリースする": "Build and Release in One Step from the Linux Terminal",
   "すでにGitHubへソースコードをプッシュしているリポジトリであれば、Linux（Ubuntu）のターミナルから以下の2つのコマンドを実行するだけで、APKの生成からGitHub Releaseへの公開まで一瞬で完了する。": "If you already have a repository with source code pushed to GitHub, simply running the following two commands in the Linux (Ubuntu) terminal will complete the entire process—from generating the APK to publishing it to GitHub Releases—in an instant.",
-  "重たいAndroid StudioのGUIをわざわざ立ち上げることなく、CLIだけでサクッと配信まで持っていけるこの身軽さは、Linux環境での開発ならではの大きな魅力だ。": "The ability to quickly take a project all the way to deployment using only the CLI—without having to go out of your way to launch the bulky Android Studio GUI—is a major advantage unique to development in a Linux environment."
+  "重たいAndroid StudioのGUIをわざわざ立ち上げることなく、CLIだけでサクッと配信まで持っていけるこの身軽さは、Linux環境での開発ならではの大きな魅力だ。": "The ability to quickly take a project all the way to deployment using only the CLI—without having to go out of your way to launch the bulky Android Studio GUI—is a major advantage unique to development in a Linux environment.",
+  "音響工学や回路の前に必要なのは「自分にとっての良い音」を知ること。車内オーディオの改善に不可欠な原体験と基準づくりの話。": "Before delving into audio engineering or circuitry, you need to know what “good sound” means to you. This article discusses the foundational experiences and standards that are essential for improving in-car audio.",
+  "社外DSP内蔵機を選ぶ王道か、あえて純正のまま実験DIYを楽しむか。カーオーディオのスタート地点となるヘッドユニット選びの考察。": "Should you go with the tried-and-true option of a head unit with a built-in third-party DSP, or take a chance and enjoy experimenting with DIY modifications while keeping the stock unit? A look at choosing a head unit—the starting point for any car audio setup.",
+  "カーオーディオの沼 〜最初の一歩はヘッドユニットから〜 — 車・音楽。雨草の庭 技術随筆。": "The Car Audio Rabbit Hole: The First Step Starts with the Head Unit — Cars & Music. Amekusa's Garden: Technical Essays.",
+  "カーオーディオの沼 〜最初の一歩はヘッドユニットから〜｜車・音楽 - 雨草の庭 技術随筆": "The Car Audio Rabbit Hole: Your First Step Starts with the Head Unit | Cars & Music - Amekusa's Garden: Technical Essays",
+  "カーオーディオの沼 〜知識と勇気、そして保険〜 — 車・音楽。雨草の庭 技術随筆。": "The Car Audio Rabbit Hole: Knowledge, Courage, and Insurance — Cars & Music. Amekusa's Garden: Technical Essays.",
+  "カーオーディオの沼 〜知識と勇気、そして保険〜｜車・音楽 - 雨草の庭 技術随筆": "The Car Audio Rabbit Hole: Knowledge, Courage, and Insurance | Cars & Music - Amekusa's Garden: Technical Essays"
 }

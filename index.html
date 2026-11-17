@@ -125,6 +125,22 @@
           <ul class="essay-list">
             <li class="essay-item">
               <span class="essay-date">
+                <span class="essay-date-text">2026.11.17</span>
+                <span class="essay-category-badge">🚗 車</span><span class="essay-category-badge">🎧 音楽</span>
+              </span>
+              <a href="essays/2026-11-17-know.html" class="essay-title">カーオーディオの沼 〜知識と勇気、そして保険〜</a>
+              <p class="essay-summary">音響工学や回路の前に必要なのは「自分にとっての良い音」を知ること。車内オーディオの改善に不可欠な原体験と基準づくりの話。</p>
+            </li>
+            <li class="essay-item">
+              <span class="essay-date">
+                <span class="essay-date-text">2026.11.17</span>
+                <span class="essay-category-badge">🚗 車</span><span class="essay-category-badge">🎧 音楽</span>
+              </span>
+              <a href="essays/2026-11-17-hedunit.html" class="essay-title">カーオーディオの沼 〜最初の一歩はヘッドユニットから〜</a>
+              <p class="essay-summary">社外DSP内蔵機を選ぶ王道か、あえて純正のまま実験DIYを楽しむか。カーオーディオのスタート地点となるヘッドユニット選びの考察。</p>
+            </li>
+            <li class="essay-item">
+              <span class="essay-date">
                 <span class="essay-date-text">2026.11.16</span>
                 <span class="essay-category-badge">🛠️ 開発</span><span class="essay-category-badge">🤖 Android</span>
               </span>
@@ -146,22 +162,6 @@
               </span>
               <a href="essays/2026-11-15-caraudio.html" class="essay-title">2way 2.1ch化 〜カーオーディオの沼からの一歩〜</a>
               <p class="essay-summary">リアスピーカーを廃止してフロントにツイーターを増設し、フィルムコンデンサと組み合わせた2.1ch構成へ移行。</p>
-            </li>
-            <li class="essay-item">
-              <span class="essay-date">
-                <span class="essay-date-text">2026.11.14</span>
-                <span class="essay-category-badge">🛠️ 開発</span><span class="essay-category-badge">🤖 Android</span>
-              </span>
-              <a href="essays/2026-11-14-lunchmemo.html" class="essay-title">LunchMemoをパッケージ化してversion 2.0へ</a>
-              <p class="essay-summary">毎日欠かさず使っている自作ランチ管理アプリ「LunchMemo」のv2.0 APKパッケージを作成し、GitHubリリースに公開。</p>
-            </li>
-            <li class="essay-item">
-              <span class="essay-date">
-                <span class="essay-date-text">2026.11.09</span>
-                <span class="essay-category-badge">🚗 車</span><span class="essay-category-badge">🤖 Android</span><span class="essay-category-badge">🛠️ 開発</span>
-              </span>
-              <a href="essays/2026-11-09-caraudio.html" class="essay-title">車のタイムアライメント設定アプリを作ってみて失敗してから 〜AndroidSoundTuneの作り直し〜</a>
-              <p class="essay-summary">対数スイープによる周波数特性の比較と車内の残響計測に絞り、自作Androidアプリを一から作り直した記録。</p>
             </li>
           </ul>
           <div class="archive-link-wrap">
@@ -459,11 +459,15 @@
       { slug: "2026-11-14-lunchmemo", date: "2026.11.14", title: "LunchMemoをパッケージ化してversion 2.0へ", categories: ["開発", "Android"] },
       { slug: "2026-11-15-caraudio", date: "2026.11.15", title: "2way 2.1ch化 〜カーオーディオの沼からの一歩〜", categories: ["車", "音楽"] },
       { slug: "2026-11-16-esp32", date: "2026.11.16", title: "ESP-IDFの潮目をみる 〜v6への進化と、あえて今とどまる選択〜", categories: ["開発", "ESP32"] },
-      { slug: "2026-11-16-android", date: "2026.11.16", title: "Androidアプリの配布 〜 APKがインストールできるようになっていた話 〜", categories: ["開発", "Android"] }
+      { slug: "2026-11-16-android", date: "2026.11.16", title: "Androidアプリの配布 〜 APKがインストールできるようになっていた話 〜", categories: ["開発", "Android"] },
+      { slug: "2026-11-17-hedunit", date: "2026.11.17", title: "カーオーディオの沼 〜最初の一歩はヘッドユニットから〜", categories: ["車", "音楽"] },
+      { slug: "2026-11-17-know", date: "2026.11.17", title: "カーオーディオの沼 〜知識と勇気、そして保険〜", categories: ["車", "音楽"] },
     ];
 
     // 最新記事の一行要約（トップページでの一覧性・滞在率向上用）
     const ESSAY_SUMMARIES = {
+      "2026-11-17-know": "音響工学や回路の前に必要なのは「自分にとっての良い音」を知ること。車内オーディオの改善に不可欠な原体験と基準づくりの話。",
+      "2026-11-17-hedunit": "社外DSP内蔵機を選ぶ王道か、あえて純正のまま実験DIYを楽しむか。カーオーディオのスタート地点となるヘッドユニット選びの考察。",
       "2026-11-16-android": "野良APKのインストール制限緩和を受け、GitHub CLIを活用した高速リリースと自作アプリのAPK配布を再開した話。",
       "2026-11-16-esp32": "ESP-IDF v6系のモダンな再設計を調べたうえで、稼働中のエアコン制御はLTSのv5.5系を維持することにした記録。",
       "2026-11-15-caraudio": "リアスピーカーを廃止してフロントにツイーターを増設し、フィルムコンデンサと組み合わせた2.1ch構成へ移行。",
