@@ -125,6 +125,22 @@
           <ul class="essay-list">
             <li class="essay-item">
               <span class="essay-date">
+                <span class="essay-date-text">2026.11.19</span>
+                <span class="essay-category-badge">🚗 車</span><span class="essay-category-badge">🎧 音楽</span>
+              </span>
+              <a href="essays/2026-11-19-dedning.html" class="essay-title">カーオーディオの沼 その4 〜デッドニングはDIYの山場〜</a>
+              <p class="essay-summary">ドアのサービスホールを制振シートで塞ぎ、鉄板の共振を抑えてスピーカーボックスに仕立てる。肉体派DIYの山場、デッドニング入門。</p>
+            </li>
+            <li class="essay-item">
+              <span class="essay-date">
+                <span class="essay-date-text">2026.11.19</span>
+                <span class="essay-category-badge">🚗 車</span><span class="essay-category-badge">🎧 音楽</span>
+              </span>
+              <a href="essays/2026-11-19-speaker.html" class="essay-title">カーオーディオの沼 その3 〜DIYはスピーカーの交換から〜</a>
+              <p class="essay-summary">コアキシャルかセパレートか、バッフルと変換コネクタの注意点から予算感まで。カーオーディオDIYの最初の一歩はスピーカー交換から。</p>
+            </li>
+            <li class="essay-item">
+              <span class="essay-date">
                 <span class="essay-date-text">2026.11.18</span>
                 <span class="essay-category-badge">🛠️ 開発</span>
               </span>
@@ -146,22 +162,6 @@
               </span>
               <a href="essays/2026-11-17-hedunit.html" class="essay-title">カーオーディオの沼 〜最初の一歩はヘッドユニットから〜</a>
               <p class="essay-summary">社外DSP内蔵機を選ぶ王道か、あえて純正のまま実験DIYを楽しむか。カーオーディオのスタート地点となるヘッドユニット選びの考察。</p>
-            </li>
-            <li class="essay-item">
-              <span class="essay-date">
-                <span class="essay-date-text">2026.11.16</span>
-                <span class="essay-category-badge">🛠️ 開発</span><span class="essay-category-badge">🤖 Android</span>
-              </span>
-              <a href="essays/2026-11-16-android.html" class="essay-title">Androidアプリの配布 〜 APKがインストールできるようになっていた話 〜</a>
-              <p class="essay-summary">野良APKのインストール制限緩和を受け、GitHub CLIを活用した高速リリースと自作アプリのAPK配布を再開した話。</p>
-            </li>
-            <li class="essay-item">
-              <span class="essay-date">
-                <span class="essay-date-text">2026.11.16</span>
-                <span class="essay-category-badge">🛠️ 開発</span><span class="essay-category-badge">⚡ ESP32</span>
-              </span>
-              <a href="essays/2026-11-16-esp32.html" class="essay-title">ESP-IDFの潮目をみる 〜v6への進化と、あえて今とどまる選択〜</a>
-              <p class="essay-summary">ESP-IDF v6系のモダンな再設計を調べたうえで、稼働中のエアコン制御はLTSのv5.5系を維持することにした記録。</p>
             </li>
           </ul>
           <div class="archive-link-wrap">
@@ -463,10 +463,14 @@
       { slug: "2026-11-17-hedunit", date: "2026.11.17", title: "カーオーディオの沼 〜最初の一歩はヘッドユニットから〜", categories: ["車", "音楽"] },
       { slug: "2026-11-17-know", date: "2026.11.17", title: "カーオーディオの沼 〜知識と勇気、そして保険〜", categories: ["車", "音楽"] },
       { slug: "2026-11-18-c", date: "2026.11.18", title: "技術の変遷とC++/CLIの衝撃 〜MS-Cから最新C#（.NET 10）へ至る道〜", categories: ["開発"] },
+      { slug: "2026-11-19-speaker", date: "2026.11.19", title: "カーオーディオの沼 その3 〜DIYはスピーカーの交換から〜", categories: ["車", "音楽"] },
+      { slug: "2026-11-19-dedning", date: "2026.11.19", title: "カーオーディオの沼 その4 〜デッドニングはDIYの山場〜", categories: ["車", "音楽"] },
     ];
 
     // 最新記事の一行要約（トップページでの一覧性・滞在率向上用）
     const ESSAY_SUMMARIES = {
+      "2026-11-19-dedning": "ドアのサービスホールを制振シートで塞ぎ、鉄板の共振を抑えてスピーカーボックスに仕立てる。肉体派DIYの山場、デッドニング入門。",
+      "2026-11-19-speaker": "コアキシャルかセパレートか、バッフルと変換コネクタの注意点から予算感まで。カーオーディオDIYの最初の一歩はスピーカー交換から。",
       "2026-11-18-c": "MS-CやMFC時代を経て最新の.NET 10へ。久々に触れたC++/CLIのポインタ演算やメモリ管理から振り返る、言語と開発環境の進化。",
       "2026-11-17-know": "音響工学や回路の前に必要なのは「自分にとっての良い音」を知ること。車内オーディオの改善に不可欠な原体験と基準づくりの話。",
       "2026-11-17-hedunit": "社外DSP内蔵機を選ぶ王道か、あえて純正のまま実験DIYを楽しむか。カーオーディオのスタート地点となるヘッドユニット選びの考察。",
