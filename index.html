@@ -125,6 +125,22 @@
           <ul class="essay-list">
             <li class="essay-item">
               <span class="essay-date">
+                <span class="essay-date-text">2026.11.20</span>
+                <span class="essay-category-badge">🛠️ 開発</span><span class="essay-category-badge">⚡ ESP32</span>
+              </span>
+              <a href="essays/2026-11-20-outdoor.html" class="essay-title">ベランダ環境センサーを無線で切り離す 〜ESP-NOWと電池駆動で挑む屋外計測〜</a>
+              <p class="essay-summary">ベランダで長期間稼働する温度センサーを電池駆動で作成した。ESP-NOWという無線通信とGoogle Homeへの橋渡し。</p>
+            </li>
+            <li class="essay-item">
+              <span class="essay-date">
+                <span class="essay-date-text">2026.11.20</span>
+                <span class="essay-category-badge">🚗 車</span><span class="essay-category-badge">🎧 音楽</span>
+              </span>
+              <a href="essays/2026-11-20-subwoof.html" class="essay-title">カーオーディオの沼 その５ 〜ついにサブウーファーの追加へ〜</a>
+              <p class="essay-summary">走行ノイズにかき消される低音不足を解消する特効薬、サブウーファー。スペース優先の選び方とホンダ車での設置工夫を語る。</p>
+            </li>
+            <li class="essay-item">
+              <span class="essay-date">
                 <span class="essay-date-text">2026.11.19</span>
                 <span class="essay-category-badge">🚗 車</span><span class="essay-category-badge">🎧 音楽</span>
               </span>
@@ -146,22 +162,6 @@
               </span>
               <a href="essays/2026-11-18-c.html" class="essay-title">技術の変遷とC++/CLIの衝撃 〜MS-Cから最新C#（.NET 10）へ至る道〜</a>
               <p class="essay-summary">MS-CやMFC時代を経て最新の.NET 10へ。久々に触れたC++/CLIのポインタ演算やメモリ管理から振り返る、言語と開発環境の進化。</p>
-            </li>
-            <li class="essay-item">
-              <span class="essay-date">
-                <span class="essay-date-text">2026.11.17</span>
-                <span class="essay-category-badge">🚗 車</span><span class="essay-category-badge">🎧 音楽</span>
-              </span>
-              <a href="essays/2026-11-17-know.html" class="essay-title">カーオーディオの沼 〜知識と勇気、そして保険〜</a>
-              <p class="essay-summary">音響工学や回路の前に必要なのは「自分にとっての良い音」を知ること。車内オーディオの改善に不可欠な原体験と基準づくりの話。</p>
-            </li>
-            <li class="essay-item">
-              <span class="essay-date">
-                <span class="essay-date-text">2026.11.17</span>
-                <span class="essay-category-badge">🚗 車</span><span class="essay-category-badge">🎧 音楽</span>
-              </span>
-              <a href="essays/2026-11-17-hedunit.html" class="essay-title">カーオーディオの沼 〜最初の一歩はヘッドユニットから〜</a>
-              <p class="essay-summary">社外DSP内蔵機を選ぶ王道か、あえて純正のまま実験DIYを楽しむか。カーオーディオのスタート地点となるヘッドユニット選びの考察。</p>
             </li>
           </ul>
           <div class="archive-link-wrap">
@@ -466,10 +466,12 @@
       { slug: "2026-11-19-speaker", date: "2026.11.19", title: "カーオーディオの沼 その3 〜DIYはスピーカーの交換から〜", categories: ["車", "音楽"] },
       { slug: "2026-11-19-dedning", date: "2026.11.19", title: "カーオーディオの沼 その4 〜デッドニングはDIYの山場〜", categories: ["車", "音楽"] },
       { slug: "2026-11-20-subwoof", date: "2026.11.20", title: "カーオーディオの沼 その５ 〜ついにサブウーファーの追加へ〜", categories: ["車", "音楽"] },
+      { slug: "2026-11-20-outdoor", date: "2026.11.20", title: "ベランダ環境センサーを無線で切り離す 〜ESP-NOWと電池駆動で挑む屋外計測〜", categories: ["開発", "ESP32"] },
     ];
 
     // 最新記事の一行要約（トップページでの一覧性・滞在率向上用）
     const ESSAY_SUMMARIES = {
+      "2026-11-20-outdoor": "ベランダで長期間稼働する温度センサーを電池駆動で作成した。ESP-NOWという無線通信とGoogle Homeへの橋渡し。",
       "2026-11-20-subwoof": "走行ノイズにかき消される低音不足を解消する特効薬、サブウーファー。スペース優先の選び方とホンダ車での設置工夫を語る。",
       "2026-11-19-dedning": "ドアのサービスホールを制振シートで塞ぎ、鉄板の共振を抑えてスピーカーボックスに仕立てる。肉体派DIYの山場、デッドニング入門。",
       "2026-11-19-speaker": "コアキシャルかセパレートか、バッフルと変換コネクタの注意点から予算感まで。カーオーディオDIYの最初の一歩はスピーカー交換から。",
@@ -488,7 +490,6 @@
       "2026-10-31-carspeaker": "DSPやスピーカーを入れ替えても定まらない車内の音。高音の抜けと解像度を求めて続く試行錯誤のメモ。",
       "2026-10-28-cs": "C# Windows Formsにおけるインターフェース設計やイベント購読解除・Dispose周りのメモリリーク対策まとめ。",
       "2026-10-27-esp32": "新品のESP32ボードが書き込めない夜。原因を切り分けていく中で見えてきた初期不良と対処の記録。",
-      "2026-10-26-security": "利便性の高いシングルサインオン（SSO）やVPNに潜む単一障害点・侵入リスクと、現実的な防御策の考察。",
     };
 
     const CATEGORY_ORDER = ["開発", "Android", "Linux", "Python", "ESP32", "車", "音楽", "日常", "その他"];
