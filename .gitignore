@@ -1,16 +1,47 @@
+# --- 作業用・ドキュメント・メモ ---
 concept.md
-node_modules/
-work/
-doc/
-.code-workspace
-.github/copilot-instructions.md
-*.code-workspace
 qiita_article_gemini_email.md
-link_checker.py
-requirements.txt
-.vscode/
-.venv/
 GEMINI.md
 local.md
+work/
+doc/
 .essays/2026-mm-dd-base.md
+
+# --- 開発スクリプト・依存・キー ---
+link_checker.py
+requirements.txt
 deepl_api_key.txt
+translation_cache.json
+*.log
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+.pytest_cache/
+
+# --- Node / npm ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+
+# --- エディタ / IDE / AIツール ---
+.vscode/
+.claude/
+.idea/
+*.code-workspace
+.code-workspace
+
+# --- 一時ファイル・バックアップ ---
+*.bak
+*.tmp
+*.swp
+*~
+
+# --- OS生成ファイル ---
+.DS_Store
+Thumbs.db
+
+# --- 壊れたリンク / ローカルリンク ---
+WebSite
