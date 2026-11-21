@@ -5,6 +5,7 @@ GEMINI.md
 local.md
 work/
 doc/
+*.pptx
 .essays/2026-mm-dd-base.md
 
 # --- 開発スクリプト・依存・キー ---
