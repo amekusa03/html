@@ -6,13 +6,23 @@
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
   </script>
 <script defer="" src="/_vercel/insights/script.js"></script>
+<!-- 自分のブラウザに目印を付ける -->
+<script>
+    try {
+      if (location.search.indexOf('me=1') !== -1) {
+        localStorage.setItem('isMe', '1');
+      }
+    } catch (e) {}
+    window.IS_ME = false;
+    try { window.IS_ME = localStorage.getItem('isMe') === '1'; } catch (e) {}
+  </script>
 <!-- Google tag (gtag.js) -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-    gtag('config', 'G-SRGF2MMYGD');
+    gtag('config', 'G-SRGF2MMYGD', window.IS_ME ? { traffic_type: 'internal' } : {});
   </script>
 <link href="../Favicon.png" rel="icon" type="image/png"/>
 <link href="../amenoniwa.png" rel="apple-touch-icon"/>
@@ -770,6 +780,7 @@
       { slug: "2026-11-21-dsp", date: "2026.11.21", title: "The Car Audio Rabbit Hole, Part 6: Tweaking the Sound Directly with a DSP", categories: ["Car", "Music"] },
       { slug: "2026-11-22-tweeter", date: "2026.11.22", title: "The Car Audio Rabbit Hole, Part 7: After Bass, the Temptation of Tweeters", categories: ["Car", "Music"] },
       { slug: "2026-11-22-laptop", date: "2026.11.22", title: "A Used Laptop for 15,000 Yen and Making Do with 256GB", categories: ["Daily Life"] },
+      { slug: "2026-11-22-esp32", date: "2026.11.22", title: "Can You Program an ESP32 Without a PC? \u2014 On-Site Maintenance Using Just an Android Smartphone and OTG \u2014", categories: ["Development", "ESP32", "Android"] },
     ];
 
     const CATEGORY_ORDER = ["Development", "Android", "Linux", "Python", "ESP32", "Car", "Music", "Daily Life", "Others"];
