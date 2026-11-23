@@ -12,9 +12,9 @@
       if (location.search.indexOf('me=1') !== -1) {
         localStorage.setItem('isMe', '1');
       }
-    } catch (e) {}
+    } catch (e) { }
     window.IS_ME = false;
-    try { window.IS_ME = localStorage.getItem('isMe') === '1'; } catch (e) {}
+    try { window.IS_ME = localStorage.getItem('isMe') === '1'; } catch (e) { }
   </script>
 <!-- Google tag (gtag.js) -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
@@ -781,6 +781,8 @@
       { slug: "2026-11-22-tweeter", date: "2026.11.22", title: "The Car Audio Rabbit Hole, Part 7: After Bass, the Temptation of Tweeters", categories: ["Car", "Music"] },
       { slug: "2026-11-22-laptop", date: "2026.11.22", title: "A Used Laptop for 15,000 Yen and Making Do with 256GB", categories: ["Daily Life"] },
       { slug: "2026-11-22-esp32", date: "2026.11.22", title: "Can You Program an ESP32 Without a PC? \u2014 On-Site Maintenance Using Just an Android Smartphone and OTG \u2014", categories: ["Development", "ESP32", "Android"] },
+      { slug: "2026-11-23-esp", date: "2026.11.23", title: "Putting the MUJI, C3, C6, and S3 Through Their Paces: My \u201cPersonal Favorite ESP32\u201d\u2014What I Settled On After Trying All Sorts of Things", categories: ["Development", "ESP32"] },
+
     ];
 
     const CATEGORY_ORDER = ["Development", "Android", "Linux", "Python", "ESP32", "Car", "Music", "Daily Life", "Others"];

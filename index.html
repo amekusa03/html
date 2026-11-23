@@ -12,9 +12,9 @@
       if (location.search.indexOf('me=1') !== -1) {
         localStorage.setItem('isMe', '1');
       }
-    } catch (e) {}
+    } catch (e) { }
     window.IS_ME = false;
-    try { window.IS_ME = localStorage.getItem('isMe') === '1'; } catch (e) {}
+    try { window.IS_ME = localStorage.getItem('isMe') === '1'; } catch (e) { }
   </script>
 
   <!-- Google tag (gtag.js) -->
@@ -136,10 +136,21 @@
           <ul class="essay-list">
             <li class="essay-item">
               <span class="essay-date">
-                <span class="essay-date-text">2026.11.22</span>
-                <span class="essay-category-badge">🛠️ 開発</span><span class="essay-category-badge">⚡ ESP32</span><span class="essay-category-badge">🤖 Android</span>
+                <span class="essay-date-text">2026.11.23</span>
+                <span class="essay-category-badge">🛠️ 開発</span><span class="essay-category-badge">⚡ ESP32</span>
               </span>
-              <a href="essays/2026-11-22-esp32.html" class="essay-title">PCなしでESP32に書き込める？ 〜AndroidスマホとOTGで完結する現場メンテナンス〜</a>
+              <a href="essays/2026-11-23-esp.html" class="essay-title">無印・C3・C6・S3を使い倒して
+                〜あれこれ試した末に行き着いた、私の「マイ・ベストESP32」〜</a>
+              <p class="essay-summary">初代WROOM、C6、S3、C3と触り比べて行き着いたマイ・ベスト。発熱の少なさと手頃さで愛用するC3の魅力と、用途別の選び方。</p>
+            </li>
+            <li class="essay-item">
+              <span class="essay-date">
+                <span class="essay-date-text">2026.11.22</span>
+                <span class="essay-category-badge">🛠️ 開発</span><span class="essay-category-badge">⚡ ESP32</span><span
+                  class="essay-category-badge">🤖 Android</span>
+              </span>
+              <a href="essays/2026-11-22-esp32.html" class="essay-title">PCなしでESP32に書き込める？
+                〜AndroidスマホとOTGで完結する現場メンテナンス〜</a>
               <p class="essay-summary">ノートPCを持ち出さずに、手元のAndroidスマホとUSB OTGケーブルだけで現場のESP32にバイナリを書き込む方法と運用上のポイント。</p>
             </li>
             <li class="essay-item">
@@ -490,10 +501,12 @@
       { slug: "2026-11-22-tweeter", date: "2026.11.22", title: "カーオーディオの沼 その７ 〜低音の次は、ツイーターの誘惑〜", categories: ["車", "音楽"] },
       { slug: "2026-11-22-laptop", date: "2026.11.22", title: "15,000円の中古ノートPCと、256GBのやりくり", categories: ["日常"] },
       { slug: "2026-11-22-esp32", date: "2026.11.22", title: "PCなしでESP32に書き込める？ 〜AndroidスマホとOTGで完結する現場メンテナンス〜", categories: ["開発", "ESP32", "Android"] },
+      { slug: "2026-11-23-esp", date: "2026.11.23", title: "無印・C3・C6・S3を使い倒して 〜あれこれ試した末に行き着いた、私の「マイ・ベストESP32」〜", categories: ["開発", "ESP32"] },
     ];
 
     // 最新記事の一行要約（トップページでの一覧性・滞在率向上用）
     const ESSAY_SUMMARIES = {
+      "2026-11-23-esp": "初代WROOM、C6、S3、C3と触り比べて行き着いたマイ・ベスト。発熱の少なさと手頃さで愛用するC3の魅力と、用途別の選び方。",
       "2026-11-22-esp32": "ノートPCを持ち出さずに、手元のAndroidスマホとUSB OTGケーブルだけで現場のESP32にバイナリを書き込む方法と運用上のポイント。",
       "2026-11-22-laptop": "外出先での開発用に15,000円で入手した中古ノートPC。SSD高騰のなか、WindowsとUbuntuのデュアルブートで256GBをやりくりする工夫。",
       "2026-11-22-tweeter": "足元から聴こえる高音の違和感を解消し、音像を目の前へ引き上げるツイーター。破損を防ぐハイパスフィルターとコンデンサーの基礎知識。",

@@ -82,9 +82,9 @@ def generate_essay_html(essay):
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRGF2MMYGD"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() {{{{ dataLayer.push(arguments); }}}}
+    function gtag() {{ dataLayer.push(arguments); }}
     gtag('js', new Date());
-    gtag('config', 'G-SRGF2MMYGD', window.IS_ME ? {{{{ traffic_type: 'internal' }}}} : {{{{}}}});
+    gtag('config', 'G-SRGF2MMYGD', window.IS_ME ? {{ traffic_type: 'internal' }} : {{}});
   </script>
 
   <link rel="icon" href="../Favicon.png" type="image/png">

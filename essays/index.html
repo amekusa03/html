@@ -13,9 +13,9 @@
       if (location.search.indexOf('me=1') !== -1) {
         localStorage.setItem('isMe', '1');
       }
-    } catch (e) {}
+    } catch (e) { }
     window.IS_ME = false;
-    try { window.IS_ME = localStorage.getItem('isMe') === '1'; } catch (e) {}
+    try { window.IS_ME = localStorage.getItem('isMe') === '1'; } catch (e) { }
   </script>
 
   <!-- Google tag (gtag.js) -->
@@ -795,6 +795,8 @@
       { slug: "2026-11-22-tweeter", date: "2026.11.22", title: "カーオーディオの沼 その７ 〜低音の次は、ツイーターの誘惑〜", categories: ["車", "音楽"] },
       { slug: "2026-11-22-laptop", date: "2026.11.22", title: "15,000円の中古ノートPCと、256GBのやりくり", categories: ["日常"] },
       { slug: "2026-11-22-esp32", date: "2026.11.22", title: "PCなしでESP32に書き込める？ 〜AndroidスマホとOTGで完結する現場メンテナンス〜", categories: ["開発", "ESP32", "Android"] },
+      { slug: "2026-11-23-esp", date: "2026.11.23", title: "無印・C3・C6・S3を使い倒して 〜あれこれ試した末に行き着いた、私の「マイ・ベストESP32」〜", categories: ["開発", "ESP32"] },
+
     ];
 
     const CATEGORY_ORDER = ["開発", "Android", "Linux", "Python", "ESP32", "車", "音楽", "日常", "その他"];
