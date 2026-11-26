@@ -127,6 +127,36 @@
         <a href="#links" class="nav-item">Links</a>
         <a href="en/" class="nav-item">🌐 English</a>
       </nav>
+
+      <!-- リアルタイム温熱・カーテン状態ウィジェット -->
+      <aside class="curtain-widget" id="curtain-widget">
+        <div class="curtain-widget-header">
+          <span class="curtain-widget-icon">🌿</span>
+          <span class="curtain-widget-title">居室・温熱観測</span>
+          <span class="curtain-status-indicator" id="curtain-indicator" title="観測待機中"></span>
+        </div>
+        <div class="curtain-widget-body">
+          <div class="curtain-metrics">
+            <div class="curtain-metric">
+              <span class="metric-label">室温</span>
+              <span class="metric-val" id="curtain-indoor-temp">--.-℃</span>
+            </div>
+            <div class="curtain-metric">
+              <span class="metric-label">外気</span>
+              <span class="metric-val" id="curtain-outdoor-temp">--.-℃</span>
+            </div>
+            <div class="curtain-metric">
+              <span class="metric-label">照度</span>
+              <span class="metric-val" id="curtain-lux">-- lx</span>
+            </div>
+          </div>
+          <div class="curtain-status-row">
+            <span class="curtain-badge" id="curtain-state-badge">カーテン: --</span>
+            <span class="curtain-action-desc" id="curtain-last-action">観測待機中</span>
+          </div>
+          <div class="curtain-update-time" id="curtain-update-time">更新: 待機中</div>
+        </div>
+      </aside>
     </div>
     <div class="main-content">
       <main id="notes">
@@ -781,12 +811,77 @@ ${parsedHtml}
       }
     }
 
+    // リアルタイム温熱・カーテン状態の取得と更新
+    async function updateCurtainMonitor() {
+      const indoorEl = document.getElementById('curtain-indoor-temp');
+      const outdoorEl = document.getElementById('curtain-outdoor-temp');
+      const luxEl = document.getElementById('curtain-lux');
+      const badgeEl = document.getElementById('curtain-state-badge');
+      const actionEl = document.getElementById('curtain-last-action');
+      const timeEl = document.getElementById('curtain-update-time');
+      const indicatorEl = document.getElementById('curtain-indicator');
+
+      if (!indoorEl) return;
+
+      try {
+        const response = await fetch('/api/curtain');
+        if (!response.ok) throw new Error('API fetch error: ' + response.status);
+        const data = await response.json();
+
+        if (data && data.timestamp) {
+          if (typeof data.indoor_temp === 'number') {
+            indoorEl.textContent = `${data.indoor_temp.toFixed(1)}℃`;
+          }
+          if (typeof data.outdoor_temp === 'number') {
+            outdoorEl.textContent = `${data.outdoor_temp.toFixed(1)}℃`;
+          }
+          if (typeof data.lux === 'number') {
+            luxEl.textContent = `${Math.round(data.lux)} lx`;
+          }
+
+          const isClosed = data.curtain_state === 'CLOSED';
+          const isOpen = data.curtain_state === 'OPEN';
+          badgeEl.textContent = `カーテン: ${isClosed ? '閉' : isOpen ? '開' : '不明'}`;
+          badgeEl.className = `curtain-badge ${isClosed ? 'closed' : isOpen ? 'open' : ''}`;
+
+          if (data.last_action && data.last_action !== 'なし') {
+            actionEl.textContent = data.last_action;
+          } else {
+            actionEl.textContent = '通常巡航中';
+          }
+
+          if (data.action_time) {
+            timeEl.textContent = `動作: ${data.action_time}`;
+          } else if (data.updated_at) {
+            const d = new Date(data.updated_at);
+            timeEl.textContent = `受信: ${d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+          } else {
+            timeEl.textContent = '同期完了';
+          }
+
+          if (indicatorEl) {
+            indicatorEl.classList.remove('offline');
+            indicatorEl.title = 'オンライン (ESP32-S3 稼働中)';
+          }
+        } else {
+          timeEl.textContent = 'データ待機中';
+          if (indicatorEl) indicatorEl.classList.add('offline');
+        }
+      } catch (err) {
+        console.warn('Curtain monitor fetch failed:', err);
+        timeEl.textContent = '未接続';
+        if (indicatorEl) indicatorEl.classList.add('offline');
+      }
+    }
+
     // ハッシュ変更と初回読み込み時の監視
     window.addEventListener('hashchange', router);
     window.addEventListener('DOMContentLoaded', () => {
       router();
       initScrollSpy();
       updateVisitorCounter();
+      updateCurtainMonitor();
+      setInterval(updateCurtainMonitor, 60000);
     });
   </script>
 </body>

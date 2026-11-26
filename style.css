@@ -914,3 +914,155 @@ html {
         right: 12px;
     }
 }
+
+/* --- Curtain & Climate Widget --- */
+.curtain-widget {
+  margin-top: 2rem;
+  padding: 1.1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.48);
+  border: 1px solid rgba(58, 90, 46, 0.16);
+  border-radius: 10px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  transition: all 0.3s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  .curtain-widget {
+    background: rgba(30, 28, 22, 0.6);
+    border-color: rgba(160, 180, 140, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.curtain-widget-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px dashed rgba(58, 90, 46, 0.2);
+}
+
+@media (prefers-color-scheme: dark) {
+  .curtain-widget-header {
+    border-bottom-color: rgba(160, 180, 140, 0.2);
+  }
+}
+
+.curtain-widget-icon {
+  font-size: 0.95rem;
+}
+
+.curtain-widget-title {
+  font-weight: 500;
+  font-size: 0.85rem;
+  color: var(--accent-green);
+  letter-spacing: 0.04em;
+  flex: 1;
+  margin-left: 0.4rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .curtain-widget-title {
+    color: #a0c294;
+  }
+}
+
+.curtain-status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #28a745;
+  box-shadow: 0 0 6px rgba(40, 167, 69, 0.6);
+  display: inline-block;
+  transition: background 0.3s ease;
+}
+
+.curtain-status-indicator.offline {
+  background: #9e9e9e;
+  box-shadow: none;
+}
+
+.curtain-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+.curtain-metric {
+  background: rgba(255, 255, 255, 0.55);
+  padding: 0.35rem 0.2rem;
+  border-radius: 6px;
+  border: 1px solid rgba(58, 90, 46, 0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+  .curtain-metric {
+    background: rgba(0, 0, 0, 0.22);
+    border-color: rgba(255, 255, 255, 0.05);
+  }
+}
+
+.metric-label {
+  display: block;
+  font-size: 0.7rem;
+  opacity: 0.72;
+  margin-bottom: 0.1rem;
+}
+
+.metric-val {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-color);
+  font-feature-settings: "tnum";
+}
+
+.curtain-status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.curtain-badge {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  font-size: 0.74rem;
+  font-weight: 500;
+  background: var(--accent-green);
+  color: #fff;
+  white-space: nowrap;
+}
+
+.curtain-badge.open {
+  background: #2e7d32;
+}
+
+.curtain-badge.closed {
+  background: #455a64;
+}
+
+.curtain-action-desc {
+  font-size: 0.76rem;
+  opacity: 0.85;
+  text-align: right;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.curtain-update-time {
+  font-size: 0.68rem;
+  opacity: 0.55;
+  text-align: right;
+}
+
