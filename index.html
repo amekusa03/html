@@ -826,7 +826,14 @@ ${parsedHtml}
       try {
         const response = await fetch('/api/curtain');
         if (!response.ok) throw new Error('API fetch error: ' + response.status);
-        const data = await response.json();
+        let data = await response.json();
+        if (typeof data === 'string') {
+          try {
+            const s = data.indexOf('{');
+            const e = data.lastIndexOf('}');
+            data = JSON.parse(s !== -1 && e !== -1 ? data.substring(s, e + 1) : data);
+          } catch {}
+        }
 
         if (data && data.timestamp) {
           if (typeof data.indoor_temp === 'number') {

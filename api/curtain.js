@@ -38,27 +38,38 @@ function sendRedisTcpCommand(redisUrlStr, commandArgs) {
       });
 
       client.on('end', () => {
+        let buf = responseBuffer;
+        if (password) {
+          // AUTH のレスポンス (+OK\r\n) をスキップ
+          const authEnd = buf.indexOf('\r\n');
+          if (authEnd !== -1) {
+            buf = buf.substring(authEnd + 2);
+          }
+        }
+
         // Parse RESP response
-        if (responseBuffer.startsWith('+')) {
+        if (buf.startsWith('+')) {
           // Simple string e.g. +OK
-          resolve(responseBuffer.trim().substring(1));
-        } else if (responseBuffer.startsWith('$')) {
+          const nl = buf.indexOf('\r\n');
+          resolve(buf.substring(1, nl !== -1 ? nl : undefined));
+        } else if (buf.startsWith('$')) {
           // Bulk string
-          const firstNewline = responseBuffer.indexOf('\r\n');
-          const length = parseInt(responseBuffer.substring(1, firstNewline), 10);
+          const firstNewline = buf.indexOf('\r\n');
+          const length = parseInt(buf.substring(1, firstNewline), 10);
           if (length === -1) {
             resolve(null);
           } else {
-            const data = responseBuffer.substring(firstNewline + 2, firstNewline + 2 + length);
+            const data = buf.substring(firstNewline + 2, firstNewline + 2 + length);
             resolve(data);
           }
-        } else if (responseBuffer.startsWith(':')) {
-          const num = parseInt(responseBuffer.trim().substring(1), 10);
+        } else if (buf.startsWith(':')) {
+          const nl = buf.indexOf('\r\n');
+          const num = parseInt(buf.substring(1, nl !== -1 ? nl : undefined), 10);
           resolve(num);
-        } else if (responseBuffer.startsWith('-')) {
-          reject(new Error(responseBuffer.trim().substring(1)));
+        } else if (buf.startsWith('-')) {
+          reject(new Error(buf.trim().substring(1)));
         } else {
-          resolve(responseBuffer.trim());
+          resolve(buf.trim());
         }
       });
 
@@ -78,10 +89,10 @@ export default async function handler(req, res) {
   // CORS configuration
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,POST');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,POST,HEAD');
   res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, x-api-key, Authorization');
 
-  if (req.method === 'OPTIONS') {
+  if (req.method === 'OPTIONS' || req.method === 'HEAD') {
     return res.status(200).end();
   }
 
@@ -107,7 +118,13 @@ export default async function handler(req, res) {
           try {
             payload = typeof data.result === 'string' ? JSON.parse(data.result) : data.result;
           } catch {
-            payload = data.result;
+            if (typeof data.result === 'string') {
+              const s = data.result.indexOf('{');
+              const e = data.result.lastIndexOf('}');
+              if (s !== -1 && e !== -1 && e > s) {
+                try { payload = JSON.parse(data.result.substring(s, e + 1)); } catch { payload = data.result; }
+              } else { payload = data.result; }
+            } else { payload = data.result; }
           }
         }
         res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
@@ -124,9 +141,15 @@ export default async function handler(req, res) {
         let payload = null;
         if (raw) {
           try {
-            payload = JSON.parse(raw);
+            payload = typeof raw === 'string' ? JSON.parse(raw) : raw;
           } catch {
-            payload = raw;
+            if (typeof raw === 'string') {
+              const s = raw.indexOf('{');
+              const e = raw.lastIndexOf('}');
+              if (s !== -1 && e !== -1 && e > s) {
+                try { payload = JSON.parse(raw.substring(s, e + 1)); } catch { payload = raw; }
+              } else { payload = raw; }
+            } else { payload = raw; }
           }
         }
         res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
