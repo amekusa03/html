@@ -123,6 +123,35 @@ The photos featured here are mainly ones I took in Southeast Asia.
 <a class="nav-item" href="#links">Links</a>
 <a class="nav-item" href="/">🌐 日本語</a>
 </nav>
+<!-- リアルタイム温熱・カーテン状態ウィジェット -->
+<aside class="curtain-widget" id="curtain-widget">
+<div class="curtain-widget-header">
+<span class="curtain-widget-icon">🌿</span>
+<span class="curtain-widget-title">Living Space and Thermal Conditions Monitoring</span>
+<span class="curtain-status-indicator" id="curtain-indicator" title="Waiting for observations"></span>
+</div>
+<div class="curtain-widget-body">
+<div class="curtain-metrics">
+<div class="curtain-metric">
+<span class="metric-label">Room temperature</span>
+<span class="metric-val" id="curtain-indoor-temp">--.-℃</span>
+</div>
+<div class="curtain-metric">
+<span class="metric-label">Outside air</span>
+<span class="metric-val" id="curtain-outdoor-temp">--.-℃</span>
+</div>
+<div class="curtain-metric">
+<span class="metric-label">Illuminance</span>
+<span class="metric-val" id="curtain-lux">-- lx</span>
+</div>
+</div>
+<div class="curtain-status-row">
+<span class="curtain-badge" id="curtain-state-badge">Curtains: --</span>
+<span class="curtain-action-desc" id="curtain-last-action">Waiting for observations</span>
+</div>
+<div class="curtain-update-time" id="curtain-update-time">Update: Pending</div>
+</div>
+</aside>
 </div>
 <div class="main-content">
 <main id="notes">
@@ -130,6 +159,14 @@ The photos featured here are mainly ones I took in Southeast Asia.
 <section class="essay-list-section">
 <h2>Notes</h2>
 <ul class="essay-list">
+<li class="essay-item">
+<span class="essay-date">
+<span class="essay-date-text">2026.11.26</span>
+<span class="essay-category-badge">💻 Development</span><span class="essay-category-badge">⚡ ESP32</span>
+</span>
+<a class="essay-title" href="/en/essays/2026-11-25-curtain.html">Intelligence by the Window and Google Home — How the ESP32-S3 Anticipates and Tells You “When to Close the Curtains” —</a>
+<p class="essay-summary">Waiting until it gets freezing cold to close the windows is too late. By predicting heat transfer based on the “30-minute slope” of light intensity and outdoor temperature, we cast directly from the ESP32-S3 to Google Home. An ambient experiment that visualizes the “breathing” of a room through website integration.</p>
+</li>
 <li class="essay-item">
 <span class="essay-date">
 <span class="essay-date-text">2026.11.25</span>
@@ -522,10 +559,12 @@ The photos featured here are mainly ones I took in Southeast Asia.
       { slug: "2026-11-24-supcable", date: "2026.11.24", title: "The Car Audio Rabbit Hole, Part 8: Are Power Cables Really That Important?", categories: ["Car", "Music"] },
       { slug: "2026-11-24-spkcable", date: "2026.11.24", title: "The Car Audio Rabbit Hole, Part 9: The Sacred Realm Known as Speaker Cables", categories: ["Car", "Music"] },
       { slug: "2026-11-25-amp", date: "2026.11.25", title: "The Car Audio Rabbit Hole, Part 10: \"Aren't External Amplifiers Important?\"", categories: ["Car", "Music"] },
+      { slug: "2026-11-25-curtain", date: "2026.11.26", title: "Intelligence by the Window and Google Home \u2014 How the ESP32-S3 Anticipates and Tells You \u201cWhen to Close the Curtains\u201d \u2014", categories: ["Development", "ESP32"] },
     ];
 
     // 最新記事の一行要約（トップページでの一覧性・滞在率向上用）
     const ESSAY_SUMMARIES = {
+      "2026-11-25-curtain": "Waiting until it gets freezing cold to close the windows is too late. By predicting heat transfer based on the \u201c30-minute slope\u201d of light intensity and outdoor temperature, we cast directly from the ESP32-S3 to Google Home. An ambient experiment that visualizes the \u201cbreathing\u201d of a room through website integration.",
       "2026-11-25-amp": "The appeal of an external amplifier, which delivers a level of power and drive far beyond that of a built-in amplifier, and the fierce battle for space with the subwoofer under the seat.",
       "2026-11-24-spkcable": "The change in sound I noticed after switching to the classic Belden 8460, and the grueling physical labor involved in tackling the door\u2019s accordion-style folds. Thoughts on cables in the DSP era.",
       "2026-11-24-supcable": "Connecting directly to the battery and tapping power from the vehicle's fuse box. Why high currents flow in a 12V system and the basics of choosing the right wire gauge for safety.",
@@ -758,12 +797,84 @@ ${summary}
       }
     }
 
+    // リアルタイム温熱・カーテン状態の取得と更新
+    async function updateCurtainMonitor() {
+      const indoorEl = document.getElementById('curtain-indoor-temp');
+      const outdoorEl = document.getElementById('curtain-outdoor-temp');
+      const luxEl = document.getElementById('curtain-lux');
+      const badgeEl = document.getElementById('curtain-state-badge');
+      const actionEl = document.getElementById('curtain-last-action');
+      const timeEl = document.getElementById('curtain-update-time');
+      const indicatorEl = document.getElementById('curtain-indicator');
+
+      if (!indoorEl) return;
+
+      try {
+        const response = await fetch('/api/curtain');
+        if (!response.ok) throw new Error('API fetch error: ' + response.status);
+        let data = await response.json();
+        if (typeof data === 'string') {
+          try {
+            const s = data.indexOf('{');
+            const e = data.lastIndexOf('}');
+            data = JSON.parse(s !== -1 && e !== -1 ? data.substring(s, e + 1) : data);
+          } catch {}
+        }
+
+        if (data && data.timestamp) {
+          if (typeof data.indoor_temp === 'number') {
+            indoorEl.textContent = `${data.indoor_temp.toFixed(1)}℃`;
+          }
+          if (typeof data.outdoor_temp === 'number') {
+            outdoorEl.textContent = `${data.outdoor_temp.toFixed(1)}℃`;
+          }
+          if (typeof data.lux === 'number') {
+            luxEl.textContent = `${Math.round(data.lux)} lx`;
+          }
+
+          const isClosed = data.curtain_state === 'CLOSED';
+          const isOpen = data.curtain_state === 'OPEN';
+          badgeEl.textContent = `Curtains: ${isClosed ? '\u9589' : isOpen ? '\u958b' : '\u4e0d\u660e'}`;
+          badgeEl.className = `curtain-badge ${isClosed ? 'closed' : isOpen ? 'open' : ''}`;
+
+          if (data.last_action && data.last_action !== 'None') {
+            actionEl.textContent = data.last_action;
+          } else {
+            actionEl.textContent = 'During Normal Cruise';
+          }
+
+          if (data.action_time) {
+            timeEl.textContent = `Operation: ${data.action_time}`;
+          } else if (data.updated_at) {
+            const d = new Date(data.updated_at);
+            timeEl.textContent = `Received: ${d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+          } else {
+            timeEl.textContent = 'Synchronization Complete';
+          }
+
+          if (indicatorEl) {
+            indicatorEl.classList.remove('offline');
+            indicatorEl.title = 'Online (ESP32-S3 is running)';
+          }
+        } else {
+          timeEl.textContent = 'Waiting for data';
+          if (indicatorEl) indicatorEl.classList.add('offline');
+        }
+      } catch (err) {
+        console.warn('Curtain monitor fetch failed:', err);
+        timeEl.textContent = 'Not Connected';
+        if (indicatorEl) indicatorEl.classList.add('offline');
+      }
+    }
+
     // ハッシュ変更と初回読み込み時の監視
     window.addEventListener('hashchange', router);
     window.addEventListener('DOMContentLoaded', () => {
       router();
       initScrollSpy();
       updateVisitorCounter();
+      updateCurtainMonitor();
+      setInterval(updateCurtainMonitor, 60000);
     });
   </script>
 </body>
