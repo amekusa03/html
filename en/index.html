@@ -820,6 +820,8 @@ ${summary}
 
       if (!indoorEl) return;
 
+      const isEn = document.documentElement.lang === 'en' || location.pathname.indexOf('/en/') !== -1;
+
       try {
         const response = await fetch('/api/curtain');
         if (!response.ok) throw new Error('API fetch error: ' + response.status);
@@ -845,35 +847,58 @@ ${summary}
 
           const isClosed = data.curtain_state === 'CLOSED';
           const isOpen = data.curtain_state === 'OPEN';
-          badgeEl.textContent = `Curtains: ${isClosed ? '\u9589' : isOpen ? '\u958b' : '\u4e0d\u660e'}`;
-          badgeEl.className = `curtain-badge ${isClosed ? 'closed' : isOpen ? 'open' : ''}`;
+          const curtainLabel = isEn ? 'Curtains: ' : 'Curtains: ';
+          const stateLabel = isClosed ? (isEn ? 'Closed' : 'Closed') : (isOpen ? (isEn ? 'Open' : 'Open') : (isEn ? 'Unknown' : 'Unknown'));
+          badgeEl.textContent = curtainLabel + stateLabel;
+          badgeEl.className = 'curtain-badge ' + (isClosed ? 'closed' : isOpen ? 'open' : '');
 
-          if (data.last_action && data.last_action !== 'None') {
-            actionEl.textContent = data.last_action;
+          const actionMapEn = {
+            '\u51ac\u30fb\u63a1\u5149\uff08\u958b\uff09': 'Winter Sunlight (Open)',
+            '\u51ac\u30fb\u65ad\u71b1\uff08\u9589\uff09': 'Winter Insulation (Closed)',
+            '\u590f\u30fb\u906e\u71b1\uff08\u9589\uff09': 'Summer Heat Shield (Closed)',
+            '\u590f\u30fb\u6392\u71b1\uff08\u958b\uff09': 'Summer Heat Exhaust (Open)',
+            '\u65e5\u4e2d\u63db\u6c17\uff08\u7a93\u958b\u3051\uff09': 'Midday Vent (Open Window)',
+            '\u5915\u6dbc\u307f\uff08\u7a93\u958b\u3051\uff09': 'Evening Breeze (Open Window)',
+            '\u671d\u306e\u7a93\u9589\u3081': 'Morning Window Close',
+            '\u30c6\u30b9\u30c8\u518d\u751f': 'Test Audio'
+          };
+
+          let actionText = data.last_action;
+          if (isEn) {
+            if (data.last_action_en) {
+              actionText = data.last_action_en;
+            } else if (actionMapEn[actionText]) {
+              actionText = actionMapEn[actionText];
+            } else if (!actionText || actionText === 'None' || actionText === 'None') {
+              actionText = 'Normal Cruise';
+            }
           } else {
-            actionEl.textContent = 'During Normal Cruise';
+            if (!actionText || actionText === 'None') {
+              actionText = 'During Normal Cruise';
+            }
           }
+          actionEl.textContent = actionText;
 
           if (data.action_time) {
-            timeEl.textContent = `Operation: ${data.action_time}`;
+            timeEl.textContent = (isEn ? 'Operation: ' : 'Operation: ') + data.action_time;
           } else if (data.updated_at) {
             const d = new Date(data.updated_at);
-            timeEl.textContent = `Received: ${d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+            timeEl.textContent = (isEn ? 'Received: ' : 'Received: ') + d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
           } else {
-            timeEl.textContent = 'Synchronization Complete';
+            timeEl.textContent = isEn ? 'Synced' : 'Synchronization Complete';
           }
 
           if (indicatorEl) {
             indicatorEl.classList.remove('offline');
-            indicatorEl.title = 'Online (ESP32-S3 is running)';
+            indicatorEl.title = isEn ? 'Online (ESP32-S3 is running)' : 'Online (ESP32-S3 is running)';
           }
         } else {
-          timeEl.textContent = 'Waiting for data';
+          timeEl.textContent = isEn ? 'Waiting for data' : 'Waiting for data';
           if (indicatorEl) indicatorEl.classList.add('offline');
         }
       } catch (err) {
         console.warn('Curtain monitor fetch failed:', err);
-        timeEl.textContent = 'Not Connected';
+        timeEl.textContent = isEn ? 'Offline' : 'Not Connected';
         if (indicatorEl) indicatorEl.classList.add('offline');
       }
     }

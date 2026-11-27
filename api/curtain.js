@@ -85,6 +85,30 @@ function sendRedisTcpCommand(redisUrlStr, commandArgs) {
   });
 }
 
+const ACTION_TRANSLATIONS = {
+  '冬・採光（開）': 'Winter Sunlight (Open)',
+  '冬・断熱（閉）': 'Winter Insulation (Closed)',
+  '夏・遮熱（閉）': 'Summer Heat Shield (Closed)',
+  '夏・排熱（開）': 'Summer Heat Exhaust (Open)',
+  '日中換気（窓開け）': 'Midday Vent (Open Window)',
+  '夕涼み（窓開け）': 'Evening Breeze (Open Window)',
+  '朝の窓閉め': 'Morning Window Close',
+  'テスト再生': 'Test Audio'
+};
+
+function enrichRecord(rec) {
+  if (rec && typeof rec === 'object') {
+    if (rec.last_action && ACTION_TRANSLATIONS[rec.last_action]) {
+      rec.last_action_en = ACTION_TRANSLATIONS[rec.last_action];
+    } else if (rec.last_action === 'なし' || !rec.last_action) {
+      rec.last_action_en = 'Normal Cruise';
+    } else {
+      rec.last_action_en = rec.last_action;
+    }
+  }
+  return rec;
+}
+
 export default async function handler(req, res) {
   // CORS configuration
   res.setHeader('Access-Control-Allow-Credentials', 'true');
@@ -128,7 +152,7 @@ export default async function handler(req, res) {
           }
         }
         res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-        return res.status(200).json(payload || { status: 'waiting_for_data' });
+        return res.status(200).json(enrichRecord(payload) || { status: 'waiting_for_data' });
       } catch (err) {
         return res.status(500).json({ error: err.message });
       }
@@ -153,7 +177,7 @@ export default async function handler(req, res) {
           }
         }
         res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-        return res.status(200).json(payload || { status: 'waiting_for_data' });
+        return res.status(200).json(enrichRecord(payload) || { status: 'waiting_for_data' });
       } catch (err) {
         return res.status(500).json({ error: 'Redis Error: ' + err.message });
       }
@@ -199,6 +223,7 @@ export default async function handler(req, res) {
       action_time: body.action_time || '',
       updated_at: new Date().toISOString()
     };
+    enrichRecord(record);
 
     const recordJson = JSON.stringify(record);
 
